@@ -1,0 +1,52 @@
+id,exercise_type_id,i18n_code,description
+df0613d1-8b79-4f21-8e24-58f3d2db9655,353cc6f0-c36d-493b-950c-0166f6159d25,legs_squat,"A lower body exercise targeting quads, hamstrings, and glutes."
+73626a02-02e1-402a-bc5b-a21f6818f620,353cc6f0-c36d-493b-950c-0166f6159d25,legs_lunges,Strengthens the legs and glutes with single-leg exercises.
+ecf1600d-a08a-447e-b118-19ddca6307fe,353cc6f0-c36d-493b-950c-0166f6159d25,legs_leg_press,"Targets the quads, hamstrings, and glutes using a leg press machine."
+96a37978-baf2-4666-82af-66fe7bfc0db2,353cc6f0-c36d-493b-950c-0166f6159d25,legs_calf_raise,Isolates calf muscles to build strength and endurance.
+fc2af4ce-b039-4028-a98c-d0d4f4f9f585,353cc6f0-c36d-493b-950c-0166f6159d25,legs_leg_extension,Focuses on quadriceps using a leg extension machine.
+00fd83d9-892e-4b85-bf86-ba781572e6e8,353cc6f0-c36d-493b-950c-0166f6159d25,legs_leg_curl,Strengthens the hamstrings using a leg curl machine.
+7d735184-57d8-482f-a485-f6e564862ba1,353cc6f0-c36d-493b-950c-0166f6159d25,legs_bulgarian_split_squat,Single-leg squat variation to improve balance and strength.
+f132b982-1d3d-4069-9628-a568a28c84f0,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_bench_press,"A chest-focused exercise involving pectorals, deltoids, and triceps."
+fed1d3a1-c90c-453d-939a-df512e3ec7f1,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_push-up,"Bodyweight exercise targeting chest, shoulders, and triceps."
+0dbadae2-eccc-4706-add2-5c56ebe54d78,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_shoulder_press,Develops shoulder strength and stability with overhead pressing.
+62699ec1-8e47-4508-98ad-005d537d8785,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_dips,"Targets triceps, chest, and shoulders with a compound movement."
+681c204c-0568-4a65-93d5-3a1e485e7edc,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_incline_dumbbell_press,Upper chest-focused pressing movement using dumbbells.
+4e495cc5-7720-45a1-a050-d2de556fcb5a,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_tricep_extension,Isolates the triceps for targeted strength building.
+feb9034b-ed40-4273-ab3c-c62756ec3fa9,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_chest_fly,"Works the chest muscles with a wide, pressing motion."
+5d0f32cc-3743-4222-b65f-1bff22615fa0,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_pull-up,Bodyweight exercise for back and biceps strength.
+309a0a74-d532-4667-b324-3a793efc5284,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_deadlift,"A compound movement engaging back, glutes, and legs."
+09708134-f1ed-4553-b293-85e86ab21c6f,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_lat_pulldown,"Strengthens the lats, upper back, and biceps with a pull-down machine."
+811d8d9e-b551-49cf-b6c2-0ec46b072367,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_row,"Develops the back with a pulling motion, either seated or bent-over."
+9c107b95-376e-4c03-9d73-83fe3bbd081f,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_bicep_curl,Isolates the biceps with a curling motion.
+b3a76e18-e83c-48fa-97e7-f138e5be038d,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_face_pull,Targets rear delts and upper back for posture improvement.
+6c7adaea-c30c-4354-a902-ab29fd4b20c5,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_shrug,Isolates the traps to build shoulder and neck strength.
+8d459caa-ece1-4bd7-9cf5-23ea59a55174,353cc6f0-c36d-493b-950c-0166f6159d25,legs_goblet_squat,A squat variation using a dumbbell or kettlebell for added weight.
+acb878fa-5595-4f45-b9af-5a4c9fb55bf2,353cc6f0-c36d-493b-950c-0166f6159d25,legs_step-up,Single-leg exercise to strengthen legs and improve balance.
+730a2ecd-6d52-44cd-86d7-233c7b38ad24,353cc6f0-c36d-493b-950c-0166f6159d25,legs_hack_squat,Targets the lower body using a machine-assisted squat.
+359cec62-9a63-40c3-ba59-afd40ebdd262,353cc6f0-c36d-493b-950c-0166f6159d25,legs_sissy_squat,Advanced squat focusing on the quads and lower body control.
+2b8b3529-e835-41e6-92a4-6194035b15c3,353cc6f0-c36d-493b-950c-0166f6159d25,legs_sumo_deadlift,Targets legs and glutes with a wider stance deadlift.
+d6a2b5f2-1d74-4c5c-b97b-011a23a04382,353cc6f0-c36d-493b-950c-0166f6159d25,legs_hip_thrust,Isolates and strengthens glutes with a hip-raising motion.
+62533345-faed-4077-9fb9-f43c9637d163,353cc6f0-c36d-493b-950c-0166f6159d25,legs_romanian_deadlift,Focuses on hamstrings with a hip-hinge deadlift variation.
+6741bc62-8f98-45eb-9007-49e119bc4786,353cc6f0-c36d-493b-950c-0166f6159d25,legs_glute_bridge,Engages glutes and core with a floor-based hip lift.
+e4c7729e-a65d-47c0-a1db-9fe6ce39af3b,353cc6f0-c36d-493b-950c-0166f6159d25,legs_reverse_lunge,Back-step lunge targeting legs and glutes.
+37accc83-a8d5-4a39-870a-1e8447f3aad1,353cc6f0-c36d-493b-950c-0166f6159d25,legs_kettlebell_swing,Dynamic lower body movement improving power and endurance.
+c08d3e0c-6d4a-4c5d-8251-2955d676acda,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_military_press,Strict overhead press engaging shoulders and triceps.
+b420e656-8ce2-4fa2-9228-14bf106a6ec9,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_decline_bench_press,Focuses on lower chest with a decline bench angle.
+74ee60fe-5ad1-4d07-b7f6-6aac2b362d3b,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_arnold_press,Shoulder exercise targeting all three deltoid heads.
+c1ce3395-847b-467c-a97d-a11298964d61,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_landmine_press,Angled pressing movement for shoulder stability and strength.
+649cbd29-b7c9-47f0-91cd-f733f1e2051f,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_close-grip_bench_press,Targets triceps with a narrower bench press grip.
+793cf7d3-a118-4570-b1a9-29b932c1606b,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_overhead_tricep_extension,Isolates triceps with overhead extension movement.
+2b984f16-bf45-4900-a0fd-b36a3b1cff4c,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_pec_deck_fly,Chest fly variation using a machine for isolation.
+847d453a-204b-4f90-a139-c50ad23b057c,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_diamond_push-up,Tricep-focused push-up variation with hands close together.
+2cbfd86a-e32f-435b-8a18-d88b37c9a106,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_handstand_push-up,Advanced bodyweight push-up that targets shoulders and triceps.
+36b40ab5-7047-4352-b85d-25adc74b9c5b,92d3c7a3-bab6-4d49-afce-70ed62b7814e,push_machine_chest_press,Chest-focused pressing movement using a machine.
+bb0140f7-2e28-47f1-ab65-b7a115003623,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_chin-up,Pull-up variation that emphasizes biceps and upper back.
+5190da89-b9f7-4680-8539-e999bbbf3056,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_pendlay_row,Strict rowing exercise focusing on back strength.
+625e9a8d-507d-437e-a1b3-0a143c0cfaad,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_single_arm_row,Isolates the back with a unilateral rowing movement.
+60f4a99d-ebe4-4ac2-a9d5-fcc829589a3d,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_reverse_fly,Rear delt exercise targeting the upper back.
+3b11cb84-cd6f-4f80-8a39-61344dfd1aed,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_cable_row,Seated row using a cable machine for back strength.
+17500f31-f155-43d3-a466-b2b0e23b249f,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_hammer_curl,Bicep exercise that also engages forearm muscles.
+e825c368-7636-4329-b0d2-1d52bbd8d222,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_t-bar_row,"Rowing variation for a thicker, stronger back."
+57f30910-26fc-4962-ab17-5a74c8b010b1,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_ez_bar_curl,Bicep curl variation using an EZ bar for comfort.
+fe25811e-21be-4f68-8bee-f4c8c4e592d7,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_inverted_row,Bodyweight rowing exercise targeting the upper back.
+1d34a3c9-333f-4f61-9134-e7ea6fb05f03,b4508634-2e74-49b1-88bd-01041aed3e2b,pull_kroc_row,High-rep row variation for back strength and endurance.

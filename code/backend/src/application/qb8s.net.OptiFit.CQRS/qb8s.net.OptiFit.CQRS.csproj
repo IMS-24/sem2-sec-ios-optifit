@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="13.0.1"/>
+        <PackageReference Include="MediatR" Version="12.2.0"/>
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0"/>
+        <PackageReference Include="LinqKit.Core" Version="1.2.5"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\domain\qb8s.net.OptiFit.Core\qb8s.net.OptiFit.Core.csproj"/>
+        <ProjectReference Include="..\..\infrastructure\qb8s.net.OptiFit.Persistence\qb8s.net.OptiFit.Persistence.csproj"/>
+    </ItemGroup>
+
+</Project>
