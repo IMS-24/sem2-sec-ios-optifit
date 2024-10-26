@@ -14,7 +14,7 @@ public class GymEntityTypeConfiguration : BaseEntityTypeConfiguration<Gym>
         builder
             .Property(x => x.Name)
             .IsRequired()
-            .HasMaxLength(100);
+            .HasMaxLength(20);
 
         builder
             .Property(x => x.Address)
@@ -23,12 +23,11 @@ public class GymEntityTypeConfiguration : BaseEntityTypeConfiguration<Gym>
 
         builder
             .Property(x => x.City)
-            .HasMaxLength(100)
+            .HasMaxLength(50)
             .IsRequired(false);
 
         builder
             .Property(x => x.ZipCode)
-            .HasMaxLength(10)
             .IsRequired(false);
 
         builder

@@ -1,0 +1,30 @@
+<form [formGroup]="workoutInputForm">
+  <div class="qb8-form-fields">
+    <mat-form-field class="example-full-width">
+      <mat-label>Description</mat-label>
+      <input formControlName="description" matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Start time</mat-label>
+      <input formControlName="startTime" matInput type="datetime">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>End time</mat-label>
+      <input formControlName="endTime" matInput type="datetime">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Notes</mat-label>
+      <input formControlName="notes" matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Gym Id</mat-label>
+      <input formControlName="gymId" matInput type="textfield">
+    </mat-form-field>
+
+  </div>
+  <qb8-form-actions-component [inputForm]="workoutInputForm" [onCancel]="onCancel" [onSave]="onSave"/>
+</form>

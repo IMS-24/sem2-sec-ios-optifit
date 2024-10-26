@@ -30,23 +30,30 @@ builder.Services
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwagger(configuration);
 
 var app = builder.Build();
 var logger = app.Services.GetRequiredService<ILogger<Program>>();
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
+// Configure the HTTP request pipeline.
+app.UseOpenApi();
+if (app.Environment.IsDevelopment()) app.UseSwagger(configuration);
+
+app.UseCors(options =>
+{
+    //TODO: FIXME: This is a security risk, should be configured to only allow specific origins
+    // options.WithOrigins(configuration.GetSection("AllowedHosts").Get<string[]>() ?? ["*"]);
+    options.AllowAnyOrigin();
+    options.AllowAnyMethod();
+    options.AllowAnyHeader();
+});
 //app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
 logger.LogInformation(
-    "\n                       \n                          ___        _   _  ____ _           __\n                         / _ \\ _ __ | |_(_)/ ___| |__   ___ / _|\n                        | | | | \'_ \\| __| | |   | \'_ \\ / _ \\ |_\n                        | |_| | |_) | |_| | |___| | | |  __/  _|\n                         \\___/| .__/ \\__|_|\\____|_| |_|\\___|_|\n                              |_|\n                       Version {InformalVersion}\n                       ",
+    "\n .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------. \n| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |\n| |     ____     | || |   ______     | || |  _________   | || |     _____    | || |  _________   | || |     _____    | || |  _________   | |\n| |   .'    `.   | || |  |_   __ \\   | || | |  _   _  |  | || |    |_   _|   | || | |_   ___  |  | || |    |_   _|   | || | |  _   _  |  | |\n| |  /  .--.  \\  | || |    | |__) |  | || | |_/ | | \\_|  | || |      | |     | || |   | |_  \\_|  | || |      | |     | || | |_/ | | \\_|  | |\n| |  | |    | |  | || |    |  ___/   | || |     | |      | || |      | |     | || |   |  _|      | || |      | |     | || |     | |      | |\n| |  \\  `--'  /  | || |   _| |_      | || |    _| |_     | || |     _| |_    | || |  _| |_       | || |     _| |_    | || |    _| |_     | |\n| |   `.____.'   | || |  |_____|     | || |   |_____|    | || |    |_____|   | || | |_____|      | || |    |_____|   | || |   |_____|    | |\n| |              | || |              | || |              | || |              | || |              | || |              | || |              | |\n| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |\n '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' \n\n                       Version {InformalVersion}\n                       ",
     GitVersion.InformalVersion);
 app.Run();

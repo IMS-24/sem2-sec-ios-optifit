@@ -3,19 +3,20 @@ using LinqKit;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using qb8s.net.OptiFit.Core.Pagination;
 using qb8s.net.OptiFit.CQRS.Dtos.Exercise;
 using qb8s.net.OptiFit.Persistence.Context;
 
 namespace qb8s.net.OptiFit.CQRS.Queries.Exercise;
 
-public record SearchExercisesQuery(SearchExerciseDto Search) : IRequest<IEnumerable<ExerciseExtendedDto>>;
+public record SearchExercisesQuery(SearchExerciseDto Search) : IRequest<PaginatedResult<ExerciseExtendedDto>>;
 
 public class SearchExercisesQueryHandler(
     ILogger<SearchExercisesQueryHandler> logger,
     IMapper mapper,
-    ApplicationDbContext dbContext) : IRequestHandler<SearchExercisesQuery, IEnumerable<ExerciseExtendedDto>>
+    ApplicationDbContext dbContext) : IRequestHandler<SearchExercisesQuery, PaginatedResult<ExerciseExtendedDto>>
 {
-    public Task<IEnumerable<ExerciseExtendedDto>> Handle(SearchExercisesQuery request,
+    public Task<PaginatedResult<ExerciseExtendedDto>> Handle(SearchExercisesQuery request,
         CancellationToken cancellationToken)
     {
         logger.LogInformation("Search Exercises Query : {@Search}", request);
@@ -33,13 +34,17 @@ public class SearchExercisesQueryHandler(
         {
             predicate = predicate.And(x => x.Id == request.Search.Id);
             query = query.Where(predicate);
-            return Task.FromResult(query.Select(x => mapper.Map<ExerciseExtendedDto>(x)).AsEnumerable());
+            return Task.FromResult(new PaginatedResult<ExerciseExtendedDto>(request.Search.PageSize,
+                request.Search.PageIndex,
+                query.AsEnumerable().Select(mapper.Map<ExerciseExtendedDto>)));
         }
 
         if (request.Search.I18NCode != null)
             predicate = predicate.And(x => x.I18NCode.Contains(request.Search.I18NCode));
         query = query.Where(predicate);
         query = query.OrderBy(x => x.I18NCode);
-        return Task.FromResult(query.Select(x => mapper.Map<ExerciseExtendedDto>(x)).AsEnumerable());
+        return Task.FromResult(new PaginatedResult<ExerciseExtendedDto>(request.Search.PageSize,
+            request.Search.PageIndex,
+            query.AsEnumerable().Select(mapper.Map<ExerciseExtendedDto>)));
     }
 }

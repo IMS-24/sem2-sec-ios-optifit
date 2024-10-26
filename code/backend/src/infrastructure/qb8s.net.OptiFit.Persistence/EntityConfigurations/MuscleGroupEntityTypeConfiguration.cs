@@ -57,6 +57,11 @@ public class MuscleGroupEntityTypeConfiguration : BaseEntityTypeConfiguration<Mu
             {
                 Id = Guid.Parse("ca487800-5fb6-46bd-a4a2-920234fa3008"),
                 I18NCode = "core"
+            },
+            new()
+            {
+                Id = Guid.Parse("4279276a-ec31-4dc7-b4b4-b490d67acbd0"),
+                I18NCode = "legs"
             }
         };
 

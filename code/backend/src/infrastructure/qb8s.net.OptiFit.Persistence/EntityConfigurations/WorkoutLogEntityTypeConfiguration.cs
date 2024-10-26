@@ -26,7 +26,8 @@ public class WorkoutLogEntityTypeConfiguration : BaseEntityTypeConfiguration<Wor
 
         builder
             .Property(wl => wl.Notes)
-            .HasMaxLength(500);
+            .HasMaxLength(500)
+            .IsRequired(false);
         builder
             .OwnsOne(wpe => wpe.Set, set =>
             {

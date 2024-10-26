@@ -6,7 +6,7 @@ public class Gym : BaseNamedEntity
 {
     public string Address { get; set; } = null!;
     public string City { get; set; } = null!;
-    public string ZipCode { get; set; } = null!;
+    public int? ZipCode { get; set; }
     public DateTime? DeletedAtUtc { get; set; }
     public ICollection<GymExerciseMapping> GymExerciseMappings { get; set; } = new HashSet<GymExerciseMapping>();
     public ICollection<Workout> Workouts { get; set; } = new HashSet<Workout>();

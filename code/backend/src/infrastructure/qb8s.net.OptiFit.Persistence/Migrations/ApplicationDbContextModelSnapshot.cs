@@ -171,8 +171,8 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         .HasColumnName("address");
 
                     b.Property<string>("City")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
                         .HasColumnName("city");
 
                     b.Property<DateTime?>("DeletedAtUtc")
@@ -181,13 +181,12 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)")
                         .HasColumnName("name");
 
-                    b.Property<string>("ZipCode")
-                        .HasMaxLength(10)
-                        .HasColumnType("character varying(10)")
+                    b.Property<int?>("ZipCode")
+                        .HasColumnType("integer")
                         .HasColumnName("zip_code");
 
                     b.HasKey("Id")
@@ -382,6 +381,11 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         {
                             Id = new Guid("ca487800-5fb6-46bd-a4a2-920234fa3008"),
                             I18NCode = "core"
+                        },
+                        new
+                        {
+                            Id = new Guid("4279276a-ec31-4dc7-b4b4-b490d67acbd0"),
+                            I18NCode = "legs"
                         });
                 });
 

@@ -1,4 +1,7 @@
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using NSwag.Annotations;
+using qb8s.net.OptiFit.Core.Pagination;
 using qb8s.net.OptiFit.CQRS.Dtos.MuscleGroup;
 using qb8s.net.OptiFit.CQRS.Queries.MuscleGroup;
 
@@ -8,9 +11,9 @@ public class MuscleGroupController(ILogger<MuscleGroupController> logger)
     : ApiBaseController
 {
     [HttpPost("search")]
-    // [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<AllergenDto>), Description = "Search Allergens")]
-    public async Task<ActionResult<IEnumerable<MuscleGroupDto>>> SearchMuscleGroups(
-        [FromQuery] SearchMuscleGroupDto search)
+    [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<MuscleGroupDto>), Description = "Search Muscle Groups")]
+    public async Task<ActionResult<PaginatedResult<MuscleGroupDto>>> SearchMuscleGroups(
+        [FromBody] SearchMuscleGroupDto search)
     {
         logger.LogInformation("Muscles search request");
         var result = await Mediator.Send(new SearchMuscleGroupsQuery(search));

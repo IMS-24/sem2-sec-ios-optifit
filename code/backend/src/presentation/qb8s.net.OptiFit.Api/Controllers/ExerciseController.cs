@@ -1,4 +1,7 @@
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using NSwag.Annotations;
+using qb8s.net.OptiFit.Core.Pagination;
 using qb8s.net.OptiFit.CQRS.Commands.Exercise;
 using qb8s.net.OptiFit.CQRS.Dtos.Exercise;
 using qb8s.net.OptiFit.CQRS.Queries.Exercise;
@@ -9,9 +12,9 @@ public class ExerciseController(ILogger<ExerciseController> logger)
     : ApiBaseController
 {
     [HttpPost("search")]
-    // [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<AllergenDto>), Description = "Search Allergens")]
-    public async Task<ActionResult<IEnumerable<ExerciseExtendedDto>>> SearchExercises(
-        [FromQuery] SearchExerciseDto search)
+    [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<ExerciseExtendedDto>), Description = "Search Exercies")]
+    public async Task<ActionResult<PaginatedResult<ExerciseExtendedDto>>> SearchExercises(
+        [FromBody] SearchExerciseDto search)
     {
         logger.LogInformation("{@Name} request", nameof(SearchExercises));
         var result = await Mediator.Send(new SearchExercisesQuery(search));
@@ -19,6 +22,7 @@ public class ExerciseController(ILogger<ExerciseController> logger)
     }
 
     [HttpPost]
+    [SwaggerResponse(StatusCodes.Status200OK, typeof(ExerciseDto), Description = "Create Exercise")]
     public async Task<ActionResult<ExerciseDto>> CreateExercise(
         [FromBody] CreateExerciseDto createExerciseDto)
     {

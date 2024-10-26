@@ -1,0 +1,33 @@
+<!-- gym-table-view.component.html -->
+
+<div class="table-container">
+  <table [dataSource]="(gyms$ | async)?.items || []" class="mat-elevation-z8" mat-table>
+    <ng-container matColumnDef="id">
+      <th *matHeaderCellDef mat-header-cell>ID</th>
+      <td *matCellDef="let gym" mat-cell>{{ gym.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef mat-header-cell>Name</th>
+      <td *matCellDef="let gym" mat-cell>{{ gym.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th *matHeaderCellDef mat-header-cell>Address</th>
+      <td *matCellDef="let gym" mat-cell>{{ gym.address }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th *matHeaderCellDef mat-header-cell>City</th>
+      <td *matCellDef="let gym" mat-cell>{{ gym.city }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="zipCode">
+      <th *matHeaderCellDef mat-header-cell>Zip Code</th>
+      <td *matCellDef="let gym" mat-cell>{{ gym.zipCode }}</td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+  </table>
+</div>

@@ -1,0 +1,24 @@
+<form [formGroup]="gymInputForm">
+  <div class="qb8-form-fields">
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Address</mat-label>
+      <input formControlName="address" matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>City</mat-label>
+      <input formControlName="city" matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Zip Code</mat-label>
+      <input formControlName="zipCode" matInput type="number">
+    </mat-form-field>
+  </div>
+  <qb8-form-actions-component [inputForm]="gymInputForm" [onCancel]="onCancel" [onSave]="onSave"/>
+</form>
