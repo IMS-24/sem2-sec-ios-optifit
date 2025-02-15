@@ -135,6 +135,56 @@ export class ExerciseClient {
         }
         return _observableOf<ExerciseDto>(null as any);
     }
+
+    /**
+     * @return Get Exercise Types
+     */
+    getExerciseTypes(): Observable<ExerciseTypeDto> {
+        let url_ = this.baseUrl + "/api/Exercise/types";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetExerciseTypes(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetExerciseTypes(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ExerciseTypeDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ExerciseTypeDto>;
+        }));
+    }
+
+    protected processGetExerciseTypes(response: HttpResponseBase): Observable<ExerciseTypeDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ExerciseTypeDto;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ExerciseTypeDto>(null as any);
+    }
 }
 
 @Injectable({
@@ -398,6 +448,192 @@ export class MuscleGroupClient {
 @Injectable({
     providedIn: 'root'
 })
+export class MuscleGroupMappingClient {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ?? "";
+    }
+
+    /**
+     * @return Search Muscle Group Mappings
+     */
+    searchMuscleGroupMappings(search: SearchMuscleGroupMappingDto): Observable<PaginatedResultOfMuscleGroupMappingDto> {
+        let url_ = this.baseUrl + "/api/MuscleGroupMapping/search";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(search);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processSearchMuscleGroupMappings(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processSearchMuscleGroupMappings(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<PaginatedResultOfMuscleGroupMappingDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<PaginatedResultOfMuscleGroupMappingDto>;
+        }));
+    }
+
+    protected processSearchMuscleGroupMappings(response: HttpResponseBase): Observable<PaginatedResultOfMuscleGroupMappingDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfMuscleGroupMappingDto;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PaginatedResultOfMuscleGroupMappingDto>(null as any);
+    }
+}
+
+@Injectable({
+    providedIn: 'root'
+})
+export class ProfileClient {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ?? "";
+    }
+
+    /**
+     * @return Get User Profile
+     */
+    getUserProfile(): Observable<UserProfileDto> {
+        let url_ = this.baseUrl + "/api/Profile";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetUserProfile(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetUserProfile(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UserProfileDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UserProfileDto>;
+        }));
+    }
+
+    protected processGetUserProfile(response: HttpResponseBase): Observable<UserProfileDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as UserProfileDto;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<UserProfileDto>(null as any);
+    }
+
+    /**
+     * @return Update User Profile
+     */
+    updateUserProfile(update: UpdateUserProfileDto): Observable<UserProfileDto> {
+        let url_ = this.baseUrl + "/api/Profile";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(update);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateUserProfile(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateUserProfile(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UserProfileDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UserProfileDto>;
+        }));
+    }
+
+    protected processUpdateUserProfile(response: HttpResponseBase): Observable<UserProfileDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as UserProfileDto;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<UserProfileDto>(null as any);
+    }
+}
+
+@Injectable({
+    providedIn: 'root'
+})
 export class WorkoutClient {
     private http: HttpClient;
     private baseUrl: string;
@@ -587,6 +823,11 @@ export interface CreateExerciseDto extends CreateI18NDto {
     exerciseTypeId?: string;
 }
 
+export interface ExerciseTypeDto {
+    id?: string;
+    i18NCode?: string;
+}
+
 export interface PaginatedResultOfGymDto {
     items?: GymDto[];
     pageIndex?: number;
@@ -647,6 +888,46 @@ export interface PaginatedResultOfMuscleGroupDto {
 }
 
 export interface SearchMuscleGroupDto extends SearchI18NDto {
+}
+
+export interface PaginatedResultOfMuscleGroupMappingDto {
+    items?: MuscleGroupMappingDto[];
+    pageIndex?: number;
+    pageSize?: number;
+    totalCount?: number;
+    totalPages?: number;
+    hasPreviousPage?: boolean;
+    hasNextPage?: boolean;
+}
+
+export interface MuscleGroupMappingDto extends BaseDto {
+    muscleGroupId?: string;
+    muscleId?: string;
+}
+
+export interface SearchMuscleGroupMappingDto extends SearchBaseDto {
+}
+
+export interface UserProfileDto {
+    id?: string;
+    userName?: string;
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    userRole?: string;
+    dateOfBirthUtc?: Date | null;
+    lastLoginUtc?: Date | null;
+    registeredUtc?: Date;
+    updatedUtc?: Date;
+    initialSetupDone?: boolean;
+}
+
+export interface UpdateUserProfileDto {
+    firstName?: string | null;
+    lastName?: string | null;
+    email?: string | null;
+    dateOfBirthUtc?: Date | null;
+    initialSetupDone?: boolean;
 }
 
 export interface PaginatedResultOfWorkoutDto {

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PaginatedResultOfGymDto} from "../../../clients/api-client";
+import {PaginatedResultOfGymDto} from "../../../../clients/api-client";
 import {
   MatCell,
   MatCellDef,

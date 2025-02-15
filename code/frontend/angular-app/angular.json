@@ -4,6 +4,14 @@
   "newProjectRoot": "projects",
   "projects": {
     "angular-app": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "de-DE": {
+            "translation": "src/locale/messages.de.xlf"
+          }
+        }
+      },
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,6 +21,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize": true,
+            "aot": true,
             "outputPath": "dist/angular-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -31,6 +41,16 @@
             "scripts": []
           },
           "configurations": {
+            "en": {
+              "localize": [
+                "en-US"
+              ]
+            },
+            "de": {
+              "localize": [
+                "de-DE"
+              ]
+            },
             "production": {
               "budgets": [
                 {
@@ -57,6 +77,12 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
+            "en-US": {
+              "buildTarget": "angular-app:build:development,en-US"
+            },
+            "de-DE": {
+              "buildTarget": "angular-app:build:development,de-DE"
+            },
             "production": {
               "buildTarget": "angular-app:build:production"
             },

@@ -1,3 +1,4 @@
+<h2>New Workout</h2>
 <form [formGroup]="workoutInputForm">
   <div class="qb8-form-fields">
     <mat-form-field class="example-full-width">
@@ -17,7 +18,7 @@
 
     <mat-form-field class="example-full-width">
       <mat-label>Notes</mat-label>
-      <input formControlName="notes" matInput type="text">
+      <textarea [rows]="5" formControlName="notes" matInput type="text"></textarea>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">

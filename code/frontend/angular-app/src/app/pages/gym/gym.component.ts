@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {GymInputFormComponent} from "../../components/gym-input-form/gym-input-form.component";
-import {GymTableViewComponent} from "../../components/gym-table-view/gym-table-view.component";
+import {GymInputFormComponent} from "../../components/gym/gym-input-form/gym-input-form.component";
+import {GymTableViewComponent} from "../../components/gym/gym-table-view/gym-table-view.component";
 import {GymService} from "../../services/GymService";
 import {PaginatedResultOfGymDto} from "../../../clients/api-client";
 import {Observable} from "rxjs";

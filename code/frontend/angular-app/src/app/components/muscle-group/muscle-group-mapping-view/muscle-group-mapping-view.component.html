@@ -1,0 +1,23 @@
+<!-- muscleGroupMapping-table-view.component.html -->
+<h2>Muscle Group Mappings Overview</h2>
+<div class="table-container">
+
+  <table [dataSource]="(muscleGroupMappings$ | async)?.items || []" class="mat-elevation-z8" mat-table>
+    <ng-container matColumnDef="id">
+      <th *matHeaderCellDef mat-header-cell>ID</th>
+      <td *matCellDef="let muscleGroupMapping" mat-cell>{{ muscleGroupMapping.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="muscleGroupId">
+      <th *matHeaderCellDef mat-header-cell>muscleGroupId</th>
+      <td *matCellDef="let muscleGroupMapping" mat-cell>{{ muscleGroupMapping.muscleGroupId }}</td>
+    </ng-container>
+    <ng-container matColumnDef="muscleId">
+      <th *matHeaderCellDef mat-header-cell>muscleId</th>
+      <td *matCellDef="let muscleGroupMapping" mat-cell>{{ muscleGroupMapping.muscleId }}</td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+  </table>
+</div>

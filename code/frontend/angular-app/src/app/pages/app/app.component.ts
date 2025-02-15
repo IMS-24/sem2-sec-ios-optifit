@@ -14,8 +14,9 @@ import {HttpClientModule} from "@angular/common/http";
 export class AppComponent {
   title = 'OptiFit';
 
+
   constructor() {
     console.log(`[${AppComponent.name}] - constructor`);
-    
+
   }
 }

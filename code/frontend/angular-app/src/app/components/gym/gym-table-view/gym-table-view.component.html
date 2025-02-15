@@ -1,5 +1,4 @@
-<!-- gym-table-view.component.html -->
-
+<h2>Gym Overview</h2>
 <div class="table-container">
   <table [dataSource]="(gyms$ | async)?.items || []" class="mat-elevation-z8" mat-table>
     <ng-container matColumnDef="id">

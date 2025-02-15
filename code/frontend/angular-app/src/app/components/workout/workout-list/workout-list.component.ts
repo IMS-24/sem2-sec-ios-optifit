@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AsyncPipe} from "@angular/common";
-import {PaginatedResultOfWorkoutDto, WorkoutDto} from "../../../clients/api-client";
+import {AsyncPipe, DatePipe} from "@angular/common";
+import {PaginatedResultOfWorkoutDto, WorkoutDto} from "../../../../clients/api-client";
 
 import {
   MatCell,
@@ -31,6 +31,7 @@ import {Observable} from "rxjs";
     MatRow,
     MatRowDef,
     MatTable,
+    DatePipe,
   ],
   templateUrl: './workout-list.component.html',
   styleUrl: './workout-list.component.css'
