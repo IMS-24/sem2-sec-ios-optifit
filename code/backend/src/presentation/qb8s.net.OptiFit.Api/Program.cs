@@ -8,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 var configurationBuilder = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", true)
-    .AddJsonFile("appsettings.Local.json", true);
+    .AddJsonFile("appsettings.Local.json", true)
+    .AddEnvironmentVariables();
 IConfiguration configuration = configurationBuilder
     .Build();
 

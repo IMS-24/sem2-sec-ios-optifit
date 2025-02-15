@@ -100,6 +100,10 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("exercise_id");
 
+                    b.Property<int?>("Intensity")
+                        .HasColumnType("integer")
+                        .HasColumnName("intensity");
+
                     b.Property<Guid>("MuscleId")
                         .HasColumnType("uuid")
                         .HasColumnName("muscle_id");
@@ -689,7 +693,6 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         .HasColumnName("exercise_id");
 
                     b.Property<string>("Notes")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)")
                         .HasColumnName("notes");

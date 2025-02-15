@@ -6,7 +6,6 @@ namespace qb8s.net.OptiFit.Persistence.Context;
 
 public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
 {
-  
     public ApplicationDbContext CreateDbContext(string[] args)
     {
         try
@@ -16,7 +15,7 @@ public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Applicati
                     "../../presentation/qb8s.net.OptiFit.Api/"))
                 .AddJsonFile("appsettings.json", true)
                 .AddJsonFile("appsettings.Local.json", true)
-                // .AddJsonFile("appsettings.Development.json", true)
+                .AddJsonFile("appsettings.Development.json", true)
                 .AddEnvironmentVariables()
                 .Build();
             DbContextOptionsBuilder<ApplicationDbContext> optionsBuilder = new();

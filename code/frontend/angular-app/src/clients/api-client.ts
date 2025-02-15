@@ -185,6 +185,59 @@ export class ExerciseClient {
         }
         return _observableOf<ExerciseTypeDto>(null as any);
     }
+
+    /**
+     * @return Delete Exercise
+     */
+    deleteExercise(id: string): Observable<ExerciseDto> {
+        let url_ = this.baseUrl + "/api/Exercise/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteExercise(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteExercise(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<ExerciseDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<ExerciseDto>;
+        }));
+    }
+
+    protected processDeleteExercise(response: HttpResponseBase): Observable<ExerciseDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ExerciseDto;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ExerciseDto>(null as any);
+    }
 }
 
 @Injectable({
@@ -577,6 +630,53 @@ export class ProfileClient {
     }
 
     /**
+     * @return Delete User Profile
+     */
+    deleteUserProfile(): Observable<void> {
+        let url_ = this.baseUrl + "/api/Profile";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteUserProfile(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteUserProfile(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<void>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<void>;
+        }));
+    }
+
+    protected processDeleteUserProfile(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(null as any);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(null as any);
+    }
+
+    /**
      * @return Update User Profile
      */
     updateUserProfile(update: UpdateUserProfileDto): Observable<UserProfileDto> {
@@ -628,6 +728,56 @@ export class ProfileClient {
             }));
         }
         return _observableOf<UserProfileDto>(null as any);
+    }
+
+    /**
+     * @return Get User Stats
+     */
+    getUserStats(): Observable<UserStatsDto> {
+        let url_ = this.baseUrl + "/api/Profile/stats";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetUserStats(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetUserStats(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UserStatsDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UserStatsDto>;
+        }));
+    }
+
+    protected processGetUserStats(response: HttpResponseBase): Observable<UserStatsDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as UserStatsDto;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<UserStatsDto>(null as any);
     }
 }
 
@@ -773,8 +923,9 @@ export interface BaseI18NDto extends BaseDto {
 
 export interface ExerciseExtendedDto extends BaseI18NDto {
     description?: string;
-    muscleGroupDtos?: MuscleGroupExtendedDto[] | null;
-    muscleDtos?: MuscleExtendedDto[];
+    muscleGroups?: MuscleGroupExtendedDto[] | null;
+    muscles?: MuscleExtendedDto[];
+    exerciseType?: string;
 }
 
 export interface MuscleGroupExtendedDto extends BaseI18NDto {
@@ -808,6 +959,7 @@ export interface SearchI18NDto extends SearchBaseDto {
 
 export interface SearchExerciseDto extends SearchI18NDto {
     description?: string | null;
+    exerciseTypeId?: string | null;
 }
 
 export interface ExerciseDto extends BaseI18NDto {
@@ -920,6 +1072,19 @@ export interface UserProfileDto {
     registeredUtc?: Date;
     updatedUtc?: Date;
     initialSetupDone?: boolean;
+}
+
+export interface UserStatsDto {
+    activeDays?: number;
+    totalWorkouts?: number;
+    totalExercises?: number;
+    totalSets?: number;
+    totalReps?: number;
+    totalWeight?: number;
+    totalDuration?: number;
+    totalCalories?: number;
+    workoutStreak?: number;
+    averageDuration?: number;
 }
 
 export interface UpdateUserProfileDto {

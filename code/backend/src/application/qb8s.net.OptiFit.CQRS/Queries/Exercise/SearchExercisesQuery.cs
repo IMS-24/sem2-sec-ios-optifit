@@ -41,6 +41,9 @@ public class SearchExercisesQueryHandler(
 
         if (request.Search.I18NCode != null)
             predicate = predicate.And(x => x.I18NCode.Contains(request.Search.I18NCode));
+
+        if (request.Search.ExerciseTypeId.HasValue)
+            predicate = predicate.And(x => x.ExerciseTypeId == request.Search.ExerciseTypeId);
         query = query.Where(predicate);
         query = query.OrderBy(x => x.I18NCode);
         return Task.FromResult(new PaginatedResult<ExerciseExtendedDto>(request.Search.PageSize,

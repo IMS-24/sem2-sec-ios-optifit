@@ -30,4 +30,22 @@ public class ExerciseController(ILogger<ExerciseController> logger)
         var result = await Mediator.Send(new CreateExerciseCommand(createExerciseDto));
         return Ok(result);
     }
+
+    [HttpGet("types")]
+    [SwaggerResponse(StatusCodes.Status200OK, typeof(ExerciseTypeDto), Description = "Get Exercise Types")]
+    public async Task<ActionResult<IEnumerable<ExerciseTypeDto>>> GetExerciseTypes()
+    {
+        logger.LogInformation("{@Name} request", nameof(GetExerciseTypes));
+        var result = await Mediator.Send(new GetExerciseTypesQuery());
+        return Ok(result);
+    }
+
+    [HttpDelete("{id}")]
+    [SwaggerResponse(StatusCodes.Status200OK, typeof(ExerciseDto), Description = "Delete Exercise")]
+    public async Task<ActionResult<ExerciseDto>> DeleteExercise(Guid id)
+    {
+        logger.LogInformation("{@Name} request : {@Id}", nameof(DeleteExercise), id);
+        await Mediator.Send(new DeleteExerciseCommand(id));
+        return Ok();
+    }
 }

@@ -1,4 +1,15 @@
 services:
+  backend:
+    container_name: qb8s.net.${PROJECT_NAME}
+    image: ${PRIVATE_REGISTRY_URL}/${PROJECT_NAME}:latest
+    ports:
+      - "${API_PORT}:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=${CONNECTION_STRING}
+    depends_on:
+      - db
+
   db:
     container_name: qb8s.net.${PROJECT_NAME}-postgres
     image: postgres
@@ -12,5 +23,19 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
       - ./database/init:/docker-entrypoint-initdb.d/
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: qb8s.net.${PROJECT_NAME}-pgadmin
+    restart: always
+    ports:
+      - "8888:80"
+    env_file: .env
+    volumes:
+      - pg-admin-data:/var/lib/pgadmin
+    depends_on:
+      - db
+
 volumes:
   db-data: null
+  pg-admin-data: null
