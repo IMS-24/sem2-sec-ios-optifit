@@ -28,11 +28,6 @@ public class ExerciseEntityTypeConfiguration : BaseEntityTypeConfiguration<Exerc
             .HasForeignKey(e => e.ExerciseTypeId);
 
         builder
-            .HasMany(e => e.ExerciseMuscleGroupMappings)
-            .WithOne(mgm => mgm.Exercise)
-            .HasForeignKey(mgm => mgm.ExerciseId);
-
-        builder
             .HasMany(e => e.ExerciseMuscleMappings)
             .WithOne(emm => emm.Exercise)
             .HasForeignKey(emm => emm.ExerciseId);

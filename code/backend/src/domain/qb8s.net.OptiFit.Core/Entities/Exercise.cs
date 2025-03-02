@@ -6,9 +6,6 @@ public class Exercise : BaseI18NEntity
 {
     public string Description { get; set; } = null!;
 
-    public ICollection<ExerciseMuscleGroupMapping> ExerciseMuscleGroupMappings { get; set; } =
-        new HashSet<ExerciseMuscleGroupMapping>();
-
     public ICollection<ExerciseMuscleMapping> ExerciseMuscleMappings { get; set; } =
         new HashSet<ExerciseMuscleMapping>();
 

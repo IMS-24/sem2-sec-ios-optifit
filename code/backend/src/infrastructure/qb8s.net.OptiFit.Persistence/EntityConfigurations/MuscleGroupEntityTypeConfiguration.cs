@@ -25,11 +25,6 @@ public class MuscleGroupEntityTypeConfiguration : BaseEntityTypeConfiguration<Mu
             .WithOne(mgm => mgm.MuscleGroup)
             .HasForeignKey(mgm => mgm.MuscleGroupId);
 
-        builder
-            .HasMany(mg => mg.ExerciseMuscleGroupMappings)
-            .WithOne(emgm => emgm.MuscleGroup)
-            .HasForeignKey(emgm => emgm.MuscleGroupId);
-
 
         var muscleGroups = new List<MuscleGroup>
         {

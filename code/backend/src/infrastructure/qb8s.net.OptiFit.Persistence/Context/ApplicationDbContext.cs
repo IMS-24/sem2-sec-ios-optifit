@@ -11,7 +11,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> dbConte
     public DbSet<MuscleGroupMapping> MuscleGroupMappings { get; set; }
     public DbSet<Exercise> Exercises { get; set; }
     public DbSet<ExerciseType> ExerciseTypes { get; set; }
-    public DbSet<ExerciseMuscleGroupMapping> ExerciseMuscleGroupMappings { get; set; }
     public DbSet<Gym> Gyms { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<UserRole> UserRoles { get; set; }
