@@ -10,7 +10,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> dbConte
     public DbSet<MuscleGroup> MuscleGroups { get; set; }
     public DbSet<MuscleGroupMapping> MuscleGroupMappings { get; set; }
     public DbSet<Exercise> Exercises { get; set; }
-    public DbSet<ExerciseType> ExerciseTypes { get; set; }
+    public DbSet<ExerciseCategory> ExerciseTypes { get; set; }
     public DbSet<Gym> Gyms { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<UserRole> UserRoles { get; set; }

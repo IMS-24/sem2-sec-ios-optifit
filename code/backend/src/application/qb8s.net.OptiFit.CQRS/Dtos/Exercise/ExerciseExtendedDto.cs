@@ -22,7 +22,6 @@ public class ExerciseExtendedDtoProfile : Profile
             .ForMember(dest => dest.Muscles,
                 opt => opt.MapFrom(src => src.ExerciseMuscleMappings.Select(x => x.Muscle)))
             .ForMember(dest => dest.ExerciseType, opt => opt.MapFrom(src => src.ExerciseCategory.I18NCode))
-            .ForMember(dest => dest.ExerciseType, opt => opt.MapFrom(src => src.ExerciseType.I18NCode))
             ;
     }
 }

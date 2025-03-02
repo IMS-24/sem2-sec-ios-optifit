@@ -972,7 +972,7 @@ export interface CreateI18NDto {
 
 export interface CreateExerciseDto extends CreateI18NDto {
     description?: string;
-    exerciseTypeId?: string;
+    exerciseCategoryId?: string;
 }
 
 export interface ExerciseTypeDto {

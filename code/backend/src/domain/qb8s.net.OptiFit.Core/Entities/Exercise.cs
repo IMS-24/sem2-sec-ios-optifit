@@ -16,6 +16,6 @@ public class Exercise : BaseI18NEntity
 
     public ICollection<GymExerciseMapping> GymExerciseMappings { get; set; } = new HashSet<GymExerciseMapping>();
 
-    public Guid ExerciseTypeId { get; set; }
-    public ExerciseType ExerciseType { get; set; } = null!;
+    public Guid ExerciseCategoryId { get; set; }
+    public ExerciseCategory ExerciseCategory { get; set; } = null!;
 }

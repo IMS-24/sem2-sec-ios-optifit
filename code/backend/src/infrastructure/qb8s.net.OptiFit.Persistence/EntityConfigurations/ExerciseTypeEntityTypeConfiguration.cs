@@ -4,12 +4,12 @@ using qb8s.net.OptiFit.Core.Entities;
 
 namespace qb8s.net.OptiFit.Persistence.EntityConfigurations;
 
-public class ExerciseTypeEntityTypeConfiguration : BaseEntityTypeConfiguration<ExerciseType>
+public class ExerciseGroupEntityTypeConfiguration : BaseEntityTypeConfiguration<ExerciseCategory>
 {
-    protected override void Configure(EntityTypeBuilder<ExerciseType> builder)
+    protected override void Configure(EntityTypeBuilder<ExerciseCategory> builder)
     {
         builder
-            .ToTable("exercise_type");
+            .ToTable("exercise_group");
 
         builder
             .Property(m => m.I18NCode)
@@ -22,10 +22,10 @@ public class ExerciseTypeEntityTypeConfiguration : BaseEntityTypeConfiguration<E
 
         builder
             .HasMany(m => m.Exercises)
-            .WithOne(mgm => mgm.ExerciseType)
-            .HasForeignKey(mgm => mgm.ExerciseTypeId);
+            .WithOne(mgm => mgm.ExerciseCategory)
+            .HasForeignKey(mgm => mgm.ExerciseCategoryId);
 
-        var exerciseTypes = new List<ExerciseType>
+        var exerciseTypes = new List<ExerciseCategory>
         {
             new()
             {

@@ -13,7 +13,7 @@ public class ExerciseTypeDtoProfile : BaseProfile
 {
     public ExerciseTypeDtoProfile()
     {
-        CreateMap<ExerciseType, ExerciseTypeDto>()
+        CreateMap<ExerciseCategory, ExerciseTypeDto>()
             .ForMember(dest => dest.I18NCode, opt => opt.MapFrom(src => src.I18NCode));
     }
 }

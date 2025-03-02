@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using qb8s.net.OptiFit.Persistence.Context;
@@ -11,9 +12,11 @@ using qb8s.net.OptiFit.Persistence.Context;
 namespace qb8s.net.OptiFit.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250302200459_rename exercise type")]
+    partial class renameexercisetype
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,9 +40,9 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         .HasColumnType("character varying(500)")
                         .HasColumnName("description");
 
-                    b.Property<Guid>("ExerciseCategoryId")
+                    b.Property<Guid>("ExerciseTypeId")
                         .HasColumnType("uuid")
-                        .HasColumnName("exercise_category_id");
+                        .HasColumnName("exercise_type_id");
 
                     b.Property<string>("I18NCode")
                         .IsRequired()
@@ -50,8 +53,8 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                     b.HasKey("Id")
                         .HasName("pk_exercise");
 
-                    b.HasIndex("ExerciseCategoryId")
-                        .HasDatabaseName("ix_exercise_exercise_category_id");
+                    b.HasIndex("ExerciseTypeId")
+                        .HasDatabaseName("ix_exercise_exercise_type_id");
 
                     b.HasIndex("I18NCode")
                         .IsUnique()
@@ -785,10 +788,10 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                 {
                     b.HasOne("qb8s.net.OptiFit.Core.Entities.ExerciseCategory", "ExerciseCategory")
                         .WithMany("Exercises")
-                        .HasForeignKey("ExerciseCategoryId")
+                        .HasForeignKey("ExerciseTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_exercise_exercise_types_exercise_category_id");
+                        .HasConstraintName("fk_exercise_exercise_types_exercise_type_id");
 
                     b.Navigation("ExerciseCategory");
                 });

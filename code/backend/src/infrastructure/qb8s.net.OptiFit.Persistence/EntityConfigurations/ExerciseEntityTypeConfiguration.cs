@@ -23,9 +23,9 @@ public class ExerciseEntityTypeConfiguration : BaseEntityTypeConfiguration<Exerc
             .HasMaxLength(500);
 
         builder
-            .HasOne(e => e.ExerciseType)
+            .HasOne(e => e.ExerciseCategory)
             .WithMany(et => et.Exercises)
-            .HasForeignKey(e => e.ExerciseTypeId);
+            .HasForeignKey(e => e.ExerciseCategoryId);
 
         builder
             .HasMany(e => e.ExerciseMuscleMappings)

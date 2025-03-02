@@ -22,7 +22,7 @@ public class SearchExercisesQueryHandler(
         logger.LogInformation("Search Exercises Query : {@Search}", request);
         //@formatter:off
         var query = dbContext.Exercises
-                .Include(exercise => exercise.ExerciseType)
+                .Include(exercise => exercise.ExerciseCategory)
             .AsQueryable();
         //@formatter:on
         var predicate = PredicateBuilder.New<Core.Entities.Exercise>(true);
@@ -39,7 +39,7 @@ public class SearchExercisesQueryHandler(
             predicate = predicate.And(x => x.I18NCode.Contains(request.Search.I18NCode));
 
         if (request.Search.ExerciseTypeId.HasValue)
-            predicate = predicate.And(x => x.ExerciseTypeId == request.Search.ExerciseTypeId);
+            predicate = predicate.And(x => x.ExerciseCategoryId == request.Search.ExerciseTypeId);
         query = query.Where(predicate);
         query = query.OrderBy(x => x.I18NCode);
         return Task.FromResult(new PaginatedResult<ExerciseExtendedDto>(request.Search.PageSize,
