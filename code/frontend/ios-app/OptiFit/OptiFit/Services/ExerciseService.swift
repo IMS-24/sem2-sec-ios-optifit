@@ -2,15 +2,15 @@ import Foundation
 
 @MainActor
 class ExerciseService: ObservableObject {
-    @Published var exerciseTypes: [ExerciseType] = []
-    @Published var exercises: [Exercise] = []
+    @Published var exerciseTypes: [ExerciseCategory] = []
+    @Published var exercises: [GetExerciseDto] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: ErrorMessage?
 
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/exercise"
 
-    func fetchExerciseTypes() async {
-        guard let url = URL(string: "\(baseURL)/types") else {
+    func fetchExerciseCategories() async {
+        guard let url = URL(string: "\(baseURL)/categories") else {
             errorMessage = ErrorMessage(message: "Invalid URL")
             return
         }
@@ -25,14 +25,14 @@ class ExerciseService: ObservableObject {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            exerciseTypes = try decoder.decode([ExerciseType].self, from: data)
+            exerciseTypes = try decoder.decode([ExerciseCategory].self, from: data)
         } catch {
             errorMessage = ErrorMessage(message: "Failed to load ExerciseTypes")
         }
     }
 
     // Updated search function that supports lazy loading
-    func searchExercises(searchModel: SearchExercisesDto, append: Bool = false) async -> PaginatedResult<Exercise>? {
+    func searchExercises(searchModel: SearchExercisesDto, append: Bool = false) async -> PaginatedResult<GetExerciseDto>? {
         guard let url = URL(string: "\(baseURL)/search") else {
             errorMessage = ErrorMessage(message: "Invalid URL")
             return nil
@@ -59,7 +59,7 @@ class ExerciseService: ObservableObject {
             let (data, _) = try await URLSession.shared.data(for: request)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            let response = try decoder.decode(PaginatedResult<Exercise>.self, from: data)
+            let response = try decoder.decode(PaginatedResult<GetExerciseDto>.self, from: data)
             if append {
                 exercises.append(contentsOf: response.items)
             } else {
@@ -72,7 +72,7 @@ class ExerciseService: ObservableObject {
         }
     }
 
-    func postExercise(_ exercise: PostExerciseDto) async {
+    func postExercise(_ exercise: CreateExerciseDto) async {
         guard let url = URL(string: "\(baseURL)") else {
             errorMessage = ErrorMessage(message: "Invalid URL")
             return
@@ -101,7 +101,7 @@ class ExerciseService: ObservableObject {
             let (data, _) = try await URLSession.shared.data(for: request)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            let newExercise = try decoder.decode(Exercise.self, from: data)
+            let newExercise = try decoder.decode(GetExerciseDto.self, from: data)
             exercises.append(newExercise)
         } catch {
             errorMessage = ErrorMessage(message: "Failed to decode Exercise")

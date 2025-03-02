@@ -9,14 +9,14 @@ using qb8s.net.OptiFit.Persistence.Context;
 
 namespace qb8s.net.OptiFit.CQRS.Queries.MuscleGroup;
 
-public record SearchMuscleGroupsQuery(SearchMuscleGroupDto Search) : IRequest<PaginatedResult<MuscleGroupDto>>;
+public record SearchMuscleGroupsQuery(SearchMuscleGroupDto Search) : IRequest<PaginatedResult<GetMuscleGroupDto>>;
 
 public class SearchMuscleGroupsQueryHandler(
     ILogger<SearchMuscleGroupsQueryHandler> logger,
     IMapper mapper,
-    ApplicationDbContext dbContext) : IRequestHandler<SearchMuscleGroupsQuery, PaginatedResult<MuscleGroupDto>>
+    ApplicationDbContext dbContext) : IRequestHandler<SearchMuscleGroupsQuery, PaginatedResult<GetMuscleGroupDto>>
 {
-    public Task<PaginatedResult<MuscleGroupDto>> Handle(SearchMuscleGroupsQuery request,
+    public Task<PaginatedResult<GetMuscleGroupDto>> Handle(SearchMuscleGroupsQuery request,
         CancellationToken cancellationToken)
     {
         logger.LogInformation("Search Muscle Query : {@Search}", request);
@@ -31,9 +31,9 @@ public class SearchMuscleGroupsQueryHandler(
         {
             predicate = predicate.And(x => x.Id == request.Search.Id);
             query = query.Where(predicate);
-            return Task.FromResult(new PaginatedResult<MuscleGroupDto>(request.Search.PageSize,
+            return Task.FromResult(new PaginatedResult<GetMuscleGroupDto>(request.Search.PageSize,
                 request.Search.PageIndex,
-                query.AsEnumerable().Select(mapper.Map<MuscleGroupDto>)));
+                query.AsEnumerable().Select(mapper.Map<GetMuscleGroupDto>)));
         }
 
         if (request.Search.I18NCode != null)
@@ -41,8 +41,8 @@ public class SearchMuscleGroupsQueryHandler(
         query = query.Where(predicate);
         query = query.OrderBy(x => x.I18NCode);
         logger.LogInformation("Search Muscle Query : {@Query}", query);
-        return Task.FromResult(new PaginatedResult<MuscleGroupDto>(request.Search.PageSize,
+        return Task.FromResult(new PaginatedResult<GetMuscleGroupDto>(request.Search.PageSize,
             request.Search.PageIndex,
-            query.AsEnumerable().Select(mapper.Map<MuscleGroupDto>)));
+            query.AsEnumerable().Select(mapper.Map<GetMuscleGroupDto>)));
     }
 }

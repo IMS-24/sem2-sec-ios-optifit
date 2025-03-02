@@ -8,14 +8,14 @@ using qb8s.net.OptiFit.Persistence.Context;
 
 namespace qb8s.net.OptiFit.CQRS.Queries.Gym;
 
-public record SearchGymsQuery(SearchGymsDto Search) : IRequest<PaginatedResult<GymDto>>;
+public record SearchGymsQuery(SearchGymsDto Search) : IRequest<PaginatedResult<GetGymDto>>;
 
 public class SearchGymsQueryHandler(
     ILogger<SearchGymsQueryHandler> logger,
     ApplicationDbContext dbContext,
-    IMapper mapper) : IRequestHandler<SearchGymsQuery, PaginatedResult<GymDto>>
+    IMapper mapper) : IRequestHandler<SearchGymsQuery, PaginatedResult<GetGymDto>>
 {
-    public Task<PaginatedResult<GymDto>> Handle(SearchGymsQuery request, CancellationToken cancellationToken)
+    public Task<PaginatedResult<GetGymDto>> Handle(SearchGymsQuery request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Search Gyms Query : {@Search}", request.Search);
         var query = dbContext.Gyms.AsQueryable();
@@ -34,7 +34,7 @@ public class SearchGymsQueryHandler(
         if (request.Search.ZipCode.HasValue)
             predicate = predicate.And(x => x.ZipCode == request.Search.ZipCode);
 
-        return Task.FromResult(new PaginatedResult<GymDto>(request.Search.PageSize, request.Search.PageIndex,
-            query.Where(predicate).AsEnumerable().Select(mapper.Map<GymDto>)));
+        return Task.FromResult(new PaginatedResult<GetGymDto>(request.Search.PageSize, request.Search.PageIndex,
+            query.Where(predicate).AsEnumerable().Select(mapper.Map<GetGymDto>)));
     }
 }

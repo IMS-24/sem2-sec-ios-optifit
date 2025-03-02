@@ -11,7 +11,7 @@ import SwiftUI
 struct WorkoutExerciseSelectionView: View {
     @StateObject private var exerciseViewModel = ExerciseViewModel()
     // In a production app, you’d retrieve these from a view model or network.
-    let exercises: [Exercise] = [] // sampleExercises should be defined elsewhere
+    let exercises: [GetExerciseDto] = [] // sampleExercises should be defined elsewhere
     
     var body: some View {
 //        List(exerciseViewModel.exercises) { exercise in

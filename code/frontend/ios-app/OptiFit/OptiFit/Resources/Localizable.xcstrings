@@ -42,9 +42,6 @@
     "%lld" : {
 
     },
-    "• %@" : {
-      "shouldTranslate" : false
-    },
     "Add Exercise" : {
       "localizations" : {
         "de" : {
@@ -325,6 +322,7 @@
       }
     },
     "Exercises: %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -512,6 +510,7 @@
       }
     },
     "None specified" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -593,6 +592,7 @@
       }
     },
     "Reps: %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "variations" : {
@@ -726,6 +726,7 @@
       }
     },
     "Sets: %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -846,6 +847,7 @@
       }
     },
     "Weight: %.1f kg" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

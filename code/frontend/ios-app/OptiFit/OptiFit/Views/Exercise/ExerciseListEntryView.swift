@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ExerciseListEntryView: View {
-    var exercise: Exercise
+    var exercise: GetExerciseDto
 
     var body: some View {
         NavigationLink(destination: ExerciseDetailView(exercise: exercise)) {
@@ -12,30 +12,19 @@ struct ExerciseListEntryView: View {
 
 #Preview {
     ExerciseListEntryView(
-            exercise: Exercise(
+        exercise: GetExerciseDto(
                     id: UUID(),
                     i18NCode: "ExerciseName",
                     description: "Some description",
-                    muscleGroups: [
-                        MuscleGroup(
-                                id: UUID(),
-                                i18NCode:
-                                "MuscleGroup",
-                                muscles: [
-                                    Muscle(
-                                            id: UUID(),
-                                            i18NCode: "Muscle"
-                                    )
-                                ]
-                        )
-                    ],
-                    muscles:
-                    [Muscle(
-                            id: UUID(),
-                            i18NCode: "Muscle"
-                    )
-                    ],
-                    exerciseType: "ExerciseType",
+                    exerciseCategoryId: UUID(),
+                    
+//                    muscles:
+//                    [Muscle(
+//                            id: UUID(),
+//                            i18NCode: "Muscle"
+//                    )
+//                    ],
+                    exerciseCategory: "ExerciseType",
                     imageURL: nil
             )
     )

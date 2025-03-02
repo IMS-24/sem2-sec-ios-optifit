@@ -2,7 +2,7 @@ import SwiftUI
 
 struct WorkoutTrackingView: View {
     let gym: Gym
-    let exerciseType: ExerciseType
+    let exerciseType: ExerciseCategory
     let workoutStartDate: Date
     
     @State private var performedExercises: [PerformedExercise] = []
@@ -68,7 +68,7 @@ struct WorkoutTrackingView: View {
     // Dummy preview using sample gym and exercise type.
     WorkoutTrackingView(
         gym: Gym(address: "Daham", zipCode: 8020, id:  UUID(),name: "Downtown Gym",city: "Graz"),
-        exerciseType: ExerciseType(id: UUID(), i18NCode: "Strength",exercises: []),
+        exerciseType: ExerciseCategory(id: UUID(), i18NCode: "Strength",exercises: []),
         workoutStartDate: Date()
     )
 }

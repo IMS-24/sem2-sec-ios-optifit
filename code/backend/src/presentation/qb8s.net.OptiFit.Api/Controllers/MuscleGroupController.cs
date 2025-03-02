@@ -11,8 +11,9 @@ public class MuscleGroupController(ILogger<MuscleGroupController> logger)
     : ApiBaseController
 {
     [HttpPost("search")]
-    [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<MuscleGroupDto>), Description = "Search Muscle Groups")]
-    public async Task<ActionResult<PaginatedResult<MuscleGroupDto>>> SearchMuscleGroups(
+    [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<GetMuscleGroupDto>),
+        Description = "Search Muscle Groups")]
+    public async Task<ActionResult<PaginatedResult<GetMuscleGroupDto>>> SearchMuscleGroups(
         [FromBody] SearchMuscleGroupDto search)
     {
         logger.LogInformation("Muscles search request");

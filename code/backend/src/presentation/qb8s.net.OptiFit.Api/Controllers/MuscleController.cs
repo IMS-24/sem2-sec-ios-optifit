@@ -11,8 +11,8 @@ public class MuscleController(ILogger<MuscleController> logger)
     : ApiBaseController
 {
     [HttpPost("search")]
-    [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<MuscleDto>), Description = "Search Muscles")]
-    public async Task<ActionResult<PaginatedResult<MuscleDto>>> SearchMuscles([FromBody] SearchMuscleDto search)
+    [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<GetMuscleDto>), Description = "Search Muscles")]
+    public async Task<ActionResult<PaginatedResult<GetMuscleDto>>> SearchMuscles([FromBody] SearchMuscleDto search)
     {
         logger.LogInformation("Muscles search request");
         var result = await Mediator.Send(new SearchMusclesQuery(search));

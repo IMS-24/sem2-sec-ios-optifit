@@ -54,7 +54,9 @@ struct SettingsView: View {
             }
                     .navigationTitle("Settings")
                     .onAppear {
-                        userProfileViewModel.loadProfile()
+                        Task{
+                            await userProfileViewModel.loadProfile()
+                        }
                     }
                     .alert(item: $userProfileViewModel.errorMessage) { error in
                         Alert(title: Text("Error"), message: Text(error.message), dismissButton: .default(Text("OK")))

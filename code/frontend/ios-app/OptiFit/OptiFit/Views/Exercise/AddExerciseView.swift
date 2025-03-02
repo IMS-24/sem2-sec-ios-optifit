@@ -136,7 +136,7 @@ struct AddExerciseView: View {
             }
             .task {
                 await muscleGroupService.searchMuscleGroups(searchModel: searchMuscleGroupsDto)
-                await exerciseService.fetchExerciseTypes()
+                await exerciseService.fetchExerciseCategories()
             }
         }
     }
@@ -145,12 +145,11 @@ struct AddExerciseView: View {
         guard let selectedType = selectedType else { return }
         // Convert the image (if any) to JPEG data
         let imageData = selectedImage?.jpegData(compressionQuality: 0.8)
-        let exercise = PostExerciseDto(
+        let exercise = CreateExerciseDto(
             i18NCode: name,
             description: description,
-            muscleGroupIds: Array(selectedMuscleGroups),
             muscleIds: selectedMuscles.isEmpty ? nil : Array(selectedMuscles),
-            exerciseTypeId: selectedType,
+            exerciseCategoryId: selectedType,
             imageData: imageData
         )
         Task {

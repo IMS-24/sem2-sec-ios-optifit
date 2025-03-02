@@ -24,7 +24,7 @@ public class CreateWorkoutDtoProfile : Profile
             .ForMember(dest => dest.StartAtUtc, opt => opt.MapFrom(src => src.StartAtUtc))
             .ForMember(dest => dest.EndAtUtc, opt => opt.MapFrom(src => src.EndAtUtc))
             .ForMember(dest => dest.Notes, opt => opt.MapFrom(src => src.Notes))
-            .ForMember(dest => dest.WorkoutLogs, opt => opt.Ignore())
+            .ForMember(dest => dest.WorkoutExercises, opt => opt.Ignore())
             .ForMember(dest => dest.User, opt => opt.Ignore())
             .ForMember(dest => dest.Gym, opt => opt.Ignore())
             ;

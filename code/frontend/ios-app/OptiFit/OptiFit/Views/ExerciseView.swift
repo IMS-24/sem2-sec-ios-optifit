@@ -6,11 +6,11 @@ struct ExerciseView: View {
     @State private var isAddExercisePresented: Bool = false
 
     // Group exercises by type using a computed property with an explicit type
-    var groupedExercises: [String: [Exercise]] {
-        let groups: [String: [Exercise]] = Dictionary(grouping: exerciseViewModel.exercises, by: { exercise in
-            exercise.exerciseType
+    var groupedExercises: [String: [GetExerciseDto]] {
+        let grouped: [String: [GetExerciseDto]] = Dictionary(grouping: exerciseViewModel.exercises, by: { exercise in
+            exercise.exerciseCategory
         })
-        return groups
+        return grouped
     }
 
     var body: some View {

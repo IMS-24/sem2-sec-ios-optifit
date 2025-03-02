@@ -33,6 +33,10 @@ class UserProfileViewModel: ObservableObject {
                 self?.stats = $0
             }
             .store(in: &cancellables)
+        profileService.$userProfile
+            .sink{[weak self] in
+                self?.profile = $0
+            }.store(in: &cancellables)
         
         profileService.$errorMessage
             .sink { [weak self] in
@@ -51,16 +55,16 @@ class UserProfileViewModel: ObservableObject {
 //            }
         }
     }
-    func loadProfile() {
-        Task {
-            let result = await profileService.fetchProfile()
+    func loadProfile()async  {
+        
+            await profileService.fetchProfile()
 //            switch result {
 //            case .success(let profile):
 //                self.profile = profile
 //            case .failure(let error):
 //                self.errorMessage = ErrorMessage(message: "Failed to load profile: \(error)")
 //            }
-        }
+        
     }
     
     

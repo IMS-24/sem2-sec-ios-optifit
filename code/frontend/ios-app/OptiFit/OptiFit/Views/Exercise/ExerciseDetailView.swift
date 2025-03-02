@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ExerciseDetailView: View {
-    let exercise: Exercise
+    let exercise: GetExerciseDto
     @StateObject private var exerciseService = ExerciseService()
 
     var body: some View {
@@ -65,26 +65,26 @@ struct ExerciseDetailView: View {
                 HStack {
                     Text("Type:")
                             .font(.headline)
-                    Text(exercise.exerciseType.capitalized)
+                    Text(exercise.exerciseCategory.capitalized)
                             .font(.subheadline)
                             .foregroundColor(.gray)
                 }
 
                 // Muscle Groups
-                VStack(alignment: .leading) {
-                    Text("Muscle Groups")
-                            .font(.headline)
-
-                    if exercise.muscleGroups.isEmpty {
-                        Text("None specified")
-                                .foregroundColor(.gray)
-                    } else {
-                        ForEach(exercise.muscleGroups, id: \.id) { muscleGroup in
-                            Text("• \(muscleGroup.i18NCode.capitalized)")
-                                    .foregroundColor(.secondary)
-                        }
-                    }
-                }
+//                VStack(alignment: .leading) {
+//                    Text("Muscle Groups")
+//                            .font(.headline)
+//
+//                    if exercise.muscleGroups.isEmpty {
+//                        Text("None specified")
+//                                .foregroundColor(.gray)
+//                    } else {
+//                        ForEach(exercise.muscleGroups, id: \.id) { muscleGroup in
+//                            Text("• \(muscleGroup.i18NCode.capitalized)")
+//                                    .foregroundColor(.secondary)
+//                        }
+//                    }
+//                }
 
                 Divider()
 
@@ -93,15 +93,15 @@ struct ExerciseDetailView: View {
                     Text("Muscles")
                             .font(.headline)
 
-                    if exercise.muscles.isEmpty {
-                        Text("None specified")
-                                .foregroundColor(.gray)
-                    } else {
-                        ForEach(exercise.muscles, id: \.id) { muscle in
-                            Text("• \(muscle.i18NCode.capitalized)")
-                                    .foregroundColor(.secondary)
-                        }
-                    }
+//                    if exercise.muscles.isEmpty {
+//                        Text("None specified")
+//                                .foregroundColor(.gray)
+//                    } else {
+//                        ForEach(exercise.muscles, id: \.id) { muscle in
+//                            Text("• \(muscle.i18NCode.capitalized)")
+//                                    .foregroundColor(.secondary)
+//                        }
+//                    }
                 }
 
                 // Action Buttons
@@ -140,13 +140,12 @@ struct ExerciseDetailView: View {
 
 #Preview {
     ExerciseDetailView(
-            exercise: Exercise(
+        exercise: GetExerciseDto(
                     id: UUID(),
                     i18NCode: "ExerciseName",
                     description: "ExerciseDescription",
-                    muscleGroups: [MuscleGroup(id: UUID(), i18NCode: "MuscleGroup", muscles: [])],
-                    muscles: [Muscle(id: UUID(), i18NCode: "muscle")],
-                    exerciseType: "ExerciseType",
+                    exerciseCategoryId: UUID(),
+                    exerciseCategory: "ExerciseCategory",
                     imageURL: URL(string: "https://example.com/exercise.jpg")
             )
     )

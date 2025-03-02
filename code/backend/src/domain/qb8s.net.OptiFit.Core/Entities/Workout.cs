@@ -12,5 +12,5 @@ public class Workout : BaseEntity
     public string Notes { get; set; } = null!;
     public Guid GymId { get; set; }
     public Gym Gym { get; set; } = null!;
-    public ICollection<WorkoutLog> WorkoutLogs { get; set; } = new HashSet<WorkoutLog>();
+    public ICollection<WorkoutExercise> WorkoutExercises { get; set; } = new HashSet<WorkoutExercise>();
 }

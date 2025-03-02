@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ExerciseTrackingView: View {
-    let exercise: Exercise
+    let exercise: GetExerciseDto
     @State private var sets: [WorkoutSet] = []
     var onFinish: (PerformedExercise) -> Void
     @Environment(\.dismiss) private var dismiss
@@ -62,13 +62,12 @@ struct ExerciseTrackingView: View {
 
 #Preview {
     ExerciseTrackingView(
-        exercise: Exercise(
+        exercise: GetExerciseDto(
             id: UUID(),
             i18NCode: "Exercise",
             description: "Some Description",
-            muscleGroups: [MuscleGroup(id: UUID(), i18NCode: "MuscleGroup", muscles: [])],
-            muscles: [],
-            exerciseType: "Some Type",
+            exerciseCategoryId: UUID(),
+            exerciseCategory: "Some Type",
             imageURL: nil
         )
     ) { _ in }

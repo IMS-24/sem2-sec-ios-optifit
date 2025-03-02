@@ -31,7 +31,7 @@ export class ExerciseClient {
     /**
      * @return Search Exercies
      */
-    searchExercises(search: SearchExerciseDto): Observable<PaginatedResultOfExerciseExtendedDto> {
+    searchExercises(search: SearchExerciseDto): Observable<PaginatedResultOfGetExerciseDto> {
         let url_ = this.baseUrl + "/api/Exercise/search";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -54,14 +54,14 @@ export class ExerciseClient {
                 try {
                     return this.processSearchExercises(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<PaginatedResultOfExerciseExtendedDto>;
+                    return _observableThrow(e) as any as Observable<PaginatedResultOfGetExerciseDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<PaginatedResultOfExerciseExtendedDto>;
+                return _observableThrow(response_) as any as Observable<PaginatedResultOfGetExerciseDto>;
         }));
     }
 
-    protected processSearchExercises(response: HttpResponseBase): Observable<PaginatedResultOfExerciseExtendedDto> {
+    protected processSearchExercises(response: HttpResponseBase): Observable<PaginatedResultOfGetExerciseDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -71,7 +71,7 @@ export class ExerciseClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfExerciseExtendedDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfGetExerciseDto;
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -79,13 +79,13 @@ export class ExerciseClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PaginatedResultOfExerciseExtendedDto>(null as any);
+        return _observableOf<PaginatedResultOfGetExerciseDto>(null as any);
     }
 
     /**
      * @return Create Exercise
      */
-    createExercise(createExerciseDto: CreateExerciseDto): Observable<ExerciseDto> {
+    createExercise(createExerciseDto: CreateExerciseDto): Observable<GetExerciseDto> {
         let url_ = this.baseUrl + "/api/Exercise";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -108,14 +108,14 @@ export class ExerciseClient {
                 try {
                     return this.processCreateExercise(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ExerciseDto>;
+                    return _observableThrow(e) as any as Observable<GetExerciseDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ExerciseDto>;
+                return _observableThrow(response_) as any as Observable<GetExerciseDto>;
         }));
     }
 
-    protected processCreateExercise(response: HttpResponseBase): Observable<ExerciseDto> {
+    protected processCreateExercise(response: HttpResponseBase): Observable<GetExerciseDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -125,7 +125,7 @@ export class ExerciseClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ExerciseDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GetExerciseDto;
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -133,14 +133,14 @@ export class ExerciseClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<ExerciseDto>(null as any);
+        return _observableOf<GetExerciseDto>(null as any);
     }
 
     /**
-     * @return Get Exercise Types
+     * @return Get Exercise categories
      */
-    getExerciseTypes(): Observable<ExerciseTypeDto> {
-        let url_ = this.baseUrl + "/api/Exercise/types";
+    getExerciseCategories(): Observable<GetExerciseCategoryDto> {
+        let url_ = this.baseUrl + "/api/Exercise/categories";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -152,20 +152,20 @@ export class ExerciseClient {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetExerciseTypes(response_);
+            return this.processGetExerciseCategories(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetExerciseTypes(response_ as any);
+                    return this.processGetExerciseCategories(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ExerciseTypeDto>;
+                    return _observableThrow(e) as any as Observable<GetExerciseCategoryDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ExerciseTypeDto>;
+                return _observableThrow(response_) as any as Observable<GetExerciseCategoryDto>;
         }));
     }
 
-    protected processGetExerciseTypes(response: HttpResponseBase): Observable<ExerciseTypeDto> {
+    protected processGetExerciseCategories(response: HttpResponseBase): Observable<GetExerciseCategoryDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -175,7 +175,7 @@ export class ExerciseClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ExerciseTypeDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GetExerciseCategoryDto;
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -183,13 +183,13 @@ export class ExerciseClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<ExerciseTypeDto>(null as any);
+        return _observableOf<GetExerciseCategoryDto>(null as any);
     }
 
     /**
      * @return Delete Exercise
      */
-    deleteExercise(id: string): Observable<ExerciseDto> {
+    deleteExercise(id: string): Observable<GetExerciseDto> {
         let url_ = this.baseUrl + "/api/Exercise/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
@@ -211,14 +211,14 @@ export class ExerciseClient {
                 try {
                     return this.processDeleteExercise(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<ExerciseDto>;
+                    return _observableThrow(e) as any as Observable<GetExerciseDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<ExerciseDto>;
+                return _observableThrow(response_) as any as Observable<GetExerciseDto>;
         }));
     }
 
-    protected processDeleteExercise(response: HttpResponseBase): Observable<ExerciseDto> {
+    protected processDeleteExercise(response: HttpResponseBase): Observable<GetExerciseDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -228,7 +228,7 @@ export class ExerciseClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ExerciseDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GetExerciseDto;
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -236,7 +236,7 @@ export class ExerciseClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<ExerciseDto>(null as any);
+        return _observableOf<GetExerciseDto>(null as any);
     }
 }
 
@@ -256,7 +256,7 @@ export class GymClient {
     /**
      * @return Search Gyms
      */
-    searchGyms(search: SearchGymsDto): Observable<PaginatedResultOfGymDto> {
+    searchGyms(search: SearchGymsDto): Observable<PaginatedResultOfGetGymDto> {
         let url_ = this.baseUrl + "/api/Gym/search";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -279,14 +279,14 @@ export class GymClient {
                 try {
                     return this.processSearchGyms(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<PaginatedResultOfGymDto>;
+                    return _observableThrow(e) as any as Observable<PaginatedResultOfGetGymDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<PaginatedResultOfGymDto>;
+                return _observableThrow(response_) as any as Observable<PaginatedResultOfGetGymDto>;
         }));
     }
 
-    protected processSearchGyms(response: HttpResponseBase): Observable<PaginatedResultOfGymDto> {
+    protected processSearchGyms(response: HttpResponseBase): Observable<PaginatedResultOfGetGymDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -296,7 +296,7 @@ export class GymClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfGymDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfGetGymDto;
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -304,13 +304,13 @@ export class GymClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PaginatedResultOfGymDto>(null as any);
+        return _observableOf<PaginatedResultOfGetGymDto>(null as any);
     }
 
     /**
      * @return Create Gym
      */
-    createGym(createGymDto: CreateGymDto): Observable<GymDto> {
+    createGym(createGymDto: CreateGymDto): Observable<GetGymDto> {
         let url_ = this.baseUrl + "/api/Gym";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -333,14 +333,14 @@ export class GymClient {
                 try {
                     return this.processCreateGym(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<GymDto>;
+                    return _observableThrow(e) as any as Observable<GetGymDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<GymDto>;
+                return _observableThrow(response_) as any as Observable<GetGymDto>;
         }));
     }
 
-    protected processCreateGym(response: HttpResponseBase): Observable<GymDto> {
+    protected processCreateGym(response: HttpResponseBase): Observable<GetGymDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -350,7 +350,7 @@ export class GymClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GymDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GetGymDto;
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -358,7 +358,7 @@ export class GymClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<GymDto>(null as any);
+        return _observableOf<GetGymDto>(null as any);
     }
 }
 
@@ -378,7 +378,7 @@ export class MuscleClient {
     /**
      * @return Search Muscles
      */
-    searchMuscles(search: SearchMuscleDto): Observable<PaginatedResultOfMuscleDto> {
+    searchMuscles(search: SearchMuscleDto): Observable<PaginatedResultOfGetMuscleDto> {
         let url_ = this.baseUrl + "/api/Muscle/search";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -401,14 +401,14 @@ export class MuscleClient {
                 try {
                     return this.processSearchMuscles(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<PaginatedResultOfMuscleDto>;
+                    return _observableThrow(e) as any as Observable<PaginatedResultOfGetMuscleDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<PaginatedResultOfMuscleDto>;
+                return _observableThrow(response_) as any as Observable<PaginatedResultOfGetMuscleDto>;
         }));
     }
 
-    protected processSearchMuscles(response: HttpResponseBase): Observable<PaginatedResultOfMuscleDto> {
+    protected processSearchMuscles(response: HttpResponseBase): Observable<PaginatedResultOfGetMuscleDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -418,7 +418,7 @@ export class MuscleClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfMuscleDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfGetMuscleDto;
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -426,7 +426,7 @@ export class MuscleClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PaginatedResultOfMuscleDto>(null as any);
+        return _observableOf<PaginatedResultOfGetMuscleDto>(null as any);
     }
 }
 
@@ -446,7 +446,7 @@ export class MuscleGroupClient {
     /**
      * @return Search Muscle Groups
      */
-    searchMuscleGroups(search: SearchMuscleGroupDto): Observable<PaginatedResultOfMuscleGroupDto> {
+    searchMuscleGroups(search: SearchMuscleGroupDto): Observable<PaginatedResultOfGetMuscleGroupDto> {
         let url_ = this.baseUrl + "/api/MuscleGroup/search";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -469,14 +469,14 @@ export class MuscleGroupClient {
                 try {
                     return this.processSearchMuscleGroups(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<PaginatedResultOfMuscleGroupDto>;
+                    return _observableThrow(e) as any as Observable<PaginatedResultOfGetMuscleGroupDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<PaginatedResultOfMuscleGroupDto>;
+                return _observableThrow(response_) as any as Observable<PaginatedResultOfGetMuscleGroupDto>;
         }));
     }
 
-    protected processSearchMuscleGroups(response: HttpResponseBase): Observable<PaginatedResultOfMuscleGroupDto> {
+    protected processSearchMuscleGroups(response: HttpResponseBase): Observable<PaginatedResultOfGetMuscleGroupDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -486,7 +486,7 @@ export class MuscleGroupClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfMuscleGroupDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfGetMuscleGroupDto;
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -494,7 +494,7 @@ export class MuscleGroupClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PaginatedResultOfMuscleGroupDto>(null as any);
+        return _observableOf<PaginatedResultOfGetMuscleGroupDto>(null as any);
     }
 }
 
@@ -797,7 +797,7 @@ export class WorkoutClient {
     /**
      * @return Search Workouts
      */
-    searchWorkouts(search: SearchWorkoutDto): Observable<PaginatedResultOfWorkoutDto> {
+    searchWorkouts(search: SearchWorkoutDto): Observable<PaginatedResultOfGetWorkoutDto> {
         let url_ = this.baseUrl + "/api/Workout/search";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -820,14 +820,14 @@ export class WorkoutClient {
                 try {
                     return this.processSearchWorkouts(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<PaginatedResultOfWorkoutDto>;
+                    return _observableThrow(e) as any as Observable<PaginatedResultOfGetWorkoutDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<PaginatedResultOfWorkoutDto>;
+                return _observableThrow(response_) as any as Observable<PaginatedResultOfGetWorkoutDto>;
         }));
     }
 
-    protected processSearchWorkouts(response: HttpResponseBase): Observable<PaginatedResultOfWorkoutDto> {
+    protected processSearchWorkouts(response: HttpResponseBase): Observable<PaginatedResultOfGetWorkoutDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -837,7 +837,7 @@ export class WorkoutClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfWorkoutDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfGetWorkoutDto;
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -845,13 +845,13 @@ export class WorkoutClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PaginatedResultOfWorkoutDto>(null as any);
+        return _observableOf<PaginatedResultOfGetWorkoutDto>(null as any);
     }
 
     /**
      * @return Create Workout
      */
-    createWorkout(createWorkoutDto: CreateWorkoutDto): Observable<WorkoutDto> {
+    createWorkout(createWorkoutDto: CreateWorkoutDto): Observable<GetWorkoutDto> {
         let url_ = this.baseUrl + "/api/Workout";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -874,14 +874,14 @@ export class WorkoutClient {
                 try {
                     return this.processCreateWorkout(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<WorkoutDto>;
+                    return _observableThrow(e) as any as Observable<GetWorkoutDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<WorkoutDto>;
+                return _observableThrow(response_) as any as Observable<GetWorkoutDto>;
         }));
     }
 
-    protected processCreateWorkout(response: HttpResponseBase): Observable<WorkoutDto> {
+    protected processCreateWorkout(response: HttpResponseBase): Observable<GetWorkoutDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -891,7 +891,7 @@ export class WorkoutClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as WorkoutDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GetWorkoutDto;
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -899,12 +899,12 @@ export class WorkoutClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<WorkoutDto>(null as any);
+        return _observableOf<GetWorkoutDto>(null as any);
     }
 }
 
-export interface PaginatedResultOfExerciseExtendedDto {
-    items?: ExerciseExtendedDto[];
+export interface PaginatedResultOfGetExerciseDto {
+    items?: GetExerciseDto[];
     pageIndex?: number;
     pageSize?: number;
     totalCount?: number;
@@ -921,25 +921,10 @@ export interface BaseI18NDto extends BaseDto {
     i18NCode?: string;
 }
 
-export interface ExerciseExtendedDto extends BaseI18NDto {
-    description?: string;
-    muscleGroups?: MuscleGroupExtendedDto[] | null;
-    muscles?: MuscleExtendedDto[];
-    exerciseType?: string;
-}
-
-export interface MuscleGroupExtendedDto extends BaseI18NDto {
-    muscles?: MuscleDto[] | null;
-}
-
-export interface MuscleDto extends BaseI18NDto {
-}
-
-export interface MuscleExtendedDto extends BaseI18NDto {
-    muscleGroups?: MuscleGroupDto[] | null;
-}
-
-export interface MuscleGroupDto extends BaseI18NDto {
+export interface GetExerciseDto extends BaseI18NDto {
+    description?: string | null;
+    exerciseCategory?: string;
+    exerciseCategoryId?: string;
 }
 
 export interface PaginationDto {
@@ -962,10 +947,6 @@ export interface SearchExerciseDto extends SearchI18NDto {
     exerciseTypeId?: string | null;
 }
 
-export interface ExerciseDto extends BaseI18NDto {
-    description?: string | null;
-}
-
 export interface CreateI18NDto {
     i18NCode?: string;
 }
@@ -975,13 +956,11 @@ export interface CreateExerciseDto extends CreateI18NDto {
     exerciseCategoryId?: string;
 }
 
-export interface ExerciseTypeDto {
-    id?: string;
-    i18NCode?: string;
+export interface GetExerciseCategoryDto extends BaseI18NDto {
 }
 
-export interface PaginatedResultOfGymDto {
-    items?: GymDto[];
+export interface PaginatedResultOfGetGymDto {
+    items?: GetGymDto[];
     pageIndex?: number;
     pageSize?: number;
     totalCount?: number;
@@ -994,7 +973,7 @@ export interface BaseNamedDto extends BaseDto {
     name?: string;
 }
 
-export interface GymDto extends BaseNamedDto {
+export interface GetGymDto extends BaseNamedDto {
     address?: string | null;
     city?: string | null;
     zipCode?: number | null;
@@ -1016,27 +995,33 @@ export interface CreateGymDto extends BaseNamedDto {
     zipCode?: number | null;
 }
 
-export interface PaginatedResultOfMuscleDto {
-    items?: MuscleDto[];
+export interface PaginatedResultOfGetMuscleDto {
+    items?: GetMuscleDto[];
     pageIndex?: number;
     pageSize?: number;
     totalCount?: number;
     totalPages?: number;
     hasPreviousPage?: boolean;
     hasNextPage?: boolean;
+}
+
+export interface GetMuscleDto extends BaseI18NDto {
 }
 
 export interface SearchMuscleDto extends SearchI18NDto {
 }
 
-export interface PaginatedResultOfMuscleGroupDto {
-    items?: MuscleGroupDto[];
+export interface PaginatedResultOfGetMuscleGroupDto {
+    items?: GetMuscleGroupDto[];
     pageIndex?: number;
     pageSize?: number;
     totalCount?: number;
     totalPages?: number;
     hasPreviousPage?: boolean;
     hasNextPage?: boolean;
+}
+
+export interface GetMuscleGroupDto extends BaseI18NDto {
 }
 
 export interface SearchMuscleGroupDto extends SearchI18NDto {
@@ -1095,8 +1080,8 @@ export interface UpdateUserProfileDto {
     initialSetupDone?: boolean;
 }
 
-export interface PaginatedResultOfWorkoutDto {
-    items?: WorkoutDto[];
+export interface PaginatedResultOfGetWorkoutDto {
+    items?: GetWorkoutDto[];
     pageIndex?: number;
     pageSize?: number;
     totalCount?: number;
@@ -1105,31 +1090,28 @@ export interface PaginatedResultOfWorkoutDto {
     hasNextPage?: boolean;
 }
 
-export interface WorkoutDto {
-    id?: string;
+export interface GetWorkoutDto extends BaseDto {
     description?: string;
-    userId?: string;
-    userName?: string;
     startAtUtc?: Date;
     endAtUtc?: Date | null;
     notes?: string;
     gymId?: string;
-    gym?: string;
-    workoutLogs?: WorkoutLogDto[];
+    workoutExercises?: WorkoutExerciseDto[];
 }
 
-export interface WorkoutLogDto {
+export interface WorkoutExerciseDto extends BaseDto {
     order?: number;
     workoutId?: string;
     exerciseId?: string;
-    set?: Set;
+    workoutSets?: GetWorkoutSetDto[];
     notes?: string;
 }
 
-export interface Set {
+export interface GetWorkoutSetDto extends BaseDto {
     order?: number;
     reps?: number;
     weight?: number;
+    workoutExerciseId?: string;
 }
 
 export interface SearchWorkoutDto extends SearchBaseDto {

@@ -59,11 +59,6 @@ public class UserEntityTypeConfiguration : BaseEntityTypeConfiguration<User>
             .WithOne(w => w.User)
             .HasForeignKey(w => w.UserId);
 
-        builder
-            .HasMany(u => u.WorkoutPlans)
-            .WithOne(wp => wp.User)
-            .HasForeignKey(wp => wp.UserId);
-
         #endregion
 
         builder.HasData(new User

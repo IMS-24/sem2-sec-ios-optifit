@@ -4,7 +4,7 @@ import Combine
 
 @MainActor
 class ExerciseViewModel: ObservableObject {
-    @Published var exercises: [Exercise] = []
+    @Published var exercises: [GetExerciseDto] = []
     @Published var errorMessage: ErrorMessage?
     @Published var searchModel = SearchExercisesDto()
 

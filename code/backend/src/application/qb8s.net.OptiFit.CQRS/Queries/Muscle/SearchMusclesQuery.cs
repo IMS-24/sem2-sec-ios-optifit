@@ -9,14 +9,14 @@ using qb8s.net.OptiFit.Persistence.Context;
 
 namespace qb8s.net.OptiFit.CQRS.Queries.Muscle;
 
-public record SearchMusclesQuery(SearchMuscleDto Search) : IRequest<PaginatedResult<MuscleDto>>;
+public record SearchMusclesQuery(SearchMuscleDto Search) : IRequest<PaginatedResult<GetMuscleDto>>;
 
 public class SearchMusclesQueryHandler(
     ILogger<SearchMusclesQueryHandler> logger,
     IMapper mapper,
-    ApplicationDbContext dbContext) : IRequestHandler<SearchMusclesQuery, PaginatedResult<MuscleDto>>
+    ApplicationDbContext dbContext) : IRequestHandler<SearchMusclesQuery, PaginatedResult<GetMuscleDto>>
 {
-    public Task<PaginatedResult<MuscleDto>> Handle(SearchMusclesQuery request, CancellationToken cancellationToken)
+    public Task<PaginatedResult<GetMuscleDto>> Handle(SearchMusclesQuery request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Search Muscle Query : {@Search}", request);
         //@formatter:off
@@ -30,9 +30,9 @@ public class SearchMusclesQueryHandler(
         {
             predicate = predicate.And(x => x.Id == request.Search.Id);
             query = query.Where(predicate);
-            return Task.FromResult(new PaginatedResult<MuscleDto>(request.Search.PageSize,
+            return Task.FromResult(new PaginatedResult<GetMuscleDto>(request.Search.PageSize,
                 request.Search.PageIndex,
-                query.AsEnumerable().Select(mapper.Map<MuscleDto>)));
+                query.AsEnumerable().Select(mapper.Map<GetMuscleDto>)));
         }
 
         if (request.Search.I18NCode != null)
@@ -40,8 +40,8 @@ public class SearchMusclesQueryHandler(
         query = query.Where(predicate);
         query = query.OrderBy(x => x.I18NCode);
         logger.LogInformation("Search Muscle Query : {@Query}", query);
-        return Task.FromResult(new PaginatedResult<MuscleDto>(request.Search.PageSize,
+        return Task.FromResult(new PaginatedResult<GetMuscleDto>(request.Search.PageSize,
             request.Search.PageIndex,
-            query.AsEnumerable().Select(mapper.Map<MuscleDto>)));
+            query.AsEnumerable().Select(mapper.Map<GetMuscleDto>)));
     }
 }

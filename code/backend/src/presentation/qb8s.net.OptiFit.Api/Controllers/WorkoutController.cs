@@ -11,8 +11,8 @@ namespace qb8s.net.OptiFit.Api.Controllers;
 public class WorkoutController(ILogger<WorkoutController> logger) : ApiBaseController
 {
     [HttpPost("search")]
-    [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<WorkoutDto>), Description = "Search Workouts")]
-    public async Task<ActionResult<PaginatedResult<WorkoutDto>>> SearchWorkouts(
+    [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<GetWorkoutDto>), Description = "Search Workouts")]
+    public async Task<ActionResult<PaginatedResult<GetWorkoutDto>>> SearchWorkouts(
         [FromBody] SearchWorkoutDto search)
     {
         logger.LogInformation("{@Name} request", nameof(SearchWorkouts));
@@ -21,8 +21,8 @@ public class WorkoutController(ILogger<WorkoutController> logger) : ApiBaseContr
     }
 
     [HttpPost]
-    [SwaggerResponse(HttpStatusCode.OK, typeof(WorkoutDto), Description = "Create Workout")]
-    public async Task<ActionResult<WorkoutDto>> CreateWorkout(
+    [SwaggerResponse(HttpStatusCode.OK, typeof(GetWorkoutDto), Description = "Create Workout")]
+    public async Task<ActionResult<GetWorkoutDto>> CreateWorkout(
         [FromBody] CreateWorkoutDto createWorkoutDto)
     {
         logger.LogInformation("{@Name} request : {@Dto}", nameof(CreateWorkout), createWorkoutDto);

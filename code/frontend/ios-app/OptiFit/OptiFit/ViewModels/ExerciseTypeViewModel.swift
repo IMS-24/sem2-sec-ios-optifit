@@ -10,7 +10,7 @@ import Combine
 
 @MainActor
 class ExerciseTypeViewModel: ObservableObject {
-    @Published var exerciseTypes: [ExerciseType] = []
+    @Published var exerciseTypes: [ExerciseCategory] = []
     @Published var errorMessage: ErrorMessage?
 
     private let exerciseService = ExerciseService()
@@ -37,7 +37,7 @@ class ExerciseTypeViewModel: ObservableObject {
 
     func fetchExerciseTypes() {
         Task {
-            await exerciseService.fetchExerciseTypes()
+            await exerciseService.fetchExerciseCategories()
         }
     }
 }

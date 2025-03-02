@@ -1,10 +1,9 @@
 import Foundation
 
-struct PostExerciseDto: Codable {
+struct CreateExerciseDto: Codable {
     let i18NCode: String
     let description: String
-    let muscleGroupIds: [UUID]
     let muscleIds: [UUID]?
-    let exerciseTypeId: UUID
+    let exerciseCategoryId: UUID
     let imageData: Data?
 }

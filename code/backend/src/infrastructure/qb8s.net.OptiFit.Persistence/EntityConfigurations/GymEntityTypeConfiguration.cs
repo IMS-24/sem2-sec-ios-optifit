@@ -35,11 +35,6 @@ public class GymEntityTypeConfiguration : BaseEntityTypeConfiguration<Gym>
             .IsRequired(false);
 
         builder
-            .HasMany(x => x.GymExerciseMappings)
-            .WithOne(x => x.Gym)
-            .HasForeignKey(x => x.GymId);
-
-        builder
             .HasMany(g => g.Workouts)
             .WithOne(w => w.Gym)
             .HasForeignKey(w => w.GymId);

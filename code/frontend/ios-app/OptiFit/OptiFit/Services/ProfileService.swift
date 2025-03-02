@@ -9,7 +9,7 @@ import Foundation
 
 class ProfileService {
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/Profile"
-    private let session = URLSession.shared
+    
     @Published var errorMessage: ErrorMessage?
     @Published var stats: UserStatsDto?
     @Published var userProfile: UserProfile?
@@ -21,7 +21,7 @@ class ProfileService {
         }
 
         do {
-            let (data, _) = try await session.data(from: url)
+            let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
            userProfile = try decoder.decode(UserProfile.self, from: data)
@@ -52,7 +52,7 @@ class ProfileService {
         }
 
         do {
-            let (data, _) = try await session.data(for: request)
+            let (data, _) = try await URLSession.shared.data(for: request)
             let updatedProfile = try JSONDecoder().decode(UserProfile.self, from: data)
             return .success(updatedProfile)
         } catch {
@@ -72,7 +72,7 @@ class ProfileService {
         request.httpMethod = "DELETE"
 
         do {
-            _ = try await session.data(for: request)
+            _ = try await URLSession.shared.data(for: request)
             return .success(())
         } catch {
             return .failure(.requestFailed)
@@ -85,7 +85,7 @@ class ProfileService {
             return
         }
         do {
-            let (data, _) = try await session.data(from: url)
+            let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             stats = try decoder.decode(UserStatsDto.self, from: data)
