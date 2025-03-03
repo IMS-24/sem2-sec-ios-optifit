@@ -10,7 +10,6 @@ import SwiftUI
 struct SettingsView: View {
     @AppStorage("isDarkMode") private var isDarkMode = false
     @State private var showDeleteAlert = false
-    @StateObject private var viewModel = SettingsViewModel()
     @StateObject private var userProfileViewModel = UserProfileViewModel()
     var body: some View {
         NavigationView {

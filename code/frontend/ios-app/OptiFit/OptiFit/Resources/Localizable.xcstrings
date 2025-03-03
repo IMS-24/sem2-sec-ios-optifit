@@ -509,6 +509,9 @@
         }
       }
     },
+    "No statistics available" : {
+
+    },
     "None specified" : {
       "extractionState" : "stale",
       "localizations" : {

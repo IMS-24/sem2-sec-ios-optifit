@@ -9,8 +9,7 @@ import SwiftUI
 
 
 struct HomeView: View {
-    @StateObject var viewModel = HomeViewModel()
-    @StateObject var userProfileViewModel = UserProfileViewModel()
+    @StateObject private var userProfileViewModel = UserProfileViewModel()
 
     var body: some View {
         NavigationView {
@@ -19,14 +18,18 @@ struct HomeView: View {
 
                 StatisticsView(stats: userProfileViewModel.stats)
 
-                ActivityGraphView(data: viewModel.workoutData)
+                ActivityGraphView(data: userProfileViewModel.workoutData)
                 Spacer()
                 QuickActionsView()
             }
                     .navigationTitle("Home")
                     .padding()
         }.onAppear(){
-            userProfileViewModel.loadStats()
+            Task{
+                await userProfileViewModel.loadStats()
+            }
+        }.alert(item: $userProfileViewModel.errorMessage) { error in
+            Alert(title: Text("Error"), message: Text(error.message), dismissButton: .default(Text("OK")))
         }
     }
 }

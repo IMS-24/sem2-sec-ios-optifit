@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StatisticsView: View {
-    @State var stats: UserStatsDto? = nil
+    let  stats: UserStatsDto?
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
@@ -31,6 +31,8 @@ struct StatisticsView: View {
                 
                 
                 
+            }else{
+                Text("No statistics available")
             }
         }
                 .padding()

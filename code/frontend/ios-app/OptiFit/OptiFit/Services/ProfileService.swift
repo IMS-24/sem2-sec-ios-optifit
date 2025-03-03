@@ -1,99 +1,95 @@
-//
-//  ProfileService.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 15.02.25.
-//
-
 import Foundation
 
 class ProfileService {
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/Profile"
-    
-    @Published var errorMessage: ErrorMessage?
-    @Published var stats: UserStatsDto?
-    @Published var userProfile: UserProfile?
 
-    func fetchProfile() async  {
+    func fetchProfile() async throws(ApiError)-> UserProfile  {
         guard let url = URL(string: baseURL) else {
-            errorMessage = ErrorMessage(message: "Invalid URL")
-            return
+            throw .invalidURL
+
         }
 
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-           userProfile = try decoder.decode(UserProfile.self, from: data)
+           let userProfile = try decoder.decode(UserProfile.self, from: data)
+            return userProfile
            
         } catch {
             if error is DecodingError {
-                errorMessage = ErrorMessage(message: "Failed to decode JSON")
+                throw .decodingFailed
             }
-                else{
-                    errorMessage = ErrorMessage(message: "Failed to load UserProfile")
+                else {
+                    throw .requestFailed
                 }
             }
     }
-
-    func updateProfile(_ profile: UserProfile) async -> Result<UserProfile, ApiServiceError> {
-        guard let url = URL(string: baseURL) else {
-            return .failure(.invalidURL)
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        do {
+    
+    func updateProfile(profile: UserProfile) async throws(ApiError) -> UserProfile {
+                guard let url = URL(string: baseURL) else {
+                    throw .invalidURL
+                }
+        do{
+            var request = URLRequest(url: url)
+            request.httpMethod = "PUT"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = try JSONEncoder().encode(profile)
-        } catch {
-            return .failure(.unknown)
-        }
-
-        do {
+            
             let (data, _) = try await URLSession.shared.data(for: request)
-            let updatedProfile = try JSONDecoder().decode(UserProfile.self, from: data)
-            return .success(updatedProfile)
-        } catch {
+            return try JSONDecoder().decode(UserProfile.self, from: data)
+        }catch
+        {
             if error is DecodingError {
-                return .failure(.decodingFailed)
+                throw .decodingFailed
             }
-            return .failure(.requestFailed)
-        }
+                else{
+                    throw .requestFailed
+                }
+            }
     }
-
-    func deleteProfile() async -> Result<Void, ApiServiceError> {
-        guard let url = URL(string: baseURL) else {
-            return .failure(.invalidURL)
+    
+    func deleteProfile(userId: UUID) async throws(ApiError) -> Bool {
+        guard let url = URL(string: "\(baseURL)") else {
+            throw .invalidURL
         }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
-
-        do {
-            _ = try await URLSession.shared.data(for: request)
-            return .success(())
-        } catch {
-            return .failure(.requestFailed)
+        do{
+            var request = URLRequest(url: url)
+            request.httpMethod = "DELETE"
+            
+            let (_, response) = try await URLSession.shared.data(for: request)
+            if let httpResponse = response as? HTTPURLResponse,
+               (200...299).contains(httpResponse.statusCode) {
+                return true
+            } else {
+                return false
+            }
+        }
+        catch{
+            return false
         }
     }
     
-    func getStats() async {
+    
+    
+    
+    func getStats() async throws(ApiError)->UserStatsDto {
         guard let url = URL(string: "\(baseURL)/stats") else {
-            errorMessage = ErrorMessage(message: "Invalid URL")
-            return
+            throw .invalidURL
         }
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            stats = try decoder.decode(UserStatsDto.self, from: data)
+            let stats = try decoder.decode(UserStatsDto.self, from: data)
+            return stats
             
         } catch {
             if error is DecodingError {
-                errorMessage = ErrorMessage(message: "Decoding failed")
-                
+                throw .decodingFailed
+            }
+            else {
+                throw .requestFailed
             }
             
         }
