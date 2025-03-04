@@ -1,5 +1,6 @@
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using qb8s.net.OptiFit.CQRS.Dtos.Exercise;
 using qb8s.net.OptiFit.Persistence.Context;
@@ -19,6 +20,8 @@ public class CreateExerciseCommandHandler(
         var entity = mapper.Map<Core.Entities.Exercise>(request.CreateDto);
         dbContext.Exercises.Add(entity);
         await dbContext.SaveChangesAsync(cancellationToken);
+        var category = await dbContext.ExerciseCategories.FirstOrDefaultAsync(x => x.Id == entity.ExerciseCategoryId);
+        entity.ExerciseCategory = category;
         return mapper.Map<GetExerciseDto>(entity);
     }
 }

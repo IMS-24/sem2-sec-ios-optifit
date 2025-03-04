@@ -67,8 +67,8 @@ struct ExerciseTrackingView: View {
             i18NCode: "Exercise",
             description: "Some Description",
             exerciseCategoryId: UUID(),
-            exerciseCategory: "Some Type",
-            imageURL: nil
+            exerciseCategory: "Some Type"//,
+//            imageURL: nil
         )
     ) { _ in }
 }

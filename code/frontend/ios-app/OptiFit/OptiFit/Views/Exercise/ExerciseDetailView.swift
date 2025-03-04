@@ -8,30 +8,30 @@ struct ExerciseDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 // Exercise Image
-                if let imageURL = exercise.imageURL {
-                    AsyncImage(url: imageURL) { phase in
-                        switch phase {
-                        case .empty:
-                            ProgressView().frame(height: 200)
-                        case .success(let image):
-                            image
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 200)
-                        case .failure:
-                            Image(systemName: "photo")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 200)
-                                    .foregroundColor(.gray)
-                        @unknown default:
-                            EmptyView()
-                        }
-                    }
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(12)
-                } else {
+//                if let imageURL = exercise.imageURL {
+//                    AsyncImage(url: imageURL) { phase in
+//                        switch phase {
+//                        case .empty:
+//                            ProgressView().frame(height: 200)
+//                        case .success(let image):
+//                            image
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .frame(height: 200)
+//                        case .failure:
+//                            Image(systemName: "photo")
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .frame(height: 200)
+//                                    .foregroundColor(.gray)
+//                        @unknown default:
+//                            EmptyView()
+//                        }
+//                    }
+//                            .padding()
+//                            .background(Color(.systemGray6))
+//                            .cornerRadius(12)
+//                } else {
                     Image(systemName: "figure.strengthtraining.traditional")
                             .resizable()
                             .scaledToFit()
@@ -40,7 +40,7 @@ struct ExerciseDetailView: View {
                             .padding()
                             .background(Color(.systemGray6))
                             .cornerRadius(12)
-                }
+//                }
 
                 // Exercise Name
                 Text(exercise.i18NCode)
@@ -145,8 +145,8 @@ struct ExerciseDetailView: View {
                     i18NCode: "ExerciseName",
                     description: "ExerciseDescription",
                     exerciseCategoryId: UUID(),
-                    exerciseCategory: "ExerciseCategory",
-                    imageURL: URL(string: "https://example.com/exercise.jpg")
+                    exerciseCategory: "ExerciseCategory"//,
+//                    imageURL: URL(string: "https://example.com/exercise.jpg")
             )
     )
 }

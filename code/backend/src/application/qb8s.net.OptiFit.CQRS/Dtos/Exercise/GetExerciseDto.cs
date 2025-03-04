@@ -6,7 +6,9 @@ public class GetExerciseDto : BaseI18NDto
 {
     public string? Description { get; set; }
     public string ExerciseCategory { get; set; }
+
     public Guid ExerciseCategoryId { get; set; }
+    // public IList<Guid> MuscleIds { get; set; } = new List<Guid>();
 }
 
 public class GetExerciseDtoProfile : BaseI18NProfile

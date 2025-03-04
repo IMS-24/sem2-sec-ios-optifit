@@ -70,6 +70,7 @@ struct ExerciseView: View {
                     }
                     .sheet(isPresented: $isAddExercisePresented) {
                         AddExerciseView()
+                            .environmentObject(exerciseViewModel)
                     }
         }
     }

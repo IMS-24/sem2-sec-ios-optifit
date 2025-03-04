@@ -2,17 +2,19 @@ import SwiftUI
 import PhotosUI
 
 struct AddExerciseView: View {
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var exerciseViewModel: ExerciseViewModel
+
     @State private var name: String = ""
     @State private var selectedExerciseCategory: UUID?
-    @State private var selectedMuscles: Set<UUID> = []
+    @State private var selectedMuscles: Set<Muscle> = []
+
     @State private var description: String = ""
     
     // Image selection state
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImage: UIImage? = nil
-//    @StateObject private var muscleGroupViewModel = MuscleGroupViewModel()
     @StateObject private var muscleViewModel = MuscleViewModel()
-    @StateObject private var exerciseViewModel = ExerciseViewModel()
     @StateObject private var exerciseCategoryViewModel = ExerciseCategoryViewModel()
     
     
@@ -40,33 +42,7 @@ struct AddExerciseView: View {
                         } .pickerStyle(SegmentedPickerStyle())
                     }
                 }
-                //Multi-Select Muscles
-//                Section(header: Text("Muscles")){
-//                    if muscleViewModel.isLoading{
-//                        ProgressView("Loading ...")
-//                    } else if let error = muscleViewModel.errorMessage {
-//                        Text(error.message)
-//                            .foregroundColor(.red)
-//                    } else {
-//                        Picker("Select Muscles", selection: Binding(
-//                            get: {
-//                                selectedMuscles.contains(muscle.id)
-//                            },
-//                            set: { newValue in
-//                                if newValue {
-//                                    selectedMuscles.insert(muscle.id)
-//                                } else {
-//                                    selectedMuscles.remove(muscle.id)
-//                                }
-//                            }
-//                        )){
-//                            ForEach(muscleViewModel.muscles, id:\.id){
-//                                muscle in Text(muscle.i18NCode).tag(muscle.id)
-//                            }
-//                        }
-//
-//                    }
-//                }
+            
                 Section(header: Text("Muscles")) {
                     if muscleViewModel.isLoading {
                         ProgressView("Loading ...")
@@ -74,48 +50,26 @@ struct AddExerciseView: View {
                         Text(error.message)
                             .foregroundColor(.red)
                     } else {
-                        List(selection: $selectedMuscles) {
-                            ForEach(muscleViewModel.muscles, id: \.id) { muscle in
+                        ForEach(muscleViewModel.muscles, id: \.id) { muscle in
+                            Toggle(isOn: Binding(
+                                get: {
+                                    selectedMuscles.contains(muscle)
+                                },
+                                set: { isSelected in
+                                    if isSelected {
+                                        selectedMuscles.insert(muscle)
+                                    } else {
+                                        selectedMuscles.remove(muscle)
+                                    }
+                                }
+                            )) {
                                 Text(muscle.i18NCode)
                             }
                         }
-                        // Force selection mode so multiple items can be selected.
-                        .environment(\.editMode, .constant(.active))
-                        // Adjust the frame as needed – for example, if you want a compact picker:
-                        .frame(height: 250)
                     }
                 }
-                // Multi-Select Muscle Groups
-//                Section(header: Text("Muscle Groups")) {
-//                    if muscleGroupViewModel.isLoading {
-//                        ProgressView("Loading ...")
-//                    } else if let error = muscleGroupViewModel.errorMessage {
-//                        Text(error.message)
-//                            .foregroundColor(.red)
-//                    } else {
-//                        ForEach(muscleGroupViewModel.muscleGroups, id:\.id){
-//                            group in Toggle(group.i18NCode, isOn: $selectedMuscleGroups.)
-//
-//                        }
-                        ////                        ForEach(muscleGroupViewModel.muscleGroups, id: \.id) { group in
-                        ////                            Toggle(group.i18NCode, isOn: Binding(
-                        ////                                get: { selectedMuscleGroups.contains(group.id) },
-                        ////                                set: { newValue in
-                        ////                                    if newValue {
-                        ////                                        selectedMuscleGroups.insert(group.id)
-                        ////                                    } else {
-                        ////                                        selectedMuscleGroups.remove(group.id)
-                        ////                                    }
-                        ////                                }
-                        ////                            ))
-                        //                        ForEach($muscleGroupViewModel.muscleGroups, id:\.id){
-                        //                            $group in
-                        //                            Toggle(group.i18NCode, selection: $group.value)
-                        //
-                        //                        }
-//                    }
-                    //                }
-                    //
+
+                
                     //                // Image Picker Section with remove option
                     //                Section(header: Text("Exercise Image")) {
                     //                    PhotosPicker(
@@ -154,7 +108,7 @@ struct AddExerciseView: View {
                     //                    }
                     //                }
                     //
-                    //                // Description Input
+                                    // Description Input
                     Section(header: Text("Description")) {
                         TextEditor(text: $description)
                             .frame(minHeight: 100)
@@ -176,14 +130,8 @@ struct AddExerciseView: View {
                     }
                 }
                 .navigationTitle("Add Exercise")
-                //            .onChange(of: $exerciseViewModel.exerciseTypes) { oldValue, newValue in
-                //                if let firstType = newValue.first {
-                //                    selectedType = firstType.id
-                //                }
-                //            }
                 .onAppear() {
                     Task{
-//                        await muscleGroupViewModel.searchMuscleGroups()
                         await muscleViewModel.searchMuscles()
                         await exerciseViewModel.searchExerciseCategories()
                         await exerciseCategoryViewModel.fetchCategories()
@@ -201,16 +149,29 @@ struct AddExerciseView: View {
         guard let selectedExerciseCategory = selectedExerciseCategory else { return }
         // Convert the image (if any) to JPEG data
         let imageData = selectedImage?.jpegData(compressionQuality: 0.8)
+        
+        // Convert the selected muscles into an array of UUIDs,
+        // or nil if no muscles are selected.
+        let muscleIds: [UUID]? = selectedMuscles.isEmpty ? nil : selectedMuscles.map { $0.id }
+        
         let exercise = CreateExerciseDto(
             i18NCode: name,
             description: description,
-            muscleIds: selectedMuscles.isEmpty ? nil : Array(selectedMuscles),
+            muscleIds: muscleIds,
             exerciseCategoryId: selectedExerciseCategory,
             imageData: imageData
         )
+        
         Task {
-            await exerciseViewModel.saveExercise(exerciseDto: exercise)
+            do{
+                let _ = try await exerciseViewModel.saveExercise(exerciseDto: exercise)
+                dismiss()}
+            catch {
+                
+            }
         }
+        //close add exercise view and switch back to overview
+        
     }
 }
 

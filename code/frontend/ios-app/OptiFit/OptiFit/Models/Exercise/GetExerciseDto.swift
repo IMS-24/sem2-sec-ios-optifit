@@ -10,5 +10,5 @@ struct GetExerciseDto: Codable,Identifiable, Hashable, Equatable {
     let description: String?
     let exerciseCategoryId: UUID
     let exerciseCategory: String
-    let imageURL: URL?
+//    let imageURL: URL?
 }
