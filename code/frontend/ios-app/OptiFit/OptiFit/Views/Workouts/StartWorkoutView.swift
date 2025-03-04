@@ -27,13 +27,10 @@ struct StartWorkoutView: View {
                         Text("Select Gym")
                             .font(.headline)
                         Spacer()
-                        Picker("Select Gym", selection: Binding(
-                            get: { selectedGym ?? gymViewModel.gyms.first!.id },
-                            set: { selectedGym = $0 }
-                        )) {
+                        Picker("Select Gym", selection: $selectedGym) {
                             ForEach(gymViewModel.gyms) { gym in
                                 Text(gym.name)
-                                    .tag(gym.id)
+                                    .tag(gym.id as UUID?)
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
@@ -51,13 +48,10 @@ struct StartWorkoutView: View {
                         Text("Select Exercise Category")
                             .font(.headline)
                         Spacer()
-                        Picker("Select Exercise Catgory", selection: Binding(
-                            get: { selectedExerciseCategoryId ?? exerciseCategoriesViewModel.exerciseCategories.first!.id },
-                            set: { selectedExerciseCategoryId = $0 }
-                        )) {
-                            ForEach(exerciseCategoriesViewModel.exerciseCategories) { type in
-                                Text(type.i18NCode)
-                                    .tag(type.id)
+                        Picker("Select Exercise Category", selection: $selectedExerciseCategoryId) {
+                            ForEach(exerciseCategoriesViewModel.exerciseCategories) { category in
+                                Text(category.i18NCode)
+                                    .tag(category.id as UUID?)
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
@@ -89,20 +83,31 @@ struct StartWorkoutView: View {
                     Text("Selection missing")
                 }
             }
-//            .refreshable {
-//                gymViewModel.searchGyms()
-//               await  exerciseTypeViewModel.fetchExerciseTypes()
-//            }
-//            .task {
-//                gymViewModel.searchGyms()
-//                exerciseTypeViewModel.fetchExerciseTypes()
-//                if selectedGym == nil, let firstGym = gymViewModel.gyms.first {
-//                    selectedGym = firstGym.id
-//                }
-//                if selectedExerciseType == nil, let firstType = exerciseTypeViewModel.exerciseTypes.first {
-//                    selectedExerciseType = firstType.id
-//                }
-//            }
+            .onAppear {
+                Task {
+                    await exerciseCategoriesViewModel.fetchCategories()
+                    await gymViewModel.searchGyms()
+                }
+            }
+            // Update the selectedGym once gyms load
+            .onChange(of: gymViewModel.gyms) {
+                if selectedGym == nil, let firstGym = gymViewModel.gyms.first {
+                    selectedGym = firstGym.id
+                }
+            }
+           
+            // Update the selectedExerciseCategoryId once categories load
+            .onChange(of: exerciseCategoriesViewModel.exerciseCategories) {
+                if selectedExerciseCategoryId == nil, let firstCategory = exerciseCategoriesViewModel.exerciseCategories.first {
+                    selectedExerciseCategoryId = firstCategory.id
+                }
+            }
+
+            .alert(item: $exerciseCategoriesViewModel.errorMessage) { error in
+                Alert(title: Text("Error"),
+                      message: Text(error.message),
+                      dismissButton: .default(Text("OK")))
+            }
         }
     }
 }

@@ -19,7 +19,9 @@ struct GymManagementView: View {
             }
                     .navigationTitle("Gyms")
                     .onAppear {
-                        gymViewModel.searchGyms()
+                        Task{
+                         await   gymViewModel.searchGyms()
+                        }
                     }
                     .toolbar {
                         EditButton()

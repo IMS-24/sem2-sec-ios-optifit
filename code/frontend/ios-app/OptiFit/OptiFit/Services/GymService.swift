@@ -9,16 +9,12 @@ import Foundation
 
 @MainActor
 class GymService: ObservableObject {
-    @Published var gyms: [Gym] = []
-    @Published var isLoading: Bool = false
-    @Published var errorMessage: ErrorMessage?
 
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/gym"
 
-    func searchGym(searchModel: SearchGymsDto) async {
+    func searchGym(searchModel: SearchGymsDto) async throws(ApiError)->PaginatedResult<Gym>{
         guard let url = URL(string: "\(baseURL)/search") else {
-            self.errorMessage = ErrorMessage(message: "Invalid URL")
-            return
+            throw .invalidURL
         }
 
         var request = URLRequest(url: url)
@@ -28,23 +24,18 @@ class GymService: ObservableObject {
         do {
             request.httpBody = try JSONEncoder().encode(searchModel)
         } catch {
-            self.errorMessage = ErrorMessage(message: "Failed to encode search request")
-            return
+            throw .decodingFailed
         }
-
-        self.isLoading = true
-        self.errorMessage = nil
 
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             let response = try decoder.decode(PaginatedResult<Gym>.self, from: data)
-            self.gyms = response.items
+            return response
         } catch {
-            self.errorMessage = ErrorMessage(message: "Network or decoding error: \(error.localizedDescription)")
+            throw .requestFailed
         }
 
-        self.isLoading = false
     }
 }

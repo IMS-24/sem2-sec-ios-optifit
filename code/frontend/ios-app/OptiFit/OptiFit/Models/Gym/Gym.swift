@@ -7,7 +7,10 @@
 
 import Foundation
 
-struct Gym: Identifiable, Codable {
+struct Gym: Identifiable, Codable,Equatable {
+    static func == (lhs: Gym, rhs: Gym) -> Bool {
+        lhs.id == rhs.id
+    }
     let address: String
     let zipCode: Int
     let id: UUID
