@@ -2,114 +2,105 @@ import Foundation
 
 @MainActor
 class ExerciseService: ObservableObject {
-    @Published var exerciseTypes: [ExerciseCategory] = []
-    @Published var exercises: [GetExerciseDto] = []
-    @Published var isLoading: Bool = false
-    @Published var errorMessage: ErrorMessage?
-
+    
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/exercise"
-
-    func fetchExerciseCategories() async {
+    
+    func fetchExerciseCategories() async throws(ApiError)-> [ExerciseCategoryDto] {
         guard let url = URL(string: "\(baseURL)/categories") else {
-            errorMessage = ErrorMessage(message: "Invalid URL")
-            return
+            throw .invalidURL
         }
-
-        isLoading = true
-        errorMessage = nil
-        defer {
-            isLoading = false
-        }
-
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            exerciseTypes = try decoder.decode([ExerciseCategory].self, from: data)
+            let      exerciseCategories = try decoder.decode([ExerciseCategoryDto].self, from: data)
+            return exerciseCategories
         } catch {
-            errorMessage = ErrorMessage(message: "Failed to load ExerciseTypes")
-        }
-    }
-
-    // Updated search function that supports lazy loading
-    func searchExercises(searchModel: SearchExercisesDto, append: Bool = false) async -> PaginatedResult<GetExerciseDto>? {
-        guard let url = URL(string: "\(baseURL)/search") else {
-            errorMessage = ErrorMessage(message: "Invalid URL")
-            return nil
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        do {
-            request.httpBody = try JSONEncoder().encode(searchModel)
-        } catch {
-            errorMessage = ErrorMessage(message: "Failed to encode search request")
-            return nil
-        }
-
-        isLoading = true
-        errorMessage = nil
-        defer {
-            isLoading = false
-        }
-
-        do {
-            let (data, _) = try await URLSession.shared.data(for: request)
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            let response = try decoder.decode(PaginatedResult<GetExerciseDto>.self, from: data)
-            if append {
-                exercises.append(contentsOf: response.items)
-            } else {
-                exercises = response.items
+            if error is DecodingError {
+                throw .decodingFailed
             }
-            return response
-        } catch {
-            errorMessage = ErrorMessage(message: "Failed to decode Exercise response from server")
-            return nil
+            else {
+                throw .requestFailed
+            }
         }
     }
-
-    func postExercise(_ exercise: CreateExerciseDto) async {
-        guard let url = URL(string: "\(baseURL)") else {
-            errorMessage = ErrorMessage(message: "Invalid URL")
-            return
+        
+        // Updated search function that supports lazy loading
+        func searchExercises(searchModel: SearchExercisesDto) async throws(ApiError) -> PaginatedResult<GetExerciseDto>? {
+            guard let url = URL(string: "\(baseURL)/search") else {
+                throw .invalidURL
+            }
+            
+            do {
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.httpBody = try JSONEncoder().encode(searchModel)
+                
+                let (data, _) = try await URLSession.shared.data(for: request)
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                return try decoder.decode(PaginatedResult<GetExerciseDto>.self, from: data)
+            }catch
+            {
+                if error is DecodingError {
+                    throw .decodingFailed
+                }
+                else{
+                    throw .requestFailed
+                }
+            }
         }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        do {
-            let encoder = JSONEncoder()
-            encoder.dateEncodingStrategy = .iso8601
-            request.httpBody = try encoder.encode(exercise)
-        } catch {
-            errorMessage = ErrorMessage(message: "Failed to encode exercise")
-            return
+        
+        func postExercise(_ exercise: CreateExerciseDto) async throws(ApiError)->GetExerciseDto{
+            guard let url = URL(string: "\(baseURL)") else {
+                throw .invalidURL
+            }
+            do {
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                
+                
+                let encoder = JSONEncoder()
+                encoder.dateEncodingStrategy = .iso8601
+                request.httpBody = try encoder.encode(exercise)
+                
+                
+                let (data, _) = try await URLSession.shared.data(for: request)
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                return try decoder.decode(GetExerciseDto.self, from: data)
+                
+            } catch {
+                if error is DecodingError {
+                    throw .decodingFailed
+                }
+                else {
+                    throw .requestFailed
+                }
+                
+            }
         }
-
-        isLoading = true
-        errorMessage = nil
-        defer {
-            isLoading = false
+        
+        func deleteExercise(exerciseId: UUID) async throws(ApiError) -> Bool {
+            guard let url = URL(string: "\(baseURL)") else {
+                throw .invalidURL
+            }
+            do{
+                var request = URLRequest(url: url)
+                request.httpMethod = "DELETE"
+                
+                let (_, response) = try await URLSession.shared.data(for: request)
+                if let httpResponse = response as? HTTPURLResponse,
+                   (200...299).contains(httpResponse.statusCode) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            catch{
+                return false
+            }
         }
-
-        do {
-            let (data, _) = try await URLSession.shared.data(for: request)
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            let newExercise = try decoder.decode(GetExerciseDto.self, from: data)
-            exercises.append(newExercise)
-        } catch {
-            errorMessage = ErrorMessage(message: "Failed to decode Exercise")
-        }
-    }
-
-    func deleteExercise(withId id: UUID) async {
-        // TODO: Implement delete functionality
-        print("Delete exercise with id: \(id)")
-    }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExerciseSelectionView: View {
     @StateObject private var exerciseViewModel = ExerciseViewModel()
-    let exerciseTypeId: UUID
+    let exerciseCategoryId: UUID
     //    @State private var selectedExercise: String = ""
     
     var body: some View {
@@ -21,11 +21,11 @@ struct ExerciseSelectionView: View {
         }
         .navigationTitle("Select Exercise")
         .onAppear {
-            let updatedSearchModel = SearchExercisesDto(exerciseTypeId: exerciseTypeId)
+            let updatedSearchModel = SearchExercisesDto(exerciseCategoryId: exerciseCategoryId)
             exerciseViewModel.updateSearchModel(updatedSearchModel)
         }
     }
 }
 #Preview {
-    ExerciseSelectionView(exerciseTypeId: UUID())
+    ExerciseSelectionView(exerciseCategoryId: UUID())
 }

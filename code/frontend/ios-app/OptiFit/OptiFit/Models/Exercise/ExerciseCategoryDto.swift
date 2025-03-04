@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct ExerciseCategory: Identifiable, Codable, Equatable {
+struct ExerciseCategoryDto: Identifiable, Codable, Equatable {
     let id: UUID
     let i18NCode: String
-    let exercises: [GetExerciseDto]?
+    let exerciseIds: [UUID]?
 
-    static func ==(lhs: ExerciseCategory, rhs: ExerciseCategory) -> Bool {
+    static func ==(lhs: ExerciseCategoryDto, rhs: ExerciseCategoryDto) -> Bool {
         return lhs.id == rhs.id
     }
 }

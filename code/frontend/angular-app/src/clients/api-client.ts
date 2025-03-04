@@ -944,7 +944,7 @@ export interface SearchI18NDto extends SearchBaseDto {
 
 export interface SearchExerciseDto extends SearchI18NDto {
     description?: string | null;
-    exerciseTypeId?: string | null;
+    exerciseCategoryId?: string | null;
 }
 
 export interface CreateI18NDto {

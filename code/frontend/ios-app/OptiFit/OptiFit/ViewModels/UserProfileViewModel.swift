@@ -18,8 +18,6 @@ class UserProfileViewModel: ObservableObject {
     ]
     @Published  var isLoading:Bool = false
     
-    private var cancellables = Set<AnyCancellable>()
-    
     private let profileService = ProfileService()
     
     func loadStats() async{

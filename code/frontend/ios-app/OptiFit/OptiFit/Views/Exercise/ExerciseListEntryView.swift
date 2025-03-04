@@ -24,7 +24,7 @@ struct ExerciseListEntryView: View {
 //                            i18NCode: "Muscle"
 //                    )
 //                    ],
-                    exerciseCategory: "ExerciseType",
+                    exerciseCategory: "ExerciseCategory",
                     imageURL: nil
             )
     )

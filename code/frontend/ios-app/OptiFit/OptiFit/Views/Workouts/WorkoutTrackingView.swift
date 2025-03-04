@@ -2,7 +2,7 @@ import SwiftUI
 
 struct WorkoutTrackingView: View {
     let gym: Gym
-    let exerciseType: ExerciseCategory
+    let exerciseCategory: ExerciseCategoryDto
     let workoutStartDate: Date
     
     @State private var performedExercises: [PerformedExercise] = []
@@ -10,7 +10,7 @@ struct WorkoutTrackingView: View {
     @State private var navigateToExerciseSelectionView: Bool = false
     var body: some View {
         VStack {
-            Text("\(exerciseType.i18NCode) - Day at \(gym.name) started at \(formattedStartTime)")
+            Text("\(exerciseCategory.i18NCode) - Day at \(gym.name) started at \(formattedStartTime)")
                 .font(.headline)
                 .padding()
             
@@ -52,7 +52,7 @@ struct WorkoutTrackingView: View {
         }
         .navigationTitle("Track Workout")
         .navigationDestination(isPresented: $navigateToExerciseSelectionView){
-            ExerciseSelectionView(exerciseTypeId: exerciseType.id)
+            ExerciseSelectionView(exerciseCategoryId: exerciseCategory.id)
         }
     }
     
@@ -68,7 +68,7 @@ struct WorkoutTrackingView: View {
     // Dummy preview using sample gym and exercise type.
     WorkoutTrackingView(
         gym: Gym(address: "Daham", zipCode: 8020, id:  UUID(),name: "Downtown Gym",city: "Graz"),
-        exerciseType: ExerciseCategory(id: UUID(), i18NCode: "Strength",exercises: []),
+        exerciseCategory: ExerciseCategoryDto(id: UUID(), i18NCode: "Strength",exerciseIds: []),
         workoutStartDate: Date()
     )
 }

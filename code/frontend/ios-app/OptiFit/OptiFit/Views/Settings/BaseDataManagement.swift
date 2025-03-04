@@ -11,7 +11,7 @@ struct BaseDataManagement: View {
 
     var body: some View {
         NavigationLink("Manage Muscles", destination: MuscleManagementView())
-        NavigationLink("Manage ExerciseTypes", destination: ExerciseTypeManagementView())
+        NavigationLink("Manage Exercise Categories", destination: ExerciseCategoryManagementView())
         NavigationLink("Manage Gyms", destination: GymManagementView())
     }
 

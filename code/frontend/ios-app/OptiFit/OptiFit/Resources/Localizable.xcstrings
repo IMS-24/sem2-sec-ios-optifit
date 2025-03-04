@@ -271,7 +271,11 @@
         }
       }
     },
+    "Exercise Categories" : {
+
+    },
     "Exercise Image" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -302,6 +306,7 @@
       }
     },
     "Exercise Types" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -413,7 +418,11 @@
         }
       }
     },
+    "Loading exercise category…" : {
+
+    },
     "Loading exercise types…" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -449,7 +458,11 @@
         }
       }
     },
+    "Manage Exercise Categories" : {
+
+    },
     "Manage ExerciseTypes" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -480,6 +493,7 @@
       }
     },
     "Muscle Groups" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -575,6 +589,7 @@
       }
     },
     "Remove Image" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -668,6 +683,9 @@
         }
       }
     },
+    "Select Category" : {
+
+    },
     "Select Exercise" : {
       "localizations" : {
         "de" : {
@@ -678,7 +696,14 @@
         }
       }
     },
+    "Select Exercise Category" : {
+
+    },
+    "Select Exercise Catgory" : {
+
+    },
     "Select Exercise Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -699,6 +724,7 @@
       }
     },
     "Select Image" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -709,6 +735,7 @@
       }
     },
     "Select Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

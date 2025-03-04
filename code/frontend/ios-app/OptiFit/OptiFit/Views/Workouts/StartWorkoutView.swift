@@ -2,12 +2,12 @@ import SwiftUI
 
 struct StartWorkoutView: View {
     @State private var selectedGym: UUID?
-    @State private var selectedExerciseType: UUID?
+    @State private var selectedExerciseCategoryId: UUID?
     @State private var workoutDate = Date()
     @State private var navigateToWorkoutTrackingView = false
     
     @StateObject private var gymViewModel = GymViewModel()
-    @StateObject private var exerciseTypeViewModel = ExerciseTypeViewModel()
+    @StateObject private var exerciseCategoriesViewModel = ExerciseCategoryViewModel()
     
     var body: some View {
         NavigationStack {
@@ -43,19 +43,19 @@ struct StartWorkoutView: View {
                 }
                 
                 // Exercise Type Picker Section
-                if exerciseTypeViewModel.exerciseTypes.isEmpty {
-                    ProgressView("Loading exercise types…")
+                if exerciseCategoriesViewModel.exerciseCategories.isEmpty {
+                    ProgressView("Loading exercise category…")
                         .progressViewStyle(CircularProgressViewStyle())
                 } else {
                     HStack {
-                        Text("Select Exercise Type")
+                        Text("Select Exercise Category")
                             .font(.headline)
                         Spacer()
-                        Picker("Select Exercise Type", selection: Binding(
-                            get: { selectedExerciseType ?? exerciseTypeViewModel.exerciseTypes.first!.id },
-                            set: { selectedExerciseType = $0 }
+                        Picker("Select Exercise Catgory", selection: Binding(
+                            get: { selectedExerciseCategoryId ?? exerciseCategoriesViewModel.exerciseCategories.first!.id },
+                            set: { selectedExerciseCategoryId = $0 }
                         )) {
-                            ForEach(exerciseTypeViewModel.exerciseTypes) { type in
+                            ForEach(exerciseCategoriesViewModel.exerciseCategories) { type in
                                 Text(type.i18NCode)
                                     .tag(type.id)
                             }
@@ -81,28 +81,28 @@ struct StartWorkoutView: View {
             .padding()
             .navigationDestination(isPresented: $navigateToWorkoutTrackingView) {
                 if let gym = gymViewModel.gyms.first(where: { $0.id == selectedGym }),
-                   let exerciseType = exerciseTypeViewModel.exerciseTypes.first(where: { $0.id == selectedExerciseType }) {
+                   let exerciseCategory = exerciseCategoriesViewModel.exerciseCategories.first(where: { $0.id == selectedExerciseCategoryId }) {
                     WorkoutTrackingView(gym: gym,
-                                        exerciseType: exerciseType,
+                                        exerciseCategory: exerciseCategory,
                                         workoutStartDate: workoutDate)
                 } else {
                     Text("Selection missing")
                 }
             }
-            .refreshable {
-                gymViewModel.searchGyms()
-                exerciseTypeViewModel.fetchExerciseTypes()
-            }
-            .task {
-                gymViewModel.searchGyms()
-                exerciseTypeViewModel.fetchExerciseTypes()
-                if selectedGym == nil, let firstGym = gymViewModel.gyms.first {
-                    selectedGym = firstGym.id
-                }
-                if selectedExerciseType == nil, let firstType = exerciseTypeViewModel.exerciseTypes.first {
-                    selectedExerciseType = firstType.id
-                }
-            }
+//            .refreshable {
+//                gymViewModel.searchGyms()
+//               await  exerciseTypeViewModel.fetchExerciseTypes()
+//            }
+//            .task {
+//                gymViewModel.searchGyms()
+//                exerciseTypeViewModel.fetchExerciseTypes()
+//                if selectedGym == nil, let firstGym = gymViewModel.gyms.first {
+//                    selectedGym = firstGym.id
+//                }
+//                if selectedExerciseType == nil, let firstType = exerciseTypeViewModel.exerciseTypes.first {
+//                    selectedExerciseType = firstType.id
+//                }
+//            }
         }
     }
 }

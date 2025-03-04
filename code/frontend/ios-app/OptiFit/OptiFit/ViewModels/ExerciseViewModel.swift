@@ -7,55 +7,63 @@ class ExerciseViewModel: ObservableObject {
     @Published var exercises: [GetExerciseDto] = []
     @Published var errorMessage: ErrorMessage?
     @Published var searchModel = SearchExercisesDto()
+    @Published var exerciseCategories: [ExerciseCategoryDto] = []
 
     // Pagination state
     private var currentPage: Int = 0
     private var totalPages: Int = 1
-    private var isLoadingMore: Bool = false
+    @Published  var isLoading:Bool = false
 
-    private var cancellables = Set<AnyCancellable>()
     private let exerciseService = ExerciseService()
+    
+    
 
-    init() {
-        observeService()
-        Task {
-            await searchExercises()
+    func saveExercise(exerciseDto: CreateExerciseDto) async {
+        isLoading = true
+        errorMessage = nil
+        do {
+           let created = try await exerciseService.postExercise(exerciseDto)
+            exercises.append(created)
+        } catch {
+            self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
+        isLoading = false
     }
-
-    private func observeService() {
-        exerciseService.$exercises
-                .sink { [weak self] in
-                    self?.exercises = $0
-                }
-                .store(in: &cancellables)
-
-        exerciseService.$errorMessage
-                .sink { [weak self] in
-                    self?.errorMessage = $0
-                }
-                .store(in: &cancellables)
-    }
-
     func searchExercises() async {
-        // Reset pagination for a new search
-        searchModel.pageIndex = 0
-        currentPage = 0
-        if let result = await exerciseService.searchExercises(searchModel: searchModel, append: false) {
-            totalPages = result.totalPages
+        isLoading = true
+        errorMessage = nil
+        do{
+            // Reset pagination for a new search
+            searchModel.pageIndex = 0
+            currentPage = 0
+            let res = try await exerciseService.searchExercises(searchModel: searchModel)
+            exercises = res!.items
+            }
+        
+            catch{
+                self.errorMessage = ErrorMessage(message: error.localizedDescription)
+            }
+            isLoading = false
         }
-    }
-
-    func loadMoreExercises() async {
-        guard !isLoadingMore, currentPage + 1 < totalPages else {
-            return
+func searchExerciseCategories() async {
+        do {
+            let exerciseCategoriesRes = try await exerciseService.fetchExerciseCategories()
+            exerciseCategories = exerciseCategoriesRes
+        } catch {
+            self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
-        isLoadingMore = true
-        currentPage += 1
-        searchModel.pageIndex = currentPage
-        _ = await exerciseService.searchExercises(searchModel: searchModel, append: true)
-        isLoadingMore = false
+    isLoading = false
     }
+//    func loadMoreExercises() async {
+//        guard !isLoadingMore, currentPage + 1 < totalPages else {
+//            return
+//        }
+//        isLoadingMore = true
+//        currentPage += 1
+//        searchModel.pageIndex = currentPage
+//        _ = await exerciseService.searchExercises(searchModel: searchModel, append: true)
+//        isLoadingMore = false
+//    }
 
     func updateSearchModel(_ newModel: SearchExercisesDto) {
         self.searchModel = newModel

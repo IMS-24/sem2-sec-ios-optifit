@@ -38,7 +38,7 @@ struct ExerciseView: View {
                                                 // Compare using the exercise id instead of the entire struct
                                                 if exercise.id == exerciseViewModel.exercises.last?.id {
                                                     Task {
-                                                        await exerciseViewModel.loadMoreExercises()
+                                                       // await exerciseViewModel.loadMoreExercises()
                                                     }
                                                 }
                                             }
@@ -52,7 +52,7 @@ struct ExerciseView: View {
                         ProgressView()
                                 .onAppear {
                                     Task {
-                                        await exerciseViewModel.loadMoreExercises()
+                                       // await exerciseViewModel.loadMoreExercises()
                                     }
                                 }
                     }

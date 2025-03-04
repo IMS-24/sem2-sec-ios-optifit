@@ -1,24 +1,12 @@
-//
-//  MuscleGroupService.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 16.02.25.
-//
-
 import Foundation
 
 @MainActor
 class MuscleGroupService: ObservableObject {
-    @Published var muscleGroups: [MuscleGroup] = []
-    @Published var isLoading: Bool = false
-    @Published var errorMessage: ErrorMessage?
-
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/musclegroup"
 
-    func searchMuscleGroups(searchModel: SearchMuscleGroupsDto) async {
+    func searchMuscleGroups(searchModel: SearchMuscleGroupsDto) async throws (ApiError)->PaginatedResult<MuscleGroup>{
         guard let url = URL(string: "\(baseURL)/search") else {
-            errorMessage = ErrorMessage(message: "Invalid URL")
-            return
+            throw .invalidURL
         }
 
         var request = URLRequest(url: url)
@@ -28,22 +16,18 @@ class MuscleGroupService: ObservableObject {
         do {
             request.httpBody = try JSONEncoder().encode(searchModel)
         } catch {
-            errorMessage = ErrorMessage(message: "Failed to encode Request")
-            return
+            throw .decodingFailed
         }
-
-        isLoading = true
-        errorMessage = nil
 
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             let response = try decoder.decode(PaginatedResult<MuscleGroup>.self, from: data)
-            muscleGroups = response.items
+            return response
         } catch {
-            errorMessage = ErrorMessage(message: "Failed to decode Response")
+            throw .requestFailed
         }
-        isLoading = false
+    
     }
 }
