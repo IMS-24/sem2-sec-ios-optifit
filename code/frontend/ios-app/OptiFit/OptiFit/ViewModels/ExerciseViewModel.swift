@@ -8,44 +8,64 @@ class ExerciseViewModel: ObservableObject {
     @Published var errorMessage: ErrorMessage?
     @Published var searchModel = SearchExercisesDto()
     @Published var exerciseCategories: [ExerciseCategoryDto] = []
-
+    
     // Pagination state
     private var currentPage: Int = 0
     private var totalPages: Int = 1
-    @Published  var isLoading:Bool = false
-
+    @Published var isLoading: Bool = false
+    @Published var isLoadingMore: Bool = false
+    
     private let exerciseService = ExerciseService()
     
-    
-
     func saveExercise(exerciseDto: CreateExerciseDto) async {
         isLoading = true
         errorMessage = nil
         do {
-           let created = try await exerciseService.postExercise(exerciseDto)
+            let created = try await exerciseService.postExercise(exerciseDto)
             exercises.append(created)
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
         isLoading = false
     }
+    
     func searchExercises() async {
         isLoading = true
         errorMessage = nil
-        do{
+        do {
             // Reset pagination for a new search
             searchModel.pageIndex = 0
             currentPage = 0
-            let res = try await exerciseService.searchExercises(searchModel: searchModel)
-            exercises = res!.items
+            if let res = try await exerciseService.searchExercises(searchModel: searchModel) {
+                exercises = res.items
+                totalPages = res.totalPages  // update total pages if provided by your API
             }
-        
-            catch{
-                self.errorMessage = ErrorMessage(message: error.localizedDescription)
-            }
-            isLoading = false
+        } catch {
+            self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
-func searchExerciseCategories() async {
+        isLoading = false
+    }
+    
+    func loadMoreExercises() async {
+        // Ensure we haven't reached the last page and we're not already loading more
+        guard !isLoadingMore, currentPage + 1 < totalPages else {
+            return
+        }
+        isLoadingMore = true
+        currentPage += 1
+        searchModel.pageIndex = currentPage
+        do {
+            if let res = try await exerciseService.searchExercises(searchModel: searchModel) {
+                // Append the newly fetched exercises to the existing list
+                exercises.append(contentsOf: res.items)
+            }
+        } catch {
+            self.errorMessage = ErrorMessage(message: error.localizedDescription)
+        }
+        isLoadingMore = false
+    }
+    
+    func searchExerciseCategories() async {
         do {
             let exerciseCategoriesRes = try await exerciseService.fetchExerciseCategories()
             exerciseCategories = exerciseCategoriesRes
@@ -53,19 +73,9 @@ func searchExerciseCategories() async {
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
-    isLoading = false
+        isLoading = false
     }
-//    func loadMoreExercises() async {
-//        guard !isLoadingMore, currentPage + 1 < totalPages else {
-//            return
-//        }
-//        isLoadingMore = true
-//        currentPage += 1
-//        searchModel.pageIndex = currentPage
-//        _ = await exerciseService.searchExercises(searchModel: searchModel, append: true)
-//        isLoadingMore = false
-//    }
-
+    
     func updateSearchModel(_ newModel: SearchExercisesDto) {
         self.searchModel = newModel
         Task {
