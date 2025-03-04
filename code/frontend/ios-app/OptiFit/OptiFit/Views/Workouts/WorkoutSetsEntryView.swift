@@ -4,7 +4,8 @@ struct WorkoutSetsEntryView: View {
     @Binding var sets: [WorkoutSet]
     
     var body: some View {
-        VStack(alignment: .leading) {
+        // Using a List enables built‑in reordering and deletion.
+        List {
             ForEach(sets.indices, id: \.self) { index in
                 HStack {
                     Text("Set \(index + 1):")
@@ -16,7 +17,7 @@ struct WorkoutSetsEntryView: View {
                         set: { newValue in sets[index].reps = newValue }
                     ), format: .number)
                     .keyboardType(.numberPad)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .textFieldStyle(.roundedBorder)
                     
                     // Weight field
                     TextField("Weight", value: Binding(
@@ -24,19 +25,36 @@ struct WorkoutSetsEntryView: View {
                         set: { newValue in sets[index].weight = newValue }
                     ), format: .number)
                     .keyboardType(.decimalPad)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .textFieldStyle(.roundedBorder)
                 }
                 .padding(.vertical, 4)
             }
-            
-            Button(action: {
-                // Append a new set with an incremental order (optional).
-                sets.append(WorkoutSet(order: sets.count + 1, reps: nil, weight: nil))
-            }) {
-                Label("Add Set", systemImage: "plus.circle.fill")
-            }
-            .padding(.vertical, 8)
+            .onDelete(perform: deleteSet)
+            .onMove(perform: moveSet)
         }
-        .padding()
+        .listStyle(.plain)
+        .frame(height: CGFloat(sets.count * 60)) // adjust height if needed
+        .toolbar {
+            EditButton()
+        }
+        .padding(.vertical, 8)
+        
+        Button(action: addSet) {
+            Label("Add Set", systemImage: "plus.circle.fill")
+        }
+        .padding(.vertical, 8)
+    }
+    
+    private func deleteSet(at offsets: IndexSet) {
+        sets.remove(atOffsets: offsets)
+    }
+    
+    private func moveSet(from source: IndexSet, to destination: Int) {
+        sets.move(fromOffsets: source, toOffset: destination)
+    }
+    
+    private func addSet() {
+        let newOrder = (sets.last?.order ?? 0) + 1
+        sets.append(WorkoutSet(order: newOrder, reps: nil, weight: nil))
     }
 }

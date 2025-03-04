@@ -62,6 +62,9 @@
         }
       }
     },
+    "Add Set Info" : {
+
+    },
     "Appearance" : {
       "localizations" : {
         "de" : {
@@ -231,6 +234,9 @@
         }
       }
     },
+    "DELETE ME" : {
+
+    },
     "Description" : {
       "localizations" : {
         "de" : {
@@ -261,6 +267,9 @@
         }
       }
     },
+    "Enter Sets" : {
+
+    },
     "Error" : {
       "localizations" : {
         "de" : {
@@ -270,6 +279,9 @@
           }
         }
       }
+    },
+    "Exercise" : {
+
     },
     "Exercise Categories" : {
 
@@ -633,6 +645,7 @@
       }
     },
     "Rest" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -654,6 +667,7 @@
       }
     },
     "RPE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -682,9 +696,6 @@
           }
         }
       }
-    },
-    "Select Category" : {
-
     },
     "Select Exercise" : {
       "localizations" : {
@@ -750,6 +761,9 @@
           }
         }
       }
+    },
+    "Set %lld:" : {
+
     },
     "Sets: %lld" : {
       "extractionState" : "stale",

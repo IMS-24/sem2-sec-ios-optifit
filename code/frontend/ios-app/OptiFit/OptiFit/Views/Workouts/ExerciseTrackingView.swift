@@ -25,7 +25,7 @@ struct ExerciseTrackingView: View {
             
             List {
                 ForEach(sets.indices, id: \.self) { index in
-                    SetInputView(set: $sets[index])
+                    SetInputView()
                 }
                 .onDelete { indices in
                     sets.remove(atOffsets: indices)

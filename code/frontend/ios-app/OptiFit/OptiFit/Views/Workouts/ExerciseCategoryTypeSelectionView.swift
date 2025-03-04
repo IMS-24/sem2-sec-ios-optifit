@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct ExerciseCategoryTypeSelectionView: View {
-    @StateObject private var exerciseCategoriesViewModel = ExerciseCategoryViewModel()
-
+//    @StateObject private var exerciseCategoriesViewModel = ExerciseCategoryViewModel()
+//
     var body: some View {
-        List(exerciseCategoriesViewModel.exerciseCategories) { exerciseCategory in
-            NavigationLink(destination: ExerciseSelectionView(exerciseCategoryId: exerciseCategory.id)) {
-                Text(exerciseCategory.i18NCode)
-            }
-        }
-                .navigationTitle("Select Category")
+        Text("DELETE ME")
+//        List(exerciseCategoriesViewModel.exerciseCategories) { exerciseCategory in
+//            NavigationLink(destination: ExerciseSelectionView(exerciseCategoryId: exerciseCategory.id)) {
+//                Text(exerciseCategory.i18NCode)
+//            }
+//        }
+//                .navigationTitle("Select Category")
     }
 }
 

@@ -6,8 +6,8 @@ struct WorkoutTrackingView: View {
     let workoutStartDate: Date
     
     @State private var performedExercises: [PerformedExercise] = []
-    @State private var isPaused: Bool = false
-    @State private var navigateToExerciseSelectionView: Bool = false
+    @State private var navigateToExerciseSheet: Bool = false
+    
     var body: some View {
         VStack {
             Text("\(exerciseCategory.i18NCode) - Day at \(gym.name) started at \(formattedStartTime)")
@@ -27,19 +27,11 @@ struct WorkoutTrackingView: View {
             
             HStack(spacing: 20) {
                 Button("Add Exercise") {
-                    
-                    navigateToExerciseSelectionView = true
-                    // TODO: Navigate to exercise selection view.
+                    navigateToExerciseSheet = true
                 }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 
-//                Button(isPaused ? "Resume" : "Pause") {
-//                    isPaused.toggle()
-//                }
-//                .buttonStyle(.bordered)
-//                .controlSize(.large)
-//                
                 Button("End Workout") {
                     // TODO: End the workout (pop view or save workout).
                 }
@@ -51,8 +43,16 @@ struct WorkoutTrackingView: View {
             Spacer()
         }
         .navigationTitle("Track Workout")
-        .navigationDestination(isPresented: $navigateToExerciseSelectionView){
-            ExerciseSelectionView(exerciseCategoryId: exerciseCategory.id)
+        .sheet(isPresented: $navigateToExerciseSheet) {
+            NavigationStack {
+                ExerciseSelectionView(
+                    exerciseCategoryId: exerciseCategory.id,
+                    onExerciseSelected: { performedExercise in
+                        performedExercises.append(performedExercise)
+                        navigateToExerciseSheet = false
+                    }
+                )
+            }
         }
     }
     
@@ -65,10 +65,10 @@ struct WorkoutTrackingView: View {
 }
 
 #Preview {
-    // Dummy preview using sample gym and exercise type.
+    // Dummy preview using sample gym and exercise category.
     WorkoutTrackingView(
-        gym: Gym(address: "Daham", zipCode: 8020, id:  UUID(),name: "Downtown Gym",city: "Graz"),
-        exerciseCategory: ExerciseCategoryDto(id: UUID(), i18NCode: "Strength",exerciseIds: []),
+        gym: Gym(address: "Daham", zipCode: 8020, id: UUID(), name: "Downtown Gym", city: "Graz"),
+        exerciseCategory: ExerciseCategoryDto(id: UUID(), i18NCode: "Strength", exerciseIds: []),
         workoutStartDate: Date()
     )
 }

@@ -1,23 +1,15 @@
-//
-//  ExerciseSelectionView.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 20.02.25.
-//
-
 import SwiftUI
 
 struct ExerciseSelectionView: View {
     @StateObject private var exerciseViewModel = ExerciseViewModel()
     let exerciseCategoryId: UUID
-    //    @State private var selectedExercise: String = ""
+    let onExerciseSelected: (PerformedExercise) -> Void
     
     var body: some View {
-        // TODO: Filter exercises by type
         List(exerciseViewModel.exercises) { exercise in
-//                        NavigationLink(destination: WorkoutTrackingView()) {
-                            Text(exercise.i18NCode)
-//                        }
+            NavigationLink(destination: ExerciseSetDetailView(selectedExercise: exercise, onSave: onExerciseSelected)) {
+                Text(exercise.i18NCode)
+            }
         }
         .navigationTitle("Select Exercise")
         .onAppear {
@@ -26,6 +18,8 @@ struct ExerciseSelectionView: View {
         }
     }
 }
+
 #Preview {
-    ExerciseSelectionView(exerciseCategoryId: UUID())
+    // Provide a dummy UUID for preview purposes.
+    ExerciseSelectionView(exerciseCategoryId: UUID(), onExerciseSelected: { _ in })
 }
