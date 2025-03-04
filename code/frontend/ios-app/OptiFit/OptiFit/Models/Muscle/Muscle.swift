@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Muscle: Codable, Hashable, Equatable {
+struct Muscle: Codable, Hashable, Equatable,Identifiable {
     let id: UUID
     let i18NCode: String
 }

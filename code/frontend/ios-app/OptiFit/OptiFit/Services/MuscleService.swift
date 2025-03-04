@@ -9,16 +9,11 @@ import Foundation
 
 @MainActor
 class MuscleService: ObservableObject {
-    @Published var muscles: [Muscle] = []
-    @Published var isLoading: Bool = false
-    @Published var errorMessage: ErrorMessage?
-
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/muscle"
 
-    func searchMuscles(searchModel: SearchMusclesDto) async {
+    func searchMuscles(searchModel: SearchMusclesDto) async throws(ApiError) -> PaginatedResult<Muscle> {
         guard let url = URL(string: "\(baseURL)/search") else {
-            errorMessage = ErrorMessage(message: "Invalid URL")
-            return
+            throw .invalidURL
         }
 
         var request = URLRequest(url: url)
@@ -28,21 +23,17 @@ class MuscleService: ObservableObject {
         do {
             request.httpBody = try JSONEncoder().encode(searchModel)
         } catch {
-            errorMessage = ErrorMessage(message: "Failed to encode request")
-            return
+            throw .decodingFailed
         }
 
-        isLoading = true
-        errorMessage = nil
 
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
             let decoder = JSONDecoder()
-            muscles = try decoder.decode([Muscle].self, from: data)
+            let response = try decoder.decode(PaginatedResult<Muscle>.self, from: data)
+            return response
         } catch {
-            errorMessage = ErrorMessage(message: "Failed to decode response: \(error.localizedDescription)")
+            throw .requestFailed
         }
-
-        isLoading = false
     }
 }

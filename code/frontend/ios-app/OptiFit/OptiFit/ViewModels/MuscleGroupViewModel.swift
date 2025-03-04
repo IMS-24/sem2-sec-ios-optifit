@@ -7,7 +7,7 @@ import Combine
 class MuscleGroupViewModel: ObservableObject {
     @Published var muscleGroups: [MuscleGroup] = []
     @Published var errorMessage: ErrorMessage?
-    @Published var searchModel = SearchMuscleGroupsDto()
+    @Published var searchModel = SearchMuscleGroupsDto(pageSize:10,pageIndex: 0)
     @Published  var isLoading:Bool = false
     private let muscleGroupService = MuscleGroupService()
     private var cancellables = Set<AnyCancellable>()
@@ -19,6 +19,7 @@ class MuscleGroupViewModel: ObservableObject {
         errorMessage = nil
         do{
             let response = try await muscleGroupService.searchMuscleGroups(searchModel: searchModel)
+            muscleGroups=response.items
         }catch{
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }

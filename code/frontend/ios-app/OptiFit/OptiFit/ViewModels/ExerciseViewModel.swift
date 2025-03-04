@@ -49,6 +49,7 @@ func searchExerciseCategories() async {
         do {
             let exerciseCategoriesRes = try await exerciseService.fetchExerciseCategories()
             exerciseCategories = exerciseCategoriesRes
+            print(exerciseCategoriesRes)
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }

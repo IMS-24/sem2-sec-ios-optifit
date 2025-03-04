@@ -735,7 +735,6 @@
       }
     },
     "Select Type" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

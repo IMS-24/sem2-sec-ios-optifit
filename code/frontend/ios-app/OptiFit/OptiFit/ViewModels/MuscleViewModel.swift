@@ -11,38 +11,27 @@ import Combine
 @MainActor
 class MuscleViewModel: ObservableObject {
     @Published var muscles: [Muscle] = []
-    @Published var errorMessage: ErrorMessage?
-    @Published var searchModel = SearchMusclesDto()
+    @Published var searchModel = SearchMusclesDto(pageSize:10, pageIndex: 0)
     private let muscleService = MuscleService()
-    private var cancellables = Set<AnyCancellable>()
+    @Published  var isLoading:Bool = false
+    @Published var errorMessage: ErrorMessage?
 
-    init() {
-        observeService()
-        searchMuscles()
-    }
 
-    private func observeService() {
-        muscleService.$muscles
-                .sink { [weak self] muscles in
-                    self?.muscles = muscles
-                }
-                .store(in: &cancellables)
 
-        muscleService.$errorMessage
-                .sink { [weak self] error in
-                    self?.errorMessage = error
-                }
-                .store(in: &cancellables)
-    }
-
-    func searchMuscles() {
-        Task {
-            await muscleService.searchMuscles(searchModel: searchModel)
+    func searchMuscles() async {
+        isLoading = true
+        errorMessage = nil
+        do{
+            let response = try await muscleService.searchMuscles(searchModel: searchModel)
+            muscles=response.items
+        }catch{
+            self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
+        isLoading = false
     }
 
-    func updateSearchModel(_ newModel: SearchMusclesDto) {
+    func updateSearchModel(_ newModel: SearchMusclesDto) async {
         self.searchModel = newModel
-        searchMuscles()
+       await searchMuscles()
     }
 }
