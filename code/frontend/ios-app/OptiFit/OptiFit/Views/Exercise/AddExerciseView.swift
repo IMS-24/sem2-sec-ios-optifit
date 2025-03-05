@@ -163,12 +163,10 @@ struct AddExerciseView: View {
         )
         
         Task {
-            do{
-                let _ = try await exerciseViewModel.saveExercise(exerciseDto: exercise)
-                dismiss()}
-            catch {
-                throw error
-            }
+            
+                let _ =  await exerciseViewModel.saveExercise(exerciseDto: exercise)
+                dismiss()
+            
         }
         
     }

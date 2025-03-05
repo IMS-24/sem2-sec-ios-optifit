@@ -12,39 +12,27 @@ class WorkoutViewModel: ObservableObject {
     // Pagination state
     private var currentPage: Int = 0
     private var totalPages: Int = 1
-    private var isLoadingMore: Bool = false
-    
-    private var cancellables = Set<AnyCancellable>()
+    @Published var isLoading: Bool = false
+    @Published var isLoadingMore: Bool = false
     private let workoutService = WorkoutService()
     
-    init() {
-        observeService()
-        Task {
-            await searchWorkouts()
-        }
-    }
-    
-    private func observeService() {
-        workoutService.$workouts
-            .sink { [weak self] in
-                self?.workouts = $0
-            }
-            .store(in: &cancellables)
-        
-        workoutService.$errorMessage
-            .sink { [weak self] in
-                self?.errorMessage = $0
-            }
-            .store(in: &cancellables)
-    }
     
     func searchWorkouts() async {
-        // Reset pagination for a new search
-        searchModel.pageIndex = 0
-        currentPage = 0
-        if let result = await workoutService.searchWorkouts(searchModel: searchModel, append: false) {
-            totalPages = result.totalPages
+        isLoading = true
+        errorMessage = nil
+        do {
+            // Reset pagination for a new search
+            searchModel.pageIndex = 0
+            currentPage = 0
+            if let result = try await workoutService.searchWorkouts(searchModel: searchModel) {
+                workouts=result.items
+                totalPages = result.totalPages
+            }
+            
+        }catch{
+            self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
+        isLoading = false
     }
     
     func loadMoreWorkouts() async {
@@ -54,8 +42,29 @@ class WorkoutViewModel: ObservableObject {
         isLoadingMore = true
         currentPage += 1
         searchModel.pageIndex = currentPage
-        _ = await workoutService.searchWorkouts(searchModel: searchModel, append: true)
+        do{
+            if let res = try await workoutService.searchWorkouts(searchModel: searchModel)
+            {
+                workouts.append(contentsOf: res.items)
+            }
+        }
+        catch{
+            self.errorMessage = ErrorMessage(message: error.localizedDescription)
+
+        }
         isLoadingMore = false
+    }
+    func saveWorkout(_ workout:CreateWorkoutDto)async {
+        isLoading = true
+        errorMessage = nil
+        do{
+            let created = try await workoutService.postWorkout(workout)
+            workouts.append(created)
+            
+        }catch{
+            self.errorMessage=ErrorMessage(message: error.localizedDescription)
+        }
+        isLoading = false
     }
     
     func updateSearchModel(_ newModel: SearchWorkoutsDto) {

@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct GetWorkoutSetDto: Decodable{
+struct GetWorkoutSetDto: Codable, Identifiable, Hashable, Equatable {
     let id: UUID
     let order: Int
     let reps: Int

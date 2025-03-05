@@ -6,7 +6,7 @@ using qb8s.net.OptiFit.Persistence.Context;
 
 namespace qb8s.net.OptiFit.CQRS.Commands.Workout;
 
-public record CreateWorkoutCommand(CreateWorkoutDto CreateDto) : IRequest<GetWorkoutDto>;
+public record CreateWorkoutCommand(Guid UserId, CreateWorkoutDto CreateDto) : IRequest<GetWorkoutDto>;
 
 public class CreateWorkoutCommandHandler(
     ILogger<CreateWorkoutCommandHandler> logger,
@@ -17,6 +17,7 @@ public class CreateWorkoutCommandHandler(
     {
         logger.LogInformation("Create Workout Command : {@Dto}", request.CreateDto);
         var entity = mapper.Map<Core.Entities.Workout>(request.CreateDto);
+        entity.UserId = request.UserId;
         dbContext.Workouts.Add(entity);
         dbContext.SaveChanges();
         return Task.FromResult(mapper.Map<GetWorkoutDto>(entity));

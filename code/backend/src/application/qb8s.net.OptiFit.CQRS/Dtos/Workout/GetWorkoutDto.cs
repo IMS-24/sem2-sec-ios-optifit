@@ -18,6 +18,7 @@ public class GetWorkoutDtoProfile : BaseProfile
     public GetWorkoutDtoProfile()
     {
         CreateMap<Core.Entities.Workout, GetWorkoutDto>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
             .ForMember(dest => dest.StartAtUtc, opt => opt.MapFrom(src => src.StartAtUtc))
             .ForMember(dest => dest.EndAtUtc, opt => opt.MapFrom(src => src.EndAtUtc))

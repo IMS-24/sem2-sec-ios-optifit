@@ -26,7 +26,9 @@ public class WorkoutController(ILogger<WorkoutController> logger) : ApiBaseContr
         [FromBody] CreateWorkoutDto createWorkoutDto)
     {
         logger.LogInformation("{@Name} request : {@Dto}", nameof(CreateWorkout), createWorkoutDto);
-        var result = await Mediator.Send(new CreateWorkoutCommand(createWorkoutDto));
+        var result =
+            await Mediator.Send(new CreateWorkoutCommand(new Guid("275cfdca-c686-4ea1-80b1-f2425b1602c5"),
+                createWorkoutDto));
         return Ok(result);
     }
 }

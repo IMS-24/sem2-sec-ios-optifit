@@ -119,7 +119,7 @@ struct ExerciseDetailView: View {
 
                     Button(action: {
                         Task {
-                            await try exerciseService.deleteExercise(exerciseId: exercise.id)
+                            try  await  exerciseService.deleteExercise(exerciseId: exercise.id)
                         }
                     }) {
                         Label("Delete", systemImage: "trash.fill")

@@ -1119,7 +1119,6 @@ export interface SearchWorkoutDto extends SearchBaseDto {
 
 export interface CreateWorkoutDto {
     description?: string | null;
-    userId?: string;
     startAtUtc?: Date;
     endAtUtc?: Date | null;
     notes?: string | null;

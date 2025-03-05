@@ -18,7 +18,7 @@ struct WorkoutView: View {
                 // Workout History List
                 List(workoutViewModel.workouts) { workout in
                     VStack(alignment: .leading, spacing: 4) {
-                        // Format the date from startAtUtc using DateFormatter
+//                         Format the date from startAtUtc using DateFormatter
                         Text(DateFormatter.localizedString(from: workout.startAtUtc,
                                                            dateStyle: .medium,
                                                            timeStyle: .short))

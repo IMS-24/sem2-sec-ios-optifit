@@ -14,7 +14,7 @@ struct ExerciseTrackingView: View {
             
             if let desc = exercise.description, !desc.isEmpty {
                 VStack(alignment: .leading) {
-                    Text("Description")
+                    Text("DELETE ME")
                         .font(.headline)
                     Text(desc)
                         .font(.body)

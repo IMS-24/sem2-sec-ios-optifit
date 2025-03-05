@@ -258,6 +258,7 @@
       }
     },
     "End Workout" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
