@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ExerciseTrackingView: View {
+struct _Delete_ExerciseTrackingView: View {
     let exercise: GetExerciseDto
     @State private var sets: [WorkoutSet] = []
     var onFinish: (PerformedExercise) -> Void
@@ -34,12 +34,10 @@ struct ExerciseTrackingView: View {
                     sets.move(fromOffsets: indices, toOffset: newOffset)
                 }
             }
-            .toolbar {
-                EditButton()
-            }
+           
             
             Button("Add Set") {
-                sets.append(WorkoutSet())
+                sets.append(WorkoutSet(order:sets.count+1))
             }
             .padding()
             .background(Color.green)
@@ -47,8 +45,8 @@ struct ExerciseTrackingView: View {
             .cornerRadius(10)
             
             Button("Finish Exercise") {
-                let performed = PerformedExercise(name: exercise.i18NCode, sets: sets)
-                onFinish(performed)
+//                let performed = PerformedExercise(name: exercise.i18NCode, sets: sets)
+//                onFinish(performed)
                 dismiss()
             }
             .padding()
@@ -57,11 +55,14 @@ struct ExerciseTrackingView: View {
             Spacer()
         }
         .navigationTitle("Track Exercise")
+        .toolbar {
+            EditButton()
+        }
     }
 }
 
 #Preview {
-    ExerciseTrackingView(
+    _Delete_ExerciseTrackingView(
         exercise: GetExerciseDto(
             id: UUID(),
             i18NCode: "Exercise",

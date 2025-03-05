@@ -29,6 +29,7 @@ public class WorkoutController(ILogger<WorkoutController> logger) : ApiBaseContr
         var result =
             await Mediator.Send(new CreateWorkoutCommand(new Guid("275cfdca-c686-4ea1-80b1-f2425b1602c5"),
                 createWorkoutDto));
-        return Ok(result);
+        var search = await Mediator.Send(new SearchWorkoutsQuery(new SearchWorkoutDto { Id = result.Id }));
+        return Ok(search.Items.FirstOrDefault());
     }
 }

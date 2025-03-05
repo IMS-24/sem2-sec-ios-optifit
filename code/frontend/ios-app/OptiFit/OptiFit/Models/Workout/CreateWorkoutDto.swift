@@ -19,6 +19,7 @@ struct CreateWorkoutDto: Codable {
     let endAtUtc: Date
     let notes: String
     let gymId: UUID
+    let workoutExercises: [CreateWorkoutExerciseDto]
 }
 /*
  

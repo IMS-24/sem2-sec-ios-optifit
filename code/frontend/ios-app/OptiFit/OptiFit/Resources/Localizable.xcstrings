@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%.2f kg" : {
+
+    },
     "%@ - Day at %@ started at %@" : {
       "localizations" : {
         "de" : {
@@ -113,6 +116,9 @@
         }
       }
     },
+    "Avg Weight/Rep:" : {
+
+    },
     "Base Data Management" : {
       "localizations" : {
         "de" : {
@@ -132,6 +138,9 @@
           }
         }
       }
+    },
+    "Calculated Stats" : {
+
     },
     "Calories" : {
       "extractionState" : "manual",
@@ -260,7 +269,13 @@
         }
       }
     },
+    "Duration:" : {
+
+    },
     "Edit" : {
+
+    },
+    "End" : {
 
     },
     "End Workout" : {
@@ -273,9 +288,6 @@
           }
         }
       }
-    },
-    "End: %@" : {
-
     },
     "Enter Sets" : {
 
@@ -290,7 +302,7 @@
         }
       }
     },
-    "Exercise" : {
+    "Exercise [CHECK]" : {
 
     },
     "Exercise Categories" : {
@@ -799,6 +811,9 @@
         }
       }
     },
+    "Start" : {
+
+    },
     "Start Workout" : {
       "localizations" : {
         "de" : {
@@ -809,9 +824,6 @@
         }
       }
     },
-    "Start: %@" : {
-
-    },
     "Support" : {
       "localizations" : {
         "de" : {
@@ -821,6 +833,18 @@
           }
         }
       }
+    },
+    "Total Exercises:" : {
+
+    },
+    "Total Reps:" : {
+
+    },
+    "Total Sets:" : {
+
+    },
+    "Total Weight Lifted:" : {
+
     },
     "Track Exercise" : {
       "localizations" : {
@@ -916,7 +940,7 @@
     "Workout Detail" : {
 
     },
-    "Workout Info" : {
+    "Workout Summary" : {
 
     },
     "Workouts" : {

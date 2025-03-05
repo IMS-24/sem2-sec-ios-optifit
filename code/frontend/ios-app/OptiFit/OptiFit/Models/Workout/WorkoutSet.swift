@@ -8,7 +8,7 @@
 import Foundation
 
 struct WorkoutSet {
-    var order: Int?
+    var order: Int
     var reps: Int?
     var weight: Double?
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Gym: Identifiable, Codable,Equatable {
+struct Gym: Identifiable, Codable,Equatable, Hashable {
     static func == (lhs: Gym, rhs: Gym) -> Bool {
         lhs.id == rhs.id
     }

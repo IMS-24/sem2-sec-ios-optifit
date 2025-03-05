@@ -3,7 +3,7 @@ import SwiftUI
 struct ExerciseSelectionView: View {
     @StateObject private var exerciseViewModel = ExerciseViewModel()
     let exerciseCategoryId: UUID
-    let onExerciseSelected: (PerformedExercise) -> Void
+    let onExerciseSelected: (CreateWorkoutExerciseDto) -> Void
     
     var body: some View {
         List(exerciseViewModel.exercises) { exercise in

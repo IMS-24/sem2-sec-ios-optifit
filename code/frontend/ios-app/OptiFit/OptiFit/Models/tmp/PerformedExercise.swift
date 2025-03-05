@@ -10,5 +10,6 @@ import Foundation
 struct PerformedExercise: Identifiable {
     let id = UUID()
     let name: String
-    let sets: [WorkoutSet]
+//    let sets: [WorkoutSet]
+    let sets: [CreateWorkoutSetDto]
 }

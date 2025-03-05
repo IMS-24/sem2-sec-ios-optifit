@@ -8,6 +8,7 @@ struct GetWorkoutDto: Codable, Identifiable, Hashable, Equatable {
     let endAtUtc: Date?         // optional in case it's sometimes missing
     let notes: String?
     let gymId: UUID
+    let gym: Gym
     let workoutExercises: [GetWorkoutExerciseDto]?
 }
 

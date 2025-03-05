@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct WorkoutSetsEntryView: View {
-    @Binding var sets: [WorkoutSet]
-    
+//    @Binding var sets: [WorkoutSet]
+    @Binding var sets: [CreateWorkoutSetDto]
     var body: some View {
         // Using a List enables built‑in reordering and deletion.
         List {
@@ -55,6 +55,6 @@ struct WorkoutSetsEntryView: View {
     
     private func addSet() {
         let newOrder = (sets.last?.order ?? 0) + 1
-        sets.append(WorkoutSet(order: newOrder, reps: nil, weight: nil))
+        sets.append(CreateWorkoutSetDto(order: newOrder, reps: nil, weight: nil))
     }
 }

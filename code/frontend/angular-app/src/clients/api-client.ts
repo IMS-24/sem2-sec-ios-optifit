@@ -1096,6 +1096,7 @@ export interface GetWorkoutDto extends BaseDto {
     endAtUtc?: Date | null;
     notes?: string;
     gymId?: string;
+    gym?: GetGymDto;
     workoutExercises?: WorkoutExerciseDto[];
 }
 
@@ -1123,6 +1124,20 @@ export interface CreateWorkoutDto {
     endAtUtc?: Date | null;
     notes?: string | null;
     gymId?: string;
+    workoutExercises?: CreateWorkoutExerciseDto[];
+}
+
+export interface CreateWorkoutExerciseDto {
+    order?: number;
+    exerciseId?: string;
+    notes?: string;
+    workoutSets?: CreateWorkoutSetDto[];
+}
+
+export interface CreateWorkoutSetDto {
+    order?: number;
+    reps?: number;
+    weight?: number;
 }
 
 export class ApiException extends Error {

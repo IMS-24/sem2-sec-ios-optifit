@@ -6,7 +6,7 @@ struct WorkoutTrackingView: View {
     let exerciseCategory: ExerciseCategoryDto
     let workoutStartDate: Date
     
-    @State private var performedExercises: [PerformedExercise] = []
+    @State private var workoutExercises: [CreateWorkoutExerciseDto] = []
     @State private var navigateToExerciseSheet: Bool = false
     
     // Create or inject a shared WorkoutViewModel
@@ -26,13 +26,13 @@ struct WorkoutTrackingView: View {
                 .font(.headline)
                 .padding()
             
-            if performedExercises.isEmpty {
+            if workoutExercises.isEmpty {
                 Text("No exercises performed yet.")
                     .foregroundColor(.gray)
             } else {
                 List {
-                    ForEach(performedExercises) { exercise in
-                        Text(exercise.name)
+                    ForEach(workoutExercises) { exercise in
+                        Text(exercise.exerciseId.uuidString)//TODO: FIX
                     }
                     .onDelete(perform: deleteExercise)
                     .onMove(perform: moveExercise)
@@ -58,22 +58,6 @@ struct WorkoutTrackingView: View {
                             .cornerRadius(8)
                     }
                 }
-//                Button("End Workout") {
-//                    Task {
-//                        // Call the save method on your WorkoutViewModel.
-//                        // Adjust the parameters as needed for your implementation.
-//                        
-//                        await workoutViewModel.saveWorkout(
-//                            gym: gym,
-//                            exerciseCategory: exerciseCategory,
-//                            workoutStartDate: workoutStartDate,
-//                            performedExercises: performedExercises
-//                        )
-//                        // Optionally, dismiss or navigate away after saving.
-//                    }
-//                }
-//                .buttonStyle(.bordered)
-//                .controlSize(.large)
             }
             .padding()
             
@@ -84,8 +68,8 @@ struct WorkoutTrackingView: View {
             NavigationStack {
                 ExerciseSelectionView(
                     exerciseCategoryId: exerciseCategory.id,
-                    onExerciseSelected: { performedExercise in
-                        performedExercises.append(performedExercise)
+                    onExerciseSelected: { workoutExercise in
+                        workoutExercises.append(workoutExercise)
                         navigateToExerciseSheet = false
                     }
                 )
@@ -107,19 +91,30 @@ struct WorkoutTrackingView: View {
     
     // Delete performed exercise from the list.
     private func deleteExercise(at offsets: IndexSet) {
-        performedExercises.remove(atOffsets: offsets)
+        workoutExercises.remove(atOffsets: offsets)
     }
     
     // Reorder the performed exercises.
     private func moveExercise(from source: IndexSet, to destination: Int) {
-        performedExercises.move(fromOffsets: source, toOffset: destination)
+        workoutExercises.move(fromOffsets: source, toOffset: destination)
     }
     private func saveWorkout(){
+        
+        let createWorkoutExerciseDtos: [CreateWorkoutExerciseDto] = workoutExercises.map{
+            return CreateWorkoutExerciseDto(order: 1,
+                                            exerciseId: $0.exerciseId,
+                                            notes: "TODO",
+                                            workoutSets: $0.workoutSets.map{x in
+                return CreateWorkoutSetDto(order: x.order, reps: x.reps!, weight: x.weight!)
+                }
+            )
+        }
         let workout = CreateWorkoutDto(description: description,
                                        startAtUtc:workoutStartDate,
                                        endAtUtc: Date(),
                                        notes: "TODO: Implement notes on UI",
-                                       gymId: gym.id
+                                       gymId: gym.id,
+                                       workoutExercises: createWorkoutExerciseDtos
         )
         Task{
             
