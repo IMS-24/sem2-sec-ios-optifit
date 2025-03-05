@@ -3,7 +3,7 @@ import Foundation
 class ProfileService {
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/Profile"
 
-    func fetchProfile() async throws(ApiError)-> UserProfile  {
+    func fetchProfile() async throws(ApiError)-> UserProfileDto  {
         guard let url = URL(string: baseURL) else {
             throw .invalidURL
 
@@ -13,7 +13,7 @@ class ProfileService {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-           let userProfile = try decoder.decode(UserProfile.self, from: data)
+           let userProfile = try decoder.decode(UserProfileDto.self, from: data)
             return userProfile
            
         } catch {
@@ -26,7 +26,7 @@ class ProfileService {
             }
     }
     
-    func updateProfile(profile: UserProfile) async throws(ApiError) -> UserProfile {
+    func updateProfile(profile: UserProfileDto) async throws(ApiError) -> UserProfileDto {
                 guard let url = URL(string: baseURL) else {
                     throw .invalidURL
                 }
@@ -37,7 +37,7 @@ class ProfileService {
             request.httpBody = try JSONEncoder().encode(profile)
             
             let (data, _) = try await URLSession.shared.data(for: request)
-            return try JSONDecoder().decode(UserProfile.self, from: data)
+            return try JSONDecoder().decode(UserProfileDto.self, from: data)
         }catch
         {
             if error is DecodingError {

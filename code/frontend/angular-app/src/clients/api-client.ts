@@ -901,6 +901,66 @@ export class WorkoutClient {
         }
         return _observableOf<GetWorkoutDto>(null as any);
     }
+
+    /**
+     * @param from (optional) 
+     * @param to (optional) 
+     * @return Get Workout statistics with query parameters: from,to
+     */
+    getWorkoutStats(from: Date | undefined, to: Date | undefined): Observable<PaginatedResultOfGetWorkoutDto> {
+        let url_ = this.baseUrl + "/api/Workout/stats?";
+        if (from === null)
+            throw new Error("The parameter 'from' cannot be null.");
+        else if (from !== undefined)
+            url_ += "from=" + encodeURIComponent(from ? "" + from.toISOString() : "") + "&";
+        if (to === null)
+            throw new Error("The parameter 'to' cannot be null.");
+        else if (to !== undefined)
+            url_ += "to=" + encodeURIComponent(to ? "" + to.toISOString() : "") + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetWorkoutStats(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetWorkoutStats(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<PaginatedResultOfGetWorkoutDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<PaginatedResultOfGetWorkoutDto>;
+        }));
+    }
+
+    protected processGetWorkoutStats(response: HttpResponseBase): Observable<PaginatedResultOfGetWorkoutDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfGetWorkoutDto;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PaginatedResultOfGetWorkoutDto>(null as any);
+    }
 }
 
 export interface PaginatedResultOfGetExerciseDto {
@@ -1098,6 +1158,7 @@ export interface GetWorkoutDto extends BaseDto {
     gymId?: string;
     gym?: GetGymDto;
     workoutExercises?: WorkoutExerciseDto[];
+    workoutSummary?: WorkoutSummary;
 }
 
 export interface WorkoutExerciseDto extends BaseDto {
@@ -1115,7 +1176,17 @@ export interface GetWorkoutSetDto extends BaseDto {
     workoutExerciseId?: string;
 }
 
+export interface WorkoutSummary {
+    totalTime?: number;
+    totalSets?: number;
+    totalReps?: number;
+    totalWeight?: number;
+    totalExercises?: number;
+}
+
 export interface SearchWorkoutDto extends SearchBaseDto {
+    from?: Date | null;
+    to?: Date | null;
 }
 
 export interface CreateWorkoutDto {

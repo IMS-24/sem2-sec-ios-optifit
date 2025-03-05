@@ -4,18 +4,10 @@ import Combine
 
 @MainActor
 class UserProfileViewModel: ObservableObject {
-    @Published var profile: UserProfile?
+    @Published var profile: UserProfileDto?
     @Published var stats: UserStatsDto?
     @Published var errorMessage: ErrorMessage?
-    @Published var workoutData: [WorkoutStat] = [
-        WorkoutStat(day: "Mon", workoutMinutes: 65),
-        WorkoutStat(day: "Tue", workoutMinutes: 100),
-        WorkoutStat(day: "Wed", workoutMinutes: 72),
-        WorkoutStat(day: "Thu", workoutMinutes: 60),
-        WorkoutStat(day: "Fri", workoutMinutes: 90),
-        WorkoutStat(day: "Sat", workoutMinutes: 120),
-        WorkoutStat(day: "Sun", workoutMinutes: 45)
-    ]
+    @Published var workoutSummary: [WorkoutSummary] = []
     @Published  var isLoading:Bool = false
     
     private let profileService = ProfileService()

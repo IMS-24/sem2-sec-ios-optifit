@@ -5,7 +5,7 @@ import Combine
 
 @MainActor
 class MuscleGroupViewModel: ObservableObject {
-    @Published var muscleGroups: [MuscleGroup] = []
+    @Published var muscleGroups: [GetMuscleGroupDto] = []
     @Published var errorMessage: ErrorMessage?
     @Published var searchModel = SearchMuscleGroupsDto(pageSize:10,pageIndex: 0)
     @Published  var isLoading:Bool = false

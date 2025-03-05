@@ -11,7 +11,7 @@ import Foundation
 class MuscleService: ObservableObject {
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/muscle"
 
-    func searchMuscles(searchModel: SearchMusclesDto) async throws(ApiError) -> PaginatedResult<Muscle> {
+    func searchMuscles(searchModel: SearchMusclesDto) async throws(ApiError) -> PaginatedResult<GetMuscleDto> {
         guard let url = URL(string: "\(baseURL)/search") else {
             throw .invalidURL
         }
@@ -30,7 +30,7 @@ class MuscleService: ObservableObject {
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
             let decoder = JSONDecoder()
-            let response = try decoder.decode(PaginatedResult<Muscle>.self, from: data)
+            let response = try decoder.decode(PaginatedResult<GetMuscleDto>.self, from: data)
             return response
         } catch {
             throw .requestFailed

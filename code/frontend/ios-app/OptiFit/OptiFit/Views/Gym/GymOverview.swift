@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - **GymOverview Subview**
 struct GymOverview: View {
-    let gym: Gym
+    let gym: GetGymDto
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -24,7 +24,7 @@ struct GymOverview: View {
 
 #Preview {
     GymOverview(
-            gym: Gym(
+            gym: GetGymDto(
                     address: "Strasse",
                     zipCode: 8020,
                     id: UUID(),

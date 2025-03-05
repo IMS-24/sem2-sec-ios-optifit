@@ -39,6 +39,10 @@ public class SearchWorkoutsQueryHandler(
                 query.AsEnumerable().Select(mapper.Map<GetWorkoutDto>)));
         }
 
+        if (request.Search.From.HasValue) predicate = predicate.And(x => x.StartAtUtc >= request.Search.From);
+
+        if (request.Search.To.HasValue) predicate = predicate.And(x => x.StartAtUtc <= request.Search.To);
+
         query = query.Where(predicate);
         query = query.OrderBy(x => x.StartAtUtc);
         return Task.FromResult(new PaginatedResult<GetWorkoutDto>(request.Search.PageSize,

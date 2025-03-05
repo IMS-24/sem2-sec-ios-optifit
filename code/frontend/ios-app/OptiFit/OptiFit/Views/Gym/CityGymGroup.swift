@@ -10,8 +10,8 @@ import SwiftUI
 // MARK: - **CityGymGroup Subview**
 struct CityGymGroup: View {
     let cityZip: CityZip
-    let gyms: [Gym]
-    let onDelete: (Gym) -> Void
+    let gyms: [GetGymDto]
+    let onDelete: (GetGymDto) -> Void
 
     var body: some View {
         Section(header: Text("\(cityZip.city), \(String(cityZip.zipCode))")) {
@@ -35,7 +35,7 @@ struct CityGymGroup: View {
             CityGymGroup(
                     cityZip: CityZip(city: "Graz", zipCode: 8020),
                     gyms: [
-                        Gym(
+                        GetGymDto(
                                 address: "Address 123",
                                 zipCode: 8020,
                                 id: UUID(),

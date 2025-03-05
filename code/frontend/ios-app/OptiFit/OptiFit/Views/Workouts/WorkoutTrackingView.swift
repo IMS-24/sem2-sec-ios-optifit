@@ -1,15 +1,16 @@
+//Done: 2025-03-05: 15:07
+
 import SwiftUI
 
 struct WorkoutTrackingView: View {
     @Environment(\.dismiss) private var dismiss
-    let gym: Gym
+    let gym: GetGymDto
     let exerciseCategory: ExerciseCategoryDto
     let workoutStartDate: Date
     
     @State private var workoutExercises: [CreateWorkoutExerciseDto] = []
     @State private var navigateToExerciseSheet: Bool = false
     
-    // Create or inject a shared WorkoutViewModel
     @StateObject private var workoutViewModel = WorkoutViewModel()
     @State private var description: String = ""
     
@@ -128,7 +129,7 @@ struct WorkoutTrackingView: View {
 #Preview {
     // Dummy preview using sample gym and exercise category.
     WorkoutTrackingView(
-        gym: Gym(address: "Daham", zipCode: 8020, id: UUID(), name: "Downtown Gym", city: "Graz"),
+        gym: GetGymDto(address: "Daham", zipCode: 8020, id: UUID(), name: "Downtown Gym", city: "Graz"),
         exerciseCategory: ExerciseCategoryDto(id: UUID(), i18NCode: "Strength", exerciseIds: []),
         workoutStartDate: Date()
     )

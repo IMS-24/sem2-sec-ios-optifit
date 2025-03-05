@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Gym: Identifiable, Codable,Equatable, Hashable {
-    static func == (lhs: Gym, rhs: Gym) -> Bool {
+struct GetGymDto: Identifiable, Codable,Equatable, Hashable {
+    static func == (lhs: GetGymDto, rhs: GetGymDto) -> Bool {
         lhs.id == rhs.id
     }
     let address: String

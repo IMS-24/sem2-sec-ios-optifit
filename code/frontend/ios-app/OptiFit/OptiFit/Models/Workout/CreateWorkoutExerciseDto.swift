@@ -13,9 +13,3 @@ struct CreateWorkoutExerciseDto:Codable,Identifiable{
     var notes:String?
     var workoutSets:[CreateWorkoutSetDto]
 }
-/*
- public int Order { get; set; }
- public Guid ExerciseId { get; set; }
- public string Notes { get; set; } = null!;
- public IList<CreateWorkoutSetDto> WorkoutSets { get; set; } = new List<CreateWorkoutSetDto>();
- */

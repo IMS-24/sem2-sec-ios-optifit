@@ -10,7 +10,7 @@ import Combine
 
 @MainActor
 class MuscleViewModel: ObservableObject {
-    @Published var muscles: [Muscle] = []
+    @Published var muscles: [GetMuscleDto] = []
     @Published var searchModel = SearchMusclesDto(pageSize:10, pageIndex: 0)
     private let muscleService = MuscleService()
     @Published  var isLoading:Bool = false

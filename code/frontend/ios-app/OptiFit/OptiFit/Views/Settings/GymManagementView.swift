@@ -33,12 +33,12 @@ struct GymManagementView: View {
     }
 
     // Grouping gyms by city and zip code
-    private var groupedGyms: [CityZip: [Gym]] {
+    private var groupedGyms: [CityZip: [GetGymDto]] {
         Dictionary(grouping: gymViewModel.gyms, by: { CityZip(city: $0.city, zipCode: $0.zipCode) })
     }
 
     // Delete function
-    private func deleteGym(gym: Gym) {
+    private func deleteGym(gym: GetGymDto) {
         print("Delete gym \(gym.id)")
 //        gymViewModel.deleteGyms([gym])
     }

@@ -7,7 +7,7 @@ struct AddExerciseView: View {
 
     @State private var name: String = ""
     @State private var selectedExerciseCategory: UUID?
-    @State private var selectedMuscles: Set<Muscle> = []
+    @State private var selectedMuscles: Set<GetMuscleDto> = []
 
     @State private var description: String = ""
     

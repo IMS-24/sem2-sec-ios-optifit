@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    let profile: UserProfile?
+    let profile: UserProfileDto?
 
     var body: some View {
         Section(header: Text("Profile")) {
@@ -46,7 +46,7 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView(profile: UserProfile(
+    ProfileView(profile: UserProfileDto(
             id: UUID(),
             firstName: "First",
             lastName: "Last",

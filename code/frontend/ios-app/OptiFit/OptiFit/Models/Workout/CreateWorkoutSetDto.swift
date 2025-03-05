@@ -11,9 +11,3 @@ struct CreateWorkoutSetDto:Codable,Identifiable{
     var reps: Int?
     var weight: Double?
 }
-
-/*
- public int Order { get; set; }
- public int Reps { get; set; }
- public decimal Weight { get; set; }
- */

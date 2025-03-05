@@ -1,7 +1,9 @@
+
+//Done: 2025-03-05: 15:07
+
 import SwiftUI
 
 struct WorkoutSetsEntryView: View {
-//    @Binding var sets: [WorkoutSet]
     @Binding var sets: [CreateWorkoutSetDto]
     var body: some View {
         // Using a List enables built‑in reordering and deletion.

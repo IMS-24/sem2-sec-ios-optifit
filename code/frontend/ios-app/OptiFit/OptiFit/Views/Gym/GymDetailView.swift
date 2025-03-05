@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GymDetailView: View {
-    let gym: Gym
+    let gym: GetGymDto
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -31,7 +31,7 @@ struct GymDetailView: View {
 
 #Preview {
     GymDetailView(
-            gym: Gym(
+            gym: GetGymDto(
                     address: "Daham",
                     zipCode: 8020,
                     id: UUID(),

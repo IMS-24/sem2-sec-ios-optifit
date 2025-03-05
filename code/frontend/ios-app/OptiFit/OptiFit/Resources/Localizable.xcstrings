@@ -66,7 +66,14 @@
       }
     },
     "Add Set Info" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satz hinzufügen"
+          }
+        }
+      }
     },
     "Appearance" : {
       "localizations" : {
@@ -140,7 +147,14 @@
       }
     },
     "Calculated Stats" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berechnete Statistik"
+          }
+        }
+      }
     },
     "Calories" : {
       "extractionState" : "manual",
@@ -179,6 +193,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Support kontaktieren"
+          }
+        }
+      }
+    },
+    "Cooming Soon" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not implemented yet"
           }
         }
       }
@@ -243,9 +267,6 @@
         }
       }
     },
-    "DELETE ME" : {
-
-    },
     "Description" : {
       "localizations" : {
         "de" : {
@@ -257,40 +278,54 @@
       }
     },
     "Done" : {
-
-    },
-    "Dumm aselection" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dummy"
+            "value" : "Erledigt"
           }
         }
       }
     },
     "Duration:" : {
-
-    },
-    "Edit" : {
-
-    },
-    "End" : {
-
-    },
-    "End Workout" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Workout beenden"
+            "value" : "Dauer"
+          }
+        }
+      }
+    },
+    "Edit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeiten"
+          }
+        }
+      }
+    },
+    "End" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beenden"
           }
         }
       }
     },
     "Enter Sets" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sätze bearbeiten"
+          }
+        }
+      }
     },
     "Error" : {
       "localizations" : {
@@ -302,19 +337,22 @@
         }
       }
     },
-    "Exercise [CHECK]" : {
-
-    },
-    "Exercise Categories" : {
-
-    },
-    "Exercise Image" : {
-      "extractionState" : "stale",
+    "Exercise" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bild"
+            "value" : "Übung"
+          }
+        }
+      }
+    },
+    "Exercise Categories" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übungskategorien"
           }
         }
       }
@@ -339,44 +377,12 @@
         }
       }
     },
-    "Exercise Types" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Übungstypen"
-          }
-        }
-      }
-    },
     "Exercises" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Übungen"
-          }
-        }
-      }
-    },
-    "Exercises: %lld" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Übungen: %lld"
-          }
-        }
-      }
-    },
-    "Finish Exercise" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beenden"
           }
         }
       }
@@ -455,17 +461,6 @@
     "Loading exercise category…" : {
 
     },
-    "Loading exercise types…" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lade Übungstypen"
-          }
-        }
-      }
-    },
     "Loading gyms…" : {
       "localizations" : {
         "de" : {
@@ -495,17 +490,6 @@
     "Manage Exercise Categories" : {
 
     },
-    "Manage ExerciseTypes" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Übungstypen verwalten"
-          }
-        }
-      }
-    },
     "Manage Gyms" : {
       "localizations" : {
         "de" : {
@@ -522,17 +506,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Muskeln verwalten"
-          }
-        }
-      }
-    },
-    "Muscle Groups" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Muskel Gruppen"
           }
         }
       }
@@ -557,22 +530,15 @@
         }
       }
     },
-    "No statistics available" : {
-
-    },
-    "None specified" : {
-      "extractionState" : "stale",
+    "Notes" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keine Angabe"
+            "value" : "Notiz"
           }
         }
       }
-    },
-    "Notes" : {
-
     },
     "OK" : {
       "localizations" : {
@@ -580,17 +546,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
-          }
-        }
-      }
-    },
-    "Pause" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pause"
           }
         }
       }
@@ -625,79 +580,12 @@
         }
       }
     },
-    "Remove Image" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bild entfernen"
-          }
-        }
-      }
-    },
     "Reps" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wiederholungen"
-          }
-        }
-      }
-    },
-    "Reps: %lld" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Wiederholung: %lld"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Wiederholungen: %lld"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "Rest" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pause"
-          }
-        }
-      }
-    },
-    "Resume" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resume"
-          }
-        }
-      }
-    },
-    "RPE" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "RPE"
           }
         }
       }
@@ -735,34 +623,12 @@
     "Select Exercise Category" : {
 
     },
-    "Select Exercise Type" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Select Exercise Type"
-          }
-        }
-      }
-    },
     "Select Gym" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Studio auswählen"
-          }
-        }
-      }
-    },
-    "Select Image" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bild auswählen"
           }
         }
       }
@@ -789,17 +655,6 @@
     },
     "Set %lld:" : {
 
-    },
-    "Sets: %lld" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sets: %lld"
-          }
-        }
-      }
     },
     "Settings" : {
       "localizations" : {
@@ -843,18 +698,11 @@
     "Total Sets:" : {
 
     },
-    "Total Weight Lifted:" : {
+    "Total Time" : {
 
     },
-    "Track Exercise" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Übung tracken"
-          }
-        }
-      }
+    "Total Weight Lifted:" : {
+
     },
     "Track Workout" : {
       "localizations" : {
@@ -926,22 +774,25 @@
         }
       }
     },
-    "Weight: %.1f kg" : {
-      "extractionState" : "stale",
+    "Workout Detail" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gewicht: %.1f kg"
+            "value" : "Workout Details"
           }
         }
       }
     },
-    "Workout Detail" : {
-
-    },
     "Workout Summary" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Workout Zusammenfassung"
+          }
+        }
+      }
     },
     "Workouts" : {
       "localizations" : {

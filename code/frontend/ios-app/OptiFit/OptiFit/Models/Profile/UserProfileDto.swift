@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserProfile: Codable {
+struct UserProfileDto: Codable {
     var id: UUID
     var firstName: String
     var lastName: String

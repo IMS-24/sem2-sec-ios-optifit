@@ -10,7 +10,7 @@ import Combine
 
 @MainActor
 class GymViewModel: ObservableObject {
-    @Published var gyms: [Gym] = []
+    @Published var gyms: [GetGymDto] = []
     @Published var errorMessage: ErrorMessage?
     @Published var searchModel: SearchGymsDto = SearchGymsDto()
     @Published var isLoading: Bool = false

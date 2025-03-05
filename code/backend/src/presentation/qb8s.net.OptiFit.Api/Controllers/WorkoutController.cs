@@ -32,4 +32,16 @@ public class WorkoutController(ILogger<WorkoutController> logger) : ApiBaseContr
         var search = await Mediator.Send(new SearchWorkoutsQuery(new SearchWorkoutDto { Id = result.Id }));
         return Ok(search.Items.FirstOrDefault());
     }
+
+    [HttpGet("stats")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<GetWorkoutDto>),
+        Description = "Get Workout statistics with query parameters: from,to")]
+    public async Task<ActionResult<PaginatedResult<GetWorkoutDto>>> GetWorkoutStats(
+        [FromQuery] DateTimeOffset from,
+        [FromQuery] DateTimeOffset to)
+    {
+        logger.LogInformation("{@Name} request", nameof(GetWorkoutStats));
+        var search = await Mediator.Send(new SearchWorkoutsQuery(new SearchWorkoutDto { From = from, To = to }));
+        return Ok(search);
+    }
 }
