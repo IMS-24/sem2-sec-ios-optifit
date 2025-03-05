@@ -45,6 +45,15 @@
     "%lld" : {
 
     },
+    "%lld min" : {
+
+    },
+    "%lld reps" : {
+
+    },
+    "%lld sets" : {
+
+    },
     "Add Exercise" : {
       "localizations" : {
         "de" : {
@@ -530,6 +539,9 @@
         }
       }
     },
+    "No workout data available for this week" : {
+
+    },
     "Notes" : {
       "localizations" : {
         "de" : {
@@ -753,6 +765,9 @@
           }
         }
       }
+    },
+    "Week %lld" : {
+
     },
     "Weekly Activity" : {
       "localizations" : {
