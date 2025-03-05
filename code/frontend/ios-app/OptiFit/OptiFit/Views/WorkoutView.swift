@@ -17,27 +17,30 @@ struct WorkoutView: View {
                 
                 // Workout History List
                 List(workoutViewModel.workouts) { workout in
-                    VStack(alignment: .leading, spacing: 4) {
-//                         Format the date from startAtUtc using DateFormatter
-                        Text(DateFormatter.localizedString(from: workout.startAtUtc,
-                                                           dateStyle: .medium,
-                                                           timeStyle: .short))
-                        .font(.headline)
-                        
-                        Text(workout.description)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                        
-                        // If notes exist, display them
-                        if let notes = workout.notes, !notes.isEmpty {
-                            Text(notes)
-                                .font(.footnote)
-                                .foregroundColor(.blue)
+                    NavigationLink {
+                        WorkoutDetailView(workout: workout)
+                    } label: {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(DateFormatter.localizedString(from: workout.startAtUtc,
+                                                               dateStyle: .medium,
+                                                               timeStyle: .short))
+                            .font(.headline)
+                            
+                            Text(workout.description)
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                            
+                            if let notes = workout.notes, !notes.isEmpty {
+                                Text(notes)
+                                    .font(.footnote)
+                                    .foregroundColor(.blue)
+                            }
                         }
+                        .padding(.vertical, 5)
                     }
-                    .padding(.vertical, 5)
                 }
             }
+
             .navigationTitle("Workouts")
             .onAppear {
                 Task {

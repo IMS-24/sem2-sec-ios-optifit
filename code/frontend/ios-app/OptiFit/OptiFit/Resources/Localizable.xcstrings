@@ -247,6 +247,9 @@
         }
       }
     },
+    "Done" : {
+
+    },
     "Dumm aselection" : {
       "localizations" : {
         "de" : {
@@ -256,6 +259,9 @@
           }
         }
       }
+    },
+    "Edit" : {
+
     },
     "End Workout" : {
       "extractionState" : "stale",
@@ -267,6 +273,9 @@
           }
         }
       }
+    },
+    "End: %@" : {
+
     },
     "Enter Sets" : {
 
@@ -550,6 +559,9 @@
         }
       }
     },
+    "Notes" : {
+
+    },
     "OK" : {
       "localizations" : {
         "de" : {
@@ -797,6 +809,9 @@
         }
       }
     },
+    "Start: %@" : {
+
+    },
     "Support" : {
       "localizations" : {
         "de" : {
@@ -897,6 +912,12 @@
           }
         }
       }
+    },
+    "Workout Detail" : {
+
+    },
+    "Workout Info" : {
+
     },
     "Workouts" : {
       "localizations" : {
