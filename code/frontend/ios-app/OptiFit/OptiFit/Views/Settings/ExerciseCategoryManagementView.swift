@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct ExerciseCategoryManagementView: View {
@@ -15,7 +14,7 @@ struct ExerciseCategoryManagementView: View {
             }
                     .navigationTitle("Exercise Categories")
                     .onAppear {
-                        Task{
+                        Task {
                             await exerciseCategoriesViewModel.fetchCategories()
                         }
                     }

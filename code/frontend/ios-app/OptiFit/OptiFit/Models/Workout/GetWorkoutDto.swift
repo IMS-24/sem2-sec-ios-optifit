@@ -1,6 +1,5 @@
-
-
 import Foundation
+
 struct GetWorkoutDto: Codable, Identifiable, Hashable, Equatable {
     let id: UUID
     let description: String

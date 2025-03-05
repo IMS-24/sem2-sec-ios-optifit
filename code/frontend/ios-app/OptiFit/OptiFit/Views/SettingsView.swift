@@ -53,7 +53,7 @@ struct SettingsView: View {
             }
                     .navigationTitle("Settings")
                     .onAppear {
-                        Task{
+                        Task {
                             await userProfileViewModel.loadProfile()
                         }
                     }

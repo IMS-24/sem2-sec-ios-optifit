@@ -17,7 +17,7 @@ struct ISO8601CustomCoder {
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter
     }
-    
+
     /// Returns a JSONDecoder configured to use our custom ISO8601 date formatter.
     static func makeDecoder() -> JSONDecoder {
         let decoder = JSONDecoder()
@@ -29,13 +29,13 @@ struct ISO8601CustomCoder {
                 return date
             }
             throw DecodingError.dataCorruptedError(
-                in: container,
-                debugDescription: "Cannot decode date string \(dateString)"
+                    in: container,
+                    debugDescription: "Cannot decode date string \(dateString)"
             )
         }
         return decoder
     }
-    
+
     /// Returns a JSONEncoder configured to use our custom ISO8601 date formatter.
     static func makeEncoder() -> JSONEncoder {
         let encoder = JSONEncoder()

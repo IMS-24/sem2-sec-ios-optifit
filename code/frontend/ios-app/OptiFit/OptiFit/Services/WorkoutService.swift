@@ -6,8 +6,9 @@ class WorkoutService: ObservableObject {
     
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/workout"
     
-    func searchWorkouts(searchModel: SearchWorkoutsDto, append: Bool = false) async throws(ApiError) -> PaginatedResult<GetWorkoutDto>? {
-        guard let url = URL(string: "\(baseURL)/search") else {
+    func searchWorkouts(searchModel: SearchWorkoutsDto, append: Bool = false) async throws (ApiError) -> PaginatedResult<GetWorkoutDto>? {
+        guard let url = URL(string: "\(baseURL)/search")
+        else {
             throw ApiError.invalidURL
         }
         
@@ -43,7 +44,7 @@ class WorkoutService: ObservableObject {
         }
     }
     
-    func postWorkout(_ workout: CreateWorkoutDto) async throws(ApiError) -> GetWorkoutDto {
+    func postWorkout(_ workout: CreateWorkoutDto) async throws (ApiError) -> GetWorkoutDto {
         guard let url = URL(string: baseURL) else {
             throw ApiError.invalidURL
         }

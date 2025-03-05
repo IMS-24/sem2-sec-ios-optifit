@@ -4,9 +4,10 @@
 //
 //  Created by Markus Stoegerer on 05.03.25.
 //
+
 import Foundation
 
-struct WorkoutSummary: Codable,Equatable, Hashable{
+struct WorkoutSummary: Codable, Equatable, Hashable {
     let totalTime: Int
     let totalSets: Int
     let totalReps: Int

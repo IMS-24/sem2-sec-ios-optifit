@@ -1,5 +1,3 @@
-
-
 import Foundation
 
 struct GetWorkoutSetDto: Codable, Identifiable, Hashable, Equatable {

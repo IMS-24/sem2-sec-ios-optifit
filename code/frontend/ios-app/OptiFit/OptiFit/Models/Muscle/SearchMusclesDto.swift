@@ -9,7 +9,7 @@ import Foundation
 
 // Define a Swift model for the search parameters.
 // Adjust the default values as needed.
-struct SearchMusclesDto:Codable {
+struct SearchMusclesDto: Codable {
     var id: UUID?
     var orderBy: String?
     var orderDirection: String = "asc"

@@ -8,15 +8,15 @@ class ExerciseViewModel: ObservableObject {
     @Published var errorMessage: ErrorMessage?
     @Published var searchModel = SearchExercisesDto()
     @Published var exerciseCategories: [ExerciseCategoryDto] = []
-    
+
     // Pagination state
     private var currentPage: Int = 0
     private var totalPages: Int = 1
     @Published var isLoading: Bool = false
     @Published var isLoadingMore: Bool = false
-    
+
     private let exerciseService = ExerciseService()
-    
+
     func saveExercise(exerciseDto: CreateExerciseDto) async {
         isLoading = true
         errorMessage = nil
@@ -28,7 +28,7 @@ class ExerciseViewModel: ObservableObject {
         }
         isLoading = false
     }
-    
+
     func searchExercises() async {
         isLoading = true
         errorMessage = nil
@@ -45,7 +45,7 @@ class ExerciseViewModel: ObservableObject {
         }
         isLoading = false
     }
-    
+
     func loadMoreExercises() async {
         // Ensure we haven't reached the last page and we're not already loading more
         guard !isLoadingMore, currentPage + 1 < totalPages else {
@@ -64,7 +64,7 @@ class ExerciseViewModel: ObservableObject {
         }
         isLoadingMore = false
     }
-    
+
     func searchExerciseCategories() async {
         do {
             let exerciseCategoriesRes = try await exerciseService.fetchExerciseCategories()
@@ -75,7 +75,7 @@ class ExerciseViewModel: ObservableObject {
         }
         isLoading = false
     }
-    
+
     func updateSearchModel(_ newModel: SearchExercisesDto) {
         self.searchModel = newModel
         Task {

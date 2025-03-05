@@ -1,4 +1,3 @@
-
 struct UserStatsDto: Codable {
     let activeDays: Int
     let totalWorkouts: Int

@@ -32,14 +32,14 @@ struct ExerciseDetailView: View {
 //                            .background(Color(.systemGray6))
 //                            .cornerRadius(12)
 //                } else {
-                    Image(systemName: "figure.strengthtraining.traditional")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 200)
-                            .foregroundColor(.blue)
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(12)
+                Image(systemName: "figure.strengthtraining.traditional")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 200)
+                        .foregroundColor(.blue)
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(12)
 //                }
 
                 // Exercise Name
@@ -119,7 +119,7 @@ struct ExerciseDetailView: View {
 
                     Button(action: {
                         Task {
-                            try  await  exerciseService.deleteExercise(exerciseId: exercise.id)
+                            try await exerciseService.deleteExercise(exerciseId: exercise.id)
                         }
                     }) {
                         Label("Delete", systemImage: "trash.fill")
@@ -140,7 +140,7 @@ struct ExerciseDetailView: View {
 
 #Preview {
     ExerciseDetailView(
-        exercise: GetExerciseDto(
+            exercise: GetExerciseDto(
                     id: UUID(),
                     i18NCode: "ExerciseName",
                     description: "ExerciseDescription",

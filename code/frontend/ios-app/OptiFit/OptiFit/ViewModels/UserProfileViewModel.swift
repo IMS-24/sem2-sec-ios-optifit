@@ -8,13 +8,13 @@ class UserProfileViewModel: ObservableObject {
     @Published var stats: UserStatsDto?
     @Published var errorMessage: ErrorMessage?
     @Published var workoutSummary: [WorkoutSummary] = []
-    @Published  var isLoading:Bool = false
-    
+    @Published var isLoading: Bool = false
+
     private let profileService = ProfileService()
-    
-    func loadStats() async{
-        isLoading=true
-        errorMessage=nil
+
+    func loadStats() async {
+        isLoading = true
+        errorMessage = nil
         do {
             let fetchedStats = try await profileService.getStats()
             self.stats = fetchedStats
@@ -23,27 +23,26 @@ class UserProfileViewModel: ObservableObject {
         }
         isLoading = false
     }
-    
-    func loadProfile()async {
-        isLoading=true
-        errorMessage=nil
-        do{
+
+    func loadProfile() async {
+        isLoading = true
+        errorMessage = nil
+        do {
             let fetchedProfile = try await profileService.fetchProfile()
             self.profile = fetchedProfile
-        }
-        catch{
+        } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
         isLoading = false
     }
-    
-    
+
+
     func updateProfile(
-        firstName: String,
-        lastName: String,
-        email: String,
-        dateOfBirthUtc: Date?,
-        initialSetupDone: Bool
+            firstName: String,
+            lastName: String,
+            email: String,
+            dateOfBirthUtc: Date?,
+            initialSetupDone: Bool
     ) async {
         guard var profile = profile else {
             return
@@ -55,21 +54,23 @@ class UserProfileViewModel: ObservableObject {
         profile.email = email
         profile.dateOfBirthUtc = dateOfBirthUtc
         profile.initialSetupDone = initialSetupDone
-        
+
         do {
-            let result = try await profileService.updateProfile(profile:profile)
+            let result = try await profileService.updateProfile(profile: profile)
             self.profile = result
-            
-        }catch{
+
+        } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
 
         }
-    isLoading = false
-        
+        isLoading = false
+
     }
-    
+
     func deleteProfile() async {
-        guard let currentUser = profile else { return }
+        guard let currentUser = profile else {
+            return
+        }
         isLoading = true
         errorMessage = nil
         do {

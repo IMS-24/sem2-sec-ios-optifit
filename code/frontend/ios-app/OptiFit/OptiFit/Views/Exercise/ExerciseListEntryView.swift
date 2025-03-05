@@ -12,12 +12,12 @@ struct ExerciseListEntryView: View {
 
 #Preview {
     ExerciseListEntryView(
-        exercise: GetExerciseDto(
+            exercise: GetExerciseDto(
                     id: UUID(),
                     i18NCode: "ExerciseName",
                     description: "Some description",
                     exerciseCategoryId: UUID(),
-                    
+
 //                    muscles:
 //                    [Muscle(
 //                            id: UUID(),

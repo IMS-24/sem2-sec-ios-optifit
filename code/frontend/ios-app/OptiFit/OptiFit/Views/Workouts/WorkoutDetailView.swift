@@ -10,20 +10,20 @@ import SwiftUI
 
 struct WorkoutDetailView: View {
     let workout: GetWorkoutDto
-    
+
     @State private var isEditing = false
     @State private var descriptionText: String
     @State private var notesText: String
-    
+
     // Initialize the state with the workout’s current data.
     init(workout: GetWorkoutDto) {
         self.workout = workout
         _descriptionText = State(initialValue: workout.description)
         _notesText = State(initialValue: workout.notes ?? "")
     }
-    
+
     // MARK: - Computed Properties for Calculated Stats
-    
+
     /// Returns the formatted duration between start and end times (or "Ongoing").
     private var workoutDuration: String {
         if let end = workout.endAtUtc {
@@ -32,38 +32,42 @@ struct WorkoutDetailView: View {
         }
         return "Ongoing"
     }
-    
+
     /// The total number of exercises in the workout.
     private var totalExercises: Int {
         workout.workoutExercises?.count ?? 0
     }
-    
+
     /// The total number of sets across all exercises.
     private var totalSets: Int {
         workout.workoutExercises?.reduce(0) { result, exercise in
             result + (exercise.workoutSets?.count ?? 0)
         } ?? 0
     }
-    
+
     /// The total number of reps from all sets.
     private var totalReps: Int {
         workout.workoutExercises?.reduce(0) { result, exercise in
-            result + (exercise.workoutSets?.reduce(0) { $0 + $1.reps } ?? 0)
+            result + (exercise.workoutSets?.reduce(0) {
+                $0 + $1.reps
+            } ?? 0)
         } ?? 0
     }
-    
+
     /// Total weight lifted calculated as sum(reps × weight) for each set.
     private var totalWeightLifted: Double {
         workout.workoutExercises?.reduce(0.0) { result, exercise in
-            result + (exercise.workoutSets?.reduce(0.0) { $0 + (Double($1.reps) * $1.weight) } ?? 0.0)
+            result + (exercise.workoutSets?.reduce(0.0) {
+                $0 + (Double($1.reps) * $1.weight)
+            } ?? 0.0)
         } ?? 0.0
     }
-    
+
     /// Average weight per rep.
     private var averageWeightPerRep: Double {
         totalReps > 0 ? totalWeightLifted / Double(totalReps) : 0.0
     }
-    
+
     /// Helper to format a time interval into a string (e.g., "1h 23m 45s").
     private func formatDuration(_ interval: TimeInterval) -> String {
         let formatter = DateComponentsFormatter()
@@ -71,12 +75,12 @@ struct WorkoutDetailView: View {
         formatter.unitsStyle = .abbreviated
         return formatter.string(from: interval) ?? ""
     }
-    
+
     /// Computed property for formatted start date.
     private var formattedStart: String {
         DateFormatter.localizedString(from: workout.startAtUtc, dateStyle: .medium, timeStyle: .short)
     }
-    
+
     /// Computed property for formatted end date.
     private var formattedEnd: String {
         if let endDate = workout.endAtUtc {
@@ -89,7 +93,7 @@ struct WorkoutDetailView: View {
         }
         return "N/A"
     }
-    
+
     var body: some View {
         Form {
             // MARK: - Workout Summary Section
@@ -97,27 +101,27 @@ struct WorkoutDetailView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Start")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
                         Text(formattedStart)
                     }
                     Spacer()
                     VStack(alignment: .trailing) {
                         Text("End")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
                         Text(formattedEnd)
                     }
                 }
                 VStack(alignment: .leading) {
                     Text("Gym")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
                     Text(workout.gym.name)
-                        .font(.footnote)
+                            .font(.footnote)
                 }
             }
-            
+
             // MARK: - Description Section
             Section(header: Text("Description")) {
                 if isEditing {
@@ -126,7 +130,7 @@ struct WorkoutDetailView: View {
                     Text(descriptionText)
                 }
             }
-            
+
             // MARK: - Notes Section
             Section(header: Text("Notes")) {
                 if isEditing {
@@ -135,7 +139,7 @@ struct WorkoutDetailView: View {
                     Text(notesText)
                 }
             }
-            
+
             // MARK: - Calculated Stats Section
             Section(header: Text("Calculated Stats")) {
                 HStack {
@@ -170,14 +174,14 @@ struct WorkoutDetailView: View {
                 }
             }
         }
-        .navigationTitle("Workout Detail")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(isEditing ? "Done" : "Edit") {
-                    // When turning off editing, you could call your save function here.
-                    isEditing.toggle()
+                .navigationTitle("Workout Detail")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(isEditing ? "Done" : "Edit") {
+                            // When turning off editing, you could call your save function here.
+                            isEditing.toggle()
+                        }
+                    }
                 }
-            }
-        }
     }
 }
