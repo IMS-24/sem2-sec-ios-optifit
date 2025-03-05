@@ -5,7 +5,6 @@ struct ExerciseListGroupView: View {
 
     init(groupedExercises: [String: [GetExerciseDto]]) {
         self.groupedExercises = groupedExercises
-        print(groupedExercises)
     }
 
     var body: some View {

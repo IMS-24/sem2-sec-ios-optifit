@@ -28,10 +28,6 @@ class WorkoutService: ObservableObject {
                 throw ApiError.requestFailed
             }
             
-            if let jsonString = String(data: data, encoding: .utf8) {
-                print("JSON string: \(jsonString)")
-            }
-            
             let decoder = ISO8601CustomCoder.makeDecoder()
             return try decoder.decode(PaginatedResult<GetWorkoutDto>.self, from: data)
             
@@ -56,7 +52,6 @@ class WorkoutService: ObservableObject {
         do {
             let encoder = ISO8601CustomCoder.makeEncoder()
             let jsonData = try encoder.encode(workout)
-            print("Request JSON:", String(data: jsonData, encoding: .utf8) ?? "nil")
             request.httpBody = jsonData
             
             let (data, response) = try await URLSession.shared.data(for: request)

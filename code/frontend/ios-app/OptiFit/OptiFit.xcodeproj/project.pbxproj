@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		28DE01542D78D55D00FE943A /* MSAL in Frameworks */ = {isa = PBXBuildFile; productRef = 28DE01532D78D55D00FE943A /* MSAL */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		288C8F2F2D609207002B0719 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28DE01542D78D55D00FE943A /* MSAL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,7 @@
 			);
 			name = OptiFit;
 			packageProductDependencies = (
+				28DE01532D78D55D00FE943A /* MSAL */,
 			);
 			productName = OptiFit;
 			productReference = 288C8F1E2D609205002B0719 /* OptiFit.app */;
@@ -209,6 +215,9 @@
 			);
 			mainGroup = 288C8F152D609205002B0719;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				28DE01522D78D55D00FE943A /* XCRemoteSwiftPackageReference "microsoft-authentication-library-for-objc" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 288C8F1F2D609205002B0719 /* Products */;
 			projectDirPath = "";
@@ -584,6 +593,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		28DE01522D78D55D00FE943A /* XCRemoteSwiftPackageReference "microsoft-authentication-library-for-objc" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AzureAD/microsoft-authentication-library-for-objc";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		28DE01532D78D55D00FE943A /* MSAL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28DE01522D78D55D00FE943A /* XCRemoteSwiftPackageReference "microsoft-authentication-library-for-objc" */;
+			productName = MSAL;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 288C8F162D609205002B0719 /* Project object */;
 }

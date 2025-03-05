@@ -3,57 +3,69 @@ import SwiftUI
 struct WorkoutView: View {
     @StateObject private var workoutViewModel = WorkoutViewModel()
     @State private var navigateToStartWorkout = false
-
+    
+    // Group workouts by month, using the month and year as key.
+    private var groupedWorkouts: [String: [GetWorkoutDto]] {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM yyyy"  // e.g., "Mar 2025"
+        return Dictionary(grouping: workoutViewModel.workouts, by: { formatter.string(from: $0.startAtUtc) })
+    }
+    
     var body: some View {
         NavigationStack {
-            VStack {
-                Button("Start Workout") {
-                    navigateToStartWorkout = true
-                }
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.large)
-                        .padding(.horizontal)
-                        .padding(.top)
-
-                // Workout History List
-                List(workoutViewModel.workouts) { workout in
-                    NavigationLink {
-                        WorkoutDetailView(workout: workout)
-                    } label: {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(DateFormatter.localizedString(from: workout.startAtUtc,
-                                    dateStyle: .medium,
-                                    timeStyle: .short))
-                                    .font(.headline)
-
-                            Text(workout.description)
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-
-                            if let notes = workout.notes, !notes.isEmpty {
-                                Text(notes)
-                                        .font(.footnote)
-                                        .foregroundColor(.blue)
+            List {
+                // Iterate over each month group (sorted so the latest months appear first)
+                ForEach(groupedWorkouts.keys.sorted(by: { $0 > $1 }), id: \.self) { month in
+                    Section(header:
+                                Text(month)
+                        .font(.headline)
+                        .foregroundColor(Color("PrimaryText"))
+                    ) {
+                        ForEach(groupedWorkouts[month] ?? []) { workout in
+                            NavigationLink {
+                                WorkoutDetailView(workout: workout)
+                            } label: {
+                                WorkoutListEntryView(workout: workout)
+                            }
+                            .onAppear {
+                                // If this workout is the last one, load more workouts.
+                                if workout == workoutViewModel.workouts.last {
+                                    Task {
+                                        await workoutViewModel.loadMoreWorkouts()
+                                    }
+                                }
                             }
                         }
-                                .padding(.vertical, 5)
                     }
                 }
             }
-
-                    .navigationTitle("Workouts")
-                    .onAppear {
-                        Task {
-                            await workoutViewModel.searchWorkouts()
-                        }
+            .listStyle(InsetGroupedListStyle())
+            .navigationTitle("Workouts")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        navigateToStartWorkout = true
+                    } label: {
+                        Image(systemName: "plus")
                     }
-                    .alert(item: $workoutViewModel.errorMessage) { error in
-                        Alert(title: Text("Error"), message: Text(error.message), dismissButton: .default(Text("OK")))
-                    }
-                    .navigationDestination(isPresented: $navigateToStartWorkout) {
-                        StartWorkoutView()
-                    }
+                    .tint(Color("PrimaryAccent"))
+                }
+            }
+            .navigationDestination(isPresented: $navigateToStartWorkout) {
+                StartWorkoutView()
+            }
+            .onAppear {
+                Task {
+                    await workoutViewModel.searchWorkouts()
+                }
+            }
+            .alert(item: $workoutViewModel.errorMessage) { error in
+                Alert(title: Text("Error"),
+                      message: Text(error.message),
+                      dismissButton: .default(Text("OK")))
+            }
         }
+        .background(Color("PrimaryBackground").ignoresSafeArea())
     }
 }
 

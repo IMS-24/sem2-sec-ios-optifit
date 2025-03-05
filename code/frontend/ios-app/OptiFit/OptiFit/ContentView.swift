@@ -24,6 +24,10 @@ struct ContentView: View {
 struct NavigationBarView: View {
     var body: some View {
         TabView {
+            Tab("Login",systemImage: "key.fill")
+            {
+                LoginView()
+            }
             Tab("Home", systemImage: "house.fill") {
                 HomeView()
             }

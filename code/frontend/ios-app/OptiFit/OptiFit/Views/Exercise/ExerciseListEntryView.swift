@@ -2,13 +2,12 @@ import SwiftUI
 
 struct ExerciseListEntryView: View {
     var exercise: GetExerciseDto
-
+    
     var body: some View {
-        NavigationLink(destination: ExerciseDetailView(exercise: exercise)) {
-            Text(exercise.i18NCode)
-        }
+        Text(exercise.i18NCode) // No NavigationLink here
     }
 }
+
 
 #Preview {
     ExerciseListEntryView(
@@ -17,13 +16,6 @@ struct ExerciseListEntryView: View {
                     i18NCode: "ExerciseName",
                     description: "Some description",
                     exerciseCategoryId: UUID(),
-
-//                    muscles:
-//                    [Muscle(
-//                            id: UUID(),
-//                            i18NCode: "Muscle"
-//                    )
-//                    ],
                     exerciseCategory: "ExerciseCategory"
 //                    imageURL: nil
             )

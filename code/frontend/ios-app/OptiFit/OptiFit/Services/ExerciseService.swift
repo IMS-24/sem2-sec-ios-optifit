@@ -80,7 +80,7 @@ class ExerciseService: ObservableObject {
     }
     
     func deleteExercise(exerciseId: UUID) async throws (ApiError) -> Bool {
-        guard let url = URL(string: "\(baseURL)") else {
+        guard let url = URL(string: "\(baseURL)/\(exerciseId)") else {
             throw .invalidURL
         }
         do {

@@ -132,6 +132,9 @@
         }
       }
     },
+    "Authorize" : {
+
+    },
     "Avg Weight/Rep:" : {
 
     },
@@ -164,6 +167,9 @@
           }
         }
       }
+    },
+    "Call API" : {
+
     },
     "Calories" : {
       "extractionState" : "manual",
@@ -316,6 +322,9 @@
         }
       }
     },
+    "Edit Profile" : {
+
+    },
     "End" : {
       "localizations" : {
         "de" : {
@@ -467,6 +476,9 @@
         }
       }
     },
+    "Loading …" : {
+
+    },
     "Loading exercise category…" : {
 
     },
@@ -479,6 +491,9 @@
           }
         }
       }
+    },
+    "Login" : {
+
     },
     "Logout" : {
       "localizations" : {
@@ -582,6 +597,9 @@
         }
       }
     },
+    "Refresh Token" : {
+
+    },
     "Registered at: %@" : {
       "localizations" : {
         "de" : {
@@ -678,6 +696,9 @@
         }
       }
     },
+    "Sign Out" : {
+
+    },
     "Start" : {
 
     },
@@ -726,6 +747,9 @@
         }
       }
     },
+    "Type" : {
+
+    },
     "Type:" : {
       "localizations" : {
         "de" : {
@@ -757,6 +781,7 @@
       }
     },
     "View Exercises" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

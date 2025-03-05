@@ -65,21 +65,30 @@ struct HomeView: View {
             ScrollView {
                 VStack(spacing: 16) {
                     HeaderView()
+                        .padding()
+                        .background(Color("SecondaryBackground"))
+                        .cornerRadius(10)
                     
                     // Pass aggregated summaries and currentMonday to WorkoutSummaryView.
                     WorkoutSummaryView(data: aggregatedSummaries, currentMonday: currentMonday)
+                        .padding()
+                        .background(Color("SecondaryBackground"))
+                        .cornerRadius(10)
                     
                     QuickActionsView()
+                        .padding()
+                        .background(Color("SecondaryBackground"))
+                        .cornerRadius(10)
                 }
                 .padding()
                 .gesture(
                     DragGesture(minimumDistance: 30)
                         .onEnded { value in
                             if abs(value.translation.width) > abs(value.translation.height) {
-                                if value.translation.width < 0 {
+                                if value.translation.width > 0 {
                                     // Left swipe: previous week.
                                     weekOffset -= 1
-                                } else if value.translation.width > 0 {
+                                } else if value.translation.width < 0 {
                                     // Right swipe: move toward current week, but not beyond.
                                     if weekOffset < 0 {
                                         weekOffset += 1
@@ -89,16 +98,27 @@ struct HomeView: View {
                         }
                 )
             }
+            
+           // .background(Color("PrimaryBackground").ignoresSafeArea())
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                // Set the navigation bar title color with a custom view
+                ToolbarItem(placement: .principal) {
+                    Text("Home")
+                        .font(.headline)
+                        .foregroundColor(Color("PrimaryText"))
+                }
+            }
         }
+        .accentColor(Color("PrimaryAccent"))
         .onAppear {
             Task {
                 await userProfileViewModel.loadStats()
                 updateWeek()
             }
         }
-        .onChange(of: weekOffset) { _ in
+        .onChange(of: weekOffset) {
             updateWeek()
         }
         .alert(item: $userProfileViewModel.errorMessage) { error in

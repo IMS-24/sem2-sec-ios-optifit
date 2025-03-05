@@ -40,7 +40,6 @@ struct GymManagementView: View {
     // Delete function
     private func deleteGym(gym: GetGymDto) {
         print("Delete gym \(gym.id)")
-//        gymViewModel.deleteGyms([gym])
     }
 }
 

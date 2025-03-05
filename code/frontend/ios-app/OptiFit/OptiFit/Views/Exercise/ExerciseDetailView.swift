@@ -2,37 +2,30 @@ import SwiftUI
 
 struct ExerciseDetailView: View {
     let exercise: GetExerciseDto
-    @StateObject private var exerciseService = ExerciseService()
-
+    @StateObject private var exerciseViewModel = ExerciseViewModel()
+    @Environment(\.dismiss) private var dismiss
+    
+    // Editing state.
+    @State private var isEditing = false
+    // Editable copies of fields.
+    @State private var editableName: String
+    @State private var editableDescription: String
+    @State private var editableCategory: String
+    
+    // Initialize editable states from the passed exercise.
+    init(exercise: GetExerciseDto) {
+        self.exercise = exercise
+        _editableName = State(initialValue: exercise.i18NCode)
+        _editableDescription = State(initialValue: exercise.description ?? "")
+        _editableCategory = State(initialValue: exercise.exerciseCategory)
+    }
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                // Exercise Image
-//                if let imageURL = exercise.imageURL {
-//                    AsyncImage(url: imageURL) { phase in
-//                        switch phase {
-//                        case .empty:
-//                            ProgressView().frame(height: 200)
-//                        case .success(let image):
-//                            image
-//                                    .resizable()
-//                                    .scaledToFit()
-//                                    .frame(height: 200)
-//                        case .failure:
-//                            Image(systemName: "photo")
-//                                    .resizable()
-//                                    .scaledToFit()
-//                                    .frame(height: 200)
-//                                    .foregroundColor(.gray)
-//                        @unknown default:
-//                            EmptyView()
-//                        }
-//                    }
-//                            .padding()
-//                            .background(Color(.systemGray6))
-//                            .cornerRadius(12)
-//                } else {
-                Image(systemName: "figure.strengthtraining.traditional")
+                // Image Section with card-like style.
+                Group {
+                    Image(systemName: "figure.strengthtraining.traditional")
                         .resizable()
                         .scaledToFit()
                         .frame(height: 200)
@@ -40,113 +33,154 @@ struct ExerciseDetailView: View {
                         .padding()
                         .background(Color(.systemGray6))
                         .cornerRadius(12)
-//                }
-
-                // Exercise Name
-                Text(exercise.i18NCode)
+                }
+                .padding(.horizontal)
+                
+                // Exercise Name: Editable if in edit mode.
+                if isEditing {
+                    TextField("Exercise Name", text: $editableName)
                         .font(.largeTitle)
                         .fontWeight(.bold)
-
+                        .padding(.horizontal)
+                } else {
+                    Text(editableName)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.horizontal)
+                }
+                
                 Divider()
-
-                // Description
+                    .padding(.horizontal)
+                
+                // Description Section.
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Description")
-                            .font(.headline)
-                    Text(exercise.description ?? "No description available.")
+                        .font(.headline)
+                        .padding(.horizontal)
+                    
+                    if isEditing {
+                        TextEditor(text: $editableDescription)
+                            .frame(minHeight: 100)
+                            .padding(.horizontal)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                            )
+                    } else {
+                        Text(editableDescription.isEmpty ? "No description available." : editableDescription)
                             .font(.body)
                             .foregroundColor(.gray)
                             .multilineTextAlignment(.leading)
+                            .padding(.horizontal)
+                    }
                 }
-
+                
                 Divider()
-
-                // Exercise Type
+                    .padding(.horizontal)
+                
+                // Exercise Type Section.
                 HStack {
                     Text("Type:")
-                            .font(.headline)
-                    Text(exercise.exerciseCategory.capitalized)
+                        .font(.headline)
+                        .padding(.horizontal)
+                    if isEditing {
+                        TextField("Type", text: $editableCategory)
                             .font(.subheadline)
                             .foregroundColor(.gray)
-                }
-
-                // Muscle Groups
-//                VStack(alignment: .leading) {
-//                    Text("Muscle Groups")
-//                            .font(.headline)
-//
-//                    if exercise.muscleGroups.isEmpty {
-//                        Text("None specified")
-//                                .foregroundColor(.gray)
-//                    } else {
-//                        ForEach(exercise.muscleGroups, id: \.id) { muscleGroup in
-//                            Text("• \(muscleGroup.i18NCode.capitalized)")
-//                                    .foregroundColor(.secondary)
-//                        }
-//                    }
-//                }
-
-                Divider()
-
-                // Muscles
-                VStack(alignment: .leading) {
-                    Text("Muscles")
-                            .font(.headline)
-
-//                    if exercise.muscles.isEmpty {
-//                        Text("None specified")
-//                                .foregroundColor(.gray)
-//                    } else {
-//                        ForEach(exercise.muscles, id: \.id) { muscle in
-//                            Text("• \(muscle.i18NCode.capitalized)")
-//                                    .foregroundColor(.secondary)
-//                        }
-//                    }
-                }
-
-                // Action Buttons
-                HStack {
-                    Button(action: {
-                        print("Save tapped")
-                    }) {
-                        Label("Save", systemImage: "plus.app.fill")
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(8)
+                            .padding(.horizontal)
+                    } else {
+                        Text(editableCategory.capitalized)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .padding(.horizontal)
                     }
-
-                    Button(action: {
-                        Task {
-                            try await exerciseService.deleteExercise(exerciseId: exercise.id)
-                        }
-                    }) {
-                        Label("Delete", systemImage: "trash.fill")
+                }
+                
+                Divider()
+                    .padding(.horizontal)
+                
+                // Action Buttons.
+                HStack(spacing: 16) {
+//                    if isEditing {
+//                        Button(action: {
+//                            // Save edits.
+//                            Task {
+//                                // Replace with actual update API call.
+//                                print("Saving changes: \(editableName), \(editableDescription), \(editableCategory)")
+//                                isEditing = false
+//                            }
+//                        }) {
+//                            Label("Save", systemImage: "checkmark.circle.fill")
+//                                .frame(maxWidth: .infinity)
+//                                .padding()
+//                                .background(Color.blue)
+//                                .foregroundColor(.white)
+//                                .cornerRadius(8)
+//                        }
+//                        
+//                        Button(action: {
+//                            // Cancel editing: revert changes.
+//                            editableName = exercise.i18NCode
+//                            editableDescription = exercise.description ?? ""
+//                            editableCategory = exercise.exerciseCategory
+//                            isEditing = false
+//                        }) {
+//                            Label("Cancel", systemImage: "xmark.circle.fill")
+//                                .frame(maxWidth: .infinity)
+//                                .padding()
+//                                .background(Color.gray)
+//                                .foregroundColor(.white)
+//                                .cornerRadius(8)
+//                        }
+//                    } else {
+//                        Button(action: {
+//                            // Toggle edit mode.
+//                            isEditing = true
+//                        }) {
+//                            Label("Edit", systemImage: "pencil")
+//                                .frame(maxWidth: .infinity)
+//                                .padding()
+//                                .background(Color.blue)
+//                                .foregroundColor(.white)
+//                                .cornerRadius(8)
+//                        }
+                        
+                        Button(action: {
+                            Task {
+                             await exerciseViewModel.deleteExercise(exercise.id)
+                                    // After deletion, switch back to the overview.
+                                    dismiss()
+                            
+                            }
+                        }) {
+                            Label("Delete", systemImage: "trash.fill")
                                 .frame(maxWidth: .infinity)
                                 .padding()
                                 .background(Color.red)
                                 .foregroundColor(.white)
                                 .cornerRadius(8)
-                    }
+                        }
+//                    }
                 }
-                        .padding(.top, 10)
+                .padding(.horizontal)
+                .padding(.top, 10)
             }
-                    .padding()
+            .padding(.vertical)
         }
-                .navigationTitle(exercise.i18NCode)
+        .navigationTitle(editableName)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
     ExerciseDetailView(
-            exercise: GetExerciseDto(
-                    id: UUID(),
-                    i18NCode: "ExerciseName",
-                    description: "ExerciseDescription",
-                    exerciseCategoryId: UUID(),
-                    exerciseCategory: "ExerciseCategory"//,
-//                    imageURL: URL(string: "https://example.com/exercise.jpg")
-            )
+        exercise: GetExerciseDto(
+            id: UUID(),
+            i18NCode: "ExerciseName",
+            description: "ExerciseDescription",
+            exerciseCategoryId: UUID(),
+            exerciseCategory: "ExerciseCategory"
+            //imageURL: nil
+        )
     )
 }

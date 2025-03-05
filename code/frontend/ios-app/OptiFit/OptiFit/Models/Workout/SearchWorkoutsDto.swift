@@ -1,7 +1,7 @@
 import Foundation
 
 struct SearchWorkoutsDto: Codable {
-    var pageSize: Int = 100
+    var pageSize: Int = 10
     var pageIndex: Int = 0
     var orderBy: String?
     var orderDirection: String = "asc"

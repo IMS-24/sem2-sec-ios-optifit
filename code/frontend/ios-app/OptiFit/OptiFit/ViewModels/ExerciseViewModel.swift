@@ -28,6 +28,24 @@ class ExerciseViewModel: ObservableObject {
         }
         isLoading = false
     }
+    func deleteExercise(_ id: UUID) async {
+        // Begin loading.
+        isLoading = true
+        errorMessage = nil
+        defer {
+            isLoading = false
+        }
+        do {
+            // Attempt deletion via the service.
+            if try await exerciseService.deleteExercise(exerciseId: id){
+                // Remove the deleted exercise from the array.
+                exercises.removeAll { $0.id == id }
+            }
+        } catch {
+            errorMessage = ErrorMessage(message: error.localizedDescription)
+        }
+    }
+
 
     func searchExercises() async {
         isLoading = true
@@ -69,7 +87,6 @@ class ExerciseViewModel: ObservableObject {
         do {
             let exerciseCategoriesRes = try await exerciseService.fetchExerciseCategories()
             exerciseCategories = exerciseCategoriesRes
-            print(exerciseCategoriesRes)
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }

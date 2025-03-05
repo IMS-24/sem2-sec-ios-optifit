@@ -46,7 +46,7 @@ public class ExerciseController(ILogger<ExerciseController> logger)
     public async Task<ActionResult<GetExerciseDto>> DeleteExercise(Guid id)
     {
         logger.LogInformation("{@Name} request : {@Id}", nameof(DeleteExercise), id);
-        await Mediator.Send(new DeleteExerciseCommand(id));
+        await Mediator.Send(new DeleteExerciseCommand(new Guid("275cfdca-c686-4ea1-80b1-f2425b1602c5"), id));
         return Ok();
     }
 }
