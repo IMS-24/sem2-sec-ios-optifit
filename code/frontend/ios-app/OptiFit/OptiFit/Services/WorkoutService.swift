@@ -58,7 +58,7 @@ class WorkoutService: ObservableObject {
             if let httpResponse = response as? HTTPURLResponse,
                !(200...299).contains(httpResponse.statusCode) {
                 print("Server returned:", httpResponse.statusCode)
-                print("Server response:" , String(data: data, encoding: .utf8))
+                print("Server response:" , String(data: data, encoding: .utf8) ?? String("<No Data>"))
                 throw ApiError.requestFailed
             }
             

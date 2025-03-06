@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%.2f" : {
+
+    },
     "%.2f kg" : {
 
     },
@@ -209,6 +212,9 @@
         }
       }
     },
+    "Coming Soon" : {
+
+    },
     "Contact Support" : {
       "localizations" : {
         "de" : {
@@ -220,6 +226,7 @@
       }
     },
     "Cooming Soon" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -329,6 +336,9 @@
         }
       }
     },
+    "Edit Exercise" : {
+
+    },
     "Edit Profile" : {
 
     },
@@ -343,6 +353,7 @@
       }
     },
     "Enter Sets" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -565,6 +576,12 @@
         }
       }
     },
+    "No sets added yet." : {
+
+    },
+    "No sets added." : {
+
+    },
     "No workout data available for this week" : {
 
     },
@@ -587,6 +604,12 @@
           }
         }
       }
+    },
+    "Order" : {
+
+    },
+    "Order: %lld" : {
+
     },
     "Please wait" : {
       "localizations" : {
@@ -627,6 +650,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wiederholungen"
+          }
+        }
+      }
+    },
+    "Reps: %lld, Weight: %.2f" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reps: %1$lld, Weight: %2$.2f"
           }
         }
       }
@@ -694,7 +727,13 @@
         }
       }
     },
+    "Set %lld" : {
+
+    },
     "Set %lld:" : {
+
+    },
+    "Sets" : {
 
     },
     "Settings" : {
@@ -736,13 +775,22 @@
     "Total Exercises:" : {
 
     },
+    "Total Reps" : {
+
+    },
     "Total Reps:" : {
+
+    },
+    "Total Sets" : {
 
     },
     "Total Sets:" : {
 
     },
     "Total Time" : {
+
+    },
+    "Total Weight" : {
 
     },
     "Total Weight Lifted:" : {

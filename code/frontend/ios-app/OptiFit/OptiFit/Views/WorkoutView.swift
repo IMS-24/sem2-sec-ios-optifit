@@ -52,7 +52,7 @@ struct WorkoutView: View {
                 }
             }
             .navigationDestination(isPresented: $navigateToStartWorkout) {
-                StartWorkoutView()
+                WorkoutStartView()
             }
             .onAppear {
                 Task {

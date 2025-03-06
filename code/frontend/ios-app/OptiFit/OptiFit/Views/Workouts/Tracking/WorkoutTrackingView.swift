@@ -19,7 +19,7 @@ struct WorkoutTrackingView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            // First header row: Workout Category (Motto)
+            // Header: Workout category (motto)
             HStack {
                 Text(exerciseCategory.i18NCode)
                     .font(.title2)
@@ -29,7 +29,7 @@ struct WorkoutTrackingView: View {
             }
             .padding(.horizontal)
             
-            // Second header row: Gym and Start Time
+            // Header: Gym name & city, Start time
             HStack {
                 HStack(spacing: 4) {
                     Image(systemName: "mappin.and.ellipse")
@@ -49,7 +49,7 @@ struct WorkoutTrackingView: View {
             }
             .padding(.horizontal)
             
-            // Timer displayed centered outside the header rows.
+            // Timer (centered)
             HStack {
                 Spacer()
                 HStack(spacing: 4) {
@@ -77,7 +77,7 @@ struct WorkoutTrackingView: View {
             }
             .padding(.horizontal)
             
-            // Exercise List Section (expandable list)
+            // Exercise List Section
             if workoutExercises.isEmpty {
                 Text("No exercises added yet.")
                     .foregroundColor(.gray)
@@ -85,8 +85,11 @@ struct WorkoutTrackingView: View {
                     .padding(.horizontal)
             } else {
                 List {
-                    ForEach(workoutExercises) { workoutExercise in
-                        Text(workoutExercise.exercise.i18NCode)
+                    // Use binding ForEach so the edit view can modify the exercise.
+                    ForEach($workoutExercises) { $workoutExercise in
+                        NavigationLink(destination: WorkoutExerciseEditView(workoutExercise: $workoutExercise)) {
+                            WorkoutExerciseListEntryView(workoutExercise: $workoutExercise)
+                        }
                     }
                     .onDelete(perform: deleteExercise)
                     .onMove(perform: moveExercise)
@@ -96,7 +99,7 @@ struct WorkoutTrackingView: View {
             
             Spacer()
             
-            // Bottom action buttons: Save and Cancel (small style)
+            // Bottom Action Buttons: Save and Cancel
             HStack {
                 Button(action: saveWorkout) {
                     Label("Save", systemImage: "checkmark")
@@ -106,7 +109,7 @@ struct WorkoutTrackingView: View {
                 
                 Spacer()
                 
-                Button(action: { showCancelConfirmation = true }) {
+                Button(action: cancelWorkout) {
                     Label("Cancel", systemImage: "xmark")
                 }
                 .buttonStyle(.bordered)
@@ -119,7 +122,7 @@ struct WorkoutTrackingView: View {
         .navigationTitle("Track Workout")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            // Small plus button in the top-right to add an exercise.
+            // Plus button to add an exercise.
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     navigateToExerciseSheet = true
@@ -128,16 +131,19 @@ struct WorkoutTrackingView: View {
                 }
             }
         }
-        // Sheet for selecting an exercise.
+        // Sheet for selecting a new exercise.
         .sheet(isPresented: $navigateToExerciseSheet) {
             NavigationStack {
                 ExerciseSelectionView(
                     exerciseCategoryId: exerciseCategory.id,
-                    onExerciseSelected: { workoutExercise in
-                        workoutExercises.append(workoutExercise)
+                    onExerciseSelected: { newExercise in
+                        // Set order for the new exercise before appending.
+                        var newExerciseWithOrder = newExercise
+                        newExerciseWithOrder.order = workoutExercises.count + 1
+                        workoutExercises.append(newExerciseWithOrder)
                         navigateToExerciseSheet = false
                     },
-                    order:  workoutExercises.count+1
+                    order: workoutExercises.count + 1
                 )
             }
         }
@@ -152,6 +158,7 @@ struct WorkoutTrackingView: View {
                 secondaryButton: .cancel()
             )
         }
+        // Error alert.
         .alert(item: $workoutViewModel.errorMessage) { error in
             Alert(title: Text("Error"),
                   message: Text(error.message),
@@ -192,26 +199,24 @@ struct WorkoutTrackingView: View {
     
     private func deleteExercise(at offsets: IndexSet) {
         workoutExercises.remove(atOffsets: offsets)
+        updateExerciseOrders()
     }
     
     private func moveExercise(from source: IndexSet, to destination: Int) {
         workoutExercises.move(fromOffsets: source, toOffset: destination)
+        updateExerciseOrders()
+    }
+    
+    // Update each exercise's order property based on its current index.
+    private func updateExerciseOrders() {
+        for index in workoutExercises.indices {
+            workoutExercises[index].order = index + 1
+        }
     }
     
     // MARK: - Save Workout
     
     private func saveWorkout() {
-//        let createWorkoutExerciseDtos: [CreateWorkoutExerciseDto] = workoutExercises.map { workoutExercise in
-//            CreateWorkoutExerciseDto(
-//                
-//                order: 1,
-//                exercise: workoutExercise.exercise,
-//                notes: "TODO",
-//                workoutSets: workoutExercise.workoutSets.map { set in
-//                    CreateWorkoutSetDto(order: set.order, reps: set.reps!, weight: set.weight!)
-//                }
-//            )
-//        }
         let workout = CreateWorkoutDto(
             description: description,
             startAtUtc: workoutStartDate,
@@ -225,12 +230,8 @@ struct WorkoutTrackingView: View {
             dismiss()
         }
     }
-}
-
-#Preview {
-    WorkoutTrackingView(
-        gym: GetGymDto(address: "Daham", zipCode: 8020, id: UUID(), name: "John Reed", city: "Graz"),
-        exerciseCategory: ExerciseCategoryDto(id: UUID(), i18NCode: "Legs", exerciseIds: []),
-        workoutStartDate: Date()
-    )
+    private func cancelWorkout(){
+         showCancelConfirmation = true
+        dismiss()
+    }
 }
