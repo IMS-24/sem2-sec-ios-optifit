@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
+
     @StateObject private var userProfileViewModel = UserProfileViewModel()
     @StateObject private var workoutViewModel = WorkoutViewModel()
     

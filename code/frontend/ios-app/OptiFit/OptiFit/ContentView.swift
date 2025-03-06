@@ -8,39 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var authViewModel = AuthViewModel()
+    
     var body: some View {
-//        HStack {
-//            WelcomePage(appTitle: "OptiFit", appVersion: "Beta V1.0.0")
-
-//            }
-        NavigationBarView()
+        Group {
+            if authViewModel.accessToken != nil {
+                AuthContentView()
+                    .environmentObject(authViewModel)
+            } else {
+                LoginView()
+                    .environmentObject(authViewModel)
+            }
+        }
+        // Optionally animate the transition between views
+        .animation(.easeInOut, value: authViewModel.accessToken)
     }
 }
-
 #Preview {
     ContentView()
-}
-
-struct NavigationBarView: View {
-    var body: some View {
-        TabView {
-            Tab("Login",systemImage: "key.fill")
-            {
-                LoginView()
-            }
-            Tab("Home", systemImage: "house.fill") {
-                HomeView()
-            }
-            Tab("Workouts", systemImage: "gym.bag.fill") {
-                WorkoutView()
-            }
-            Tab("Exercises", systemImage: "dumbbell.fill") {
-                ExerciseView()
-            }
-            Tab("Settings", systemImage: "gearshape.fill") {
-                SettingsView()
-            }
-
-        }
-    }
 }

@@ -97,6 +97,7 @@
     },
     "ApplicationName" : {
       "comment" : "OptiFit",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -335,9 +336,6 @@
     "Edit Exercise" : {
 
     },
-    "Edit Profile" : {
-
-    },
     "End" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -509,9 +507,6 @@
           }
         }
       }
-    },
-    "Login" : {
-
     },
     "Logout" : {
       "localizations" : {
