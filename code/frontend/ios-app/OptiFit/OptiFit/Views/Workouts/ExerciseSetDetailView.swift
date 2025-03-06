@@ -5,19 +5,22 @@ import SwiftUI
 struct ExerciseSetDetailView: View {
     let selectedExercise: GetExerciseDto
     @State private var createWorkoutExerciseDto: CreateWorkoutExerciseDto
+    let order: Int
 
-    init(selectedExercise: GetExerciseDto, onSave: @escaping (CreateWorkoutExerciseDto) -> Void) {
+    init(selectedExercise: GetExerciseDto, order: Int, onSave: @escaping (CreateWorkoutExerciseDto) -> Void) {
+        self.order = order
         self.selectedExercise = selectedExercise
         _createWorkoutExerciseDto = State(initialValue: CreateWorkoutExerciseDto(
-                order: 1,
-                exerciseId: selectedExercise.id,
+            id:UUID(),
+                order: order,
+                exercise: selectedExercise,
                 notes: "",
                 workoutSets: []
         ))
         self.onSave = onSave
     }
 
-    let onSave: (CreateWorkoutExerciseDto) -> Void
+    public let onSave: (CreateWorkoutExerciseDto) -> Void
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -49,11 +52,20 @@ struct ExerciseSetDetailView: View {
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button("Save") {
-                                let workoutExercise = CreateWorkoutExerciseDto(order: 1, exerciseId: selectedExercise.id, workoutSets: createWorkoutExerciseDto.workoutSets)
+                                let workoutExercise = CreateWorkoutExerciseDto(id:UUID(),order: order, exercise: selectedExercise, workoutSets: createWorkoutExerciseDto.workoutSets)
                                 onSave(workoutExercise)
                             }
                         }
                     }
         }
+    }
+}
+struct LazyView<Content: View>: View {
+    let build: () -> Content
+    init(_ build: @escaping () -> Content) {
+        self.build = build
+    }
+    var body: Content {
+        build()
     }
 }

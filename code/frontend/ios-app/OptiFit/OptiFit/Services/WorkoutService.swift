@@ -58,13 +58,20 @@ class WorkoutService: ObservableObject {
             if let httpResponse = response as? HTTPURLResponse,
                !(200...299).contains(httpResponse.statusCode) {
                 print("Server returned:", httpResponse.statusCode)
+                print("Server response:" , String(data: data, encoding: .utf8))
                 throw ApiError.requestFailed
             }
             
             let decoder = ISO8601CustomCoder.makeDecoder()
             return try decoder.decode(GetWorkoutDto.self, from: data)
         } catch {
-            throw ApiError.decodingFailed
+            if error is DecodingError {
+                throw ApiError.decodingFailed
+            }
+            else{
+                throw ApiError.requestFailed
+            }
+            
         }
     }
 }

@@ -5,6 +5,7 @@
 
     },
     "%@ - Day at %@ started at %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -111,6 +112,9 @@
         }
       }
     },
+    "Are you sure you want to cancel this workout?" : {
+
+    },
     "Are you sure?" : {
       "localizations" : {
         "de" : {
@@ -191,6 +195,9 @@
           }
         }
       }
+    },
+    "Cancel Workout" : {
+
     },
     "City: %@" : {
       "localizations" : {
@@ -544,7 +551,11 @@
         }
       }
     },
+    "No exercises added yet." : {
+
+    },
     "No exercises performed yet." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

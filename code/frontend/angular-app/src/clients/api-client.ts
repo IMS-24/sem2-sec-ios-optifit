@@ -1164,7 +1164,7 @@ export interface GetWorkoutDto extends BaseDto {
 export interface WorkoutExerciseDto extends BaseDto {
     order?: number;
     workoutId?: string;
-    exerciseId?: string;
+    exercise?: GetExerciseDto;
     workoutSets?: GetWorkoutSetDto[];
     notes?: string;
 }
@@ -1200,8 +1200,8 @@ export interface CreateWorkoutDto {
 
 export interface CreateWorkoutExerciseDto {
     order?: number;
-    exerciseId?: string;
-    notes?: string;
+    exercise?: GetExerciseDto;
+    notes?: string | null;
     workoutSets?: CreateWorkoutSetDto[];
 }
 

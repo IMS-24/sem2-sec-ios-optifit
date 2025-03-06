@@ -8,9 +8,9 @@
 import Foundation
 
 struct CreateWorkoutExerciseDto: Codable, Identifiable {
-    var id: UUID?
+    var id: UUID
     var order: Int
-    var exerciseId: UUID
+    var exercise: GetExerciseDto
     var notes: String?
     var workoutSets: [CreateWorkoutSetDto]
 }

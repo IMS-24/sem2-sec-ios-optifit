@@ -1,5 +1,3 @@
-//Done: 2025-03-05: 15:07
-
 import SwiftUI
 
 struct WorkoutTrackingView: View {
@@ -7,131 +5,232 @@ struct WorkoutTrackingView: View {
     let gym: GetGymDto
     let exerciseCategory: ExerciseCategoryDto
     let workoutStartDate: Date
-
+    
     @State private var workoutExercises: [CreateWorkoutExerciseDto] = []
     @State private var navigateToExerciseSheet: Bool = false
-
+    
     @StateObject private var workoutViewModel = WorkoutViewModel()
     @State private var description: String = ""
-
+    
+    // Timer-related state for stopwatch functionality.
+    @State private var elapsedTime: TimeInterval = 0
+    @State private var timer: Timer? = nil
+    @State private var showCancelConfirmation = false
+    
     var body: some View {
-        VStack {
-            Section(header: Text("Description")) {
-                TextEditor(text: $description)
-                        .frame(minHeight: 100)
-                        .overlay(RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gray, lineWidth: 1))
-                        .padding(.top, 4)
+        VStack(alignment: .leading, spacing: 16) {
+            // First header row: Workout Category (Motto)
+            HStack {
+                Text(exerciseCategory.i18NCode)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("PrimaryText"))
+                Spacer()
             }
-            Text("\(exerciseCategory.i18NCode) - Day at \(gym.name) started at \(formattedStartTime)")
+            .padding(.horizontal)
+            
+            // Second header row: Gym and Start Time
+            HStack {
+                HStack(spacing: 4) {
+                    Image(systemName: "mappin.and.ellipse")
+                        .foregroundColor(Color("PrimaryAccent"))
+                    Text("\(gym.name), \(gym.city)")
+                        .font(.subheadline)
+                        .foregroundColor(Color("PrimaryText"))
+                }
+                Spacer()
+                HStack(spacing: 4) {
+                    Image(systemName: "clock")
+                        .foregroundColor(Color("PrimaryAccent"))
+                    Text(formattedStartTime)
+                        .font(.subheadline)
+                        .foregroundColor(Color("PrimaryText"))
+                }
+            }
+            .padding(.horizontal)
+            
+            // Timer displayed centered outside the header rows.
+            HStack {
+                Spacer()
+                HStack(spacing: 4) {
+                    Image(systemName: "stopwatch")
+                        .foregroundColor(Color("PrimaryAccent"))
+                    Text(elapsedTimeString)
+                        .font(.headline)
+                        .foregroundColor(Color("PrimaryAccent"))
+                }
+                Spacer()
+            }
+            .padding(.vertical, 8)
+            
+            // Description Field
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Description")
                     .font(.headline)
-                    .padding()
-
+                    .foregroundColor(Color("PrimaryText"))
+                TextEditor(text: $description)
+                    .frame(height: 60)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                    )
+            }
+            .padding(.horizontal)
+            
+            // Exercise List Section (expandable list)
             if workoutExercises.isEmpty {
-                Text("No exercises performed yet.")
-                        .foregroundColor(.gray)
+                Text("No exercises added yet.")
+                    .foregroundColor(.gray)
+                    .padding(.vertical)
+                    .padding(.horizontal)
             } else {
                 List {
-                    ForEach(workoutExercises) { exercise in
-                        Text(exercise.exerciseId.uuidString)//TODO: FIX
+                    ForEach(workoutExercises) { workoutExercise in
+                        Text(workoutExercise.exercise.i18NCode)
                     }
-                            .onDelete(perform: deleteExercise)
-                            .onMove(perform: moveExercise)
+                    .onDelete(perform: deleteExercise)
+                    .onMove(perform: moveExercise)
                 }
-                        .listStyle(InsetGroupedListStyle())
-
+                .listStyle(InsetGroupedListStyle())
             }
-
-            HStack(spacing: 20) {
-                Button("Add Exercise") {
-                    navigateToExerciseSheet = true
-                }
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.large)
-                // Save Button
-                Section {
-                    Button(action: saveWorkout) {
-                        Label("Save", systemImage: "checkmark.circle.fill")
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(8)
-                    }
-                }
-            }
-                    .padding()
-
+            
             Spacer()
+            
+            // Bottom action buttons: Save and Cancel (small style)
+            HStack {
+                Button(action: saveWorkout) {
+                    Label("Save", systemImage: "checkmark")
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.small)
+                
+                Spacer()
+                
+                Button(action: { showCancelConfirmation = true }) {
+                    Label("Cancel", systemImage: "xmark")
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.small)
+                .tint(.red)
+            }
+            .padding(.horizontal)
         }
-                .navigationTitle("Track Workout")
-                .sheet(isPresented: $navigateToExerciseSheet) {
-                    NavigationStack {
-                        ExerciseSelectionView(
-                                exerciseCategoryId: exerciseCategory.id,
-                                onExerciseSelected: { workoutExercise in
-                                    workoutExercises.append(workoutExercise)
-                                    navigateToExerciseSheet = false
-                                }
-                        )
-                    }
+        .padding(.vertical)
+        .navigationTitle("Track Workout")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            // Small plus button in the top-right to add an exercise.
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    navigateToExerciseSheet = true
+                } label: {
+                    Image(systemName: "plus")
                 }
-                .alert(item: $workoutViewModel.errorMessage) { error in
-                    Alert(title: Text("Error"),
-                            message: Text(error.message),
-                            dismissButton: .default(Text("OK")))
-                }
+            }
+        }
+        // Sheet for selecting an exercise.
+        .sheet(isPresented: $navigateToExerciseSheet) {
+            NavigationStack {
+                ExerciseSelectionView(
+                    exerciseCategoryId: exerciseCategory.id,
+                    onExerciseSelected: { workoutExercise in
+                        workoutExercises.append(workoutExercise)
+                        navigateToExerciseSheet = false
+                    },
+                    order:  workoutExercises.count+1
+                )
+            }
+        }
+        // Cancel confirmation alert.
+        .alert(isPresented: $showCancelConfirmation) {
+            Alert(
+                title: Text("Cancel Workout"),
+                message: Text("Are you sure you want to cancel this workout?"),
+                primaryButton: .destructive(Text("Cancel Workout")) {
+                    dismiss()
+                },
+                secondaryButton: .cancel()
+            )
+        }
+        .alert(item: $workoutViewModel.errorMessage) { error in
+            Alert(title: Text("Error"),
+                  message: Text(error.message),
+                  dismissButton: .default(Text("OK")))
+        }
+        .onAppear {
+            startTimer()
+        }
+        .onDisappear {
+            timer?.invalidate()
+        }
     }
-
-    // Format the start time for display.
+    
+    // MARK: - Computed Properties
+    
     var formattedStartTime: String {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         return formatter.string(from: workoutStartDate)
     }
-
-    // Delete performed exercise from the list.
+    
+    var elapsedTimeString: String {
+        let minutes = Int(elapsedTime) / 60
+        let seconds = Int(elapsedTime) % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    // MARK: - Timer Functionality
+    
+    private func startTimer() {
+        elapsedTime = Date().timeIntervalSince(workoutStartDate)
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            elapsedTime = Date().timeIntervalSince(workoutStartDate)
+        }
+    }
+    
+    // MARK: - Exercise List Manipulation
+    
     private func deleteExercise(at offsets: IndexSet) {
         workoutExercises.remove(atOffsets: offsets)
     }
-
-    // Reorder the performed exercises.
+    
     private func moveExercise(from source: IndexSet, to destination: Int) {
         workoutExercises.move(fromOffsets: source, toOffset: destination)
     }
-
+    
+    // MARK: - Save Workout
+    
     private func saveWorkout() {
-
-        let createWorkoutExerciseDtos: [CreateWorkoutExerciseDto] = workoutExercises.map {
-            return CreateWorkoutExerciseDto(order: 1,
-                    exerciseId: $0.exerciseId,
-                    notes: "TODO",
-                    workoutSets: $0.workoutSets.map { x in
-                        return CreateWorkoutSetDto(order: x.order, reps: x.reps!, weight: x.weight!)
-                    }
-            )
-        }
-        let workout = CreateWorkoutDto(description: description,
-                startAtUtc: workoutStartDate,
-                endAtUtc: Date(),
-                notes: "TODO: Implement notes on UI",
-                gymId: gym.id,
-                workoutExercises: createWorkoutExerciseDtos
+//        let createWorkoutExerciseDtos: [CreateWorkoutExerciseDto] = workoutExercises.map { workoutExercise in
+//            CreateWorkoutExerciseDto(
+//                
+//                order: 1,
+//                exercise: workoutExercise.exercise,
+//                notes: "TODO",
+//                workoutSets: workoutExercise.workoutSets.map { set in
+//                    CreateWorkoutSetDto(order: set.order, reps: set.reps!, weight: set.weight!)
+//                }
+//            )
+//        }
+        let workout = CreateWorkoutDto(
+            description: description,
+            startAtUtc: workoutStartDate,
+            endAtUtc: Date(),
+            notes: "TODO: Implement notes on UI",
+            gymId: gym.id,
+            workoutExercises: workoutExercises
         )
         Task {
-
             let _ = await workoutViewModel.saveWorkout(workout)
             dismiss()
-
         }
     }
 }
 
 #Preview {
-    // Dummy preview using sample gym and exercise category.
     WorkoutTrackingView(
-            gym: GetGymDto(address: "Daham", zipCode: 8020, id: UUID(), name: "Downtown Gym", city: "Graz"),
-            exerciseCategory: ExerciseCategoryDto(id: UUID(), i18NCode: "Strength", exerciseIds: []),
-            workoutStartDate: Date()
+        gym: GetGymDto(address: "Daham", zipCode: 8020, id: UUID(), name: "John Reed", city: "Graz"),
+        exerciseCategory: ExerciseCategoryDto(id: UUID(), i18NCode: "Legs", exerciseIds: []),
+        workoutStartDate: Date()
     )
 }

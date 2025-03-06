@@ -23,6 +23,7 @@ public class SearchWorkoutsQueryHandler(
         var query = dbContext.Workouts
                     .Include(workout => workout.WorkoutExercises)
                         .ThenInclude(workoutExercise => workoutExercise.Exercise)
+                            .ThenInclude(exercise=>exercise.ExerciseCategory)
                     .Include(workout => workout.WorkoutExercises)
                         .ThenInclude(workoutSet => workoutSet.WorkoutSets)
                     .Include(workout=>workout.Gym)
@@ -43,7 +44,9 @@ public class SearchWorkoutsQueryHandler(
 
         if (request.Search.To.HasValue) predicate = predicate.And(x => x.StartAtUtc <= request.Search.To);
         query = query.Where(predicate);
-        query = request.Search.OrderDirection=="asc"?query.OrderBy(x => x.StartAtUtc):query.OrderByDescending(x => x.StartAtUtc);
+        query = request.Search.OrderDirection == "asc"
+            ? query.OrderBy(x => x.StartAtUtc)
+            : query.OrderByDescending(x => x.StartAtUtc);
         return Task.FromResult(new PaginatedResult<GetWorkoutDto>(request.Search.PageSize,
             request.Search.PageIndex,
             query.AsEnumerable().Select(mapper.Map<GetWorkoutDto>)));

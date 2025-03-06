@@ -6,14 +6,18 @@ struct ExerciseSelectionView: View {
     @StateObject private var exerciseViewModel = ExerciseViewModel()
     let exerciseCategoryId: UUID
     let onExerciseSelected: (CreateWorkoutExerciseDto) -> Void
-
+    let order: Int
     var body: some View {
         List(exerciseViewModel.exercises) { exercise in
-            NavigationLink(destination: ExerciseSetDetailView(selectedExercise: exercise, onSave: onExerciseSelected)) {
+            NavigationLink(
+                destination: LazyView {
+                    ExerciseSetDetailView(selectedExercise: exercise, order:order, onSave: onExerciseSelected)
+                }
+            ) {
                 Text(exercise.i18NCode)
             }
         }
-                .navigationTitle("Select Exercise")
+        .navigationTitle("Select Exercise")
                 .onAppear {
                     let updatedSearchModel = SearchExercisesDto(exerciseCategoryId: exerciseCategoryId)
                     exerciseViewModel.updateSearchModel(updatedSearchModel)
@@ -23,5 +27,5 @@ struct ExerciseSelectionView: View {
 
 #Preview {
     // Provide a dummy UUID for preview purposes.
-    ExerciseSelectionView(exerciseCategoryId: UUID(), onExerciseSelected: { _ in })
+    ExerciseSelectionView(exerciseCategoryId: UUID(),onExerciseSelected: { _ in }, order:1)
 }

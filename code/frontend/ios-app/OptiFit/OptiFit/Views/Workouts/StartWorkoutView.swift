@@ -88,22 +88,24 @@ struct StartWorkoutView: View {
                     .onAppear {
                         Task {
                             await exerciseCategoriesViewModel.fetchCategories()
+                            selectedExerciseCategoryId = exerciseCategoriesViewModel.exerciseCategories.first?.id
                             await gymViewModel.searchGyms()
+                            selectedGym = gymViewModel.gyms.first?.id
                         }
                     }
-                    // Update the selectedGym once gyms load
-                    .onChange(of: gymViewModel.gyms) {
-                        if selectedGym == nil, let firstGym = gymViewModel.gyms.first {
-                            selectedGym = firstGym.id
-                        }
-                    }
-
-                    // Update the selectedExerciseCategoryId once categories load
-                    .onChange(of: exerciseCategoriesViewModel.exerciseCategories) {
-                        if selectedExerciseCategoryId == nil, let firstCategory = exerciseCategoriesViewModel.exerciseCategories.first {
-                            selectedExerciseCategoryId = firstCategory.id
-                        }
-                    }
+//                    // Update the selectedGym once gyms load
+//                    .onChange(of: gymViewModel.gyms) {
+//                        if selectedGym == nil, let firstGym = gymViewModel.gyms.first {
+//                            selectedGym = firstGym.id
+//                        }
+//                    }
+//
+//                    // Update the selectedExerciseCategoryId once categories load
+//                    .onChange(of: exerciseCategoriesViewModel.exerciseCategories) {
+//                        if selectedExerciseCategoryId == nil, let firstCategory = exerciseCategoriesViewModel.exerciseCategories.first {
+//                            selectedExerciseCategoryId = firstCategory.id
+//                        }
+//                    }
 
                     .alert(item: $exerciseCategoriesViewModel.errorMessage) { error in
                         Alert(title: Text("Error"),
