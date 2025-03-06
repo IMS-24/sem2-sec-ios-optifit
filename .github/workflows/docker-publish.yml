@@ -12,10 +12,6 @@ on:
     tags: [ 'v*.*.*' ]
     paths:
       - code/backend/**
-  pull_request:
-    branches: [ "main" ]
-    paths:
-      - code/backend/**
   workflow_dispatch:
 env:
   # Use docker.io for Docker Hub if empty
