@@ -1,0 +1,14 @@
+<form [formGroup]="exerciseInputForm">
+  <div class="qb8-form-fields">
+    <mat-form-field class="example-full-width">
+      <mat-label>I18N Code</mat-label>
+      <input formControlName="i18n_code" matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Address</mat-label>
+      <input formControlName="description" matInput type="text">
+    </mat-form-field>
+  </div>
+  <qb8-form-actions-component [inputForm]="exerciseInputForm" [onCancel]="onCancel" [onSave]="onSave"/>
+</form>

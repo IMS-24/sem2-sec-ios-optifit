@@ -20,6 +20,10 @@ public class ExerciseMuscleMappingEntityTypeConfiguration : BaseEntityTypeConfig
             .IsRequired();
 
         builder
+            .Property(e => e.Intensity)
+            .IsRequired(false);
+
+        builder
             .HasOne(em => em.Exercise)
             .WithMany(e => e.ExerciseMuscleMappings)
             .HasForeignKey(em => em.ExerciseId);

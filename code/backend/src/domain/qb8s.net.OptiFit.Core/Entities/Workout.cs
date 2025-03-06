@@ -7,10 +7,10 @@ public class Workout : BaseEntity
     public string Description { get; set; } = null!;
     public Guid UserId { get; set; }
     public User User { get; set; } = null!;
-    public DateTime StartAtUtc { get; set; }
-    public DateTime? EndAtUtc { get; set; }
+    public DateTimeOffset StartAtUtc { get; set; }
+    public DateTimeOffset? EndAtUtc { get; set; }
     public string Notes { get; set; } = null!;
     public Guid GymId { get; set; }
     public Gym Gym { get; set; } = null!;
-    public ICollection<WorkoutLog> WorkoutLogs { get; set; } = new HashSet<WorkoutLog>();
+    public ICollection<WorkoutExercise> WorkoutExercises { get; set; } = new HashSet<WorkoutExercise>();
 }

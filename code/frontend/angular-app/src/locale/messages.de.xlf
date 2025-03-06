@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="homes" datatype="html">
+        <source>homes</source>
+        <target>ZuhauSSE ;)</target>
+      </trans-unit>
+      <trans-unit id="gyms" datatype="html">
+        <source>gyms</source>
+        <target>Studios</target>
+      </trans-unit>
+      <trans-unit id="workouts" datatype="html">
+        <source>workouts</source>
+        <target>Trainings</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

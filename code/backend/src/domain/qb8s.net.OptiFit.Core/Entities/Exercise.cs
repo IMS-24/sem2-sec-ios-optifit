@@ -6,19 +6,11 @@ public class Exercise : BaseI18NEntity
 {
     public string Description { get; set; } = null!;
 
-    public ICollection<ExerciseMuscleGroupMapping> ExerciseMuscleGroupMappings { get; set; } =
-        new HashSet<ExerciseMuscleGroupMapping>();
-
     public ICollection<ExerciseMuscleMapping> ExerciseMuscleMappings { get; set; } =
         new HashSet<ExerciseMuscleMapping>();
 
-    public ICollection<WorkoutLog> WorkoutLogs { get; set; } = new HashSet<WorkoutLog>();
+    public ICollection<WorkoutExercise> WorkoutExercises { get; set; } = new HashSet<WorkoutExercise>();
 
-    public ICollection<WorkoutPlanExerciseMapping> WorkoutPlanExerciseMappings { get; set; } =
-        new HashSet<WorkoutPlanExerciseMapping>();
-
-    public ICollection<GymExerciseMapping> GymExerciseMappings { get; set; } = new HashSet<GymExerciseMapping>();
-
-    public Guid ExerciseTypeId { get; set; }
-    public ExerciseType ExerciseType { get; set; } = null!;
+    public Guid ExerciseCategoryId { get; set; }
+    public ExerciseCategory ExerciseCategory { get; set; } = null!;
 }

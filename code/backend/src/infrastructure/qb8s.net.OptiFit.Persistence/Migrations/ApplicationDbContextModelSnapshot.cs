@@ -37,9 +37,9 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         .HasColumnType("character varying(500)")
                         .HasColumnName("description");
 
-                    b.Property<Guid>("ExerciseTypeId")
+                    b.Property<Guid>("ExerciseCategoryId")
                         .HasColumnType("uuid")
-                        .HasColumnName("exercise_type_id");
+                        .HasColumnName("exercise_category_id");
 
                     b.Property<string>("I18NCode")
                         .IsRequired()
@@ -50,8 +50,8 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                     b.HasKey("Id")
                         .HasName("pk_exercise");
 
-                    b.HasIndex("ExerciseTypeId")
-                        .HasDatabaseName("ix_exercise_exercise_type_id");
+                    b.HasIndex("ExerciseCategoryId")
+                        .HasDatabaseName("ix_exercise_exercise_category_id");
 
                     b.HasIndex("I18NCode")
                         .IsUnique()
@@ -60,63 +60,7 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                     b.ToTable("exercise", (string)null);
                 });
 
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.ExerciseMuscleGroupMapping", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id")
-                        .HasDefaultValueSql("uuid_generate_v4()");
-
-                    b.Property<Guid>("ExerciseId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("exercise_id");
-
-                    b.Property<Guid>("MuscleGroupId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("muscle_group_id");
-
-                    b.HasKey("Id")
-                        .HasName("pk_exercise_muscle_group_mapping");
-
-                    b.HasIndex("ExerciseId")
-                        .HasDatabaseName("ix_exercise_muscle_group_mapping_exercise_id");
-
-                    b.HasIndex("MuscleGroupId")
-                        .HasDatabaseName("ix_exercise_muscle_group_mapping_muscle_group_id");
-
-                    b.ToTable("exercise_muscle_group_mapping", (string)null);
-                });
-
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.ExerciseMuscleMapping", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id")
-                        .HasDefaultValueSql("uuid_generate_v4()");
-
-                    b.Property<Guid>("ExerciseId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("exercise_id");
-
-                    b.Property<Guid>("MuscleId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("muscle_id");
-
-                    b.HasKey("Id")
-                        .HasName("pk_exercise_muscle_mapping");
-
-                    b.HasIndex("ExerciseId")
-                        .HasDatabaseName("ix_exercise_muscle_mapping_exercise_id");
-
-                    b.HasIndex("MuscleId")
-                        .HasDatabaseName("ix_exercise_muscle_mapping_muscle_id");
-
-                    b.ToTable("exercise_muscle_mapping", (string)null);
-                });
-
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.ExerciseType", b =>
+            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.ExerciseCategory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -131,13 +75,13 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         .HasColumnName("i18n_code");
 
                     b.HasKey("Id")
-                        .HasName("pk_exercise_type");
+                        .HasName("pk_exercise_category");
 
                     b.HasIndex("I18NCode")
                         .IsUnique()
-                        .HasDatabaseName("ix_exercise_type_i18n_code");
+                        .HasDatabaseName("ix_exercise_category_i18n_code");
 
-                    b.ToTable("exercise_type", (string)null);
+                    b.ToTable("exercise_category", (string)null);
 
                     b.HasData(
                         new
@@ -157,6 +101,38 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.ExerciseMuscleMapping", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id")
+                        .HasDefaultValueSql("uuid_generate_v4()");
+
+                    b.Property<Guid>("ExerciseId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("exercise_id");
+
+                    b.Property<int?>("Intensity")
+                        .HasColumnType("integer")
+                        .HasColumnName("intensity");
+
+                    b.Property<Guid>("MuscleId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("muscle_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_exercise_muscle_mapping");
+
+                    b.HasIndex("ExerciseId")
+                        .HasDatabaseName("ix_exercise_muscle_mapping_exercise_id");
+
+                    b.HasIndex("MuscleId")
+                        .HasDatabaseName("ix_exercise_muscle_mapping_muscle_id");
+
+                    b.ToTable("exercise_muscle_mapping", (string)null);
+                });
+
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.Gym", b =>
                 {
                     b.Property<Guid>("Id")
@@ -171,8 +147,8 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         .HasColumnName("address");
 
                     b.Property<string>("City")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
                         .HasColumnName("city");
 
                     b.Property<DateTime?>("DeletedAtUtc")
@@ -181,56 +157,18 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)")
                         .HasColumnName("name");
 
-                    b.Property<string>("ZipCode")
-                        .HasMaxLength(10)
-                        .HasColumnType("character varying(10)")
+                    b.Property<int?>("ZipCode")
+                        .HasColumnType("integer")
                         .HasColumnName("zip_code");
 
                     b.HasKey("Id")
                         .HasName("pk_gym");
 
                     b.ToTable("gym", (string)null);
-                });
-
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.GymExerciseMapping", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id")
-                        .HasDefaultValueSql("uuid_generate_v4()");
-
-                    b.Property<Guid>("ExerciseId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("exercise_id");
-
-                    b.Property<Guid>("GymId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("gym_id");
-
-                    b.Property<bool>("IsAvailable")
-                        .HasColumnType("boolean")
-                        .HasColumnName("is_available");
-
-                    b.Property<string>("Notes")
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)")
-                        .HasColumnName("notes");
-
-                    b.HasKey("Id")
-                        .HasName("pk_gym_exercise_mapping");
-
-                    b.HasIndex("ExerciseId")
-                        .HasDatabaseName("ix_gym_exercise_mapping_exercise_id");
-
-                    b.HasIndex("GymId")
-                        .HasDatabaseName("ix_gym_exercise_mapping_gym_id");
-
-                    b.ToTable("gym_exercise_mapping", (string)null);
                 });
 
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.Muscle", b =>
@@ -382,6 +320,11 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         {
                             Id = new Guid("ca487800-5fb6-46bd-a4a2-920234fa3008"),
                             I18NCode = "core"
+                        },
+                        new
+                        {
+                            Id = new Guid("4279276a-ec31-4dc7-b4b4-b490d67acbd0"),
+                            I18NCode = "legs"
                         });
                 });
 
@@ -672,7 +615,7 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                     b.ToTable("workout", (string)null);
                 });
 
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.WorkoutLog", b =>
+            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.WorkoutExercise", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -685,13 +628,11 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         .HasColumnName("exercise_id");
 
                     b.Property<string>("Notes")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)")
                         .HasColumnName("notes");
 
                     b.Property<int>("Order")
-                        .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("integer")
                         .HasColumnName("order");
 
@@ -700,18 +641,18 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         .HasColumnName("workout_id");
 
                     b.HasKey("Id")
-                        .HasName("pk_workout_log");
+                        .HasName("pk_workout_exercise");
 
                     b.HasIndex("ExerciseId")
-                        .HasDatabaseName("ix_workout_log_exercise_id");
+                        .HasDatabaseName("ix_workout_exercise_exercise_id");
 
                     b.HasIndex("WorkoutId")
-                        .HasDatabaseName("ix_workout_log_workout_id");
+                        .HasDatabaseName("ix_workout_exercise_workout_id");
 
-                    b.ToTable("workout_log", (string)null);
+                    b.ToTable("workout_exercise", (string)null);
                 });
 
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.WorkoutPlan", b =>
+            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.WorkoutSet", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -719,120 +660,41 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         .HasColumnName("id")
                         .HasDefaultValueSql("uuid_generate_v4()");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)")
-                        .HasColumnName("description");
+                    b.Property<int>("Order")
+                        .HasColumnType("integer")
+                        .HasColumnName("order");
 
-                    b.Property<DateOnly>("EndAt")
-                        .HasColumnType("date")
-                        .HasColumnName("end_at");
+                    b.Property<int>("Reps")
+                        .HasColumnType("integer")
+                        .HasColumnName("reps");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("boolean")
-                        .HasColumnName("is_active");
+                    b.Property<decimal>("Weight")
+                        .HasColumnType("numeric")
+                        .HasColumnName("weight");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
-                        .HasColumnName("name");
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("notes");
-
-                    b.Property<DateOnly>("StartAt")
-                        .HasColumnType("date")
-                        .HasColumnName("start_at");
-
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("WorkoutExerciseId")
                         .HasColumnType("uuid")
-                        .HasColumnName("user_id");
+                        .HasColumnName("workout_exercise_id");
 
                     b.HasKey("Id")
-                        .HasName("pk_workout_plan");
+                        .HasName("pk_workout_set");
 
-                    b.HasIndex("UserId")
-                        .HasDatabaseName("ix_workout_plan_user_id");
+                    b.HasIndex("WorkoutExerciseId")
+                        .HasDatabaseName("ix_workout_set_workout_exercise_id");
 
-                    b.ToTable("workout_plan", (string)null);
-                });
-
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.WorkoutPlanExerciseMapping", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id")
-                        .HasDefaultValueSql("uuid_generate_v4()");
-
-                    b.Property<int>("Day")
-                        .HasColumnType("integer")
-                        .HasColumnName("day");
-
-                    b.Property<Guid>("ExerciseId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("exercise_id");
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("notes");
-
-                    b.Property<int>("RestTime")
-                        .HasColumnType("integer")
-                        .HasColumnName("rest_time");
-
-                    b.Property<Guid>("WorkoutPlanId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("workout_plan_id");
-
-                    b.HasKey("Id")
-                        .HasName("pk_workout_plan_exercise_mapping");
-
-                    b.HasIndex("ExerciseId")
-                        .HasDatabaseName("ix_workout_plan_exercise_mapping_exercise_id");
-
-                    b.HasIndex("WorkoutPlanId")
-                        .HasDatabaseName("ix_workout_plan_exercise_mapping_workout_plan_id");
-
-                    b.ToTable("workout_plan_exercise_mapping", (string)null);
+                    b.ToTable("workout_set", (string)null);
                 });
 
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.Exercise", b =>
                 {
-                    b.HasOne("qb8s.net.OptiFit.Core.Entities.ExerciseType", "ExerciseType")
+                    b.HasOne("qb8s.net.OptiFit.Core.Entities.ExerciseCategory", "ExerciseCategory")
                         .WithMany("Exercises")
-                        .HasForeignKey("ExerciseTypeId")
+                        .HasForeignKey("ExerciseCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_exercise_exercise_types_exercise_type_id");
+                        .HasConstraintName("fk_exercise_exercise_category_exercise_category_id");
 
-                    b.Navigation("ExerciseType");
-                });
-
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.ExerciseMuscleGroupMapping", b =>
-                {
-                    b.HasOne("qb8s.net.OptiFit.Core.Entities.Exercise", "Exercise")
-                        .WithMany("ExerciseMuscleGroupMappings")
-                        .HasForeignKey("ExerciseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_exercise_muscle_group_mapping_exercise_exercise_id");
-
-                    b.HasOne("qb8s.net.OptiFit.Core.Entities.MuscleGroup", "MuscleGroup")
-                        .WithMany("ExerciseMuscleGroupMappings")
-                        .HasForeignKey("MuscleGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_exercise_muscle_group_mapping_muscle_groups_muscle_group_id");
-
-                    b.Navigation("Exercise");
-
-                    b.Navigation("MuscleGroup");
+                    b.Navigation("ExerciseCategory");
                 });
 
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.ExerciseMuscleMapping", b =>
@@ -854,27 +716,6 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                     b.Navigation("Exercise");
 
                     b.Navigation("Muscle");
-                });
-
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.GymExerciseMapping", b =>
-                {
-                    b.HasOne("qb8s.net.OptiFit.Core.Entities.Exercise", "Exercise")
-                        .WithMany("GymExerciseMappings")
-                        .HasForeignKey("ExerciseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_gym_exercise_mapping_exercises_exercise_id");
-
-                    b.HasOne("qb8s.net.OptiFit.Core.Entities.Gym", "Gym")
-                        .WithMany("GymExerciseMappings")
-                        .HasForeignKey("GymId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_gym_exercise_mapping_gyms_gym_id");
-
-                    b.Navigation("Exercise");
-
-                    b.Navigation("Gym");
                 });
 
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.MuscleGroupMapping", b =>
@@ -929,151 +770,53 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.WorkoutLog", b =>
+            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.WorkoutExercise", b =>
                 {
                     b.HasOne("qb8s.net.OptiFit.Core.Entities.Exercise", "Exercise")
-                        .WithMany("WorkoutLogs")
+                        .WithMany("WorkoutExercises")
                         .HasForeignKey("ExerciseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_workout_log_exercises_exercise_id");
+                        .HasConstraintName("fk_workout_exercise_exercises_exercise_id");
 
                     b.HasOne("qb8s.net.OptiFit.Core.Entities.Workout", "Workout")
-                        .WithMany("WorkoutLogs")
+                        .WithMany("WorkoutExercises")
                         .HasForeignKey("WorkoutId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_workout_log_workouts_workout_id");
-
-                    b.OwnsOne("qb8s.net.OptiFit.Core.Entities.Set", "Set", b1 =>
-                        {
-                            b1.Property<Guid>("WorkoutLogId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("uuid")
-                                .HasColumnName("id");
-
-                            b1.Property<int>("Order")
-                                .ValueGeneratedOnUpdateSometimes()
-                                .HasColumnType("integer")
-                                .HasColumnName("order");
-
-                            b1.Property<int>("Reps")
-                                .HasColumnType("integer")
-                                .HasColumnName("reps");
-
-                            b1.Property<decimal>("Weight")
-                                .HasColumnType("numeric")
-                                .HasColumnName("weight");
-
-                            b1.HasKey("WorkoutLogId");
-
-                            b1.ToTable("workout_log");
-
-                            b1.WithOwner()
-                                .HasForeignKey("WorkoutLogId")
-                                .HasConstraintName("fk_workout_log_workout_log_id");
-                        });
+                        .HasConstraintName("fk_workout_exercise_workouts_workout_id");
 
                     b.Navigation("Exercise");
-
-                    b.Navigation("Set")
-                        .IsRequired();
 
                     b.Navigation("Workout");
                 });
 
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.WorkoutPlan", b =>
+            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.WorkoutSet", b =>
                 {
-                    b.HasOne("qb8s.net.OptiFit.Core.Entities.User", "User")
-                        .WithMany("WorkoutPlans")
-                        .HasForeignKey("UserId")
+                    b.HasOne("qb8s.net.OptiFit.Core.Entities.WorkoutExercise", "WorkoutExercise")
+                        .WithMany("WorkoutSets")
+                        .HasForeignKey("WorkoutExerciseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_workout_plan_users_user_id");
+                        .HasConstraintName("fk_workout_set_workout_exercise_workout_exercise_id");
 
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.WorkoutPlanExerciseMapping", b =>
-                {
-                    b.HasOne("qb8s.net.OptiFit.Core.Entities.Exercise", "Exercise")
-                        .WithMany("WorkoutPlanExerciseMappings")
-                        .HasForeignKey("ExerciseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_workout_plan_exercise_mapping_exercises_exercise_id");
-
-                    b.HasOne("qb8s.net.OptiFit.Core.Entities.WorkoutPlan", "WorkoutPlan")
-                        .WithMany("WorkoutPlanExerciseMappings")
-                        .HasForeignKey("WorkoutPlanId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_workout_plan_exercise_mapping_workout_plan_workout_plan_id");
-
-                    b.OwnsMany("qb8s.net.OptiFit.Core.Entities.Set", "Sets", b1 =>
-                        {
-                            b1.Property<Guid>("WorkoutPlanExerciseMappingId")
-                                .HasColumnType("uuid")
-                                .HasColumnName("workout_plan_exercise_mapping_id");
-
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("integer")
-                                .HasColumnName("id");
-
-                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
-
-                            b1.Property<int>("Order")
-                                .HasColumnType("integer")
-                                .HasColumnName("order");
-
-                            b1.Property<int>("Reps")
-                                .HasColumnType("integer")
-                                .HasColumnName("reps");
-
-                            b1.Property<decimal>("Weight")
-                                .HasColumnType("numeric")
-                                .HasColumnName("weight");
-
-                            b1.HasKey("WorkoutPlanExerciseMappingId", "Id")
-                                .HasName("pk_workout_plan_exercise_mapping_sets");
-
-                            b1.ToTable("workout_plan_exercise_mapping_sets", (string)null);
-
-                            b1.WithOwner()
-                                .HasForeignKey("WorkoutPlanExerciseMappingId")
-                                .HasConstraintName("fk_workout_plan_exercise_mapping_sets_workout_plan_exercise_ma");
-                        });
-
-                    b.Navigation("Exercise");
-
-                    b.Navigation("Sets");
-
-                    b.Navigation("WorkoutPlan");
+                    b.Navigation("WorkoutExercise");
                 });
 
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.Exercise", b =>
                 {
-                    b.Navigation("ExerciseMuscleGroupMappings");
-
                     b.Navigation("ExerciseMuscleMappings");
 
-                    b.Navigation("GymExerciseMappings");
-
-                    b.Navigation("WorkoutLogs");
-
-                    b.Navigation("WorkoutPlanExerciseMappings");
+                    b.Navigation("WorkoutExercises");
                 });
 
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.ExerciseType", b =>
+            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.ExerciseCategory", b =>
                 {
                     b.Navigation("Exercises");
                 });
 
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.Gym", b =>
                 {
-                    b.Navigation("GymExerciseMappings");
-
                     b.Navigation("Workouts");
                 });
 
@@ -1086,15 +829,11 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
 
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.MuscleGroup", b =>
                 {
-                    b.Navigation("ExerciseMuscleGroupMappings");
-
                     b.Navigation("MuscleGroupMappings");
                 });
 
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.User", b =>
                 {
-                    b.Navigation("WorkoutPlans");
-
                     b.Navigation("Workouts");
                 });
 
@@ -1105,12 +844,12 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
 
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.Workout", b =>
                 {
-                    b.Navigation("WorkoutLogs");
+                    b.Navigation("WorkoutExercises");
                 });
 
-            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.WorkoutPlan", b =>
+            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.WorkoutExercise", b =>
                 {
-                    b.Navigation("WorkoutPlanExerciseMappings");
+                    b.Navigation("WorkoutSets");
                 });
 #pragma warning restore 612, 618
         }

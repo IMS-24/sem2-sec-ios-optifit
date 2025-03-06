@@ -1,0 +1,31 @@
+<h2>New Workout Log</h2>
+<form [formGroup]="workoutLogForm">
+  <div class="qb8-form-fields">
+    <mat-form-field class="example-full-width">
+      <mat-label>Order</mat-label>
+      <input formControlName="order" matInput type="number">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Weight</mat-label>
+      <input formControlName="weight" matInput type="number">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Reps</mat-label>
+      <input formControlName="reps" matInput type="number">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Exercise Id</mat-label>
+      <input formControlName="exerciseId" matInput type="textfield">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Notes</mat-label>
+      <textarea [rows]="5" formControlName="notes" matInput type="textfield"></textarea>
+    </mat-form-field>
+
+
+  </div>
+  <qb8-form-actions-component [inputForm]="workoutLogForm" [onCancel]="onCancel" [onSave]="onSave"/>
+</form>

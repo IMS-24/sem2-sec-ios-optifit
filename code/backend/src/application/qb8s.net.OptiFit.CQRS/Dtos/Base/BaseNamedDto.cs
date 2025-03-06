@@ -7,7 +7,7 @@ public class BaseNamedDto : BaseDto
     public required string Name { get; set; }
 }
 
-internal class BaseNamedProfile : BaseProfile
+public class BaseNamedProfile : BaseProfile
 {
     public BaseNamedProfile()
     {

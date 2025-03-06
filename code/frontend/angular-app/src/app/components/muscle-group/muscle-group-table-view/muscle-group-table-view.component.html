@@ -1,0 +1,19 @@
+<h2>Muscle Groups Overview</h2>
+
+<div class="table-container">
+  <table [dataSource]="(muscleGroups$ | async)?.items || []" class="mat-elevation-z8" mat-table>
+    <ng-container matColumnDef="id">
+      <th *matHeaderCellDef mat-header-cell>ID</th>
+      <td *matCellDef="let muscleGroup" mat-cell>{{ muscleGroup.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="i18NCode">
+      <th *matHeaderCellDef mat-header-cell>i18NCode</th>
+      <td *matCellDef="let muscleGroup" mat-cell>{{ muscleGroup.i18NCode }}</td>
+    </ng-container>
+
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+  </table>
+</div>

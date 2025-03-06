@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Global Custom Styles */
+/* Must follow naming convention using 'qb8' prefix*/
+.qb8-form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.qb8-form-fields {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+/* gym-table-view.component.css */
+.qb8-table-container {
+  height: 100%; /* or set to a specific height, e.g., 400px */
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  width: 100%;
+  min-height: 200px; /* Ensures table renders with minimum height */
+}

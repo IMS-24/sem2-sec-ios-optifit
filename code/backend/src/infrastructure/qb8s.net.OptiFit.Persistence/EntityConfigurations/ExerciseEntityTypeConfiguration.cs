@@ -23,14 +23,9 @@ public class ExerciseEntityTypeConfiguration : BaseEntityTypeConfiguration<Exerc
             .HasMaxLength(500);
 
         builder
-            .HasOne(e => e.ExerciseType)
+            .HasOne(e => e.ExerciseCategory)
             .WithMany(et => et.Exercises)
-            .HasForeignKey(e => e.ExerciseTypeId);
-
-        builder
-            .HasMany(e => e.ExerciseMuscleGroupMappings)
-            .WithOne(mgm => mgm.Exercise)
-            .HasForeignKey(mgm => mgm.ExerciseId);
+            .HasForeignKey(e => e.ExerciseCategoryId);
 
         builder
             .HasMany(e => e.ExerciseMuscleMappings)
@@ -38,19 +33,8 @@ public class ExerciseEntityTypeConfiguration : BaseEntityTypeConfiguration<Exerc
             .HasForeignKey(emm => emm.ExerciseId);
 
         builder
-            .HasMany(e => e.WorkoutLogs)
+            .HasMany(e => e.WorkoutExercises)
             .WithOne(wl => wl.Exercise)
             .HasForeignKey(wl => wl.ExerciseId);
-
-        builder
-            .HasMany(e => e.WorkoutPlanExerciseMappings)
-            .WithOne(wplm => wplm.Exercise)
-            .HasForeignKey(wplm => wplm.ExerciseId);
-
-
-        builder
-            .HasMany(e => e.GymExerciseMappings)
-            .WithOne(gem => gem.Exercise)
-            .HasForeignKey(gem => gem.ExerciseId);
     }
 }

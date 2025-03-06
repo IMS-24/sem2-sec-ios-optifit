@@ -27,7 +27,7 @@ public class WorkoutEntityTypeConfiguration : BaseEntityTypeConfiguration<Workou
             .IsRequired(false);
 
         builder
-            .HasMany(w => w.WorkoutLogs)
+            .HasMany(w => w.WorkoutExercises)
             .WithOne(wl => wl.Workout)
             .HasForeignKey(wl => wl.WorkoutId);
     }

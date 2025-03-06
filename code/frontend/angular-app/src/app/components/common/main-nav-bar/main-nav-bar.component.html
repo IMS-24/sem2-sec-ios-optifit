@@ -1,0 +1,24 @@
+<nav>
+  <mat-toolbar color="primary">
+    <span>OptiFit</span>
+    <div style="display:flex;flex: 1 1 auto;gap: 20px">
+      <a ariaCurrentWhenActive="page" i18n="@@homes" routerLink="/"
+         routerLinkActive="active">homes</a>
+      <a ariaCurrentWhenActive="page" i18n="@@gyms" routerLink="/gym" routerLinkActive="active">gyms</a>
+      <a ariaCurrentWhenActive="page" i18n="@@workouts" routerLink="/workout" routerLinkActive="active">workouts</a>
+      <a ariaCurrentWhenActive="page" i18n="@@muscles" routerLink="/muscle" routerLinkActive="active">muscles</a>
+      <a ariaCurrentWhenActive="page" i18n="@@muscleGroups" routerLink="/muscle-group" routerLinkActive="active">muscleGroups</a>
+      <a ariaCurrentWhenActive="page" i18n="@@muscleGroupMappings" routerLink="/muscle-group-mapping"
+         routerLinkActive="active">muscleGroupMappings</a>
+      <ul>
+        <span *ngFor="let locale of localesList">
+          <a href="/{{locale.code}}/">
+            {{ locale.label }}
+          </a>
+        </span>
+      </ul>
+    </div>
+
+    <span>Profiles</span>
+  </mat-toolbar>
+</nav>
