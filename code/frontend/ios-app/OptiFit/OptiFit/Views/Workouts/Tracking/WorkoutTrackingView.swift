@@ -235,3 +235,7 @@ struct WorkoutTrackingView: View {
         dismiss()
     }
 }
+
+//#Preview {
+//    WorkoutTrackingView(dismiss: <#T##arg#>, gym: GetGymDto(address: "Daham", zipCode: 8020, id: UUID(), name: "Home", city: "Graz"), exerciseCategory: ExerciseCategoryDto(id: UUID(), i18NCode: "Exercise Category", exerciseIds: [], name: "Name"), workoutStartDate: Date(), workoutExercises: [], navigateToExerciseSheet: false , navigationController: <#T##UINavigationController#>(), workoutViewModel: <#T##arg#>, description: <#T##String#>, elapsedTime: <#T##TimeInterval#>, timer: <#T##Timer?#>, showCancelConfirmation: <#T##arg#>)
+//}

@@ -4,9 +4,6 @@
     "%.2f" : {
 
     },
-    "%.2f kg" : {
-
-    },
     "%@ - Day at %@ started at %@" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -142,9 +139,6 @@
     "Authorize" : {
 
     },
-    "Avg Weight/Rep:" : {
-
-    },
     "Base Data Management" : {
       "localizations" : {
         "de" : {
@@ -166,6 +160,7 @@
       }
     },
     "Calculated Stats" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -317,6 +312,7 @@
       }
     },
     "Duration:" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -343,6 +339,7 @@
 
     },
     "End" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -392,6 +389,9 @@
           }
         }
       }
+    },
+    "Exercise Details" : {
+
     },
     "Exercise Name" : {
       "localizations" : {
@@ -565,6 +565,9 @@
     "No exercises added yet." : {
 
     },
+    "No exercises available." : {
+
+    },
     "No exercises performed yet." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -580,6 +583,9 @@
 
     },
     "No sets added." : {
+
+    },
+    "No sets available." : {
 
     },
     "No workout data available for this week" : {
@@ -653,6 +659,9 @@
           }
         }
       }
+    },
+    "Reps: %lld" : {
+
     },
     "Reps: %lld, Weight: %.2f" : {
       "localizations" : {
@@ -733,6 +742,9 @@
     "Set %lld:" : {
 
     },
+    "Set Details" : {
+
+    },
     "Sets" : {
 
     },
@@ -747,9 +759,6 @@
       }
     },
     "Sign Out" : {
-
-    },
-    "Start" : {
 
     },
     "Start Workout" : {
@@ -772,28 +781,16 @@
         }
       }
     },
-    "Total Exercises:" : {
-
-    },
     "Total Reps" : {
 
     },
-    "Total Reps:" : {
-
-    },
     "Total Sets" : {
-
-    },
-    "Total Sets:" : {
 
     },
     "Total Time" : {
 
     },
     "Total Weight" : {
-
-    },
-    "Total Weight Lifted:" : {
 
     },
     "Track Workout" : {
@@ -873,6 +870,9 @@
         }
       }
     },
+    "Weight: %.1f" : {
+
+    },
     "Workout Detail" : {
       "localizations" : {
         "de" : {
@@ -884,6 +884,7 @@
       }
     },
     "Workout Summary" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

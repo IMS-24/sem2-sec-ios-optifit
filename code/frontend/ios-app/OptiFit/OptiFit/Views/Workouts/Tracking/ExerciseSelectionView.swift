@@ -26,6 +26,5 @@ struct ExerciseSelectionView: View {
 }
 
 #Preview {
-    // Provide a dummy UUID for preview purposes.
     ExerciseSelectionView(exerciseCategoryId: UUID(),onExerciseSelected: { _ in }, order:1)
 }

@@ -83,3 +83,7 @@ struct ExerciseSetDetailView: View {
         createWorkoutExerciseDto.workoutSets.append(CreateWorkoutSetDto(id:UUID(),order: newOrder, reps: nil, weight: nil))
     }
 }
+
+#Preview {
+    ExerciseSetDetailView(selectedExercise: GetExerciseDto(id: UUID(), i18NCode: "Exercise Name", description: "Exercise Description", exerciseCategoryId: UUID(), exerciseCategory: "Legs"), order: 1, onSave: { _ in})
+}

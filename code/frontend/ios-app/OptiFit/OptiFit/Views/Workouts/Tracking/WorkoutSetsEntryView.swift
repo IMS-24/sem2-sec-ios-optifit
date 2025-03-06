@@ -77,3 +77,11 @@ struct WorkoutSetsEntryView: View {
         return weight == 0.0 ? "" : String(weight)
     }
 }
+
+#Preview {
+    WorkoutSetsEntryView(sets: [
+        CreateWorkoutSetDto(id: UUID(), order: 1, reps: 10, weight: 20),
+        CreateWorkoutSetDto(id: UUID(), order: 2, reps: 20, weight: 40),
+        CreateWorkoutSetDto(id: UUID(), order: 3, reps: 30, weight: 60),
+    ], onDeleteSet: {_ in}, onUpdateSet: {_,_,_ in})
+}
