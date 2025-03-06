@@ -109,7 +109,7 @@ struct WorkoutTrackingView: View {
                 
                 Spacer()
                 
-                Button(action: { showCancelConfirmation = true }) {
+                Button(action: cancelWorkout) {
                     Label("Cancel", systemImage: "xmark")
                 }
                 .buttonStyle(.bordered)
@@ -229,5 +229,9 @@ struct WorkoutTrackingView: View {
             let _ = await workoutViewModel.saveWorkout(workout)
             dismiss()
         }
+    }
+    private func cancelWorkout(){
+         showCancelConfirmation = true
+        dismiss()
     }
 }

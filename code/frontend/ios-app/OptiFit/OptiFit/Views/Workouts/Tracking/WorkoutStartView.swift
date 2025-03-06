@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct StartWorkoutView: View {
+struct WorkoutStartView: View {
     @State private var selectedGym: UUID?
     @State private var selectedExerciseCategoryId: UUID?
     @State private var workoutDate = Date()
@@ -117,5 +117,5 @@ struct StartWorkoutView: View {
 }
 
 #Preview {
-    StartWorkoutView()
+    WorkoutStartView()
 }

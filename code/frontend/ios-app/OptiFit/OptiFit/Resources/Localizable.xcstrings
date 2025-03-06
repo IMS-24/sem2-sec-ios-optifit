@@ -212,6 +212,9 @@
         }
       }
     },
+    "Coming Soon" : {
+
+    },
     "Contact Support" : {
       "localizations" : {
         "de" : {
@@ -223,6 +226,7 @@
       }
     },
     "Cooming Soon" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -332,6 +336,9 @@
         }
       }
     },
+    "Edit Exercise" : {
+
+    },
     "Edit Profile" : {
 
     },
@@ -346,6 +353,7 @@
       }
     },
     "Enter Sets" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -568,6 +576,12 @@
         }
       }
     },
+    "No sets added yet." : {
+
+    },
+    "No sets added." : {
+
+    },
     "No workout data available for this week" : {
 
     },
@@ -590,6 +604,9 @@
           }
         }
       }
+    },
+    "Order" : {
+
     },
     "Order: %lld" : {
 
@@ -633,6 +650,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wiederholungen"
+          }
+        }
+      }
+    },
+    "Reps: %lld, Weight: %.2f" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reps: %1$lld, Weight: %2$.2f"
           }
         }
       }
@@ -700,7 +727,13 @@
         }
       }
     },
+    "Set %lld" : {
+
+    },
     "Set %lld:" : {
+
+    },
+    "Sets" : {
 
     },
     "Settings" : {
