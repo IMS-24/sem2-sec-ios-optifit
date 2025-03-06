@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%.2f" : {
+
+    },
     "%.2f kg" : {
 
     },
@@ -588,6 +591,9 @@
         }
       }
     },
+    "Order: %lld" : {
+
+    },
     "Please wait" : {
       "localizations" : {
         "de" : {
@@ -736,13 +742,22 @@
     "Total Exercises:" : {
 
     },
+    "Total Reps" : {
+
+    },
     "Total Reps:" : {
+
+    },
+    "Total Sets" : {
 
     },
     "Total Sets:" : {
 
     },
     "Total Time" : {
+
+    },
+    "Total Weight" : {
 
     },
     "Total Weight Lifted:" : {

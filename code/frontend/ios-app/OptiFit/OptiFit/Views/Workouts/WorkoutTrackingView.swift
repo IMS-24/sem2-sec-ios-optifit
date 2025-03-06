@@ -86,7 +86,7 @@ struct WorkoutTrackingView: View {
             } else {
                 List {
                     ForEach(workoutExercises) { workoutExercise in
-                        Text(workoutExercise.exercise.i18NCode)
+                        WorkoutExerciseListEntryView(workoutExercise: workoutExercise)
                     }
                     .onDelete(perform: deleteExercise)
                     .onMove(perform: moveExercise)
@@ -201,17 +201,7 @@ struct WorkoutTrackingView: View {
     // MARK: - Save Workout
     
     private func saveWorkout() {
-//        let createWorkoutExerciseDtos: [CreateWorkoutExerciseDto] = workoutExercises.map { workoutExercise in
-//            CreateWorkoutExerciseDto(
-//                
-//                order: 1,
-//                exercise: workoutExercise.exercise,
-//                notes: "TODO",
-//                workoutSets: workoutExercise.workoutSets.map { set in
-//                    CreateWorkoutSetDto(order: set.order, reps: set.reps!, weight: set.weight!)
-//                }
-//            )
-//        }
+
         let workout = CreateWorkoutDto(
             description: description,
             startAtUtc: workoutStartDate,

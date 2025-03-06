@@ -1,0 +1,64 @@
+import SwiftUI
+
+struct WorkoutExerciseListEntryView: View {
+    @State var workoutExercise: CreateWorkoutExerciseDto
+    
+    var totalWeight: Double {
+        workoutExercise.workoutSets.reduce(0) { sum, set in
+            let weight = set.weight ?? 0.0
+            let reps = set.reps ?? 1
+            return sum + weight * Double(reps)
+        }
+    }
+
+    
+    // Compute total reps from all workout sets (summing optional reps values)
+    var totalReps: Int {
+        workoutExercise.workoutSets.reduce(0) { $0 + ($1.reps ?? 0) }
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            // Header Row: Exercise Name and Order
+            HStack {
+                Text(workoutExercise.exercise.i18NCode)
+                    .font(.headline)
+                Spacer()
+                Text("Order: \(workoutExercise.order)")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+            Divider()
+            // Summary Row: Total Sets, Total Reps, and Total Weight
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("Total Sets")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Text("\(workoutExercise.workoutSets.count)")
+                        .font(.body)
+                }
+                Spacer()
+                VStack(alignment: .leading) {
+                    Text("Total Reps")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Text("\(totalReps)")
+                        .font(.body)
+                }
+                Spacer()
+                VStack(alignment: .leading) {
+                    Text("Total Weight")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Text("\(totalWeight, specifier: "%.2f")")
+                        .font(.body)
+                }
+            }
+        }
+        .padding()
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(8)
+        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+    }
+}
