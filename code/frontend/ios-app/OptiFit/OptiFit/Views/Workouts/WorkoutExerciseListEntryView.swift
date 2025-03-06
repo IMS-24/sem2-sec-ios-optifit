@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct WorkoutExerciseListEntryView: View {
-    @State var workoutExercise: CreateWorkoutExerciseDto
+    @Binding var workoutExercise: CreateWorkoutExerciseDto
     
+    // Total weight computed from each set: weight * reps.
     var totalWeight: Double {
         workoutExercise.workoutSets.reduce(0) { sum, set in
             let weight = set.weight ?? 0.0
@@ -10,16 +11,15 @@ struct WorkoutExerciseListEntryView: View {
             return sum + weight * Double(reps)
         }
     }
-
     
-    // Compute total reps from all workout sets (summing optional reps values)
+    // Total reps computed from each set.
     var totalReps: Int {
         workoutExercise.workoutSets.reduce(0) { $0 + ($1.reps ?? 0) }
     }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            // Header Row: Exercise Name and Order
+            // Header Row: Exercise name and order.
             HStack {
                 Text(workoutExercise.exercise.i18NCode)
                     .font(.headline)
@@ -29,7 +29,7 @@ struct WorkoutExerciseListEntryView: View {
                     .foregroundColor(.gray)
             }
             Divider()
-            // Summary Row: Total Sets, Total Reps, and Total Weight
+            // Summary Row: Total Sets, Total Reps, and Total Weight.
             HStack {
                 VStack(alignment: .leading) {
                     Text("Total Sets")
