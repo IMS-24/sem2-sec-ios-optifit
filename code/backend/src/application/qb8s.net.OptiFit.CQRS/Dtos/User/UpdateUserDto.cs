@@ -15,11 +15,12 @@ public class UpdateUserProfileDtoProfile : BaseProfile
 {
     public UpdateUserProfileDtoProfile()
     {
-        CreateMap<Core.Entities.User, UpdateUserProfileDto>()
+        CreateMap<UpdateUserProfileDto, Core.Entities.User>()
             .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
             .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
-            .ForMember(dest => dest.DateOfBirthUtc, opt => opt.MapFrom(src => src.DateOfBirthUtc))
+            .ForMember(dest => dest.DateOfBirthUtc,
+                opt => opt.MapFrom(src => src.DateOfBirthUtc))
             .ForMember(dest => dest.InitialSetupDone, opt => opt.MapFrom(src => src.InitialSetupDone))
             ;
     }

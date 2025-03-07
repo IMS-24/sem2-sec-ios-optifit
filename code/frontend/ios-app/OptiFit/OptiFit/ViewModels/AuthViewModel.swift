@@ -22,7 +22,11 @@ final class AuthViewModel: ObservableObject {
     @Published var callGraphApiEnabled = false
     @Published var editProfileEnabled = false
     @Published var refreshTokenEnabled = false
-    
+    @Published var currentAccount: MSALAccount? = nil
+    @Published var initUserProfile: UserProfileInitializeDto? = nil
+
+//    @Published var profile:UserProfileDto? = nil
+    @EnvironmentObject private var userProfileViewModel: UserProfileViewModel
     // MSAL application instance
     private var application: MSALPublicClientApplication!
     
@@ -37,6 +41,7 @@ final class AuthViewModel: ObservableObject {
             )
             config.knownAuthorities = [signinAuthority]
             self.application = try MSALPublicClientApplication(configuration: config)
+            
             updateLoggingText("MSAL application created successfully.")
         } catch {
             updateLoggingText("Unable to create application: \(error)")
@@ -100,6 +105,9 @@ final class AuthViewModel: ObservableObject {
         return user
     }
 
+    func isLoggedIn()->Bool{
+        return self.user != nil || self.accessToken != nil
+    }
     
     /// Initiates an interactive token acquisition using async/await.
     func authorize() async {
@@ -124,10 +132,24 @@ final class AuthViewModel: ObservableObject {
             }
             
             accessToken = result.accessToken
+            currentAccount = result.account  // Save the account here
             updateLoggingText("Access token is \(accessToken ?? "Empty")")
             // Attempt to decode the JWT to populate the user object.
             do {
                 self.user = try self.decodeJWT(result.accessToken)
+                if let user = self.user {
+                    self.user?.firstLogin = true
+                    
+                    let userProfile = UserProfileInitializeDto(
+                        firstName: user.given_name ?? "No",
+                        lastName: user.family_name ?? "Lastname",
+                        oId: user.id,
+                        email: user.emails?.first ?? "No@email.com",
+                        dateOfBirthUtc: nil)
+                    self.initUserProfile = userProfile
+                }
+                
+                
             } catch {
                 updateLoggingText("Failed to decode JWT: \(error.localizedDescription)")
             }
@@ -236,19 +258,23 @@ final class AuthViewModel: ObservableObject {
     
     /// Signs out the current user.
     func signOut() {
-        do {
-            guard let account = try? getAccount(byPolicy: signupOrSigninPolicy, from: application.allAccounts()) else {
-                updateLoggingText("There is no account to sign out!")
-                return
-            }
-            try application.remove(account)
+//        do {
+//            guard let account = currentAccount else {
+//                updateLoggingText("No account available to sign out!")
+//                return
+//            }
+//            try application.remove(account)
+            currentAccount = nil
             signOutEnabled = false
             callGraphApiEnabled = false
             editProfileEnabled = false
             refreshTokenEnabled = false
+        accessToken = nil
+        user = nil
+        
             updateLoggingText("Signed out")
-        } catch {
-            updateLoggingText("Error signing out: \(error)")
-        }
+//        } catch {
+//            updateLoggingText("Error signing out: \(error)")
+//        }
     }
 }

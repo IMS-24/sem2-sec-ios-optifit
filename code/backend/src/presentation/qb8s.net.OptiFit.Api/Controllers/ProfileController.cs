@@ -1,13 +1,15 @@
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
+using qb8s.net.OptiFit.Api.Services;
 using qb8s.net.OptiFit.CQRS.Commands.User;
 using qb8s.net.OptiFit.CQRS.Dtos.User;
 using qb8s.net.OptiFit.CQRS.Queries.User;
 
 namespace qb8s.net.OptiFit.Api.Controllers;
 
-public class ProfileController(ILogger<ProfileController> logger)
+public class ProfileController(ILogger<ProfileController> logger, ICurrentUserService currentUserService)
     : ApiBaseController
 {
     [HttpGet]
@@ -16,7 +18,8 @@ public class ProfileController(ILogger<ProfileController> logger)
     public async Task<ActionResult<UserProfileDto>> GetUserProfile()
     {
         logger.LogInformation("{@Name} request", nameof(GetUserProfile));
-        var result = await Mediator.Send(new GetUserProfileQuery(new Guid("275cfdca-c686-4ea1-80b1-f2425b1602c5")));
+        var userId = currentUserService.GetCurrentUserId();
+        var result = await Mediator.Send(new GetUserProfileQuery(userId));
         return Ok(result);
     }
 
@@ -41,14 +44,34 @@ public class ProfileController(ILogger<ProfileController> logger)
     }
 
     [HttpPut]
+    [Authorize]
     [SwaggerResponse(HttpStatusCode.OK, typeof(UserProfileDto),
         Description = "Update User Profile")]
     public async Task<ActionResult<UserProfileDto>> UpdateUserProfile(
         [FromBody] UpdateUserProfileDto update)
     {
+        // Retrieve the Authorization header value
+        var authHeader = Request.Headers["Authorization"].ToString();
+
+        // Optional: Remove the "Bearer " prefix if present.
+        var token = authHeader.StartsWith("Bearer ") ? authHeader.Substring("Bearer ".Length) : authHeader;
+
+        // Log the token for debugging purposes.
+        logger.LogInformation("Received token: {Token}", token);
+        var userId = currentUserService.GetCurrentUserId();
         logger.LogInformation("{@Name} request", nameof(UpdateUserProfile));
         var result =
-            await Mediator.Send(new UpdateUserProfileCommand(update, new Guid("275cfdca-c686-4ea1-80b1-f2425b1602c5")));
+            await Mediator.Send(new UpdateUserProfileCommand(update, userId));
+        return Ok(result);
+    }
+
+    [HttpPost("initialize")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(UserProfileDto), Description = "Initialize User Profile")]
+    public async Task<ActionResult<UserProfileDto>> InitializeUserProfile(
+        [FromBody] InitializeUserProfileDto initializeUserProfile)
+    {
+        logger.LogInformation("{@Name} request", nameof(InitializeUserProfile));
+        var result = await Mediator.Send(new InitializeUserProfileCommand(initializeUserProfile));
         return Ok(result);
     }
 }

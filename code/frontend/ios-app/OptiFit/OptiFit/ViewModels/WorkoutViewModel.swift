@@ -52,11 +52,11 @@ class WorkoutViewModel: ObservableObject {
         isLoadingMore = false
     }
 
-    func saveWorkout(_ workout: CreateWorkoutDto) async {
+    func saveWorkout(_ workout: CreateWorkoutDto, accessToken: String) async {
         isLoading = true
         errorMessage = nil
         do {
-            let created = try await workoutService.postWorkout(workout)
+            let created = try await workoutService.postWorkout(workout, accessToken: accessToken)
             workouts.append(created)
 
         } catch {

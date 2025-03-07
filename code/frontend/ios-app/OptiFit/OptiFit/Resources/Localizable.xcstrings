@@ -55,6 +55,12 @@
     "%lld sets" : {
 
     },
+    "🐸 Virtual Trainer" : {
+
+    },
+    "🔥 Roast Me" : {
+
+    },
     "Add Exercise" : {
       "localizations" : {
         "de" : {
@@ -150,6 +156,9 @@
         }
       }
     },
+    "Birth Date" : {
+
+    },
     "Birthdate: %@" : {
       "localizations" : {
         "de" : {
@@ -220,6 +229,9 @@
           }
         }
       }
+    },
+    "Continue" : {
+
     },
     "Cooming Soon" : {
       "extractionState" : "stale",
@@ -336,6 +348,9 @@
     "Edit Exercise" : {
 
     },
+    "Email" : {
+
+    },
     "End" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -357,6 +372,15 @@
           }
         }
       }
+    },
+    "Enter your email" : {
+
+    },
+    "Enter your first name" : {
+
+    },
+    "Enter your last name" : {
+
     },
     "Error" : {
       "localizations" : {
@@ -421,6 +445,12 @@
         }
       }
     },
+    "Fetching insult..." : {
+
+    },
+    "First Name" : {
+
+    },
     "Gym" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -481,6 +511,9 @@
           }
         }
       }
+    },
+    "Last Name" : {
+
     },
     "Loading ..." : {
       "localizations" : {
@@ -606,10 +639,16 @@
         }
       }
     },
+    "Onboarding" : {
+
+    },
     "Order" : {
 
     },
     "Order: %lld" : {
+
+    },
+    "Please provide your details" : {
 
     },
     "Please wait" : {
@@ -720,6 +759,9 @@
           }
         }
       }
+    },
+    "Select your birth date" : {
+
     },
     "Selection missing" : {
       "localizations" : {
@@ -866,6 +908,9 @@
       }
     },
     "Weight: %.1f" : {
+
+    },
+    "Welcome!" : {
 
     },
     "Workout Detail" : {

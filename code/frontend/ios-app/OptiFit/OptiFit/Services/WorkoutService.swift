@@ -40,7 +40,7 @@ class WorkoutService: ObservableObject {
         }
     }
     
-    func postWorkout(_ workout: CreateWorkoutDto) async throws (ApiError) -> GetWorkoutDto {
+    func postWorkout(_ workout: CreateWorkoutDto, accessToken: String) async throws (ApiError) -> GetWorkoutDto {
         guard let url = URL(string: baseURL) else {
             throw ApiError.invalidURL
         }
@@ -48,7 +48,8 @@ class WorkoutService: ObservableObject {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        request.addAuthorizationHeader(with: accessToken)
+
         do {
             let encoder = ISO8601CustomCoder.makeEncoder()
             let jsonData = try encoder.encode(workout)

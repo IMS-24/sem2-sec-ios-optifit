@@ -5,6 +5,7 @@ struct WorkoutTrackingView: View {
     let gym: GetGymDto
     let exerciseCategory: ExerciseCategoryDto
     let workoutStartDate: Date
+    @EnvironmentObject private var authViewModel: AuthViewModel
     
     @State private var workoutExercises: [CreateWorkoutExerciseDto] = []
     @State private var navigateToExerciseSheet: Bool = false
@@ -226,7 +227,7 @@ struct WorkoutTrackingView: View {
             workoutExercises: workoutExercises
         )
         Task {
-            let _ = await workoutViewModel.saveWorkout(workout)
+            let _ = await workoutViewModel.saveWorkout(workout,accessToken: authViewModel.accessToken!)
             dismiss()
         }
     }

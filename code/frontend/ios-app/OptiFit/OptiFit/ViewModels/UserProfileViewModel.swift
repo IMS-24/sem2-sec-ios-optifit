@@ -9,6 +9,7 @@ class UserProfileViewModel: ObservableObject {
     @Published var errorMessage: ErrorMessage?
     @Published var workoutSummary: [WorkoutSummary] = []
     @Published var isLoading: Bool = false
+    @Published var oId: UUID?
 
     private let profileService = ProfileService()
 
@@ -24,39 +25,34 @@ class UserProfileViewModel: ObservableObject {
         isLoading = false
     }
 
-    func loadProfile() async {
+    func loadProfile(token: String) async {
         isLoading = true
         errorMessage = nil
         do {
-            let fetchedProfile = try await profileService.fetchProfile()
-            self.profile = fetchedProfile
+           
+            let fetchedProfile = try await profileService.fetchProfile(accessToken: token)
+                self.profile = fetchedProfile
+          
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
         isLoading = false
     }
 
+    func setProfile(_ profile:UserProfileDto){
+        self.profile = profile
+    }
+    func  unsetProfile(){
+        self.profile = nil
+    }
 
-    func updateProfile(
-            firstName: String,
-            lastName: String,
-            email: String,
-            dateOfBirthUtc: Date?,
-            initialSetupDone: Bool
-    ) async {
-        guard var profile = profile else {
-            return
-        }
+    func updateProfile(profileToUpdate:UpdateUserProfileDto, token: String) async {
+        
         isLoading = true
         errorMessage = nil
-        profile.firstName = firstName
-        profile.lastName = lastName
-        profile.email = email
-        profile.dateOfBirthUtc = dateOfBirthUtc
-        profile.initialSetupDone = initialSetupDone
 
         do {
-            let result = try await profileService.updateProfile(profile: profile)
+            let result = try await profileService.updateProfile(profile: profileToUpdate, accessToken: token)
             self.profile = result
 
         } catch {
@@ -80,6 +76,18 @@ class UserProfileViewModel: ObservableObject {
             } else {
                 self.errorMessage = ErrorMessage(message: "Failed to delete user.")
             }
+        } catch {
+            self.errorMessage = ErrorMessage(message: error.localizedDescription)
+        }
+        isLoading = false
+    }
+    
+    func initializeProfile(_ profile: UserProfileInitializeDto) async {
+        isLoading = true
+        errorMessage = nil
+        do{
+            let profile = try await profileService.initializeUserProfile(profile)
+            self.profile = profile
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }

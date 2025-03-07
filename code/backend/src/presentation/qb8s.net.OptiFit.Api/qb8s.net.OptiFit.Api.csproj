@@ -7,6 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.13"/>
+        <PackageReference Include="Microsoft.Identity.Web" Version="3.7.1"/>
         <PackageReference Include="NSwag.AspNetCore" Version="14.0.7"/>
         <PackageReference Include="NSwag.MSBuild" Version="14.0.7">
             <PrivateAssets>all</PrivateAssets>
@@ -19,6 +21,10 @@
     <ItemGroup>
         <ProjectReference Include="..\..\application\qb8s.net.OptiFit.CQRS\qb8s.net.OptiFit.CQRS.csproj"/>
         <ProjectReference Include="..\..\infrastructure\qb8s.net.OptiFit.Persistence\qb8s.net.OptiFit.Persistence.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Services\Util\"/>
     </ItemGroup>
     <Target Name="NSwag" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)' == 'Debug' ">
         <Exec WorkingDirectory="$(ProjectDir)" EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Development" Command="$(NSwagExe_Net80) run nswag.json /variables:Configuration=$(Configuration)"/>

@@ -779,6 +779,127 @@ export class ProfileClient {
         }
         return _observableOf<UserStatsDto>(null as any);
     }
+
+    /**
+     * @return Initialize User Profile
+     */
+    initializeUserProfile(initializeUserProfile: InitializeUserProfileDto): Observable<UserProfileDto> {
+        let url_ = this.baseUrl + "/api/Profile/initialize";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(initializeUserProfile);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processInitializeUserProfile(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processInitializeUserProfile(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UserProfileDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UserProfileDto>;
+        }));
+    }
+
+    protected processInitializeUserProfile(response: HttpResponseBase): Observable<UserProfileDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as UserProfileDto;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<UserProfileDto>(null as any);
+    }
+}
+
+@Injectable({
+    providedIn: 'root'
+})
+export class VirtualTrainerClient {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ?? "";
+    }
+
+    /**
+     * @return Get Motivational Quote
+     */
+    getMotivationalQuotes(level: number): Observable<UserInsultCountDto> {
+        let url_ = this.baseUrl + "/api/VirtualTrainer/motivation/{level}";
+        if (level === undefined || level === null)
+            throw new Error("The parameter 'level' must be defined.");
+        url_ = url_.replace("{level}", encodeURIComponent("" + level));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetMotivationalQuotes(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetMotivationalQuotes(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<UserInsultCountDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<UserInsultCountDto>;
+        }));
+    }
+
+    protected processGetMotivationalQuotes(response: HttpResponseBase): Observable<UserInsultCountDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as UserInsultCountDto;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<UserInsultCountDto>(null as any);
+    }
 }
 
 @Injectable({
@@ -1138,6 +1259,20 @@ export interface UpdateUserProfileDto {
     email?: string | null;
     dateOfBirthUtc?: Date | null;
     initialSetupDone?: boolean;
+}
+
+export interface InitializeUserProfileDto {
+    firstName?: string;
+    lastName?: string;
+    oId?: string;
+    email?: string;
+    dateOfBirthUtc?: Date;
+}
+
+export interface UserInsultCountDto {
+    userId?: string;
+    message?: string;
+    totalInsultCount?: number;
 }
 
 export interface PaginatedResultOfGetWorkoutDto {

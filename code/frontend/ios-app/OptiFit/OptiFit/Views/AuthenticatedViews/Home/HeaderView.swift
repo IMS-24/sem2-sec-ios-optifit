@@ -13,7 +13,7 @@ struct HeaderView: View {
     var body: some View {
         HStack {
             // Use email if available; if not, use name; if still nil, show "No user"
-            Text(viewModel.user?.email ?? viewModel.user?.name ?? viewModel.user?.id.uuidString ?? "No user")
+            Text(viewModel.user?.emails?.first ?? viewModel.user?.name ?? viewModel.user?.id.uuidString ?? "No user")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(.blue)
