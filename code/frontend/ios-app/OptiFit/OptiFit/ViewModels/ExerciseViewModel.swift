@@ -54,10 +54,10 @@ class ExerciseViewModel: ObservableObject {
             // Reset pagination for a new search
             searchModel.pageIndex = 0
             currentPage = 0
-            if let res = try await exerciseService.searchExercises(searchModel: searchModel) {
+            let res = try await exerciseService.searchExercises(searchModel: searchModel)
                 exercises = res.items
                 totalPages = res.totalPages  // update total pages if provided by your API
-            }
+            
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
@@ -73,10 +73,10 @@ class ExerciseViewModel: ObservableObject {
         currentPage += 1
         searchModel.pageIndex = currentPage
         do {
-            if let res = try await exerciseService.searchExercises(searchModel: searchModel) {
+             let res = try await exerciseService.searchExercises(searchModel: searchModel)
                 // Append the newly fetched exercises to the existing list
                 exercises.append(contentsOf: res.items)
-            }
+            
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }

@@ -119,38 +119,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C183A53A-75CE-4444-AF96-E5B84CDBBF4D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/WorkoutService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "WorkoutService"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D08116BA-809A-4EA5-B3CB-A26EC0604EBA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/WorkoutService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "WorkoutService"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "A0B23253-AF33-40A3-A788-F5A5F7DF5708"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -162,156 +130,6 @@
             endingLineNumber = "26"
             landmarkName = "searchWorkouts()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7924F80F-664B-4613-BFD1-907F75D3C774"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/WorkoutService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "WorkoutService"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "7924F80F-664B-4613-BFD1-907F75D3C774 - 43ca948e487467b6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for OptiFit.WorkoutService.searchWorkouts(searchModel: OptiFit.SearchWorkoutsDto, token: Swift.String, append: Swift.Bool) async throws(OptiFit.ApiError) -&gt; Swift.Optional&lt;OptiFit.PaginatedResult&lt;OptiFit.GetWorkoutDto&gt;&gt;"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/WorkoutService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49">
-               </Location>
-               <Location
-                  uuid = "7924F80F-664B-4613-BFD1-907F75D3C774 - 6e6e6eaba24fabb4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for OptiFit.WorkoutService.searchWorkouts(searchModel: OptiFit.SearchWorkoutsDto, token: Swift.String, append: Swift.Bool) async throws(OptiFit.ApiError) -&gt; Swift.Optional&lt;OptiFit.PaginatedResult&lt;OptiFit.GetWorkoutDto&gt;&gt;"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/WorkoutService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49">
-               </Location>
-               <Location
-                  uuid = "7924F80F-664B-4613-BFD1-907F75D3C774 - 83d01c59d7320db3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for OptiFit.WorkoutService.searchWorkouts(searchModel: OptiFit.SearchWorkoutsDto, token: Swift.String, append: Swift.Bool) async throws(OptiFit.ApiError) -&gt; Swift.Optional&lt;OptiFit.PaginatedResult&lt;OptiFit.GetWorkoutDto&gt;&gt;"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/WorkoutService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49">
-               </Location>
-               <Location
-                  uuid = "7924F80F-664B-4613-BFD1-907F75D3C774 - ec34d95f6f9eaedb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for OptiFit.WorkoutService.searchWorkouts(searchModel: OptiFit.SearchWorkoutsDto) async throws(OptiFit.ApiError) -&gt; Swift.Optional&lt;OptiFit.PaginatedResult&lt;OptiFit.GetWorkoutDto&gt;&gt;"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/WorkoutService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47">
-               </Location>
-               <Location
-                  uuid = "7924F80F-664B-4613-BFD1-907F75D3C774 - df175e8ac2f1d2d5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for OptiFit.WorkoutService.searchWorkouts(searchModel: OptiFit.SearchWorkoutsDto) async throws(OptiFit.ApiError) -&gt; Swift.Optional&lt;OptiFit.PaginatedResult&lt;OptiFit.GetWorkoutDto&gt;&gt;"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/WorkoutService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47">
-               </Location>
-               <Location
-                  uuid = "7924F80F-664B-4613-BFD1-907F75D3C774 - 26e7a193f7a4b4d4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for OptiFit.WorkoutService.searchWorkouts(searchModel: OptiFit.SearchWorkoutsDto) async throws(OptiFit.ApiError) -&gt; Swift.Optional&lt;OptiFit.PaginatedResult&lt;OptiFit.GetWorkoutDto&gt;&gt;"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/WorkoutService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "944BB1E4-335B-4507-9669-7B53552E3843"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/WorkoutService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "WorkoutService"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E9110529-6DF6-4751-836E-959D5F4556A7"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/WorkoutService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "WorkoutService"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D6979A5A-212E-43A0-A598-44E1F847DB05"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/WorkoutService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "WorkoutService"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -392,138 +210,6 @@
             endingLineNumber = "59"
             landmarkName = "updateProfile(profileToUpdate:token:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "080C911F-3D92-43A2-A620-757527BCB610 - c833e93da5206e7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for OptiFit.UserProfileViewModel.updateProfile(profileToUpdate: OptiFit.UpdateUserProfileDto, token: Swift.String) async -&gt; ()"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/ViewModels/UserProfileViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59">
-               </Location>
-               <Location
-                  uuid = "080C911F-3D92-43A2-A620-757527BCB610 - a6c1790e2ca8063f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for OptiFit.UserProfileViewModel.updateProfile(profileToUpdate: OptiFit.UpdateUserProfileDto) async -&gt; ()"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/ViewModels/UserProfileViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8DC7538F-6548-4364-B6BE-24861539D1DD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/ProfileService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "ProfileService"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "8DC7538F-6548-4364-B6BE-24861539D1DD - 9ce6d79bd4b93532"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for OptiFit.ProfileService.updateProfile(profile: OptiFit.UpdateUserProfileDto, accessToken: Swift.String) async throws(OptiFit.ApiError) -&gt; OptiFit.UserProfileDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/ProfileService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75">
-               </Location>
-               <Location
-                  uuid = "8DC7538F-6548-4364-B6BE-24861539D1DD - c82fda6c7a35f830"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for OptiFit.ProfileService.updateProfile(profile: OptiFit.UpdateUserProfileDto, accessToken: Swift.String) async throws(OptiFit.ApiError) -&gt; OptiFit.UserProfileDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/ProfileService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75">
-               </Location>
-               <Location
-                  uuid = "8DC7538F-6548-4364-B6BE-24861539D1DD - 21932344b1765a8f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for OptiFit.ProfileService.updateProfile(profile: OptiFit.UpdateUserProfileDto, accessToken: Swift.String) async throws(OptiFit.ApiError) -&gt; OptiFit.UserProfileDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/ProfileService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75">
-               </Location>
-               <Location
-                  uuid = "8DC7538F-6548-4364-B6BE-24861539D1DD - d5eff6ed5da95893"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for OptiFit.ProfileService.updateProfile(profile: OptiFit.UpdateUserProfileDto) async throws(OptiFit.ApiError) -&gt; OptiFit.UserProfileDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/ProfileService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75">
-               </Location>
-               <Location
-                  uuid = "8DC7538F-6548-4364-B6BE-24861539D1DD - 9df8a0a31b863c91"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for OptiFit.ProfileService.updateProfile(profile: OptiFit.UpdateUserProfileDto) async throws(OptiFit.ApiError) -&gt; OptiFit.UserProfileDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/ProfileService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75">
-               </Location>
-               <Location
-                  uuid = "8DC7538F-6548-4364-B6BE-24861539D1DD - 39fe3b8606938e90"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for OptiFit.ProfileService.updateProfile(profile: OptiFit.UpdateUserProfileDto) async throws(OptiFit.ApiError) -&gt; OptiFit.UserProfileDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/ProfileService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -572,22 +258,6 @@
             endingLineNumber = "145"
             landmarkName = "authorize()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2A173720-221B-4FDE-9690-256C2B9C21F3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/ProfileService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "ProfileService"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -737,114 +407,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CA774EEB-5B80-4A6A-A53D-0D8B9124725D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/ProfileService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "ProfileService"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "02D1CA91-34F2-4B15-80D0-97449BA0681A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/ProfileService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "ProfileService"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "02D1CA91-34F2-4B15-80D0-97449BA0681A - 3740685e829c2839"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for OptiFit.ProfileService.initializeUserProfile(OptiFit.UserProfileInitializeDto) async throws(OptiFit.ApiError) -&gt; OptiFit.UserProfileDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/ProfileService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "183"
-                  endingLineNumber = "183">
-               </Location>
-               <Location
-                  uuid = "02D1CA91-34F2-4B15-80D0-97449BA0681A - 8d1ad2857ab46c3f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for OptiFit.ProfileService.initializeUserProfile(OptiFit.UserProfileInitializeDto) async throws(OptiFit.ApiError) -&gt; OptiFit.UserProfileDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/ProfileService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "183"
-                  endingLineNumber = "183">
-               </Location>
-               <Location
-                  uuid = "02D1CA91-34F2-4B15-80D0-97449BA0681A - 31c86e209ea1b23e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for OptiFit.ProfileService.initializeUserProfile(OptiFit.UserProfileInitializeDto) async throws(OptiFit.ApiError) -&gt; OptiFit.UserProfileDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/ProfileService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "183"
-                  endingLineNumber = "183">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0E79D051-56BB-4543-B309-3216E3D265C4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/ProfileService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "ProfileService"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "096252AE-347F-4803-A532-786D7D5F16A2"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/ProfileService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "ProfileService"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "30D6BFE0-EDDF-4789-A6DD-60E148201FAE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -909,22 +471,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F7BED871-4112-4104-93A7-B7BB72D958B4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/ProfileService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "ProfileService"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "98FF3B93-AECD-4AA3-94E8-2506D5A9DF7A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -952,22 +498,6 @@
             endingLineNumber = "291"
             landmarkName = "signOut()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "618DCFE6-1F2A-447A-AC11-356A32771476"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/VirtualTrainerService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "VirtualTrainerService"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1016,94 +546,6 @@
             endingLineNumber = "24"
             landmarkName = "updateLevel()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "47702055-D360-42C9-95D3-2AE8CCF57BF0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Services/VirtualTrainerService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "VirtualTrainerService"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "47702055-D360-42C9-95D3-2AE8CCF57BF0 - 8de1ee0ca29f4326"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for OptiFit.VirtualTrainerService.fetchMotivation(token: Swift.String, level: Swift.Int) async throws(OptiFit.ApiError) -&gt; OptiFit.InsultDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/VirtualTrainerService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49">
-               </Location>
-               <Location
-                  uuid = "47702055-D360-42C9-95D3-2AE8CCF57BF0 - a915b8568cb7bf28"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for OptiFit.VirtualTrainerService.fetchMotivation(token: Swift.String, level: Swift.Int) async throws(OptiFit.ApiError) -&gt; OptiFit.InsultDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/VirtualTrainerService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49">
-               </Location>
-               <Location
-                  uuid = "47702055-D360-42C9-95D3-2AE8CCF57BF0 - 57436d7d81d85929"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for OptiFit.VirtualTrainerService.fetchMotivation(token: Swift.String, level: Swift.Int) async throws(OptiFit.ApiError) -&gt; OptiFit.InsultDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/VirtualTrainerService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49">
-               </Location>
-               <Location
-                  uuid = "47702055-D360-42C9-95D3-2AE8CCF57BF0 - d6ababa9af36687a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for OptiFit.VirtualTrainerService.fetchMotivation(level: Swift.Int) async throws(OptiFit.ApiError) -&gt; OptiFit.InsultDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/VirtualTrainerService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48">
-               </Location>
-               <Location
-                  uuid = "47702055-D360-42C9-95D3-2AE8CCF57BF0 - 773882a87a250a7d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for OptiFit.VirtualTrainerService.fetchMotivation(level: Swift.Int) async throws(OptiFit.ApiError) -&gt; OptiFit.InsultDto"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/VirtualTrainerService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1298,16 +740,16 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "42548527-37D1-484D-B9C2-10FDCD48C2F1"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OptiFit/Clients/APIClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "request(endpoint:method:body:)"
-            landmarkType = "7">
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1340,6 +782,126 @@
             endingLineNumber = "149"
             landmarkName = "authorize()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E962CB78-42D9-4F82-91F6-F38E628D864B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OptiFit/Clients/APIClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "request(endpoint:method:body:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "459A8BBA-0185-463F-BD5F-01D5496957EC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OptiFit/Clients/APIClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "request(endpoint:method:body:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6253B2AB-70A8-44C2-82AC-F34476138615"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OptiFit/Services/WorkoutService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "searchWorkouts(searchModel:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6253B2AB-70A8-44C2-82AC-F34476138615 - 43ca948e48745af1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for OptiFit.WorkoutService.searchWorkouts(searchModel: OptiFit.SearchWorkoutsDto, token: Swift.String, append: Swift.Bool) async throws(OptiFit.ApiError) -&gt; Swift.Optional&lt;OptiFit.PaginatedResult&lt;OptiFit.GetWorkoutDto&gt;&gt;"
+                  moduleName = "OptiFit.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/WorkoutService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12">
+               </Location>
+               <Location
+                  uuid = "6253B2AB-70A8-44C2-82AC-F34476138615 - 7a388e3c4c6d7439"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for OptiFit.WorkoutService.searchWorkouts(searchModel: OptiFit.SearchWorkoutsDto) async throws -&gt; Swift.Optional&lt;OptiFit.PaginatedResult&lt;OptiFit.GetWorkoutDto&gt;&gt;"
+                  moduleName = "OptiFit.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/WorkoutService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11">
+               </Location>
+               <Location
+                  uuid = "6253B2AB-70A8-44C2-82AC-F34476138615 - 1dc86b2eb47d6c95"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for OptiFit.WorkoutService.searchWorkouts(searchModel: OptiFit.SearchWorkoutsDto) async throws -&gt; Swift.Optional&lt;OptiFit.PaginatedResult&lt;OptiFit.GetWorkoutDto&gt;&gt;"
+                  moduleName = "OptiFit.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/WorkoutService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11">
+               </Location>
+               <Location
+                  uuid = "6253B2AB-70A8-44C2-82AC-F34476138615 - a9d1cc9541d0f05b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for OptiFit.WorkoutService.searchWorkouts(searchModel: OptiFit.SearchWorkoutsDto) async throws -&gt; Swift.Optional&lt;OptiFit.PaginatedResult&lt;OptiFit.GetWorkoutDto&gt;&gt;"
+                  moduleName = "OptiFit.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/WorkoutService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11">
+               </Location>
+               <Location
+                  uuid = "6253B2AB-70A8-44C2-82AC-F34476138615 - 7745aba6c789b24a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for OptiFit.WorkoutService.searchWorkouts(searchModel: OptiFit.SearchWorkoutsDto) async throws -&gt; Swift.Optional&lt;OptiFit.PaginatedResult&lt;OptiFit.GetWorkoutDto&gt;&gt;"
+                  moduleName = "OptiFit.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Services/WorkoutService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
