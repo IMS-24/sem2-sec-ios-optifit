@@ -3,7 +3,6 @@ import SwiftUI
 struct OnboardingWizardView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var userProfileViewModel: UserProfileViewModel
-    @EnvironmentObject private var authViewModel: AuthViewModel
     
     // Create computed bindings for each field. They use a default profile if needed.
     private var firstNameBinding: Binding<String> {
@@ -143,7 +142,7 @@ struct OnboardingWizardView: View {
             // Call your update function using the (now updated) profile from the view model.
             if let profile = userProfileViewModel.profile {
                 let updatedProfile = UpdateUserProfileDto(firstName: profile.firstName, lastName: profile.lastName, email: profile.email, dateOfBirthUtc: profile.dateOfBirthUtc, initialSetupDone: true)
-                await userProfileViewModel.updateProfile(profileToUpdate: updatedProfile,token:authViewModel.accessToken!)
+                await userProfileViewModel.updateProfile(profileToUpdate: updatedProfile)
             }
         }
     }

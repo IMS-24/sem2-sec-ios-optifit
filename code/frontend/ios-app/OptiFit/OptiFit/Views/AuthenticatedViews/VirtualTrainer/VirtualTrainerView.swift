@@ -2,7 +2,6 @@ import SwiftUI
 
 struct VirtualTrainerView: View {
     @StateObject private var viewModel = VirtualTrainerViewModel()
-    @EnvironmentObject private var authViewModel: AuthViewModel
     
     var body: some View {
         VStack(spacing: 20) {
@@ -60,13 +59,11 @@ struct VirtualTrainerView: View {
     
     func loadMotivation() {
         Task{
-            await viewModel.getMotivation(token: authViewModel.accessToken!)
+            await viewModel.getMotivation()
         }
         
     }
     
-    /// Maps a given level to an image name proportionally for levels up to 25.
-    /// Levels below 1 are clamped to 1, and levels above 25 use the highest image.
     private func getPepeImage(for level: Int) -> String {
         let images = ["pepe_1", "pepe_2", "pepe_3", "pepe_4", "pepe_5", "pepe_6", "pepe_7", "pepe_8", "pepe_9"]
         let maxLevel = 25

@@ -5,7 +5,6 @@ struct WorkoutTrackingView: View {
     let gym: GetGymDto
     let exerciseCategory: ExerciseCategoryDto
     let workoutStartDate: Date
-    @EnvironmentObject private var authViewModel: AuthViewModel
     
     @State private var workoutExercises: [CreateWorkoutExerciseDto] = []
     @State private var navigateToExerciseSheet: Bool = false
@@ -172,9 +171,7 @@ struct WorkoutTrackingView: View {
             timer?.invalidate()
         }
     }
-    
-    // MARK: - Computed Properties
-    
+        
     var formattedStartTime: String {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
@@ -186,18 +183,14 @@ struct WorkoutTrackingView: View {
         let seconds = Int(elapsedTime) % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
-    
-    // MARK: - Timer Functionality
-    
+        
     private func startTimer() {
         elapsedTime = Date().timeIntervalSince(workoutStartDate)
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             elapsedTime = Date().timeIntervalSince(workoutStartDate)
         }
     }
-    
-    // MARK: - Exercise List Manipulation
-    
+        
     private func deleteExercise(at offsets: IndexSet) {
         workoutExercises.remove(atOffsets: offsets)
         updateExerciseOrders()
@@ -214,9 +207,7 @@ struct WorkoutTrackingView: View {
             workoutExercises[index].order = index + 1
         }
     }
-    
-    // MARK: - Save Workout
-    
+        
     private func saveWorkout() {
         let workout = CreateWorkoutDto(
             description: description,
@@ -227,7 +218,7 @@ struct WorkoutTrackingView: View {
             workoutExercises: workoutExercises
         )
         Task {
-            let _ = await workoutViewModel.saveWorkout(workout,accessToken: authViewModel.accessToken!)
+            let _ = await workoutViewModel.saveWorkout(workout)
             dismiss()
         }
     }

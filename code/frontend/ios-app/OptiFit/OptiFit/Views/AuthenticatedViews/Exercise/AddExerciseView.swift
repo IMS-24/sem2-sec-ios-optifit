@@ -4,7 +4,7 @@ import PhotosUI
 struct AddExerciseView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var exerciseViewModel: ExerciseViewModel
-    @EnvironmentObject private var authViewModel: AuthViewModel
+    
     @State private var name: String = ""
     @State private var selectedExerciseCategory: UUID?
     @State private var selectedMuscles: Set<GetMuscleDto> = []
@@ -98,16 +98,15 @@ struct AddExerciseView: View {
                         }
                     }
                 }
-                // Hide the form’s default background so our custom background shows.
                 .scrollContentBackground(.hidden)
             }
             .navigationTitle("Add Exercise")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 Task {
-                    await muscleViewModel.searchMuscles(token:authViewModel.accessToken!)
-                    await exerciseViewModel.searchExerciseCategories(token:authViewModel.accessToken!)
-                    await exerciseCategoryViewModel.fetchCategories(token:authViewModel.accessToken!)
+                    await muscleViewModel.searchMuscles()
+                    await exerciseViewModel.searchExerciseCategories()
+                    await exerciseCategoryViewModel.fetchCategories()
                 }
             }
             .alert(item: $exerciseViewModel.errorMessage) { error in
@@ -137,7 +136,7 @@ struct AddExerciseView: View {
         )
         
         Task {
-            let _ = await exerciseViewModel.saveExercise(exerciseDto: exercise, token: authViewModel.accessToken!)
+            let _ = await exerciseViewModel.saveExercise(exerciseDto: exercise)
             dismiss()
         }
     }

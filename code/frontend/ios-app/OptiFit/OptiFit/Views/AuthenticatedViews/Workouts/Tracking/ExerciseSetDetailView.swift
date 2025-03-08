@@ -57,11 +57,6 @@ struct ExerciseSetDetailView: View {
             }
             .navigationTitle("Add Set Info")
             .toolbar {
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    Button("Cancel") {
-//                        dismiss()
-//                    }
-//                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
                         let workoutExercise = CreateWorkoutExerciseDto(

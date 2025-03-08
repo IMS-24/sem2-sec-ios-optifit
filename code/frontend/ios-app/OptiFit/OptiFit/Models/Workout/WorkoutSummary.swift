@@ -1,9 +1,4 @@
-//
-//  WorkoutSummary.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 05.03.25.
-//
+
 
 import Foundation
 

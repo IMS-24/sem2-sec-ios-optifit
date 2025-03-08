@@ -16,14 +16,13 @@ class WorkoutViewModel: ObservableObject {
     private let workoutService = WorkoutService()
 
 
-    func searchWorkouts(token: String) async {
+    func searchWorkouts() async {
         isLoading = true
         errorMessage = nil
         do {
-            // Reset pagination for a new search
             searchModel.pageIndex = 0
             currentPage = 0
-            if let result = try await workoutService.searchWorkouts(searchModel: searchModel,token: token) {
+            if let result = try await workoutService.searchWorkouts(searchModel: searchModel) {
                 workouts = result.items
                 totalPages = result.totalPages
             }
@@ -34,7 +33,7 @@ class WorkoutViewModel: ObservableObject {
         isLoading = false
     }
 
-    func loadMoreWorkouts(token: String) async {
+    func loadMoreWorkouts() async {
         guard !isLoadingMore, currentPage + 1 < totalPages else {
             return
         }
@@ -42,7 +41,7 @@ class WorkoutViewModel: ObservableObject {
         currentPage += 1
         searchModel.pageIndex = currentPage
         do {
-            if let res = try await workoutService.searchWorkouts(searchModel: searchModel, token: token) {
+            if let res = try await workoutService.searchWorkouts(searchModel: searchModel) {
                 workouts.append(contentsOf: res.items)
             }
         } catch {
@@ -52,11 +51,11 @@ class WorkoutViewModel: ObservableObject {
         isLoadingMore = false
     }
 
-    func saveWorkout(_ workout: CreateWorkoutDto, accessToken: String) async {
+    func saveWorkout(_ workout: CreateWorkoutDto) async {
         isLoading = true
         errorMessage = nil
         do {
-            let created = try await workoutService.postWorkout(workout, accessToken: accessToken)
+            let created = try await workoutService.postWorkout(workout)
             workouts.append(created)
 
         } catch {
@@ -67,8 +66,8 @@ class WorkoutViewModel: ObservableObject {
 
     func updateSearchModel(_ newModel: SearchWorkoutsDto) {
         self.searchModel = newModel
-//        Task {
-//            await searchWorkouts()
-//        }
+        Task {
+            await searchWorkouts()
+        }
     }
 }

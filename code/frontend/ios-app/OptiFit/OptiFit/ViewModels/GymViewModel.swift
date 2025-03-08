@@ -1,9 +1,3 @@
-//
-//  GymViewModel.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 20.02.25.
-//
 
 import Foundation
 import Combine
@@ -17,11 +11,11 @@ class GymViewModel: ObservableObject {
     private let gymService = GymService()
 
 
-    func searchGyms(token: String) async {
+    func searchGyms() async {
         isLoading = true
         errorMessage = nil
         do {
-            let response = try await gymService.searchGym(searchModel: searchModel, token: token)
+            let response = try await gymService.searchGym(searchModel: searchModel)
             gyms = response.items
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)

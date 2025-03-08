@@ -6,7 +6,7 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if authViewModel.isLoggedIn() != false {
+            if authViewModel.accessToken != nil {
                 AuthContentView()
                     .environmentObject(profileViewModel)
             } else {
@@ -18,7 +18,7 @@ struct ContentView: View {
             // When authViewModel.profile is updated, update the user profile.
             if let newProfile = newProfile {
                 Task{
-                    await   profileViewModel.initializeProfile(newProfile,token: authViewModel.accessToken!)
+                    await   profileViewModel.initializeProfile(newProfile)
                 }
             }else{
                     profileViewModel.unsetProfile()

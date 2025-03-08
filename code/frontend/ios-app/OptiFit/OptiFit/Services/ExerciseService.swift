@@ -2,190 +2,28 @@ import Foundation
 
 @MainActor
 class ExerciseService: ObservableObject {
-   // private let GetExerciseStatisticsDto: GetExerciseStatisticsDto
-    private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/exercise"
+    private let apiClient: APIClient = APIClient()
+    private let baseURL = "exercise"
+
     
-    func fetchExerciseCategories(token: String) async throws (ApiError)-> [ExerciseCategoryDto] {
-        guard let url = URL(string: "\(baseURL)/categories")
-        else {
-            throw .invalidURL
-        }
-        do {
-            var request = URLRequest(url: url)
-            request.httpMethod = "GET"
-            request.addAuthorizationHeader(with: token)
-            let (data, response) = try await URLSession.shared.data(for: request)
-            
-            if let httpResponse = response as? HTTPURLResponse {
-                switch httpResponse.statusCode {
-                case 200...299:
-                    break
-                case 400:
-                    throw ApiError.badRequest(String(data: data, encoding: .utf8))
-                case 401:
-                    throw ApiError.unauthorized(String(data: data, encoding: .utf8))
-                case 500:
-                    throw ApiError.serverError(String(data: data, encoding: .utf8))
-                default:
-                    throw ApiError.requestFailed
-                }
-            }
-            
-            let decoder = ISO8601CustomCoder.makeDecoder()
-            let exerciseCategories = try decoder.decode([ExerciseCategoryDto].self, from: data)
-            return exerciseCategories
-        } catch {
-            if error is DecodingError {
-                throw .decodingFailed
-            } else {
-                throw .requestFailed
-            }
-        }
+    func fetchExerciseCategories() async throws -> [ExerciseCategoryDto] {
+        return try await apiClient.request(endpoint: "\(baseURL)/categories")
     }
     
-    func fetchExerciseStatistics(exerciseId: UUID, token: String) async throws (ApiError) -> GetExerciseStatisticsDto{
-        guard let url = URL(string: "\(baseURL)/\(exerciseId)/stats")
-        else {
-            throw .invalidURL
-        }
-        do {
-            var request = URLRequest(url: url)
-            request.httpMethod = "GET"
-            request.addAuthorizationHeader(with: token)
-            let (data, response) = try await URLSession.shared.data(for: request)
-            
-            if let httpResponse = response as? HTTPURLResponse {
-                switch httpResponse.statusCode {
-                case 200...299:
-                    break
-                case 400:
-                    throw ApiError.badRequest(String(data: data, encoding: .utf8))
-                case 401:
-                    throw ApiError.unauthorized(String(data: data, encoding: .utf8))
-                case 500:
-                    throw ApiError.serverError(String(data: data, encoding: .utf8))
-                default:
-                    throw ApiError.requestFailed
-                }
-            }
-            let decoder = ISO8601CustomCoder.makeDecoder()
-            let exerciseCategories = try decoder.decode(GetExerciseStatisticsDto.self, from: data)
-            return exerciseCategories
-        } catch {
-            if error is DecodingError {
-                throw .decodingFailed
-            } else {
-                throw .requestFailed
-            }
-        }
+    func fetchExerciseStatistics(exerciseId: UUID) async throws -> GetExerciseStatisticsDto{
+        return try await apiClient.request(endpoint: "\(baseURL)/\(exerciseId)/stats",method: .init("GET"))
     }
     
-    // Updated search function that supports lazy loading
-    func searchExercises(searchModel: SearchExercisesDto,token: String) async throws (ApiError) -> PaginatedResult<GetExerciseDto>? {
-        guard let url = URL(string: "\(baseURL)/search") else {
-            throw .invalidURL
-        }
-        do {
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addAuthorizationHeader(with: token)
-            request.httpBody = try JSONEncoder().encode(searchModel)
-            
-            let (data, response) = try await URLSession.shared.data(for: request)
-            
-            if let httpResponse = response as? HTTPURLResponse {
-                switch httpResponse.statusCode {
-                case 200...299:
-                    break
-                case 400:
-                    throw ApiError.badRequest(String(data: data, encoding: .utf8))
-                case 401:
-                    throw ApiError.unauthorized(String(data: data, encoding: .utf8))
-                case 500:
-                    throw ApiError.serverError(String(data: data, encoding: .utf8))
-                default:
-                    throw ApiError.requestFailed
-                }
-            }
-            
-            
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            return try decoder.decode(PaginatedResult<GetExerciseDto>.self, from: data)
-        } catch {
-            if error is DecodingError {
-                throw .decodingFailed
-            } else {
-                throw .requestFailed
-            }
-        }
+    
+    func searchExercises(searchModel: SearchExercisesDto) async throws -> PaginatedResult<GetExerciseDto>{
+        return try await apiClient.request(endpoint: "\(baseURL)/search",method: .init("POST"),body: searchModel)
+    }
+    func postExercise(_ exercise: CreateExerciseDto) async throws -> GetExerciseDto{
+        return try await apiClient.request(endpoint: "\(baseURL)",method: .init("POST"),body: exercise)
     }
     
-    func postExercise(_ exercise: CreateExerciseDto, token: String) async throws (ApiError) -> GetExerciseDto {
-        guard let url = URL(string: "\(baseURL)") else {
-            throw .invalidURL
-        }
-        do {
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addAuthorizationHeader(with: token)
-            
-            
-            let encoder = JSONEncoder()
-            encoder.dateEncodingStrategy = .iso8601
-            request.httpBody = try encoder.encode(exercise)
-            
-            
-            let (data, response) = try await URLSession.shared.data(for: request)
-            
-            if let httpResponse = response as? HTTPURLResponse {
-                switch httpResponse.statusCode {
-                case 200...299:
-                    break
-                case 400:
-                    throw ApiError.badRequest(String(data: data, encoding: .utf8))
-                case 401:
-                    throw ApiError.unauthorized(String(data: data, encoding: .utf8))
-                case 500:
-                    throw ApiError.serverError(String(data: data, encoding: .utf8))
-                default:
-                    throw ApiError.requestFailed
-                }
-            }
-            
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            return try decoder.decode(GetExerciseDto.self, from: data)
-            
-        } catch {
-            if error is DecodingError {
-                throw .decodingFailed
-            } else {
-                throw .requestFailed
-            }
-            
-        }
+    func deleteExercise(exerciseId: UUID) async throws -> Bool{
+        return try await apiClient.request(endpoint: "\(baseURL)",method: .init("DELETE"))
     }
     
-    func deleteExercise(exerciseId: UUID, token: String) async throws (ApiError) -> Bool {
-        guard let url = URL(string: "\(baseURL)/\(exerciseId)") else {
-            throw .invalidURL
-        }
-        do {
-            var request = URLRequest(url: url)
-            request.httpMethod = "DELETE"
-            request.addAuthorizationHeader(with: token)
-            let (_, response) = try await URLSession.shared.data(for: request)
-            if let httpResponse = response as? HTTPURLResponse,
-               (200...299).contains(httpResponse.statusCode) {
-                return true
-            } else {
-                return false
-            }
-        } catch {
-            return false
-        }
-    }
 }

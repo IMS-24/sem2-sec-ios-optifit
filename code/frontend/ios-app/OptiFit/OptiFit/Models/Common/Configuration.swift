@@ -1,9 +1,3 @@
-//
-//  Configuration.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 16.02.25.
-//
 
 import Foundation
 

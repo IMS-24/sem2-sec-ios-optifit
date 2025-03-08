@@ -40,7 +40,7 @@ class IdleTimerManager: ObservableObject {
     /// Triggers the modal and stops idle detection temporarily
     private func triggerPopup() {
         isIdlePopupActive = true
-        idleTimer?.cancel() // Stop the timer while the modal is shown
+        idleTimer?.cancel()
     }
     
     /// Dismisses the modal and restarts idle detection
@@ -63,7 +63,6 @@ class IdleTimerManager: ObservableObject {
                 .store(in: &cancellables)
         }
         
-        // Detect global taps
         DispatchQueue.main.async {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }

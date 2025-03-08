@@ -1,18 +1,10 @@
-//
-//  CityGymGroup.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 20.02.25.
-//
 
 import SwiftUI
 
-// MARK: - **CityGymGroup Subview**
 struct CityGymGroup: View {
     let cityZip: CityZip
     let gyms: [GetGymDto]
-    let onDelete: (GetGymDto) -> Void
-
+    
     var body: some View {
         Section(header: Text("\(cityZip.city), \(String(cityZip.zipCode))")) {
             ForEach(gyms) { gym in
@@ -20,11 +12,7 @@ struct CityGymGroup: View {
                     GymOverview(gym: gym)
                 }
             }
-                    .onDelete { indexSet in
-                        indexSet.forEach {
-                            onDelete(gyms[$0])
-                        }
-                    }
+
         }
     }
 }
@@ -42,8 +30,7 @@ struct CityGymGroup: View {
                                 name: "Best Gym",
                                 city: "Graz"
                         )
-                    ],
-                    onDelete: { _ in print("Delete Gym") }
+                    ]
             )
         }
     }

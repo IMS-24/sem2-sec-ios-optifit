@@ -59,7 +59,7 @@ struct HomeView: View {
         
         workoutViewModel.updateSearchModel(searchModel)
         Task {
-            await workoutViewModel.searchWorkouts(token: viewModel.accessToken!)
+            await workoutViewModel.searchWorkouts()
         }
     }
     
@@ -101,8 +101,6 @@ struct HomeView: View {
                         }
                 )
             }
-            
-           // .background(Color("PrimaryBackground").ignoresSafeArea())
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -117,7 +115,7 @@ struct HomeView: View {
         .accentColor(Color("PrimaryAccent"))
         .onAppear {
             Task {
-                await userProfileViewModel.loadStats(token: viewModel.accessToken!)
+                await userProfileViewModel.loadStats()
                 updateWeek()
             }
         }

@@ -1,9 +1,4 @@
-//
-//  VirtualTrainerViewModel.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 07.03.25.
-//
+
 
 import Foundation
 import SwiftUI
@@ -23,12 +18,12 @@ class VirtualTrainerViewModel: ObservableObject {
     func updateLevel() {
         currentLevel += 1
     }
-    func getMotivation(token: String) async {
+    func getMotivation() async {
         isLoading = true
         errorMessage = nil
         do
         {
-            let result = try await virtualTrainerService.fetchMotivation(token: token,level: currentLevel)
+            let result = try await virtualTrainerService.fetchMotivation(level: currentLevel)
             updateLevel()
             insult = result.message
             
