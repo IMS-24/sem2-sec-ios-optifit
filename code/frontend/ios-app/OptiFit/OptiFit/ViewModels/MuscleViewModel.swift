@@ -1,9 +1,3 @@
-//
-//  MuscleViewModel.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 22.02.25.
-//
 
 import Foundation
 import Combine

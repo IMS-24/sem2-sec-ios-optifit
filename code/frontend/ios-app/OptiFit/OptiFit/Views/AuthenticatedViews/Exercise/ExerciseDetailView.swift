@@ -3,12 +3,10 @@ import SwiftUI
 struct ExerciseDetailView: View {
     let exercise: GetExerciseDto
     @StateObject private var exerciseViewModel = ExerciseViewModel()
-    @EnvironmentObject private var authViewModel: AuthViewModel
     @Environment(\.dismiss) private var dismiss
+    
     @State private var getExerciseStatisticsDto: GetExerciseStatisticsDto?
-    // Editing state.
     @State private var isEditing = false
-    // Editable copies of fields.
     @State private var editableName: String
     @State private var editableDescription: String
     @State private var editableCategory: String
@@ -91,7 +89,6 @@ struct ExerciseDetailView: View {
                 
                 Divider().padding(.horizontal)
                 
-                // Display the workout summary cards once statistics are loaded.
                 if let stats = getExerciseStatisticsDto {
                     ExerciseWorkoutSummaryList(statistics: stats)
                 }

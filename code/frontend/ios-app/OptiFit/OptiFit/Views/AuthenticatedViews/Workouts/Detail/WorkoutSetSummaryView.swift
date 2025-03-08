@@ -1,9 +1,3 @@
-//
-//  SetGraphicalRepresentationView.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 06.03.25.
-//
 
 
 import SwiftUI
@@ -23,27 +17,12 @@ struct WorkoutSetSummaryView: View {
                 Spacer()
             }
             HStack(spacing: 16) {
-                // Gauge for reps.
                 VStack {
                     Text("Reps: \(set.reps)")
-//                    Gauge(value: Double(set.reps), in: 0...Double(maxReps)) {
-//                        Text("Reps")
-//                            .font(.caption2)
-//                    }
-//                    .gaugeStyle(.accessoryCircular)
-//                    Text("\(set.reps) Reps")
-//                        .font(.caption)
+
                 }
-                // Gauge for weight.
                 VStack {
                     Text("Weight: \(set.weight, specifier: "%.1f")")
-//                    Gauge(value: set.weight, in: 0...maxWeight) {
-//                        Text("Weight")
-//                            .font(.caption2)
-//                    }
-//                    .gaugeStyle(.accessoryCircular)
-//                    Text("\(set.weight, specifier: "%.1f") kg")
-//                        .font(.caption)
                 }
             }
         }

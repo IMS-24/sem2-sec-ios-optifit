@@ -1,9 +1,4 @@
-//
-//  GymDetailView.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 20.02.25.
-//
+
 
 import SwiftUI
 

@@ -1,9 +1,3 @@
-//
-//  ISO8601CustomCoder.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 05.03.25.
-//
 
 
 import Foundation
@@ -17,13 +11,6 @@ struct ISO8601CustomCoder {
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter
     }
-//    static var toNormalizedDateString:DateFormatter {
-//        let normalizedFormatter = DateFormatter()
-//        normalizedFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-//        normalizedFormatter.locale = Locale(identifier: "en_US_POSIX")
-//        normalizedFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-//        return normalizedFormatter
-//    }
 
     /// Returns a JSONDecoder configured to use our custom ISO8601 date formatter.
     static func makeDecoder() -> JSONDecoder {

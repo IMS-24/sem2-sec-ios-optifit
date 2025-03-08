@@ -1,21 +1,14 @@
-//
-//  GymManagementView.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 15.02.25.
-//
 
 import SwiftUI
 
 struct GymManagementView: View {
     @StateObject private var gymViewModel = GymViewModel()
-    @EnvironmentObject private var authViewModel: AuthViewModel
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(groupedGyms.keys.sorted(by: { $0.city < $1.city }), id: \.self) { key in
-                    CityGymGroup(cityZip: key, gyms: groupedGyms[key] ?? [], onDelete: deleteGym)
+                    CityGymGroup(cityZip: key, gyms: groupedGyms[key] ?? [])
                 }
             }
                     .navigationTitle("Gyms")
@@ -38,10 +31,7 @@ struct GymManagementView: View {
         Dictionary(grouping: gymViewModel.gyms, by: { CityZip(city: $0.city, zipCode: $0.zipCode) })
     }
 
-    // Delete function
-    private func deleteGym(gym: GetGymDto) {
-        print("Delete gym \(gym.id)")
-    }
+
 }
 
 

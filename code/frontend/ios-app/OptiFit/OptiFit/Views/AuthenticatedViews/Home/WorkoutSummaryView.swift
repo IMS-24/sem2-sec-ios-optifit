@@ -2,12 +2,9 @@ import SwiftUI
 import Charts
 
 struct WorkoutSummaryView: View {
-    // Mapping from a complete day string ("yyyy-MM-dd") to a WorkoutSummary.
     var data: [String: WorkoutSummary?]
-    // The Monday date for the currently selected week.
     var currentMonday: Date
     
-    // Helper to convert a complete day string to a weekday abbreviation.
     private func weekdayString(from key: String) -> String {
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = "yyyy-MM-dd"
@@ -17,7 +14,6 @@ struct WorkoutSummaryView: View {
         return outputFormatter.string(from: date)
     }
     
-    // Compute the current week number using currentMonday.
     private var currentWeekNumber: Int {
         Calendar.current.component(.weekOfYear, from: currentMonday)
     }
@@ -102,7 +98,6 @@ struct WorkoutSummaryView: View {
         .padding(.horizontal)
     }
     
-    // MARK: - Helper View for Displaying a Summary Statistic
     @ViewBuilder
     private func summaryStatView(title: String, value: String) -> some View {
         VStack(alignment: .leading) {
@@ -147,7 +142,6 @@ struct WorkoutSummaryView: View {
     }
 }
 
-// A fancy card view for daily summaries.
 struct DailySummaryCard: View {
     let dayKey: String
     let summary: WorkoutSummary

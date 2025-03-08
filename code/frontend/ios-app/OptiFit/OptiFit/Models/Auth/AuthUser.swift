@@ -1,17 +1,9 @@
-//
-//  AuthUser.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 06.03.25.
-//
-
 
 import SwiftUI
 import MSAL
 import  Foundation
 /// Represents the authenticated user decoded from the JWT.
 struct AuthUser: Codable, Identifiable {
-    // Typically the "sub" claim uniquely identifies the user.
     var id: UUID { sub }
     let sub: UUID
     let name: String?
@@ -53,6 +45,4 @@ struct AuthUser: Codable, Identifiable {
         self.family_name = try? container.decode(String.self, forKey: .family_name)
         self.given_name = try? container.decode(String.self, forKey: .given_name)
     }
-    
-    // You can also provide a default initializer if needed.
 }

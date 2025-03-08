@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ExerciseView: View {
     @StateObject private var exerciseViewModel = ExerciseViewModel()
-    @EnvironmentObject private var authViewModel : AuthViewModel
     @State private var navigateToAddExercise = false
     
     // Group exercises by category

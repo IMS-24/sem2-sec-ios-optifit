@@ -15,11 +15,6 @@ struct ExerciseWorkoutSummaryCard: View {
                 .font(.subheadline)
                 .foregroundColor(.secondary)
             
-            // Display computed stats if desired...
-            // ...
-           
-
-            // Display the composite line charts
             ExerciseWorkoutSummaryLineCharts(workoutExercise: workoutExercise)
         }
         .padding()

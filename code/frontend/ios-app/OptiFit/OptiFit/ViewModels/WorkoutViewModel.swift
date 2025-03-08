@@ -20,7 +20,6 @@ class WorkoutViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
         do {
-            // Reset pagination for a new search
             searchModel.pageIndex = 0
             currentPage = 0
             if let result = try await workoutService.searchWorkouts(searchModel: searchModel) {
@@ -67,8 +66,8 @@ class WorkoutViewModel: ObservableObject {
 
     func updateSearchModel(_ newModel: SearchWorkoutsDto) {
         self.searchModel = newModel
-//        Task {
-//            await searchWorkouts()
-//        }
+        Task {
+            await searchWorkouts()
+        }
     }
 }

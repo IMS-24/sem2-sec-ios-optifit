@@ -1,13 +1,7 @@
-//
-//  GymOverview.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 20.02.25.
-//
+
 
 import SwiftUI
 
-// MARK: - **GymOverview Subview**
 struct GymOverview: View {
     let gym: GetGymDto
 

@@ -4,7 +4,7 @@ import PhotosUI
 struct AddExerciseView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var exerciseViewModel: ExerciseViewModel
-    @EnvironmentObject private var authViewModel: AuthViewModel
+    
     @State private var name: String = ""
     @State private var selectedExerciseCategory: UUID?
     @State private var selectedMuscles: Set<GetMuscleDto> = []
@@ -98,7 +98,6 @@ struct AddExerciseView: View {
                         }
                     }
                 }
-                // Hide the form’s default background so our custom background shows.
                 .scrollContentBackground(.hidden)
             }
             .navigationTitle("Add Exercise")

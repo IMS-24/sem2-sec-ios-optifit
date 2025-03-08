@@ -1,8 +1,8 @@
 
 import Foundation
 class APIClient {
-    let service = "net.qb8s.optifit"  // A unique identifier for your service
-    let account = "jwtToken"                 // Key under which the token is stored
+    let service = "net.qb8s.optifit"
+    let account = "jwtToken"
     
     
     func request<Input: Encodable, Output: Decodable>(

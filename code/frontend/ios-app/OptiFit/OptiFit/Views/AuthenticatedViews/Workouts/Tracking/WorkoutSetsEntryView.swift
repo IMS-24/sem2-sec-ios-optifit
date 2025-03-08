@@ -4,7 +4,6 @@ struct WorkoutSetsEntryView: View {
     let sets: [CreateWorkoutSetDto]
     let onDeleteSet: (Int) -> Void
     let onUpdateSet: (Int, String, String) -> Void
-    // index, newReps, newWeight as strings
     
     var body: some View {
         if sets.isEmpty {

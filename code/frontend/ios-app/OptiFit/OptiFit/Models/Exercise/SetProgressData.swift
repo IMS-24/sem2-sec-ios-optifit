@@ -1,9 +1,3 @@
-//
-//  SetProgressData.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 08.03.25.
-//
 
 
 import SwiftUI

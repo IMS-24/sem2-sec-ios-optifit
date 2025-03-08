@@ -5,7 +5,7 @@ struct GetWorkoutExerciseDto: Codable, Identifiable, Hashable, Equatable {
     let order: Int
     let workoutId: UUID
     let exercise: GetExerciseDto
-    let workoutSets: [GetWorkoutSetDto]?   // optional in case there are none
+    let workoutSets: [GetWorkoutSetDto]?
     let notes: String?
 }
 

@@ -1,9 +1,4 @@
-//
-//  ApiError+Extensions.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 08.03.25.
-//
+
 import Foundation
 extension ApiError: LocalizedError {
     var errorDescription: String? {

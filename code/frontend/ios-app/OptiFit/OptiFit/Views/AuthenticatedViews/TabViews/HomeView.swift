@@ -101,8 +101,6 @@ struct HomeView: View {
                         }
                 )
             }
-            
-           // .background(Color("PrimaryBackground").ignoresSafeArea())
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

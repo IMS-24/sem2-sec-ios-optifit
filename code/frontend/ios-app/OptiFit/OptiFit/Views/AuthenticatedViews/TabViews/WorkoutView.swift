@@ -2,7 +2,6 @@ import SwiftUI
 
 struct WorkoutView: View {
     @StateObject  var workoutViewModel: WorkoutViewModel
-    @EnvironmentObject private var authViewModel: AuthViewModel
     @State private var navigateToStartWorkout = false
     
     private var groupedWorkouts: [String: [GetWorkoutDto]] {

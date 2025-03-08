@@ -3,7 +3,6 @@ import SwiftUI
 struct OnboardingWizardView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var userProfileViewModel: UserProfileViewModel
-    @EnvironmentObject private var authViewModel: AuthViewModel
     
     // Create computed bindings for each field. They use a default profile if needed.
     private var firstNameBinding: Binding<String> {

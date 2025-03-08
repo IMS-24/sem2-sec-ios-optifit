@@ -1,14 +1,7 @@
-//
-//  AuthContentView.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 06.03.25.
-//
 
 import SwiftUI
 import AVFoundation
 struct AuthContentView: View {
-    @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var userProfileViewModel: UserProfileViewModel
    
     @State private var showOnboarding = false
@@ -17,7 +10,7 @@ struct AuthContentView: View {
       
             NavigationBarView()
                 .onAppear {
-                    if let user = authViewModel.user, user.firstLogin {
+                    if let user = userProfileViewModel.profile, userProfileViewModel.profile?.initialSetupDone == false {
                         showOnboarding = true
                     }
                 }
@@ -60,7 +53,6 @@ struct NavigationBarView: View {
 struct AuthContentView_Previews: PreviewProvider {
     static var previews: some View {
         AuthContentView()
-            .environmentObject(AuthViewModel())
             .environmentObject(UserProfileViewModel())
     }
 }

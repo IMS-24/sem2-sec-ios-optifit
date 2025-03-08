@@ -6,7 +6,7 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if authViewModel.isLoggedIn() != false {
+            if authViewModel.accessToken != nil {
                 AuthContentView()
                     .environmentObject(profileViewModel)
             } else {

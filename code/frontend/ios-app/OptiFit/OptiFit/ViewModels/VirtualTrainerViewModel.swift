@@ -1,9 +1,4 @@
-//
-//  VirtualTrainerViewModel.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 07.03.25.
-//
+
 
 import Foundation
 import SwiftUI
