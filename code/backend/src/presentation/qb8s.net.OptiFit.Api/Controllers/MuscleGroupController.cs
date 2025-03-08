@@ -1,4 +1,5 @@
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using qb8s.net.OptiFit.Core.Pagination;
@@ -11,6 +12,7 @@ public class MuscleGroupController(ILogger<MuscleGroupController> logger)
     : ApiBaseController
 {
     [HttpPost("search")]
+    [Authorize]
     [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<GetMuscleGroupDto>),
         Description = "Search Muscle Groups")]
     public async Task<ActionResult<PaginatedResult<GetMuscleGroupDto>>> SearchMuscleGroups(

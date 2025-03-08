@@ -14,18 +14,19 @@ struct HomeView: View {
         
         for workout in workoutViewModel.workouts {
             let dayKey = formatter.string(from: workout.startAtUtc)
-            let summary = workout.workoutSummary
-            
-            if let existing = result[dayKey] {
-                result[dayKey] = WorkoutSummary(
-                    totalTime: existing.totalTime + summary.totalTime,
-                    totalSets: existing.totalSets + summary.totalSets,
-                    totalReps: existing.totalReps + summary.totalReps,
-                    totalWeight: existing.totalWeight + summary.totalWeight,
-                    totalExercises: existing.totalExercises + summary.totalExercises
-                )
-            } else {
-                result[dayKey] = summary
+            if let summary = workout.workoutSummary
+            {
+                if let existing = result[dayKey] {
+                    result[dayKey] = WorkoutSummary(
+                        totalTime: existing.totalTime + summary.totalTime,
+                        totalSets: existing.totalSets + summary.totalSets,
+                        totalReps: existing.totalReps + summary.totalReps,
+                        totalWeight: existing.totalWeight + summary.totalWeight,
+                        totalExercises: existing.totalExercises + summary.totalExercises
+                    )
+                } else {
+                    result[dayKey] = summary
+                }
             }
         }
         return result
@@ -58,7 +59,7 @@ struct HomeView: View {
         
         workoutViewModel.updateSearchModel(searchModel)
         Task {
-            await workoutViewModel.searchWorkouts()
+            await workoutViewModel.searchWorkouts(token: viewModel.accessToken!)
         }
     }
     
@@ -116,7 +117,7 @@ struct HomeView: View {
         .accentColor(Color("PrimaryAccent"))
         .onAppear {
             Task {
-                await userProfileViewModel.loadStats()
+                await userProfileViewModel.loadStats(token: viewModel.accessToken!)
                 updateWeek()
             }
         }

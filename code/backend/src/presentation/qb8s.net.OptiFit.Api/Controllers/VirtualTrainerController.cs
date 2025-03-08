@@ -1,7 +1,9 @@
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using qb8s.net.OptiFit.Api.Services;
+using qb8s.net.OptiFit.CQRS.Queries.VirtualTrainer;
 
 namespace qb8s.net.OptiFit.Api.Controllers;
 
@@ -66,11 +68,12 @@ public class VirtualTrainerController(ILogger<VirtualTrainerController> logger, 
 
     [HttpGet("motivation/{level:int}")]
     [SwaggerResponse(HttpStatusCode.OK, typeof(UserInsultCountDto), Description = "Get Motivational Quote")]
+    [Authorize]
     public async Task<ActionResult<UserInsultCountDto>> GetMotivationalQuotes(int level = 1)
     {
         logger.LogDebug("User '{UserId}' requested motivational quote at level '{Level}'",
             currentUserService.GetCurrentUserId(), level);
-        var closestLevel = InsultCategories.Keys.OrderBy(x => Math.Abs(x - level)).FirstOrDefault();
+        /*var closestLevel = InsultCategories.Keys.OrderBy(x => Math.Abs(x - level)).FirstOrDefault();
         logger.LogDebug("Closest level found: '{ClosestLevel}'", closestLevel);
         if (!InsultCategories.TryGetValue(closestLevel, out var insults))
             return BadRequest(new { error = "Invalid level range. Try: 0, 5, 10, 15, etc." });
@@ -81,7 +84,8 @@ public class VirtualTrainerController(ILogger<VirtualTrainerController> logger, 
             UserId = currentUserService.GetCurrentUserId(),
             Message = selectedInsult!,
             TotalInsultCount = level
-        };
+        };*/
+        var dto = await Mediator.Send(new GetInsultQuery(level, currentUserService.GetCurrentUserId()));
         return Ok(dto);
     }
 }

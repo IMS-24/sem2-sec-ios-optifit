@@ -16,14 +16,14 @@ class WorkoutViewModel: ObservableObject {
     private let workoutService = WorkoutService()
 
 
-    func searchWorkouts() async {
+    func searchWorkouts(token: String) async {
         isLoading = true
         errorMessage = nil
         do {
             // Reset pagination for a new search
             searchModel.pageIndex = 0
             currentPage = 0
-            if let result = try await workoutService.searchWorkouts(searchModel: searchModel) {
+            if let result = try await workoutService.searchWorkouts(searchModel: searchModel,token: token) {
                 workouts = result.items
                 totalPages = result.totalPages
             }
@@ -34,7 +34,7 @@ class WorkoutViewModel: ObservableObject {
         isLoading = false
     }
 
-    func loadMoreWorkouts() async {
+    func loadMoreWorkouts(token: String) async {
         guard !isLoadingMore, currentPage + 1 < totalPages else {
             return
         }
@@ -42,7 +42,7 @@ class WorkoutViewModel: ObservableObject {
         currentPage += 1
         searchModel.pageIndex = currentPage
         do {
-            if let res = try await workoutService.searchWorkouts(searchModel: searchModel) {
+            if let res = try await workoutService.searchWorkouts(searchModel: searchModel, token: token) {
                 workouts.append(contentsOf: res.items)
             }
         } catch {
@@ -67,8 +67,8 @@ class WorkoutViewModel: ObservableObject {
 
     func updateSearchModel(_ newModel: SearchWorkoutsDto) {
         self.searchModel = newModel
-        Task {
-            await searchWorkouts()
-        }
+//        Task {
+//            await searchWorkouts()
+//        }
     }
 }

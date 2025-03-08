@@ -35,6 +35,7 @@ public class SearchExercisesQueryHandler(
             //     query.AsEnumerable().Select(mapper.Map<GetExerciseDto>)));
         }
 
+
         if (request.Search.I18NCode != null)
             predicate = predicate.And(x => x.I18NCode.Contains(request.Search.I18NCode));
 

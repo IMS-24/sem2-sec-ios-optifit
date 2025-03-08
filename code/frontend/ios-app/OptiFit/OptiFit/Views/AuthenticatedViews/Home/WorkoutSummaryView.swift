@@ -3,7 +3,7 @@ import Charts
 
 struct WorkoutSummaryView: View {
     // Mapping from a complete day string ("yyyy-MM-dd") to a WorkoutSummary.
-    var data: [String: WorkoutSummary]
+    var data: [String: WorkoutSummary?]
     // The Monday date for the currently selected week.
     var currentMonday: Date
     
@@ -55,7 +55,7 @@ struct WorkoutSummaryView: View {
                     ForEach(data.sorted(by: { $0.key < $1.key }), id: \.key) { dayKey, summary in
                         BarMark(
                             x: .value("Day", weekdayString(from: dayKey)),
-                            y: .value("Total Time", summary.totalTime)
+                            y: .value("Total Time", summary!.totalTime)
                         )
                         .foregroundStyle(.blue)
                     }
@@ -73,7 +73,7 @@ struct WorkoutSummaryView: View {
                     HStack {
                         summaryStatView(title: "Total Reps", value: "\(totalReps)")
                         Spacer()
-                        summaryStatView(title: "Total Weight", value: "\(totalWeight) kg")
+                        summaryStatView(title: "Total Weight", value: "\(totalWeight.formatted(.number.precision(.fractionLength(2)))) kg")
                     }
                     HStack {
                         summaryStatView(title: "Total Exercises", value: "\(totalExercises)")
@@ -87,7 +87,7 @@ struct WorkoutSummaryView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 16) {
                         ForEach(data.sorted(by: { $0.key < $1.key }), id: \.key) { key, summary in
-                            DailySummaryCard(dayKey: key, summary: summary)
+                            DailySummaryCard(dayKey: key, summary: summary!)
                         }
                     }
                     .padding(.horizontal)
@@ -117,33 +117,33 @@ struct WorkoutSummaryView: View {
     // MARK: - Aggregated Computed Properties
     
     /// Total time summed over the week (assumed to be in minutes).
-    private var totalTime: Int {
-        data.values.reduce(0) { $0 + $1.totalTime }
+    private var totalTime: Double {
+        data.values.reduce(0) { $0 + $1!.totalTime }
     }
     
     /// Format total time as hours and minutes.
     private var totalTimeFormatted: String {
-        let hours = totalTime / 60
-        let minutes = totalTime % 60
+        let hours = Int(totalTime) / 60
+        let minutes =  Int(totalTime) % 60
         return "\(hours)h \(minutes)m"
     }
     
     private var totalSets: Int {
-        data.values.reduce(0) { $0 + $1.totalSets }
+        data.values.reduce(0) { $0 + $1!.totalSets }
     }
     
     private var totalReps: Int {
-        data.values.reduce(0) { $0 + $1.totalReps }
+        data.values.reduce(0) { $0 + $1!.totalReps }
     }
     
     private var totalWeight: Double {
         data.values.reduce(0.0) {
-            $0 + (NSDecimalNumber(decimal: $1.totalWeight).doubleValue)
+            $0 + (NSDecimalNumber(decimal: $1!.totalWeight).doubleValue)
         }
     }
     
     private var totalExercises: Int {
-        data.values.reduce(0) { $0 + $1.totalExercises }
+        data.values.reduce(0) { $0 + $1!.totalExercises }
     }
 }
 
@@ -175,7 +175,7 @@ struct DailySummaryCard: View {
                     Image(systemName: "clock.fill")
                         .foregroundColor(.white)
                         .font(.caption)
-                    Text("\(summary.totalTime) min")
+                    Text("\(Int(summary.totalTime)) min")
                         .font(.caption)
                         .foregroundColor(.white)
                 }

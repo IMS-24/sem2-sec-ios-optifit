@@ -1,6 +1,8 @@
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
+using qb8s.net.OptiFit.Api.Services;
 using qb8s.net.OptiFit.Core.Pagination;
 using qb8s.net.OptiFit.CQRS.Commands.Exercise;
 using qb8s.net.OptiFit.CQRS.Dtos.Exercise;
@@ -9,15 +11,17 @@ using qb8s.net.OptiFit.CQRS.Queries.Exercise;
 
 namespace qb8s.net.OptiFit.Api.Controllers;
 
-public class ExerciseController(ILogger<ExerciseController> logger)
+public class ExerciseController(ILogger<ExerciseController> logger, ICurrentUserService currentUserService)
     : ApiBaseController
 {
     [HttpPost("search")]
+    [Authorize]
     [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<GetExerciseDto>), Description = "Search Exercies")]
     public async Task<ActionResult<PaginatedResult<GetExerciseDto>>> SearchExercises(
         [FromBody] SearchExerciseDto search)
     {
         logger.LogInformation("{@Name} request", nameof(SearchExercises));
+
         var result = await Mediator.Send(new SearchExercisesQuery(search));
         return Ok(result);
     }
@@ -38,6 +42,15 @@ public class ExerciseController(ILogger<ExerciseController> logger)
     {
         logger.LogInformation("{@Name} request", nameof(GetExerciseCategories));
         var result = await Mediator.Send(new GetExerciseCategoriesQuery());
+        return Ok(result);
+    }
+
+    [HttpGet("{id}/stats")]
+    [SwaggerResponse(StatusCodes.Status200OK, typeof(GetExerciseStatisticsDto), Description = "Get Exercise Stats")]
+    public async Task<ActionResult<GetExerciseStatisticsDto>> GetExerciseStats(Guid id)
+    {
+        logger.LogInformation("{@Name} request : {@Id}", nameof(GetExerciseStats), id);
+        var result = await Mediator.Send(new GetExerciseStatisticsQuery(id, currentUserService.GetCurrentUserId()));
         return Ok(result);
     }
 

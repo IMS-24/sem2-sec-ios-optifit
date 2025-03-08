@@ -4,7 +4,7 @@ struct WorkoutOverviewSection: View {
     let start: String
     let end: String
     let gym: GetGymDto
-    let summary: WorkoutSummary
+    let summary: WorkoutSummary?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -24,17 +24,25 @@ struct WorkoutOverviewSection: View {
             }
             Divider()
             // Summary Stats Row
-            HStack(spacing: 16) {
-                StatItemView(icon: "flame.fill", title: "Sets", value: "\(summary.totalSets)")
-                StatItemView(icon: "number", title: "Reps", value: "\(summary.totalReps)")
-                StatItemView(icon: "scalemass", title: "Weight", value: "\(summary.totalWeight) kg")
-                StatItemView(icon: "list.number", title: "Ex.", value: "\(summary.totalExercises)")
+            HStack() {
+                if let summary = summary{
+                    StatItemView(icon: "flame.fill", title: "Sets", value: "\(summary.totalSets)")
+                    Spacer()
+                    StatItemView(icon: "number", title: "Reps", value: "\(summary.totalReps)")
+                    Spacer()
+                    StatItemView(icon: "scalemass", title: "Weight", value: "\(summary.totalWeight) kg")
+                    Spacer()
+                    StatItemView(icon: "list.number", title: "Ex.", value: "\(summary.totalExercises)")
+                }
             }
+            
+            
+            
         }
         .padding()
         .background(Color("SecondaryBackground"))
         .cornerRadius(12)
-        .padding(.horizontal)
+        
     }
 }
 

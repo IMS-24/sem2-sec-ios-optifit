@@ -9,7 +9,8 @@ import Foundation
 @MainActor
 class VirtualTrainerService: ObservableObject{
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/virtualtrainer"
-    func fetchMotivation(token:String,level: Int) async throws (ApiError)-> UserInsultCountDto {
+    
+    func fetchMotivation(token:String,level: Int) async throws (ApiError)-> InsultDto {
         guard let url = URL(string: "\(baseURL)/motivation/\(level)")
         else {
             throw .invalidURL
@@ -21,7 +22,7 @@ class VirtualTrainerService: ObservableObject{
             let (data, _) = try await URLSession.shared.data(for: request)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            let insultResult = try decoder.decode(UserInsultCountDto.self, from: data)
+            let insultResult = try decoder.decode(InsultDto.self, from: data)
             return insultResult
         } catch {
             if error is DecodingError {
@@ -32,9 +33,8 @@ class VirtualTrainerService: ObservableObject{
         }
     }
 }
-struct UserInsultCountDto: Codable{
-    let totalInsultCount: Int
-    let userId: UUID
+struct InsultDto: Codable {
+    let level: Int
     let message: String
 }
 

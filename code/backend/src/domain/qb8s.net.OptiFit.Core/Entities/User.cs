@@ -17,6 +17,9 @@ public class User : BaseEntity
     public DateTimeOffset RegisteredUtc { get; set; }
     public DateTimeOffset UpdatedUtc { get; set; }
 
+    public int TotalInsults { get; set; } = 0;
+    public ICollection<UserInsult> UserInsults { get; set; }
+
     public bool InitialSetupDone { get; set; }
 
     public ICollection<Workout> Workouts { get; set; } = new HashSet<Workout>();

@@ -17,11 +17,11 @@ class GymViewModel: ObservableObject {
     private let gymService = GymService()
 
 
-    func searchGyms() async {
+    func searchGyms(token: String) async {
         isLoading = true
         errorMessage = nil
         do {
-            let response = try await gymService.searchGym(searchModel: searchModel)
+            let response = try await gymService.searchGym(searchModel: searchModel, token: token)
             gyms = response.items
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)

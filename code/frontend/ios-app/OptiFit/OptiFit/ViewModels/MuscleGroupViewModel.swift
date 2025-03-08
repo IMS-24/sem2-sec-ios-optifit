@@ -11,11 +11,11 @@ class MuscleGroupViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
 
-    func searchMuscleGroups() async {
+    func searchMuscleGroups(token: String) async {
         isLoading = true
         errorMessage = nil
         do {
-            let response = try await muscleGroupService.searchMuscleGroups(searchModel: searchModel)
+            let response = try await muscleGroupService.searchMuscleGroups(searchModel: searchModel,token: token)
             muscleGroups = response.items
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
@@ -25,7 +25,6 @@ class MuscleGroupViewModel: ObservableObject {
 
     func updateSearchModel(_ newModel: SearchMuscleGroupsDto) async {
         self.searchModel = newModel
-        await searchMuscleGroups()
 
     }
 }

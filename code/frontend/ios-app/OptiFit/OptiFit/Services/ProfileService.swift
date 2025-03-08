@@ -95,14 +95,16 @@ class ProfileService :ObservableObject{
     }
     
     
-    func getStats() async throws (ApiError) -> UserStatsDto {
+    func getStats(token: String) async throws (ApiError) -> UserStatsDto {
         guard let url = URL(string: "\(baseURL)/stats") else {
             throw .invalidURL
         }
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.addAuthorizationHeader(with: token)
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let decoder = ISO8601CustomCoder.makeDecoder()
             let stats = try decoder.decode(UserStatsDto.self, from: data)
             return stats
             
@@ -115,7 +117,7 @@ class ProfileService :ObservableObject{
         }
     }
     
-    func initializeUserProfile(_ profile: UserProfileInitializeDto) async throws (ApiError) -> UserProfileDto{
+    func initializeUserProfile(_ profile: UserProfileInitializeDto,token: String) async throws (ApiError) -> UserProfileDto{
         guard let url = URL(string: "\(baseURL)/initialize")else{
             throw .invalidURL
         }
@@ -123,6 +125,7 @@ class ProfileService :ObservableObject{
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addAuthorizationHeader(with: token)
             let encoder = ISO8601CustomCoder.makeEncoder()
             request.httpBody = try encoder.encode(profile)
             

@@ -12,7 +12,7 @@ class GymService: ObservableObject {
     
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/gym"
     
-    func searchGym(searchModel: SearchGymsDto) async throws (ApiError)->PaginatedResult<GetGymDto> {
+    func searchGym(searchModel: SearchGymsDto, token: String) async throws (ApiError)->PaginatedResult<GetGymDto> {
         guard let url = URL(string: "\(baseURL)/search")
         else {
             throw .invalidURL
@@ -20,6 +20,7 @@ class GymService: ObservableObject {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addAuthorizationHeader(with: token)
         
         do {
             request.httpBody = try JSONEncoder().encode(searchModel)

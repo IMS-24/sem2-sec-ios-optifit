@@ -10,10 +10,11 @@ import AVFoundation
 struct AuthContentView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var userProfileViewModel: UserProfileViewModel
+   
     @State private var showOnboarding = false
     
     var body: some View {
-        NavigationStack { // Wrap everything in a NavigationStack
+      
             NavigationBarView()
                 .onAppear {
                     if let user = authViewModel.user, user.firstLogin {
@@ -23,14 +24,13 @@ struct AuthContentView: View {
 //                .fullScreenCover(isPresented: $showOnboarding) {
 //                    OnboardingWizardView()
 //                }
-        }
     }
 }
 
 
 struct NavigationBarView: View {
     @StateObject private var idleTimerManager = IdleTimerManager.shared
-    
+    @StateObject var workoutViewModel: WorkoutViewModel = WorkoutViewModel()
     var body: some View {
         TabView {
             Tab("Home", systemImage: "house.fill") {
@@ -38,7 +38,7 @@ struct NavigationBarView: View {
                     
             }
             Tab("Workouts", systemImage: "gym.bag.fill") {
-                WorkoutView()
+                WorkoutView(workoutViewModel: workoutViewModel)
                    
             }
             Tab("Exercises", systemImage: "dumbbell.fill") {
@@ -49,14 +49,18 @@ struct NavigationBarView: View {
                 SettingsView()
                    
             }
+            Tab("Trainer", systemImage: "figure.strengthtraining.functional"){
+                VirtualTrainerView()
+            }
         }
     }
 }
 
-struct previewWrapper:View{
-    var body: some View {
-        NavigationBarView()
+
+struct AuthContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        AuthContentView()
+            .environmentObject(AuthViewModel())
+            .environmentObject(UserProfileViewModel())
     }
-    
 }
-#Preview{previewWrapper()}

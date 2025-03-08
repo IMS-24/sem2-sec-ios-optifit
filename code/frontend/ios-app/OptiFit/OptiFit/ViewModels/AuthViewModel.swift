@@ -108,6 +108,7 @@ final class AuthViewModel: ObservableObject {
     func isLoggedIn()->Bool{
         return self.user != nil || self.accessToken != nil
     }
+    ///https://learn.microsoft.com/en-us/entra/identity-platform/tutorial-mobile-app-ios-swift-sign-in?pivots=workforce
     
     /// Initiates an interactive token acquisition using async/await.
     func authorize() async {

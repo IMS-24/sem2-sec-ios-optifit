@@ -6,7 +6,7 @@ class WorkoutService: ObservableObject {
     
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/workout"
     
-    func searchWorkouts(searchModel: SearchWorkoutsDto, append: Bool = false) async throws (ApiError) -> PaginatedResult<GetWorkoutDto>? {
+    func searchWorkouts(searchModel: SearchWorkoutsDto, token: String, append: Bool = false) async throws (ApiError) -> PaginatedResult<GetWorkoutDto>? {
         guard let url = URL(string: "\(baseURL)/search")
         else {
             throw ApiError.invalidURL
@@ -16,7 +16,7 @@ class WorkoutService: ObservableObject {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            
+            request.addAuthorizationHeader(with: token)
             let encoder = ISO8601CustomCoder.makeEncoder()
             request.httpBody = try encoder.encode(searchModel)
             
@@ -25,7 +25,17 @@ class WorkoutService: ObservableObject {
             if let httpResponse = response as? HTTPURLResponse,
                !(200...299).contains(httpResponse.statusCode) {
                 print("Request failed with status code: \(httpResponse.statusCode)")
+                if let rawResponse = String(data: data, encoding: .utf8) {
+                    print("Raw response: \(rawResponse)")
+                }
                 throw ApiError.requestFailed
+            }
+            
+            // Print the raw response for debugging purposes
+            if let rawResponse = String(data: data, encoding: .utf8) {
+                print("Raw response: \(rawResponse)")
+            } else {
+                print("Unable to convert data to string")
             }
             
             let decoder = ISO8601CustomCoder.makeDecoder()

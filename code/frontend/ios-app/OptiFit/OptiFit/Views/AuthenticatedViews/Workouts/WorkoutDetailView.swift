@@ -31,7 +31,7 @@ struct WorkoutDetailView: View {
         return "Ongoing"
     }
     
-    private var summary: WorkoutSummary {
+    private var summary: WorkoutSummary? {
         workout.workoutSummary
     }
     

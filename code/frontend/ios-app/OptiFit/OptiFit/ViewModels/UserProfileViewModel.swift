@@ -13,11 +13,11 @@ class UserProfileViewModel: ObservableObject {
 
     private let profileService = ProfileService()
 
-    func loadStats() async {
+    func loadStats(token: String) async {
         isLoading = true
         errorMessage = nil
         do {
-            let fetchedStats = try await profileService.getStats()
+            let fetchedStats = try await profileService.getStats(token: token)
             self.stats = fetchedStats
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
@@ -82,11 +82,11 @@ class UserProfileViewModel: ObservableObject {
         isLoading = false
     }
     
-    func initializeProfile(_ profile: UserProfileInitializeDto) async {
+    func initializeProfile(_ profile: UserProfileInitializeDto,token: String) async {
         isLoading = true
         errorMessage = nil
         do{
-            let profile = try await profileService.initializeUserProfile(profile)
+            let profile = try await profileService.initializeUserProfile(profile,token:token)
             self.profile = profile
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)

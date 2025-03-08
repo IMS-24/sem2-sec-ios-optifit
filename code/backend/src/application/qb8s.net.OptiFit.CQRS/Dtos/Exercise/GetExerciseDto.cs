@@ -16,6 +16,7 @@ public class GetExerciseDtoProfile : BaseI18NProfile
     public GetExerciseDtoProfile()
     {
         CreateMap<Core.Entities.Exercise, GetExerciseDto>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
             .ForMember(dest => dest.ExerciseCategory, opt => opt.MapFrom(src => src.ExerciseCategory.I18NCode))
             .ForMember(dest => dest.ExerciseCategoryId, opt => opt.MapFrom(src => src.ExerciseCategoryId))

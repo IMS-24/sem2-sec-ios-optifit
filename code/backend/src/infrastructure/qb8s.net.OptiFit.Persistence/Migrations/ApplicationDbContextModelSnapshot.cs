@@ -171,6 +171,30 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                     b.ToTable("gym", (string)null);
                 });
 
+            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.Insult", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id")
+                        .HasDefaultValueSql("uuid_generate_v4()");
+
+                    b.Property<int>("Level")
+                        .HasColumnType("integer")
+                        .HasColumnName("level");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("character varying(2000)")
+                        .HasColumnName("message");
+
+                    b.HasKey("Id")
+                        .HasName("pk_insult");
+
+                    b.ToTable("insult", (string)null);
+                });
+
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.Muscle", b =>
                 {
                     b.Property<Guid>("Id")
@@ -472,6 +496,10 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         .HasColumnName("registered_utc")
                         .HasDefaultValueSql("now()");
 
+                    b.Property<int>("TotalInsults")
+                        .HasColumnType("integer")
+                        .HasColumnName("total_insults");
+
                     b.Property<DateTimeOffset>("UpdatedUtc")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
@@ -513,9 +541,42 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                             LastName = "Schwarzenegger",
                             OId = new Guid("00000000-0000-0000-0000-000000000000"),
                             RegisteredUtc = new DateTimeOffset(new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)),
+                            TotalInsults = 0,
                             UpdatedUtc = new DateTimeOffset(new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)),
                             UserName = "TheTerminator"
                         });
+                });
+
+            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.UserInsult", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id")
+                        .HasDefaultValueSql("uuid_generate_v4()");
+
+                    b.Property<Guid>("InsultId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("insult_id");
+
+                    b.Property<DateTimeOffset>("TimeStampUtc")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("time_stamp_utc");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_user_insult");
+
+                    b.HasIndex("InsultId")
+                        .HasDatabaseName("ix_user_insult_insult_id");
+
+                    b.HasIndex("UserId")
+                        .HasDatabaseName("ix_user_insult_user_id");
+
+                    b.ToTable("user_insult", (string)null);
                 });
 
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.UserRole", b =>
@@ -582,7 +643,7 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         .HasColumnType("character varying(500)")
                         .HasColumnName("description");
 
-                    b.Property<DateTime?>("EndAtUtc")
+                    b.Property<DateTimeOffset?>("EndAtUtc")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("end_at_utc");
 
@@ -595,7 +656,7 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                         .HasColumnType("character varying(200)")
                         .HasColumnName("notes");
 
-                    b.Property<DateTime>("StartAtUtc")
+                    b.Property<DateTimeOffset>("StartAtUtc")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("start_at_utc");
 
@@ -749,6 +810,27 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                     b.Navigation("UserRole");
                 });
 
+            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.UserInsult", b =>
+                {
+                    b.HasOne("qb8s.net.OptiFit.Core.Entities.Insult", "Insult")
+                        .WithMany("UserInsultsCollection")
+                        .HasForeignKey("InsultId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_user_insult_insult_insult_id");
+
+                    b.HasOne("qb8s.net.OptiFit.Core.Entities.User", "User")
+                        .WithMany("UserInsults")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_user_insult_users_user_id");
+
+                    b.Navigation("Insult");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.Workout", b =>
                 {
                     b.HasOne("qb8s.net.OptiFit.Core.Entities.Gym", "Gym")
@@ -820,6 +902,11 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
                     b.Navigation("Workouts");
                 });
 
+            modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.Insult", b =>
+                {
+                    b.Navigation("UserInsultsCollection");
+                });
+
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.Muscle", b =>
                 {
                     b.Navigation("ExerciseMuscleMappings");
@@ -834,6 +921,8 @@ namespace qb8s.net.OptiFit.Persistence.Migrations
 
             modelBuilder.Entity("qb8s.net.OptiFit.Core.Entities.User", b =>
                 {
+                    b.Navigation("UserInsults");
+
                     b.Navigation("Workouts");
                 });
 

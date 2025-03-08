@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ExerciseView: View {
     @StateObject private var exerciseViewModel = ExerciseViewModel()
+    @EnvironmentObject private var authViewModel : AuthViewModel
     @State private var navigateToAddExercise = false
     
     // Group exercises by category
@@ -26,7 +27,7 @@ struct ExerciseView: View {
                                 // If this is the last exercise, load more.
                                 if exercise.id == exerciseViewModel.exercises.last?.id {
                                     Task {
-                                        await exerciseViewModel.loadMoreExercises()
+                                        await exerciseViewModel.loadMoreExercises(token:authViewModel.accessToken!)
                                     }
                                 }
                             }
@@ -39,7 +40,7 @@ struct ExerciseView: View {
                     ProgressView()
                         .onAppear {
                             Task {
-                                await exerciseViewModel.loadMoreExercises()
+                                await exerciseViewModel.loadMoreExercises(token:authViewModel.accessToken!)
                             }
                         }
                 }
@@ -60,11 +61,11 @@ struct ExerciseView: View {
                     .environmentObject(exerciseViewModel)
             }
             .refreshable {
-                await exerciseViewModel.searchExercises()
+                await exerciseViewModel.searchExercises(token:authViewModel.accessToken!)
             }
             .onAppear {
                 Task {
-                    await exerciseViewModel.searchExercises()
+                    await exerciseViewModel.searchExercises(token:authViewModel.accessToken!)
                 }
             }
             .alert(item: $exerciseViewModel.errorMessage) { error in

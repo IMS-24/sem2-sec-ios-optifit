@@ -11,7 +11,7 @@ import Foundation
 class MuscleService: ObservableObject {
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/muscle"
     
-    func searchMuscles(searchModel: SearchMusclesDto) async throws (ApiError) -> PaginatedResult<GetMuscleDto> {
+    func searchMuscles(searchModel: SearchMusclesDto, token: String) async throws (ApiError) -> PaginatedResult<GetMuscleDto> {
         guard let url = URL(string: "\(baseURL)/search")
         else {
             throw .invalidURL
@@ -20,7 +20,7 @@ class MuscleService: ObservableObject {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        request.addAuthorizationHeader(with: token)
         do {
             request.httpBody = try JSONEncoder().encode(searchModel)
         } catch {

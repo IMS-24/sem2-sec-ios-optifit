@@ -1,4 +1,5 @@
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using qb8s.net.OptiFit.Core.Pagination;
@@ -11,6 +12,7 @@ namespace qb8s.net.OptiFit.Api.Controllers;
 public class GymController(ILogger<GymController> logger) : ApiBaseController
 {
     [HttpPost("search")]
+    [Authorize]
     [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<GetGymDto>), Description = "Search Gyms")]
     public async Task<ActionResult<PaginatedResult<GetGymDto>>> SearchGyms([FromBody] SearchGymsDto search)
     {
@@ -20,6 +22,7 @@ public class GymController(ILogger<GymController> logger) : ApiBaseController
     }
 
     [HttpPost]
+    [Authorize]
     [SwaggerResponse(StatusCodes.Status200OK, typeof(GetGymDto), Description = "Create Gym")]
     public async Task<ActionResult<GetGymDto>> CreateGym([FromBody] CreateGymDto createGymDto)
     {

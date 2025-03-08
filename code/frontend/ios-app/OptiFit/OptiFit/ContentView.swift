@@ -18,7 +18,7 @@ struct ContentView: View {
             // When authViewModel.profile is updated, update the user profile.
             if let newProfile = newProfile {
                 Task{
-                    await   profileViewModel.initializeProfile(newProfile)
+                    await   profileViewModel.initializeProfile(newProfile,token: authViewModel.accessToken!)
                 }
             }else{
                     profileViewModel.unsetProfile()

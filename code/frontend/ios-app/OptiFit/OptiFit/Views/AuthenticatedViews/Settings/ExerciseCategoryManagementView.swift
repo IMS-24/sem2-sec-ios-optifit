@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ExerciseCategoryManagementView: View {
     @StateObject private var exerciseCategoriesViewModel = ExerciseCategoryViewModel()
+    @EnvironmentObject private var authViewModel: AuthViewModel
 
     var body: some View {
         NavigationView {
@@ -15,7 +16,7 @@ struct ExerciseCategoryManagementView: View {
                     .navigationTitle("Exercise Categories")
                     .onAppear {
                         Task {
-                            await exerciseCategoriesViewModel.fetchCategories()
+                            await exerciseCategoriesViewModel.fetchCategories(token: authViewModel.accessToken!)
                         }
                     }
                     .alert(item: $exerciseCategoriesViewModel.errorMessage) { error in

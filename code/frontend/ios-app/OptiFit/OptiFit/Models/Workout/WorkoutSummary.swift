@@ -8,7 +8,7 @@
 import Foundation
 
 struct WorkoutSummary: Codable, Equatable, Hashable {
-    let totalTime: Int
+    let totalTime: Double
     let totalSets: Int
     let totalReps: Int
     let totalWeight: Decimal

@@ -16,6 +16,7 @@ class VirtualTrainerViewModel: ObservableObject {
     @Published var errorMessage: ErrorMessage?
     @Published var isLoading: Bool = false
     @Published var insult: String?
+    @Published var trainerName = "Pepe McMuscle"
 
     let virtualTrainerService = VirtualTrainerService()
     

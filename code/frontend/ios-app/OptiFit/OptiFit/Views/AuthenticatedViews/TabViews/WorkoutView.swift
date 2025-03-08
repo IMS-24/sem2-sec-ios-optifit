@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct WorkoutView: View {
-    @StateObject private var workoutViewModel = WorkoutViewModel()
+    @StateObject  var workoutViewModel: WorkoutViewModel
+    @EnvironmentObject private var authViewModel: AuthViewModel
     @State private var navigateToStartWorkout = false
     
     private var groupedWorkouts: [String: [GetWorkoutDto]] {
@@ -9,6 +10,7 @@ struct WorkoutView: View {
         formatter.dateFormat = "MMM yyyy"
         return Dictionary(grouping: workoutViewModel.workouts, by: { formatter.string(from: $0.startAtUtc) })
     }
+
     
     var body: some View {
         NavigationStack {
@@ -25,7 +27,7 @@ struct WorkoutView: View {
                                 .onAppear {
                                     if workout == workoutViewModel.workouts.last {
                                         Task {
-                                            await workoutViewModel.loadMoreWorkouts()
+                                            await workoutViewModel.loadMoreWorkouts(token: authViewModel.accessToken!)
                                         }
                                     }
                                 }
@@ -50,7 +52,7 @@ struct WorkoutView: View {
             }
             .onAppear {
                 Task {
-                    await workoutViewModel.searchWorkouts()
+                    await workoutViewModel.searchWorkouts(token: authViewModel.accessToken!)
                 }
             }
             .alert(item: $workoutViewModel.errorMessage) { error in
@@ -64,6 +66,9 @@ struct WorkoutView: View {
 }
 
 
-#Preview {
-    WorkoutView()
+struct WorkoutView_Previews: PreviewProvider {
+     static let workoutViewModel: WorkoutViewModel = WorkoutViewModel()
+    static var previews: some View {
+        WorkoutView(workoutViewModel: workoutViewModel)
+    }
 }

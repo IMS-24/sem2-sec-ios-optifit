@@ -45,11 +45,15 @@ struct ProfileView: View {
         }
     }
 }
-struct profileViewWrapper:View{
-    var body: some View{
-        ProfileView()
+struct ProfileView_Previews: PreviewProvider {
+    static var userProfileViewModel: UserProfileViewModel {
+        let x = UserProfileViewModel()
+        x.profile = .init(id: UUID(), firstName: "Johnny", lastName: "Chimpo", email: "dutchmen@gmail.com", initialSetupDone: true)
+        return x
     }
-}
-#Preview {
-    profileViewWrapper()
+    static var previews: some View {
+        ProfileView()
+            .environmentObject(AuthViewModel())
+            .environmentObject(userProfileViewModel)
+    }
 }

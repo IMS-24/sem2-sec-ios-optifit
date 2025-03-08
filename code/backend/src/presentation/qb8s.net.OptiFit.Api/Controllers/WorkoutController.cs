@@ -14,12 +14,13 @@ public class WorkoutController(ILogger<WorkoutController> logger, ICurrentUserSe
     : ApiBaseController
 {
     [HttpPost("search")]
+    [Authorize]
     [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<GetWorkoutDto>), Description = "Search Workouts")]
     public async Task<ActionResult<PaginatedResult<GetWorkoutDto>>> SearchWorkouts(
         [FromBody] SearchWorkoutDto search)
     {
         logger.LogInformation("{@Name} request", nameof(SearchWorkouts));
-        var result = await Mediator.Send(new SearchWorkoutsQuery(search));
+        var result = await Mediator.Send(new SearchWorkoutsQuery(search, currentUserService.GetCurrentUserId()));
         return Ok(result);
     }
 
@@ -34,11 +35,13 @@ public class WorkoutController(ILogger<WorkoutController> logger, ICurrentUserSe
         var result =
             await Mediator.Send(new CreateWorkoutCommand(currentUserId,
                 createWorkoutDto));
-        var search = await Mediator.Send(new SearchWorkoutsQuery(new SearchWorkoutDto { Id = result.Id }));
+        var search =
+            await Mediator.Send(new SearchWorkoutsQuery(new SearchWorkoutDto { Id = result.Id }, currentUserId));
         return Ok(search.Items.FirstOrDefault());
     }
 
     [HttpGet("stats")]
+    [Authorize]
     [SwaggerResponse(HttpStatusCode.OK, typeof(PaginatedResult<GetWorkoutDto>),
         Description = "Get Workout statistics with query parameters: from,to")]
     public async Task<ActionResult<PaginatedResult<GetWorkoutDto>>> GetWorkoutStats(
@@ -46,7 +49,9 @@ public class WorkoutController(ILogger<WorkoutController> logger, ICurrentUserSe
         [FromQuery] DateTimeOffset to)
     {
         logger.LogInformation("{@Name} request", nameof(GetWorkoutStats));
-        var search = await Mediator.Send(new SearchWorkoutsQuery(new SearchWorkoutDto { From = from, To = to }));
+        var userId = currentUserService.GetCurrentUserId();
+        var search =
+            await Mediator.Send(new SearchWorkoutsQuery(new SearchWorkoutDto { From = from, To = to }, userId));
         return Ok(search);
     }
 }

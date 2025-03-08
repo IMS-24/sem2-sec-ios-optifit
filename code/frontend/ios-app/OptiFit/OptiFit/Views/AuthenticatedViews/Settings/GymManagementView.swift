@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GymManagementView: View {
     @StateObject private var gymViewModel = GymViewModel()
+    @EnvironmentObject private var authViewModel: AuthViewModel
 
     var body: some View {
         NavigationView {
@@ -20,7 +21,7 @@ struct GymManagementView: View {
                     .navigationTitle("Gyms")
                     .onAppear {
                         Task {
-                            await gymViewModel.searchGyms()
+                            await gymViewModel.searchGyms(token: authViewModel.accessToken!)
                         }
                     }
                     .toolbar {

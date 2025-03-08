@@ -13,6 +13,7 @@ public class ProfileController(ILogger<ProfileController> logger, ICurrentUserSe
     : ApiBaseController
 {
     [HttpGet]
+    [Authorize]
     [SwaggerResponse(HttpStatusCode.OK, typeof(UserProfileDto),
         Description = "Get User Profile")]
     public async Task<ActionResult<UserProfileDto>> GetUserProfile()
@@ -24,22 +25,24 @@ public class ProfileController(ILogger<ProfileController> logger, ICurrentUserSe
     }
 
     [HttpGet("stats")]
+    [Authorize]
     [SwaggerResponse(HttpStatusCode.OK, typeof(UserStatsDto), Description = "Get User Stats")]
     public async Task<ActionResult> GetUserStats()
     {
         logger.LogInformation("{@Name} request", nameof(GetUserStats));
-        var stats = await Mediator.Send(new GetUserStatsQuery(new Guid("275cfdca-c686-4ea1-80b1-f2425b1602c5")));
+        var stats = await Mediator.Send(new GetUserStatsQuery(currentUserService.GetCurrentUserId()));
         return Ok(stats);
     }
 
     [HttpDelete]
+    [Authorize]
     [SwaggerResponse(HttpStatusCode.OK, typeof(void),
         Description = "Delete User Profile")]
     public async Task<ActionResult> DeleteUserProfile()
     {
         logger.LogInformation("{@Name} request", nameof(DeleteUserProfile));
         //TODO: Implement DeleteUserProfileCommand
-        //await Mediator.Send(new DeleteUserProfileCommand(new Guid("275cfdca-c686-4ea1-80b1-f2425b1602c5")));
+        //await Mediator.Send(new DeleteUserProfileCommand(currentUserService.GetCurrentUserId()));
         return Ok();
     }
 
@@ -50,14 +53,6 @@ public class ProfileController(ILogger<ProfileController> logger, ICurrentUserSe
     public async Task<ActionResult<UserProfileDto>> UpdateUserProfile(
         [FromBody] UpdateUserProfileDto update)
     {
-        // Retrieve the Authorization header value
-        var authHeader = Request.Headers["Authorization"].ToString();
-
-        // Optional: Remove the "Bearer " prefix if present.
-        var token = authHeader.StartsWith("Bearer ") ? authHeader.Substring("Bearer ".Length) : authHeader;
-
-        // Log the token for debugging purposes.
-        logger.LogInformation("Received token: {Token}", token);
         var userId = currentUserService.GetCurrentUserId();
         logger.LogInformation("{@Name} request", nameof(UpdateUserProfile));
         var result =
@@ -66,6 +61,7 @@ public class ProfileController(ILogger<ProfileController> logger, ICurrentUserSe
     }
 
     [HttpPost("initialize")]
+    [Authorize]
     [SwaggerResponse(HttpStatusCode.OK, typeof(UserProfileDto), Description = "Initialize User Profile")]
     public async Task<ActionResult<UserProfileDto>> InitializeUserProfile(
         [FromBody] InitializeUserProfileDto initializeUserProfile)

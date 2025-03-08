@@ -22,6 +22,7 @@ struct StatItemView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         }
+        .frame(width: 80.0, height: 80.0)
     }
 }
 #Preview {

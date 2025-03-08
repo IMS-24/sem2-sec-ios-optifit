@@ -10,6 +10,7 @@ struct WorkoutStartView: View {
 
     @StateObject private var gymViewModel = GymViewModel()
     @StateObject private var exerciseCategoriesViewModel = ExerciseCategoryViewModel()
+    @EnvironmentObject private var authViewModel : AuthViewModel
 
     var body: some View {
         NavigationStack {
@@ -87,9 +88,9 @@ struct WorkoutStartView: View {
                     }
                     .onAppear {
                         Task {
-                            await exerciseCategoriesViewModel.fetchCategories()
+                            await exerciseCategoriesViewModel.fetchCategories(token: authViewModel.accessToken!)
                             selectedExerciseCategoryId = exerciseCategoriesViewModel.exerciseCategories.first?.id
-                            await gymViewModel.searchGyms()
+                            await gymViewModel.searchGyms(token: authViewModel.accessToken!)
                             selectedGym = gymViewModel.gyms.first?.id
                         }
                     }
