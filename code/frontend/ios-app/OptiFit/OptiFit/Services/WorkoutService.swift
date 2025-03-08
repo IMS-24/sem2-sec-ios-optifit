@@ -22,22 +22,20 @@ class WorkoutService: ObservableObject {
             
             let (data, response) = try await URLSession.shared.data(for: request)
             
-            if let httpResponse = response as? HTTPURLResponse,
-               !(200...299).contains(httpResponse.statusCode) {
-                print("Request failed with status code: \(httpResponse.statusCode)")
-                if let rawResponse = String(data: data, encoding: .utf8) {
-                    print("Raw response: \(rawResponse)")
+            if let httpResponse = response as? HTTPURLResponse {
+                switch httpResponse.statusCode {
+                case 200...299:
+                    break
+                case 400:
+                    throw ApiError.badRequest(String(data: data, encoding: .utf8))
+                case 401:
+                    throw ApiError.unauthorized(String(data: data, encoding: .utf8))
+                case 500:
+                    throw ApiError.serverError(String(data: data, encoding: .utf8))
+                default:
+                    throw ApiError.requestFailed
                 }
-                throw ApiError.requestFailed
-            }
-            
-            // Print the raw response for debugging purposes
-            if let rawResponse = String(data: data, encoding: .utf8) {
-                print("Raw response: \(rawResponse)")
-            } else {
-                print("Unable to convert data to string")
-            }
-            
+            }            
             let decoder = ISO8601CustomCoder.makeDecoder()
             return try decoder.decode(PaginatedResult<GetWorkoutDto>.self, from: data)
             

@@ -19,7 +19,22 @@ class VirtualTrainerService: ObservableObject{
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             request.addAuthorizationHeader(with: token)
-            let (data, _) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                switch httpResponse.statusCode {
+                case 200...299:
+                    break
+                case 400:
+                    throw ApiError.badRequest(String(data: data, encoding: .utf8))
+                case 401:
+                    throw ApiError.unauthorized(String(data: data, encoding: .utf8))
+                case 500:
+                    throw ApiError.serverError(String(data: data, encoding: .utf8))
+                default:
+                    throw ApiError.requestFailed
+                }
+            }
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             let insultResult = try decoder.decode(InsultDto.self, from: data)

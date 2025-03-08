@@ -91,6 +91,9 @@
         }
       }
     },
+    "An unknown error occurred." : {
+
+    },
     "Appearance" : {
       "localizations" : {
         "de" : {
@@ -153,6 +156,9 @@
 
     },
     "Avg Weight" : {
+
+    },
+    "Bad request. Please check your input and try again." : {
 
     },
     "Base Data Management" : {
@@ -854,6 +860,15 @@
         }
       }
     },
+    "The network request failed. Please try again later." : {
+
+    },
+    "The request URL is invalid." : {
+
+    },
+    "The server encountered an error. Please try again later." : {
+
+    },
     "Total Reps" : {
 
     },
@@ -935,6 +950,9 @@
     "Volume (Weight x Reps)" : {
 
     },
+    "We were unable to process the server response." : {
+
+    },
     "Week %lld" : {
 
     },
@@ -1006,6 +1024,9 @@
           }
         }
       }
+    },
+    "You are not authorized to perform this action." : {
+
     },
     "Your ultimate fitness companion to track workouts, monitor progress, and get motivated every day!" : {
 

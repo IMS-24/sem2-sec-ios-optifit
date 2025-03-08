@@ -14,7 +14,23 @@ class ExerciseService: ObservableObject {
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             request.addAuthorizationHeader(with: token)
-            let (data, _) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                switch httpResponse.statusCode {
+                case 200...299:
+                    break
+                case 400:
+                    throw ApiError.badRequest(String(data: data, encoding: .utf8))
+                case 401:
+                    throw ApiError.unauthorized(String(data: data, encoding: .utf8))
+                case 500:
+                    throw ApiError.serverError(String(data: data, encoding: .utf8))
+                default:
+                    throw ApiError.requestFailed
+                }
+            }
+            
             let decoder = ISO8601CustomCoder.makeDecoder()
             let exerciseCategories = try decoder.decode([ExerciseCategoryDto].self, from: data)
             return exerciseCategories
@@ -36,7 +52,22 @@ class ExerciseService: ObservableObject {
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             request.addAuthorizationHeader(with: token)
-            let (data, _) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                switch httpResponse.statusCode {
+                case 200...299:
+                    break
+                case 400:
+                    throw ApiError.badRequest(String(data: data, encoding: .utf8))
+                case 401:
+                    throw ApiError.unauthorized(String(data: data, encoding: .utf8))
+                case 500:
+                    throw ApiError.serverError(String(data: data, encoding: .utf8))
+                default:
+                    throw ApiError.requestFailed
+                }
+            }
             let decoder = ISO8601CustomCoder.makeDecoder()
             let exerciseCategories = try decoder.decode(GetExerciseStatisticsDto.self, from: data)
             return exerciseCategories
@@ -61,7 +92,24 @@ class ExerciseService: ObservableObject {
             request.addAuthorizationHeader(with: token)
             request.httpBody = try JSONEncoder().encode(searchModel)
             
-            let (data, _) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                switch httpResponse.statusCode {
+                case 200...299:
+                    break
+                case 400:
+                    throw ApiError.badRequest(String(data: data, encoding: .utf8))
+                case 401:
+                    throw ApiError.unauthorized(String(data: data, encoding: .utf8))
+                case 500:
+                    throw ApiError.serverError(String(data: data, encoding: .utf8))
+                default:
+                    throw ApiError.requestFailed
+                }
+            }
+            
+            
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             return try decoder.decode(PaginatedResult<GetExerciseDto>.self, from: data)
@@ -90,7 +138,23 @@ class ExerciseService: ObservableObject {
             request.httpBody = try encoder.encode(exercise)
             
             
-            let (data, _) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                switch httpResponse.statusCode {
+                case 200...299:
+                    break
+                case 400:
+                    throw ApiError.badRequest(String(data: data, encoding: .utf8))
+                case 401:
+                    throw ApiError.unauthorized(String(data: data, encoding: .utf8))
+                case 500:
+                    throw ApiError.serverError(String(data: data, encoding: .utf8))
+                default:
+                    throw ApiError.requestFailed
+                }
+            }
+            
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             return try decoder.decode(GetExerciseDto.self, from: data)
