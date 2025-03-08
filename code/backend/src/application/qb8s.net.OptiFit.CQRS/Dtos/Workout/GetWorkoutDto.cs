@@ -23,7 +23,7 @@ public class GetWorkoutDtoProfile : BaseProfile
         CreateMap<Core.Entities.Workout, WorkoutSummary>()
             .ForMember(dest => dest.TotalTime,
                 opt => opt.MapFrom(src => src.EndAtUtc.HasValue
-                    ? (int)(src.EndAtUtc.Value - src.StartAtUtc).TotalMinutes
+                    ? (src.EndAtUtc.Value - src.StartAtUtc).TotalMinutes
                     : 0))
             .ForMember(dest => dest.TotalExercises,
                 opt => opt.MapFrom(src => src.WorkoutExercises.Count))

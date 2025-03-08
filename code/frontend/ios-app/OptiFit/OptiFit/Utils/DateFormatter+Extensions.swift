@@ -19,4 +19,9 @@ extension Date {
     func formattedDate() -> String {
         return DateFormatter.optiFitDateFormatter.string(from: self)
     }
+    func mediumFormatted()-> String{
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter.string(from: self)
+    }
 }

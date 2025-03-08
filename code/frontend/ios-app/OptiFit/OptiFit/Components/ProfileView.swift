@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ProfileView: View {
-    let profile: UserProfileDto?
-
+    @EnvironmentObject var profileViewModel:UserProfileViewModel
+    @EnvironmentObject var authViewModel:AuthViewModel
     var body: some View {
         Section(header: Text("Profile")) {
             HStack {
@@ -17,7 +17,7 @@ struct ProfileView: View {
                         .resizable()
                         .frame(width: 50, height: 50)
                 VStack(alignment: .leading) {
-                    if let profile = profile {
+                    if let profile = profileViewModel.profile {
                         Text("\(profile.firstName) \(profile.lastName)").font(.headline)
                         Text(profile.email).font(.subheadline).foregroundColor(.gray)
 
@@ -28,9 +28,9 @@ struct ProfileView: View {
                             Text("Last login: \(lastLogin.formattedDate())").font(.subheadline).foregroundColor(.gray)
                         }
 
-                        Text("Registered at: \(profile.registeredUtc.formattedDate())").font(.subheadline).foregroundColor(.gray)
-                        Text("Updated at: \(profile.updatedUtc.formattedDate())").font(.subheadline).foregroundColor(.gray)
-                        Text("User Role: \(profile.userRole)").font(.subheadline).foregroundColor(.gray)
+                        Text("Registered at: \(profile.registeredUtc?.formattedDate() ?? "N/A")").font(.subheadline).foregroundColor(.gray)
+                        Text("Updated at: \(profile.updatedUtc?.formattedDate() ?? "N/A")").font(.subheadline).foregroundColor(.gray)
+                        Text("User Role: \(profile.userRole ?? "N/A")").font(.subheadline).foregroundColor(.gray)
                         Text("Initial Setup Done: \(profile.initialSetupDone ? "Yes" : "No")").font(.subheadline).foregroundColor(.gray)
                     } else {
                         Text("Loading ...").font(.headline).font(.subheadline).foregroundColor(.gray)
@@ -39,23 +39,21 @@ struct ProfileView: View {
                 }
             }
             Button("Logout", role: .destructive) {
-                // Handle Logout
+                authViewModel.signOut()
+                //profileViewModel.unsetProfile()
             }
         }
     }
 }
-
-#Preview {
-    ProfileView(profile: UserProfileDto(
-            id: UUID(),
-            firstName: "First",
-            lastName: "Last",
-            email: "first@last.com",
-            userRole: "Admin",
-            dateOfBirthUtc: Calendar.current.date(byAdding: .year, value: -30, to: Date()),
-            lastLoginUtc: Calendar.current.date(byAdding: .day, value: -5, to: Date()),
-            registeredUtc: Calendar.current.date(byAdding: .day, value: -12, to: Date())!,
-            updatedUtc: Calendar.current.date(byAdding: .day, value: -1, to: Date())!,
-            initialSetupDone: true)
-    )
+struct ProfileView_Previews: PreviewProvider {
+    static var userProfileViewModel: UserProfileViewModel {
+        let x = UserProfileViewModel()
+        x.profile = .init(id: UUID(), firstName: "Johnny", lastName: "Chimpo", email: "dutchmen@gmail.com", initialSetupDone: true)
+        return x
+    }
+    static var previews: some View {
+        ProfileView()
+            .environmentObject(AuthViewModel())
+            .environmentObject(userProfileViewModel)
+    }
 }

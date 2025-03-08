@@ -9,11 +9,11 @@ class ExerciseCategoryViewModel: ObservableObject {
 
     private let exerciseService = ExerciseService()
 
-    func fetchCategories() async {
+    func fetchCategories(token: String) async {
         isLoading = true
         errorMessage = nil
         do {
-            let response = try await exerciseService.fetchExerciseCategories()
+            let response = try await exerciseService.fetchExerciseCategories(token: token)
             exerciseCategories = response
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)

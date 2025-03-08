@@ -9,7 +9,7 @@ using qb8s.net.OptiFit.Persistence.Context;
 
 namespace qb8s.net.OptiFit.CQRS.Queries.Workout;
 
-public record SearchWorkoutsQuery(SearchWorkoutDto Search) : IRequest<PaginatedResult<GetWorkoutDto>>;
+public record SearchWorkoutsQuery(SearchWorkoutDto Search, Guid? userId) : IRequest<PaginatedResult<GetWorkoutDto>>;
 
 public class SearchWorkoutsQueryHandler(
     ILogger<SearchWorkoutsQueryHandler> logger,
@@ -39,6 +39,8 @@ public class SearchWorkoutsQueryHandler(
                 request.Search.PageIndex,
                 query.AsEnumerable().Select(mapper.Map<GetWorkoutDto>)));
         }
+
+        if (request.userId.HasValue) predicate = predicate.And(x => x.UserId == request.userId);
 
         if (request.Search.From.HasValue) predicate = predicate.And(x => x.StartAtUtc >= request.Search.From);
 

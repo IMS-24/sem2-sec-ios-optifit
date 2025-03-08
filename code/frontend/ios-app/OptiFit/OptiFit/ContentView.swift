@@ -1,46 +1,34 @@
-//
-//  ContentView.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 15.02.25.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @StateObject private var profileViewModel = UserProfileViewModel()
+    
     var body: some View {
-//        HStack {
-//            WelcomePage(appTitle: "OptiFit", appVersion: "Beta V1.0.0")
-
-//            }
-        NavigationBarView()
+        Group {
+            if authViewModel.isLoggedIn() != false {
+                AuthContentView()
+                    .environmentObject(profileViewModel)
+            } else {
+                LoginView()
+                    .environmentObject(profileViewModel)
+            }
+        }
+        .onChange(of: authViewModel.initUserProfile) { oldProfile,newProfile in
+            // When authViewModel.profile is updated, update the user profile.
+            if let newProfile = newProfile {
+                Task{
+                    await   profileViewModel.initializeProfile(newProfile,token: authViewModel.accessToken!)
+                }
+            }else{
+                    profileViewModel.unsetProfile()
+                }
+            }
+        .animation(.easeInOut, value: authViewModel.accessToken)
     }
+       
 }
 
 #Preview {
     ContentView()
-}
-
-struct NavigationBarView: View {
-    var body: some View {
-        TabView {
-            Tab("Login",systemImage: "key.fill")
-            {
-                LoginView()
-            }
-            Tab("Home", systemImage: "house.fill") {
-                HomeView()
-            }
-            Tab("Workouts", systemImage: "gym.bag.fill") {
-                WorkoutView()
-            }
-            Tab("Exercises", systemImage: "dumbbell.fill") {
-                ExerciseView()
-            }
-            Tab("Settings", systemImage: "gearshape.fill") {
-                SettingsView()
-            }
-
-        }
-    }
 }

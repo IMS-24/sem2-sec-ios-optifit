@@ -9,6 +9,6 @@ struct GetWorkoutDto: Codable, Identifiable, Hashable, Equatable {
     let gymId: UUID
     let gym: GetGymDto
     let workoutExercises: [GetWorkoutExerciseDto]?
-    let workoutSummary: WorkoutSummary
+    let workoutSummary: WorkoutSummary?
 }
 

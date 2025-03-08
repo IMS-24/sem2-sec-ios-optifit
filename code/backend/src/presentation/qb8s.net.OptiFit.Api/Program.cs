@@ -1,5 +1,4 @@
 using qb8s.net.OptiFit.Api.Extensions;
-using qb8s.net.OptiFit.Api.Formatter;
 using qb8s.net.OptiFit.CQRS.Extensions;
 using qb8s.net.OptiFit.Persistence.Extensions;
 using Serilog;
@@ -28,7 +27,7 @@ builder.Services
 
 
 // Add services to the container.
-
+builder.Services.AddAzureB2CAuthentication(configuration).RegisterCurrentUserService();
 builder.Services.AddControllers()
     //.AddJsonOptions(opt => opt.JsonSerializerOptions.Converters.Add(new DateTimeOffsetConverter()))
     ;
@@ -54,7 +53,8 @@ app.UseCors(options =>
 });
 //app.UseHttpsRedirection();
 
-app.UseAuthorization();
+app.UseAuthentication(); // Enables authentication
+app.UseAuthorization(); // Enables authorization
 
 app.MapControllers();
 logger.LogInformation(
