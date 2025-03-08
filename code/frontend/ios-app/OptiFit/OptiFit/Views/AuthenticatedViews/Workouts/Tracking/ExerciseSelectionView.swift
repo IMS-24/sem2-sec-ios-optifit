@@ -4,6 +4,7 @@ import SwiftUI
 
 struct ExerciseSelectionView: View {
     @StateObject private var exerciseViewModel = ExerciseViewModel()
+    @EnvironmentObject private var authViewModel: AuthViewModel
     let exerciseCategoryId: UUID
     let onExerciseSelected: (CreateWorkoutExerciseDto) -> Void
     let order: Int

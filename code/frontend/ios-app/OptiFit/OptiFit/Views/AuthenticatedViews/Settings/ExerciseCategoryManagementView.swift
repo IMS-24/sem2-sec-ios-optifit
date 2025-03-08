@@ -16,7 +16,7 @@ struct ExerciseCategoryManagementView: View {
                     .navigationTitle("Exercise Categories")
                     .onAppear {
                         Task {
-                            await exerciseCategoriesViewModel.fetchCategories(token: authViewModel.accessToken!)
+                            await exerciseCategoriesViewModel.fetchCategories()
                         }
                     }
                     .alert(item: $exerciseCategoriesViewModel.errorMessage) { error in

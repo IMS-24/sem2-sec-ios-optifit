@@ -99,7 +99,7 @@ struct ExerciseDetailView: View {
             .padding(.vertical)
             .onAppear {
                 Task {
-                    let res = await exerciseViewModel.loadStatistics(token: authViewModel.accessToken!, exerciseId: exercise.id)
+                    let res = await exerciseViewModel.loadStatistics(exerciseId: exercise.id)
                     self.getExerciseStatisticsDto = res
                 }
             }

@@ -9,12 +9,17 @@ import Foundation
 @MainActor
 class VirtualTrainerService: ObservableObject{
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/virtualtrainer"
-    
-    func fetchMotivation(token:String,level: Int) async throws (ApiError)-> InsultDto {
+    let service = "net.qb8s.optifit"  // A unique identifier for your service
+    let account = "jwtToken"                 // Key under which the token is stored
+    func fetchMotivation(level: Int) async throws (ApiError)-> InsultDto {
         guard let url = URL(string: "\(baseURL)/motivation/\(level)")
         else {
             throw .invalidURL
         }
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
+        }
+        
         do {
             var request = URLRequest(url: url)
             request.httpMethod = "GET"

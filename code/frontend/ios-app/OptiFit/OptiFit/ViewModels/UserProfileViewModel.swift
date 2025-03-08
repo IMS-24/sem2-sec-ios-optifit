@@ -13,11 +13,11 @@ class UserProfileViewModel: ObservableObject {
 
     private let profileService = ProfileService()
 
-    func loadStats(token: String) async {
+    func loadStats() async {
         isLoading = true
         errorMessage = nil
         do {
-            let fetchedStats = try await profileService.getStats(token: token)
+            let fetchedStats = try await profileService.getStats()
             self.stats = fetchedStats
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
@@ -25,12 +25,12 @@ class UserProfileViewModel: ObservableObject {
         isLoading = false
     }
 
-    func loadProfile(token: String) async {
+    func loadProfile() async {
         isLoading = true
         errorMessage = nil
         do {
            
-            let fetchedProfile = try await profileService.fetchProfile(accessToken: token)
+            let fetchedProfile = try await profileService.fetchProfile()
                 self.profile = fetchedProfile
           
         } catch {
@@ -46,13 +46,13 @@ class UserProfileViewModel: ObservableObject {
         self.profile = nil
     }
 
-    func updateProfile(profileToUpdate:UpdateUserProfileDto, token: String) async {
+    func updateProfile(profileToUpdate:UpdateUserProfileDto) async {
         
         isLoading = true
         errorMessage = nil
 
         do {
-            let result = try await profileService.updateProfile(profile: profileToUpdate, accessToken: token)
+            let result = try await profileService.updateProfile(profile: profileToUpdate)
             self.profile = result
 
         } catch {
@@ -82,11 +82,11 @@ class UserProfileViewModel: ObservableObject {
         isLoading = false
     }
     
-    func initializeProfile(_ profile: UserProfileInitializeDto,token: String) async {
+    func initializeProfile(_ profile: UserProfileInitializeDto) async {
         isLoading = true
         errorMessage = nil
         do{
-            let profile = try await profileService.initializeUserProfile(profile,token:token)
+            let profile = try await profileService.initializeUserProfile(profile)
             self.profile = profile
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)

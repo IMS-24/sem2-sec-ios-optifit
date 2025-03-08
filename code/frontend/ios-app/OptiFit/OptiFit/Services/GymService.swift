@@ -9,13 +9,18 @@ import Foundation
 
 @MainActor
 class GymService: ObservableObject {
-    
+    let service = "net.qb8s.optifit"  // A unique identifier for your service
+    let account = "jwtToken"                 // Key under which the token is stored
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/gym"
     
-    func searchGym(searchModel: SearchGymsDto, token: String) async throws (ApiError)->PaginatedResult<GetGymDto> {
+    func searchGym(searchModel: SearchGymsDto) async throws (ApiError)->PaginatedResult<GetGymDto> {
         guard let url = URL(string: "\(baseURL)/search")
         else {
             throw .invalidURL
+        }
+        
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
         }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

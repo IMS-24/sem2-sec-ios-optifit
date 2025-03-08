@@ -27,6 +27,15 @@ final class AuthViewModel: ObservableObject {
 
 //    @Published var profile:UserProfileDto? = nil
     @EnvironmentObject private var userProfileViewModel: UserProfileViewModel
+    
+    
+   
+    let service = "net.qb8s.optifit"  // A unique identifier for your service
+    let account = "jwtToken"                 // Key under which the token is stored
+    
+    
+    
+    
     // MSAL application instance
     private var application: MSALPublicClientApplication!
     
@@ -135,6 +144,12 @@ final class AuthViewModel: ObservableObject {
             accessToken = result.accessToken
             currentAccount = result.account  // Save the account here
             updateLoggingText("Access token is \(accessToken ?? "Empty")")
+            let success = KeychainHelper.shared.save(token: accessToken ?? "Empty", service: service, account: account)
+            if success {
+                print("Token saved successfully!")
+            } else {
+                print("Failed to save token.")
+            }
             // Attempt to decode the JWT to populate the user object.
             do {
                 self.user = try self.decodeJWT(result.accessToken)

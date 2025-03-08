@@ -10,11 +10,16 @@ import Foundation
 @MainActor
 class MuscleService: ObservableObject {
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/muscle"
+    let service = "net.qb8s.optifit"  // A unique identifier for your service
+    let account = "jwtToken"                 // Key under which the token is stored
     
-    func searchMuscles(searchModel: SearchMusclesDto, token: String) async throws (ApiError) -> PaginatedResult<GetMuscleDto> {
+    func searchMuscles(searchModel: SearchMusclesDto) async throws (ApiError) -> PaginatedResult<GetMuscleDto> {
         guard let url = URL(string: "\(baseURL)/search")
         else {
             throw .invalidURL
+        }
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
         }
         
         var request = URLRequest(url: url)

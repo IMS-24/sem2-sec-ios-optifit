@@ -21,7 +21,7 @@ struct GymManagementView: View {
                     .navigationTitle("Gyms")
                     .onAppear {
                         Task {
-                            await gymViewModel.searchGyms(token: authViewModel.accessToken!)
+                            await gymViewModel.searchGyms()
                         }
                     }
                     .toolbar {

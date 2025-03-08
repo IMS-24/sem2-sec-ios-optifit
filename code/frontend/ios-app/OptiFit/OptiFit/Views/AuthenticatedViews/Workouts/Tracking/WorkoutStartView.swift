@@ -88,9 +88,9 @@ struct WorkoutStartView: View {
                     }
                     .onAppear {
                         Task {
-                            await exerciseCategoriesViewModel.fetchCategories(token: authViewModel.accessToken!)
+                            await exerciseCategoriesViewModel.fetchCategories()
                             selectedExerciseCategoryId = exerciseCategoriesViewModel.exerciseCategories.first?.id
-                            await gymViewModel.searchGyms(token: authViewModel.accessToken!)
+                            await gymViewModel.searchGyms()
                             selectedGym = gymViewModel.gyms.first?.id
                         }
                     }

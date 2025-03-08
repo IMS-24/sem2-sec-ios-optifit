@@ -10,7 +10,7 @@ struct SettingsView: View {
     func fetchData() async {
         // Safely unwrap the accessToken before proceeding
         guard let token = authViewModel.accessToken else { return }
-        await userProfileViewModel.loadProfile(token: token)
+        await userProfileViewModel.loadProfile()
     }
     
     var body: some View {

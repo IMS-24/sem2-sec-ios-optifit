@@ -227,7 +227,7 @@ struct WorkoutTrackingView: View {
             workoutExercises: workoutExercises
         )
         Task {
-            let _ = await workoutViewModel.saveWorkout(workout,accessToken: authViewModel.accessToken!)
+            let _ = await workoutViewModel.saveWorkout(workout)
             dismiss()
         }
     }

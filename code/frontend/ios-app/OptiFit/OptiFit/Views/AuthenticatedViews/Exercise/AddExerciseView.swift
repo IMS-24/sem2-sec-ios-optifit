@@ -105,9 +105,9 @@ struct AddExerciseView: View {
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 Task {
-                    await muscleViewModel.searchMuscles(token:authViewModel.accessToken!)
-                    await exerciseViewModel.searchExerciseCategories(token:authViewModel.accessToken!)
-                    await exerciseCategoryViewModel.fetchCategories(token:authViewModel.accessToken!)
+                    await muscleViewModel.searchMuscles()
+                    await exerciseViewModel.searchExerciseCategories()
+                    await exerciseCategoryViewModel.fetchCategories()
                 }
             }
             .alert(item: $exerciseViewModel.errorMessage) { error in
@@ -137,7 +137,7 @@ struct AddExerciseView: View {
         )
         
         Task {
-            let _ = await exerciseViewModel.saveExercise(exerciseDto: exercise, token: authViewModel.accessToken!)
+            let _ = await exerciseViewModel.saveExercise(exerciseDto: exercise)
             dismiss()
         }
     }

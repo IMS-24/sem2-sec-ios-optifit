@@ -60,7 +60,7 @@ struct VirtualTrainerView: View {
     
     func loadMotivation() {
         Task{
-            await viewModel.getMotivation(token: authViewModel.accessToken!)
+            await viewModel.getMotivation()
         }
         
     }

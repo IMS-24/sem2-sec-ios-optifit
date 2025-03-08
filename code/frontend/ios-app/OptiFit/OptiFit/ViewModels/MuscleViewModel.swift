@@ -17,11 +17,11 @@ class MuscleViewModel: ObservableObject {
     @Published var errorMessage: ErrorMessage?
 
 
-    func searchMuscles(token: String) async {
+    func searchMuscles() async {
         isLoading = true
         errorMessage = nil
         do {
-            let response = try await muscleService.searchMuscles(searchModel: searchModel, token: token)
+            let response = try await muscleService.searchMuscles(searchModel: searchModel)
             muscles = response.items
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)

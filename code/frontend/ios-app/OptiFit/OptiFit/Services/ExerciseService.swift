@@ -5,10 +5,17 @@ class ExerciseService: ObservableObject {
    // private let GetExerciseStatisticsDto: GetExerciseStatisticsDto
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/exercise"
     
-    func fetchExerciseCategories(token: String) async throws (ApiError)-> [ExerciseCategoryDto] {
+    let service = "net.qb8s.optifit"  // A unique identifier for your service
+    let account = "jwtToken"                 // Key under which the token is stored
+    
+    
+    func fetchExerciseCategories() async throws (ApiError)-> [ExerciseCategoryDto] {
         guard let url = URL(string: "\(baseURL)/categories")
         else {
             throw .invalidURL
+        }
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
         }
         do {
             var request = URLRequest(url: url)
@@ -43,11 +50,15 @@ class ExerciseService: ObservableObject {
         }
     }
     
-    func fetchExerciseStatistics(exerciseId: UUID, token: String) async throws (ApiError) -> GetExerciseStatisticsDto{
+    func fetchExerciseStatistics(exerciseId: UUID) async throws (ApiError) -> GetExerciseStatisticsDto{
         guard let url = URL(string: "\(baseURL)/\(exerciseId)/stats")
         else {
             throw .invalidURL
         }
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
+        }
+        
         do {
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
@@ -81,10 +92,14 @@ class ExerciseService: ObservableObject {
     }
     
     // Updated search function that supports lazy loading
-    func searchExercises(searchModel: SearchExercisesDto,token: String) async throws (ApiError) -> PaginatedResult<GetExerciseDto>? {
+    func searchExercises(searchModel: SearchExercisesDto) async throws (ApiError) -> PaginatedResult<GetExerciseDto>? {
         guard let url = URL(string: "\(baseURL)/search") else {
             throw .invalidURL
         }
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
+        }
+        
         do {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
@@ -122,10 +137,14 @@ class ExerciseService: ObservableObject {
         }
     }
     
-    func postExercise(_ exercise: CreateExerciseDto, token: String) async throws (ApiError) -> GetExerciseDto {
+    func postExercise(_ exercise: CreateExerciseDto) async throws (ApiError) -> GetExerciseDto {
         guard let url = URL(string: "\(baseURL)") else {
             throw .invalidURL
         }
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
+        }
+        
         do {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
@@ -169,10 +188,14 @@ class ExerciseService: ObservableObject {
         }
     }
     
-    func deleteExercise(exerciseId: UUID, token: String) async throws (ApiError) -> Bool {
+    func deleteExercise(exerciseId: UUID) async throws (ApiError) -> Bool {
         guard let url = URL(string: "\(baseURL)/\(exerciseId)") else {
             throw .invalidURL
         }
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
+        }
+        
         do {
             var request = URLRequest(url: url)
             request.httpMethod = "DELETE"

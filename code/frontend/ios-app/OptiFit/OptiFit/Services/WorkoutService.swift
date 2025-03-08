@@ -3,13 +3,17 @@ import Foundation
 @MainActor
 class WorkoutService: ObservableObject {
     @Published var workouts: [GetWorkoutDto] = []
-    
+    let service = "net.qb8s.optifit"  // A unique identifier for your service
+    let account = "jwtToken"                 // Key under which the token is stored
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/workout"
     
-    func searchWorkouts(searchModel: SearchWorkoutsDto, token: String, append: Bool = false) async throws (ApiError) -> PaginatedResult<GetWorkoutDto>? {
+    func searchWorkouts(searchModel: SearchWorkoutsDto) async throws (ApiError) -> PaginatedResult<GetWorkoutDto>? {
         guard let url = URL(string: "\(baseURL)/search")
         else {
             throw ApiError.invalidURL
+        }
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
         }
         
         do {
@@ -48,15 +52,18 @@ class WorkoutService: ObservableObject {
         }
     }
     
-    func postWorkout(_ workout: CreateWorkoutDto, accessToken: String) async throws (ApiError) -> GetWorkoutDto {
+    func postWorkout(_ workout: CreateWorkoutDto) async throws (ApiError) -> GetWorkoutDto {
         guard let url = URL(string: baseURL) else {
             throw ApiError.invalidURL
+        }
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
         }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addAuthorizationHeader(with: accessToken)
+        request.addAuthorizationHeader(with: token)
 
         do {
             let encoder = ISO8601CustomCoder.makeEncoder()

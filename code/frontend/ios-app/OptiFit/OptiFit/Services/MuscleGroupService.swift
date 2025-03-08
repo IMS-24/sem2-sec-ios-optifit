@@ -3,13 +3,16 @@ import Foundation
 @MainActor
 class MuscleGroupService: ObservableObject {
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/musclegroup"
-    
-    func searchMuscleGroups(searchModel: SearchMuscleGroupsDto, token: String) async throws (ApiError)->PaginatedResult<GetMuscleGroupDto> {
+    let service = "net.qb8s.optifit"  // A unique identifier for your service
+    let account = "jwtToken"                 // Key under which the token is stored
+    func searchMuscleGroups(searchModel: SearchMuscleGroupsDto) async throws (ApiError)->PaginatedResult<GetMuscleGroupDto> {
         guard let url = URL(string: "\(baseURL)/search")
         else {
             throw .invalidURL
         }
-        
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
+        }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

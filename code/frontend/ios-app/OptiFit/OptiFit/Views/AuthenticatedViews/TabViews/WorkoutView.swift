@@ -27,7 +27,7 @@ struct WorkoutView: View {
                                 .onAppear {
                                     if workout == workoutViewModel.workouts.last {
                                         Task {
-                                            await workoutViewModel.loadMoreWorkouts(token: authViewModel.accessToken!)
+                                            await workoutViewModel.loadMoreWorkouts()
                                         }
                                     }
                                 }
@@ -52,7 +52,7 @@ struct WorkoutView: View {
             }
             .onAppear {
                 Task {
-                    await workoutViewModel.searchWorkouts(token: authViewModel.accessToken!)
+                    await workoutViewModel.searchWorkouts()
                 }
             }
             .alert(item: $workoutViewModel.errorMessage) { error in

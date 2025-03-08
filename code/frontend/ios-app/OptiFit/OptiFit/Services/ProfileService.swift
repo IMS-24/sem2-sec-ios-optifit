@@ -3,7 +3,8 @@ import Foundation
 @MainActor
 class ProfileService :ObservableObject{
     private let baseURL = "\(Configuration.apiBaseURL.absoluteString)/Profile"
-
+    let service = "net.qb8s.optifit"  // A unique identifier for your service
+    let account = "jwtToken"                 // Key under which the token is stored
 //    func fetchProfileById(_ id: UUID) async throws (ApiError)-> UserProfileDto {
 //        guard let url = URL(string: "\(baseURL)/\(id)") else {
 //            throw .invalidURL
@@ -23,16 +24,18 @@ class ProfileService :ObservableObject{
 //            }
 //        }
 //    }
-    func fetchProfile(accessToken: String) async throws (ApiError)-> UserProfileDto {
+    func fetchProfile() async throws (ApiError)-> UserProfileDto {
         guard let url = URL(string: "\(baseURL)") else {
             throw .invalidURL
             
         }
-        
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
+        }
         do {
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
-            request.addAuthorizationHeader(with: accessToken)
+            request.addAuthorizationHeader(with: token)
             // handle response error codes
             let (data, _) = try await URLSession.shared.data(for: request)
             let decoder = ISO8601CustomCoder.makeDecoder()
@@ -48,14 +51,17 @@ class ProfileService :ObservableObject{
         }
     }
     
-    func updateProfile(profile: UpdateUserProfileDto, accessToken: String) async throws (ApiError) -> UserProfileDto {
+    func updateProfile(profile: UpdateUserProfileDto) async throws (ApiError) -> UserProfileDto {
         guard let url = URL(string: "\(baseURL)") else {
             throw .invalidURL
+        }
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
         }
         do {
             var request = URLRequest(url: url)
             request.httpMethod = "PUT"
-            request.addAuthorizationHeader(with: accessToken)
+            request.addAuthorizationHeader(with: token)
 
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             let encoder = ISO8601CustomCoder.makeEncoder()
@@ -78,6 +84,10 @@ class ProfileService :ObservableObject{
         guard let url = URL(string: "\(baseURL)") else {
             throw .invalidURL
         }
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
+        }
+        
         do {
             var request = URLRequest(url: url)
             request.httpMethod = "DELETE"
@@ -95,9 +105,12 @@ class ProfileService :ObservableObject{
     }
     
     
-    func getStats(token: String) async throws (ApiError) -> UserStatsDto {
+    func getStats() async throws (ApiError) -> UserStatsDto {
         guard let url = URL(string: "\(baseURL)/stats") else {
             throw .invalidURL
+        }
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
         }
         do {
             var request = URLRequest(url: url)
@@ -132,10 +145,14 @@ class ProfileService :ObservableObject{
         }
     }
     
-    func initializeUserProfile(_ profile: UserProfileInitializeDto,token: String) async throws (ApiError) -> UserProfileDto{
+    func initializeUserProfile(_ profile: UserProfileInitializeDto) async throws (ApiError) -> UserProfileDto{
         guard let url = URL(string: "\(baseURL)/initialize")else{
             throw .invalidURL
         }
+        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else{
+            throw .unauthorized("No token found")
+        }
+        
         do {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
