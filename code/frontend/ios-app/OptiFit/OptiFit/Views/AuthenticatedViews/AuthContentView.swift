@@ -10,7 +10,7 @@ struct AuthContentView: View {
       
             NavigationBarView()
                 .onAppear {
-                    if let user = userProfileViewModel.profile, userProfileViewModel.profile?.initialSetupDone == false {
+                    if let user = userProfileViewModel.profile, user.initialSetupDone == false {
                         showOnboarding = true
                     }
                 }

@@ -40,3 +40,5 @@ Desktop.ini
 code/backend/src/presentation/qb8s.net.OptiFit.Api/appsettings.Development.json
 
 code/backend/src/presentation/qb8s.net.OptiFit.Api/appsettings.Local.json
+
+*.xcuserstate
