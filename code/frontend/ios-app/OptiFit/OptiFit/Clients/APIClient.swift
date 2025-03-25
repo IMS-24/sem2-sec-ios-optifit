@@ -28,6 +28,16 @@ class APIClient {
 
         let (data, response) = try await URLSession.shared.data(for: request)
 
+        // Response logging: log URL, status code, and body
+        if let httpResponse = response as? HTTPURLResponse {
+            let responseBody = String(data: data, encoding: .utf8) ?? "Unable to decode response body"
+            print("[Response Logging] URL: \(url.absoluteString)")
+            print("[Response Logging] Status Code: \(httpResponse.statusCode)")
+            print("[Response Logging] Response Body: \(responseBody)")
+        } else {
+            print("[Response Logging] Non HTTPURLResponse received for URL: \(url.absoluteString)")
+        }
+        
         if let httpResponse = response as? HTTPURLResponse {
             switch httpResponse.statusCode {
             case 200...299:

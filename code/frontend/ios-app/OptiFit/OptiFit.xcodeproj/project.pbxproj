@@ -421,6 +421,11 @@
 				API_BASE_URL = "https://api-optifit.mstoegerer.net/api";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				B2C_AUTHORITY = optif1t.b2clogin.com;
+				B2C_CLIENT_ID = "284ae6b3-8bd8-47cb-9ab1-98e74f4441db";
+				B2C_POLICY = b2c_1_susi;
+				B2C_SCOPES = "https://optif1t.onmicrosoft.com/4e883ca0-1d29-4a61-ab49-d259b448b564/Profile.Read";
+				B2C_TENANT = optif1t.onmicrosoft.com;
 				CODE_SIGN_ENTITLEMENTS = OptiFit/OptiFit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -455,6 +460,11 @@
 				API_BASE_URL = "https://api-optifit.mstoegerer.net/api";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				B2C_AUTHORITY = optif1t.b2clogin.com;
+				B2C_CLIENT_ID = "284ae6b3-8bd8-47cb-9ab1-98e74f4441db";
+				B2C_POLICY = b2c_1_susi;
+				B2C_SCOPES = "https://optif1t.onmicrosoft.com/4e883ca0-1d29-4a61-ab49-d259b448b564/Profile.Read";
+				B2C_TENANT = optif1t.onmicrosoft.com;
 				CODE_SIGN_ENTITLEMENTS = OptiFit/OptiFit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
