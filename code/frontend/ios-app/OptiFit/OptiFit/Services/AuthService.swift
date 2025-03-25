@@ -6,12 +6,12 @@ import MSAL
 @MainActor
 final class AuthService {
     // MARK: - Constants
-    private let tenantName = "optif1t.onmicrosoft.com"
-    private let authorityHostName = "optif1t.b2clogin.com"
-    private let clientID = "284ae6b3-8bd8-47cb-9ab1-98e74f4441db"
-    private let signupOrSigninPolicy = "b2c_1_susi"
+    private let tenantName = Configuration.b2cTenantId
+    private let authorityHostName = Configuration.b2cAuthority
+    private let clientID = Configuration.b2cClientId
+    private let signupOrSigninPolicy = Configuration.b2cPolicyId
     private let editProfilePolicy = "b2c_1_edit_profile"
-    private let scopes: [String] = ["https://optif1t.onmicrosoft.com/4e883ca0-1d29-4a61-ab49-d259b448b564/Profile.Read"]
+    private let scopes: [String] = Configuration.b2cScopes
     // URL format: https://<authorityHost>/tfp/<tenant>/<policy>
     private let endpointFormat = "https://%@/tfp/%@/%@"
     private let graphURI = "https://graph.microsoft.com"
