@@ -1,5 +1,3 @@
-
-
 import Foundation
 
 struct WorkoutSummary: Codable, Equatable, Hashable {

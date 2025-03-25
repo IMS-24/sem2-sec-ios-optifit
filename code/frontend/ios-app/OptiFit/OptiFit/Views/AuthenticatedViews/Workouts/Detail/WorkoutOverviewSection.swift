@@ -5,7 +5,7 @@ struct WorkoutOverviewSection: View {
     let end: String
     let gym: GetGymDto
     let summary: WorkoutSummary?
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             // Date and Time Row
@@ -24,8 +24,8 @@ struct WorkoutOverviewSection: View {
             }
             Divider()
             // Summary Stats Row
-            HStack() {
-                if let summary = summary{
+            HStack {
+                if let summary = summary {
                     StatItemView(icon: "flame.fill", title: "Sets", value: "\(summary.totalSets)")
                     Spacer()
                     StatItemView(icon: "number", title: "Reps", value: "\(summary.totalReps)")
@@ -35,17 +35,17 @@ struct WorkoutOverviewSection: View {
                     StatItemView(icon: "list.number", title: "Ex.", value: "\(summary.totalExercises)")
                 }
             }
-            
-            
-            
+
         }
         .padding()
-        .background(Color("SecondaryBackground"))
+        .background(Color(.secondaryBackground))
         .cornerRadius(12)
-        
+
     }
 }
 
 #Preview {
-    WorkoutOverviewSection(start: Date().ISO8601Format(), end: Date().ISO8601Format(), gym: GetGymDto(address: "Daham", zipCode: 8020, id: UUID(), name: "Home", city: "Graz"), summary: WorkoutSummary(totalTime: 50, totalSets: 20, totalReps: 200, totalWeight: 155.50, totalExercises: 2))
+    WorkoutOverviewSection(
+        start: Date().ISO8601Format(), end: Date().ISO8601Format(), gym: GetGymDto(address: "Daham", zipCode: 8020, id: UUID(), name: "Home", city: "Graz"),
+        summary: WorkoutSummary(totalTime: 50, totalSets: 20, totalReps: 200, totalWeight: 155.50, totalExercises: 2))
 }

@@ -1,7 +1,4 @@
-
-
 import Foundation
-
 
 struct SearchGymsDto: Codable {
     var id: UUID?

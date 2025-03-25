@@ -1,6 +1,6 @@
+import Combine
 import Foundation
 import SwiftUI
-import Combine
 
 @MainActor
 class UserProfileViewModel: ObservableObject {
@@ -29,25 +29,25 @@ class UserProfileViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
         do {
-           
+
             let fetchedProfile = try await profileService.fetchProfile()
-                self.profile = fetchedProfile
-          
+            self.profile = fetchedProfile
+
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
         isLoading = false
     }
 
-    func setProfile(_ profile:UserProfileDto){
+    func setProfile(_ profile: UserProfileDto) {
         self.profile = profile
     }
-    func  unsetProfile(){
+    func unsetProfile() {
         self.profile = nil
     }
 
-    func updateProfile(profileToUpdate:UpdateUserProfileDto) async {
-        
+    func updateProfile(profileToUpdate: UpdateUserProfileDto) async {
+
         isLoading = true
         errorMessage = nil
 
@@ -81,11 +81,11 @@ class UserProfileViewModel: ObservableObject {
         }
         isLoading = false
     }
-    
+
     func initializeProfile(_ profile: UserProfileInitializeDto) async {
         isLoading = true
         errorMessage = nil
-        do{
+        do {
             let profile = try await profileService.initializeUserProfile(profile)
             self.profile = profile
         } catch {

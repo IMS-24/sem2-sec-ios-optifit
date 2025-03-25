@@ -1,9 +1,7 @@
-
-
 import Foundation
 
 struct GetMuscleGroupDto: Codable, Hashable, Equatable {
-    static func ==(lhs: GetMuscleGroupDto, rhs: GetMuscleGroupDto) -> Bool {
+    static func == (lhs: GetMuscleGroupDto, rhs: GetMuscleGroupDto) -> Bool {
         lhs.id == rhs.id
     }
 

@@ -1,8 +1,6 @@
-
-
+import Combine
 import Foundation
 import SwiftUI
-import Combine
 
 @MainActor
 class VirtualTrainerViewModel: ObservableObject {
@@ -14,19 +12,18 @@ class VirtualTrainerViewModel: ObservableObject {
     @Published var trainerName = "Pepe McMuscle"
 
     let virtualTrainerService = VirtualTrainerService()
-    
+
     func updateLevel() {
         currentLevel += 1
     }
     func getMotivation() async {
         isLoading = true
         errorMessage = nil
-        do
-        {
+        do {
             let result = try await virtualTrainerService.fetchMotivation(level: currentLevel)
             updateLevel()
             insult = result.message
-            
+
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }

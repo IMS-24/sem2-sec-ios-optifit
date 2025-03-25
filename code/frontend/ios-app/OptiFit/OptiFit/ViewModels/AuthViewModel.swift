@@ -1,5 +1,5 @@
-import SwiftUI
 import MSAL
+import SwiftUI
 
 @MainActor
 final class AuthViewModel: ObservableObject {
@@ -12,16 +12,16 @@ final class AuthViewModel: ObservableObject {
     @Published var refreshTokenEnabled: Bool = false
     @Published var currentAccount: MSALAccount? = nil
     @Published var initUserProfile: UserProfileInitializeDto? = nil
-    
+
     private let authService = AuthService()
-    
+
     func authorize() async {
         do {
             let result = try await authService.authorize()
             accessToken = result.accessToken
             currentAccount = result.account
             updateLoggingText("Access token is \(accessToken ?? "Empty")")
-            
+
             authService.persistToken(accessToken)
             do {
                 self.user = try authService.decodeJWT(result.accessToken)
@@ -38,7 +38,7 @@ final class AuthViewModel: ObservableObject {
             } catch {
                 updateLoggingText("Failed to decode JWT: \(error.localizedDescription)")
             }
-            
+
             signOutEnabled = true
             callGraphApiEnabled = true
             editProfileEnabled = true
@@ -47,7 +47,7 @@ final class AuthViewModel: ObservableObject {
             updateLoggingText("Could not acquire token: \(error)")
         }
     }
-    
+
     func refreshToken() async {
         do {
             let result = try await authService.refreshToken()
@@ -57,7 +57,7 @@ final class AuthViewModel: ObservableObject {
             updateLoggingText("Could not refresh token: \(error.localizedDescription)")
         }
     }
-    
+
     func callApi() async {
         guard let token = accessToken else {
             updateLoggingText("Operation failed because no access token was found!")
@@ -71,7 +71,7 @@ final class AuthViewModel: ObservableObject {
             updateLoggingText("Could not call API: \(error)")
         }
     }
-    
+
     func signOut() {
         currentAccount = nil
         signOutEnabled = false
@@ -84,7 +84,7 @@ final class AuthViewModel: ObservableObject {
         authService.deleteToken()
         authService.signOut()
     }
-    
+
     // MARK: - Helper Method
     private func updateLoggingText(_ text: String) {
         loggingText = text

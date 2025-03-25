@@ -2,20 +2,20 @@ import SwiftUI
 
 struct VirtualTrainerView: View {
     @StateObject private var viewModel = VirtualTrainerViewModel()
-    
+
     var body: some View {
         VStack(spacing: 20) {
-            
+
             Text("🐸 Virtual Trainer")
                 .font(.largeTitle)
                 .bold()
-            
+
             Text(viewModel.trainerName)
                 .font(.title)
                 .fontWeight(.semibold)
                 .foregroundColor(.green)
                 .padding(.vertical, 5)
-            
+
             Image(getPepeImage(for: viewModel.currentLevel))
                 .resizable()
                 .scaledToFit()
@@ -23,7 +23,7 @@ struct VirtualTrainerView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .shadow(radius: 5)
                 .animation(.easeInOut, value: viewModel.currentLevel)
-            
+
             if let insult = viewModel.insult {
                 VStack(spacing: 10) {
                     Text(insult)
@@ -40,7 +40,7 @@ struct VirtualTrainerView: View {
             } else {
                 ProgressView("Fetching insult...")
             }
-            
+
             Button(action: loadMotivation) {
                 Text("🔥 Roast Me")
                     .font(.title2)
@@ -54,16 +54,17 @@ struct VirtualTrainerView: View {
         }
         .padding()
         .onAppear {
-            loadMotivation() }
+            loadMotivation()
+        }
     }
-    
+
     func loadMotivation() {
-        Task{
+        Task {
             await viewModel.getMotivation()
         }
-        
+
     }
-    
+
     private func getPepeImage(for level: Int) -> String {
         let images = ["pepe_1", "pepe_2", "pepe_3", "pepe_4", "pepe_5", "pepe_6", "pepe_7", "pepe_8", "pepe_9"]
         let maxLevel = 25
@@ -72,5 +73,5 @@ struct VirtualTrainerView: View {
         let index = Int(round(ratio * Double(images.count - 1)))
         return images[index]
     }
-    
+
 }

@@ -1,5 +1,5 @@
-
 import Foundation
+
 extension URLRequest {
     mutating func addAuthorizationHeader(with token: String?) {
         if let token = token {

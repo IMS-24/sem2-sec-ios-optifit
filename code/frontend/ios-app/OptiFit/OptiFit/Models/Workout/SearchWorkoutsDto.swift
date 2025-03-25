@@ -6,6 +6,6 @@ struct SearchWorkoutsDto: Codable {
     var orderBy: String?
     var orderDirection: String = "asc"
     var id: UUID?
-    var from:Date?
-    var to:Date?
+    var from: Date?
+    var to: Date?
 }

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct WorkoutExerciseListEntryView: View {
     @Binding var workoutExercise: CreateWorkoutExerciseDto
-    
+
     // Total weight computed from each set: weight * reps.
     var totalWeight: Double {
         workoutExercise.workoutSets.reduce(0) { sum, set in
@@ -11,12 +11,12 @@ struct WorkoutExerciseListEntryView: View {
             return sum + weight * Double(reps)
         }
     }
-    
+
     // Total reps computed from each set.
     var totalReps: Int {
         workoutExercise.workoutSets.reduce(0) { $0 + ($1.reps ?? 0) }
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             // Header Row: Exercise name and order.

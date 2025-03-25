@@ -1,5 +1,5 @@
-import Foundation
 import Combine
+import Foundation
 
 @MainActor
 class MuscleGroupViewModel: ObservableObject {
@@ -9,7 +9,6 @@ class MuscleGroupViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     private let muscleGroupService = MuscleGroupService()
     private var cancellables = Set<AnyCancellable>()
-
 
     func searchMuscleGroups() async {
         isLoading = true

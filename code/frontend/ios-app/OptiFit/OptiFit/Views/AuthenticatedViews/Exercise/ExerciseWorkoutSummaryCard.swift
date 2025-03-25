@@ -1,5 +1,5 @@
-import SwiftUI
 import Charts
+import SwiftUI
 
 struct ExerciseWorkoutSummaryCard: View {
     let workoutExercise: ExerciseWorkoutDto
@@ -8,13 +8,13 @@ struct ExerciseWorkoutSummaryCard: View {
         formatter.dateStyle = .medium
         return formatter
     }()
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Workout on \(workoutExercise.workout.startAtUtc, formatter: dateFormatter)")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
-            
+
             ExerciseWorkoutSummaryLineCharts(workoutExercise: workoutExercise)
         }
         .padding()
@@ -23,7 +23,6 @@ struct ExerciseWorkoutSummaryCard: View {
         .padding(.horizontal)
     }
 }
-
 
 #Preview {
     ExerciseWorkoutSummaryCard(
@@ -57,7 +56,7 @@ struct ExerciseWorkoutSummaryCard: View {
             workoutSets: [
                 GetWorkoutSetDto(id: UUID(), order: 1, reps: 20, weight: 100, workoutExerciseId: UUID()),
                 GetWorkoutSetDto(id: UUID(), order: 2, reps: 15, weight: 120, workoutExerciseId: UUID()),
-                GetWorkoutSetDto(id: UUID(), order: 3, reps: 10, weight: 100, workoutExerciseId: UUID())
+                GetWorkoutSetDto(id: UUID(), order: 3, reps: 10, weight: 100, workoutExerciseId: UUID()),
             ],
             notes: "Some Notes"
         )

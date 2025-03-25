@@ -7,4 +7,3 @@ struct GetWorkoutSetDto: Codable, Identifiable, Hashable, Equatable {
     let weight: Double
     let workoutExerciseId: UUID
 }
-

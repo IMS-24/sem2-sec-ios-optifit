@@ -1,18 +1,18 @@
-import SwiftUI
 import Charts
+import SwiftUI
 
 /// Aggregated data for one workout exercise.
 struct AggregatedExerciseData: Identifiable {
     let id: UUID
     let order: Int
-    let totalWeight: Double   // Sum of weight * reps
-    let totalReps: Int        // Sum of reps
-    let totalSets: Int        // Number of sets
+    let totalWeight: Double  // Sum of weight * reps
+    let totalReps: Int  // Sum of reps
+    let totalSets: Int  // Number of sets
 }
 
 struct OverallProgressLineChart: View {
     let workoutExercises: [ExerciseWorkoutDto]
-    
+
     /// Compute aggregated data for each workout exercise.
     var aggregatedData: [AggregatedExerciseData] {
         workoutExercises.map { exercise in
@@ -23,7 +23,7 @@ struct OverallProgressLineChart: View {
         }
         .sorted(by: { $0.order < $1.order })
     }
-    
+
     // Maximum values from the aggregated data for normalization.
     var maxTotalWeight: Double {
         aggregatedData.map { $0.totalWeight }.max() ?? 1
@@ -34,7 +34,7 @@ struct OverallProgressLineChart: View {
     var maxTotalSets: Double {
         aggregatedData.map { Double($0.totalSets) }.max() ?? 1
     }
-    
+
     // Averages (raw)
     var avgTotalWeight: Double {
         let sum = aggregatedData.map { $0.totalWeight }.reduce(0, +)
@@ -48,9 +48,9 @@ struct OverallProgressLineChart: View {
         let sum = aggregatedData.map { Double($0.totalSets) }.reduce(0, +)
         return aggregatedData.isEmpty ? 0 : sum / Double(aggregatedData.count)
     }
-    
+
     var body: some View {
-        VStack{
+        VStack {
             Chart {
                 // Weight line series (normalized)
                 ForEach(aggregatedData) { data in
@@ -68,7 +68,7 @@ struct OverallProgressLineChart: View {
                 RuleMark(y: .value("Avg Weight", avgTotalWeight / maxTotalWeight))
                     .lineStyle(StrokeStyle(lineWidth: 1, dash: [5]))
                     .foregroundStyle(.blue)
-                
+
                 // Reps line series (normalized)
                 ForEach(aggregatedData) { data in
                     LineMark(
@@ -85,7 +85,7 @@ struct OverallProgressLineChart: View {
                 RuleMark(y: .value("Avg Reps", avgTotalReps / maxTotalReps))
                     .lineStyle(StrokeStyle(lineWidth: 1, dash: [5]))
                     .foregroundStyle(.red)
-                
+
                 // Sets line series (normalized)
                 ForEach(aggregatedData) { data in
                     LineMark(

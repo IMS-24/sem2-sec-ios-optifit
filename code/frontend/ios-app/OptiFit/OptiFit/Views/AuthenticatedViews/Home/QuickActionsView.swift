@@ -9,15 +9,15 @@ struct QuickActionsView: View {
                 Label("Start Workout", systemImage: "play.fill")
                     .frame(maxWidth: .infinity)
             }
-            .buttonStyle(QuickActionButtonStyle(color: Color("PrimaryAccent")))
-            
+            .buttonStyle(QuickActionButtonStyle(color: Color(.primaryAccent)))
+
             Button(action: {
                 print("View Exercises tapped")
             }) {
                 Label("Exercises", systemImage: "list.bullet.rectangle")
                     .frame(maxWidth: .infinity)
             }
-            .buttonStyle(QuickActionButtonStyle(color: Color("SecondaryAccent")))
+            .buttonStyle(QuickActionButtonStyle(color: Color(.secondaryAccent)))
         }
         .padding()
     }
@@ -25,11 +25,11 @@ struct QuickActionsView: View {
 
 struct QuickActionButtonStyle: ButtonStyle {
     let color: Color
-    
+
     func makeBody(configuration: ButtonStyle.Configuration) -> some View {
         configuration.label
             .font(Font.headline)
-            .foregroundColor(Color("PrimaryText"))
+            .foregroundColor(Color(.primaryText))
             .padding()
             .background(
                 Capsule()

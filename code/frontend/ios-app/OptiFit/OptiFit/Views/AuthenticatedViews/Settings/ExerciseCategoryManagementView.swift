@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ExerciseCategoryManagementView: View {
     @StateObject private var exerciseCategoriesViewModel = ExerciseCategoryViewModel()
-    
+
     var body: some View {
         NavigationView {
             List(exerciseCategoriesViewModel.exerciseCategories) { exerciseCategory in

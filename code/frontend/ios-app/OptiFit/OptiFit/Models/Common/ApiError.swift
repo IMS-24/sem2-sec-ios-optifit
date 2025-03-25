@@ -1,4 +1,3 @@
-
 enum ApiError: Error {
     case invalidURL
     case badRequest(String?)
