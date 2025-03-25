@@ -1,5 +1,3 @@
-
-
 import SwiftUI
 
 struct GymDetailView: View {
@@ -8,30 +6,30 @@ struct GymDetailView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(gym.name)
-                    .font(.largeTitle)
-                    .bold()
+                .font(.largeTitle)
+                .bold()
 
             Text(gym.address)
-                    .font(.title3)
+                .font(.title3)
 
             Text("City: \(gym.city)")
             Text("ZIP Code: \(String(gym.zipCode))")
 
             Spacer()
         }
-                .padding()
-                .navigationTitle("Gym Details")
+        .padding()
+        .navigationTitle("Gym Details")
     }
 }
 
 #Preview {
     GymDetailView(
-            gym: GetGymDto(
-                    address: "Daham",
-                    zipCode: 8020,
-                    id: UUID(),
-                    name: "Home Gym",
-                    city: "Graz"
-            )
+        gym: GetGymDto(
+            address: "Daham",
+            zipCode: 8020,
+            id: UUID(),
+            name: "Home Gym",
+            city: "Graz"
+        )
     )
 }

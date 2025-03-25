@@ -1,8 +1,7 @@
-
 import Foundation
 
-struct UserProfileDto: Codable,Equatable {
-    
+struct UserProfileDto: Codable, Equatable {
+
     var id: UUID
     var firstName: String
     var lastName: String
@@ -14,4 +13,3 @@ struct UserProfileDto: Codable,Equatable {
     var updatedUtc: Date?
     var initialSetupDone: Bool
 }
-

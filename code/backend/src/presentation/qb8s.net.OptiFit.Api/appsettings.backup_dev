@@ -1,0 +1,31 @@
+{
+  "AzureAdB2C": {
+    "Instance": "https://optif1t.b2clogin.com/",
+    "ClientId": "4e883ca0-1d29-4a61-ab49-d259b448b564",
+    "Domain": "optif1t.onmicrosoft.com",
+    "Scopes": "openid offline_access optifit-api",
+    "TenantId": "edda85ef-c9bb-4930-8279-12b4e57676f2",
+    "SignUpSignInPolicyId": "B2C_1_SuSi"
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=168.119.126.146;Port=9966;Database=optifit;User Id=ronniecoleman;Password=hiTSd3YiNovVXJkUHdzY9NKV2mpRvPff;"
+  },
+  "Swagger": {
+    "ClientId": "bc4bec33-f606-4a5e-9b64-2ab55e83e543",
+    "ApplicationName": "swagger",
+    "Scopes": [
+      "https://optichef.online/566e5c3a-2e65-425c-aeb1-54fe757c225b/Api_Access",
+      "offline_access",
+      "openid"
+    ]
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "Microsoft.AspNetCore": "Debug",
+      "Microsoft.EntityFrameworkCore.Database.Command": "Information",
+      "Microsoft.EntityFrameworkCore": "Information"
+
+    }
+  }
+}

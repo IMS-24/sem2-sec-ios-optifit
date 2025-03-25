@@ -8,4 +8,3 @@ struct GetWorkoutExerciseDto: Codable, Identifiable, Hashable, Equatable {
     let workoutSets: [GetWorkoutSetDto]?
     let notes: String?
 }
-

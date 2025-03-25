@@ -1,4 +1,3 @@
-
 import Foundation
 
 struct GetExerciseStatisticsDto: Identifiable, Codable, Equatable, Hashable {

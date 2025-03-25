@@ -1,6 +1,6 @@
+import Combine
 import Foundation
 import SwiftUI
-import Combine
 
 @MainActor
 class WorkoutViewModel: ObservableObject {
@@ -14,7 +14,6 @@ class WorkoutViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var isLoadingMore: Bool = false
     private let workoutService = WorkoutService()
-
 
     func searchWorkouts() async {
         isLoading = true

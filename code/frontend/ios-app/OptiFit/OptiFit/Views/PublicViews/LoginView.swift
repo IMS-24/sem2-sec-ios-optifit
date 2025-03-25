@@ -1,22 +1,24 @@
-import SwiftUI
 import MSAL
+import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var jwtToken: String = ""
     @State private var showMoreInfo: Bool = false
-    
+
     var body: some View {
         ZStack {
             // Background gradient for a fancy look
-            LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.3), Color.purple.opacity(0.3)]),
-                           startPoint: .topLeading,
-                           endPoint: .bottomTrailing)
+            LinearGradient(
+                gradient: Gradient(colors: [Color.blue.opacity(0.3), Color.purple.opacity(0.3)]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
             .edgesIgnoringSafeArea(.all)
-            
+
             VStack(spacing: 40) {
                 Spacer()
-                
+
                 // App Title, Version, and Description
                 VStack(spacing: 8) {
                     Text("OptiFit")
@@ -32,27 +34,27 @@ struct LoginView: View {
                         .foregroundColor(.white)
                         .padding(.horizontal)
                 }
-                
+
                 // Logo
                 Image("pepe_logo")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 200, height: 200)
                     .shadow(radius: 10)
-                
+
                 // JWT Token debugging display
-//                VStack(alignment: .leading, spacing: 8) {
-//                    Text("JWT Token:")
-//                        .font(.headline)
-//                    TextEditor(text: $jwtToken)
-//                        .frame(height: 100)
-//                        .padding(4)
-//                        .background(Color.white.opacity(0.7))
-//                        .cornerRadius(8)
-//                        .disabled(true) // Make it read-only
-//                }
-//                .padding(.horizontal)
-                
+                //                VStack(alignment: .leading, spacing: 8) {
+                //                    Text("JWT Token:")
+                //                        .font(.headline)
+                //                    TextEditor(text: $jwtToken)
+                //                        .frame(height: 100)
+                //                        .padding(4)
+                //                        .background(Color.white.opacity(0.7))
+                //                        .cornerRadius(8)
+                //                        .disabled(true) // Make it read-only
+                //                }
+                //                .padding(.horizontal)
+
                 // Buttons for Login and More Info
                 HStack(spacing: 40) {
                     Button(action: {
@@ -75,7 +77,7 @@ struct LoginView: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
-                    
+
                     Button(action: {
                         showMoreInfo = true
                         print("More Info tapped")
@@ -90,7 +92,7 @@ struct LoginView: View {
                     }
                 }
                 .padding(.horizontal)
-                
+
                 Spacer()
             }
             .padding()

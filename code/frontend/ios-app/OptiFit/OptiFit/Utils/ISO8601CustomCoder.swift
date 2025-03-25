@@ -1,5 +1,3 @@
-
-
 import Foundation
 
 struct ISO8601CustomCoder {
@@ -23,8 +21,8 @@ struct ISO8601CustomCoder {
                 return date
             }
             throw DecodingError.dataCorruptedError(
-                    in: container,
-                    debugDescription: "Cannot decode date string \(dateString)"
+                in: container,
+                debugDescription: "Cannot decode date string \(dateString)"
             )
         }
         return decoder

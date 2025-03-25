@@ -1,10 +1,9 @@
-
 import SwiftUI
 
 struct CityGymGroup: View {
     let cityZip: CityZip
     let gyms: [GetGymDto]
-    
+
     var body: some View {
         Section(header: Text("\(cityZip.city), \(String(cityZip.zipCode))")) {
             ForEach(gyms) { gym in
@@ -21,16 +20,16 @@ struct CityGymGroup: View {
     NavigationView {
         List {
             CityGymGroup(
-                    cityZip: CityZip(city: "Graz", zipCode: 8020),
-                    gyms: [
-                        GetGymDto(
-                                address: "Address 123",
-                                zipCode: 8020,
-                                id: UUID(),
-                                name: "Best Gym",
-                                city: "Graz"
-                        )
-                    ]
+                cityZip: CityZip(city: "Graz", zipCode: 8020),
+                gyms: [
+                    GetGymDto(
+                        address: "Address 123",
+                        zipCode: 8020,
+                        id: UUID(),
+                        name: "Best Gym",
+                        city: "Graz"
+                    )
+                ]
             )
         }
     }

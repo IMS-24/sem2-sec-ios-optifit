@@ -1,8 +1,7 @@
-
 import Foundation
 
 struct GetGymDto: Identifiable, Codable, Equatable, Hashable {
-    static func ==(lhs: GetGymDto, rhs: GetGymDto) -> Bool {
+    static func == (lhs: GetGymDto, rhs: GetGymDto) -> Bool {
         lhs.id == rhs.id
     }
 

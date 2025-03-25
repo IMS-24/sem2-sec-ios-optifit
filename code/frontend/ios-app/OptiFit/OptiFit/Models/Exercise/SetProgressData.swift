@@ -1,7 +1,5 @@
-
-
-import SwiftUI
 import Charts
+import SwiftUI
 
 struct SetProgressData: Identifiable {
     let id = UUID()
@@ -9,7 +7,7 @@ struct SetProgressData: Identifiable {
     let date: Date
     let weight: Double
     let reps: Int
-    
+
     var totalWeight: Double {
         weight * Double(reps)
     }

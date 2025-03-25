@@ -1,5 +1,3 @@
-
-
 import UIKit
 
 class HapticFeedbackManager {
@@ -8,6 +6,6 @@ class HapticFeedbackManager {
     // Triggers a strong vibration
     func triggerVibration() {
         let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.error) // Strongest vibration type
+        generator.notificationOccurred(.error)  // Strongest vibration type
     }
 }

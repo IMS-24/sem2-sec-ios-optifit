@@ -1,5 +1,3 @@
-
-
 import SwiftUI
 
 struct WorkoutSetSummaryView: View {
@@ -7,13 +5,13 @@ struct WorkoutSetSummaryView: View {
     // Assumed maximum values to normalize the gauge.
     let maxReps: Int = 20
     let maxWeight: Double = 100.0
-    
+
     var body: some View {
         VStack(spacing: 8) {
             HStack {
                 Text("Set \(set.order)")
                     .font(.headline)
-                    .foregroundColor(Color("PrimaryText"))
+                    .foregroundColor(Color(.primaryText))
                 Spacer()
             }
             HStack(spacing: 16) {
@@ -27,7 +25,7 @@ struct WorkoutSetSummaryView: View {
             }
         }
         .padding()
-        .background(Color("SecondaryBackground"))
+        .background(Color(.secondaryBackground))
         .cornerRadius(10)
     }
 }

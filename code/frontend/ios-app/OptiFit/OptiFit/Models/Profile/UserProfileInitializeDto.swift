@@ -1,6 +1,6 @@
-
 import Foundation
-struct UserProfileInitializeDto: Codable,Equatable {
+
+struct UserProfileInitializeDto: Codable, Equatable {
     var firstName: String
     var lastName: String
     var oId: UUID

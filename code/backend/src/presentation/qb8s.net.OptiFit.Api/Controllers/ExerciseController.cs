@@ -36,6 +36,16 @@ public class ExerciseController(ILogger<ExerciseController> logger, ICurrentUser
         return Ok(result);
     }
 
+    [HttpPut("{id:guid}")]
+    [SwaggerResponse(StatusCodes.Status200OK, typeof(GetExerciseDto), Description = "Update Exercise")]
+    public async Task<ActionResult<GetExerciseDto>> UpdateExercise(Guid id,
+        [FromBody] UpdateExerciseDto updateExerciseDto)
+    {
+        logger.LogInformation("{@Name} request : {@Dto}", nameof(UpdateExercise), updateExerciseDto);
+        var result = await Mediator.Send(new UpdateExerciseCommand(id, updateExerciseDto));
+        return Ok(result);
+    }
+
     [HttpGet("categories")]
     [SwaggerResponse(StatusCodes.Status200OK, typeof(GetExerciseCategoryDto), Description = "Get Exercise categories")]
     public async Task<ActionResult<IEnumerable<GetExerciseCategoryDto>>> GetExerciseCategories()
@@ -55,11 +65,13 @@ public class ExerciseController(ILogger<ExerciseController> logger, ICurrentUser
     }
 
     [HttpDelete("{id}")]
-    [SwaggerResponse(StatusCodes.Status200OK, typeof(GetExerciseDto), Description = "Delete Exercise")]
+    [Authorize]
+    [SwaggerResponse(StatusCodes.Status200OK, typeof(Guid), Description = "Delete Exercise")]
     public async Task<ActionResult<GetExerciseDto>> DeleteExercise(Guid id)
     {
         logger.LogInformation("{@Name} request : {@Id}", nameof(DeleteExercise), id);
-        await Mediator.Send(new DeleteExerciseCommand(new Guid("275cfdca-c686-4ea1-80b1-f2425b1602c5"), id));
-        return Ok();
+        var currentUserId = currentUserService.GetCurrentUserId();
+        var deletedId = await Mediator.Send(new DeleteExerciseCommand(currentUserId, id));
+        return Ok(deletedId);
     }
 }

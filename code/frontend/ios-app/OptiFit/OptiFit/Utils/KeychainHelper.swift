@@ -1,6 +1,3 @@
-
-
-
 import Foundation
 import Security
 
@@ -12,19 +9,19 @@ class KeychainHelper {
         guard let tokenData = token.data(using: .utf8) else {
             return false
         }
-        
+
         // Define the query for adding the token.
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
             kSecAttrAccount as String: account,
             kSecValueData as String: tokenData,
-            kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock
+            kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock,
         ]
-        
+
         // Delete any existing item before adding a new one.
         SecItemDelete(query as CFDictionary)
-        
+
         // Add the new token to the Keychain.
         let status = SecItemAdd(query as CFDictionary, nil)
         return status == errSecSuccess
@@ -37,12 +34,12 @@ class KeychainHelper {
             kSecAttrService as String: service,
             kSecAttrAccount as String: account,
             kSecReturnData as String: kCFBooleanTrue as Any,
-            kSecMatchLimit as String: kSecMatchLimitOne
+            kSecMatchLimit as String: kSecMatchLimitOne,
         ]
-        
+
         var dataTypeRef: AnyObject?
         let status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
-        
+
         if status == errSecSuccess, let tokenData = dataTypeRef as? Data {
             return String(data: tokenData, encoding: .utf8)
         }

@@ -1,15 +1,14 @@
-
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject var profileViewModel:UserProfileViewModel
-    @EnvironmentObject var authViewModel:AuthViewModel
+    @EnvironmentObject var profileViewModel: UserProfileViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     var body: some View {
         Section(header: Text("Profile")) {
             HStack {
                 Image(systemName: "person.circle.fill")
-                        .resizable()
-                        .frame(width: 50, height: 50)
+                    .resizable()
+                    .frame(width: 50, height: 50)
                 VStack(alignment: .leading) {
                     if let profile = profileViewModel.profile {
                         Text("\(profile.firstName) \(profile.lastName)").font(.headline)

@@ -1,5 +1,3 @@
-
-
 import Foundation
 
 struct GetMuscleDto: Codable, Hashable, Equatable, Identifiable {

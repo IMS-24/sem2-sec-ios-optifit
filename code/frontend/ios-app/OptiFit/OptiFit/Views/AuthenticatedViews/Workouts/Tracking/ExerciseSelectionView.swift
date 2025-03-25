@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct ExerciseSelectionView: View {
@@ -10,20 +9,20 @@ struct ExerciseSelectionView: View {
         List(exerciseViewModel.exercises) { exercise in
             NavigationLink(
                 destination: LazyView {
-                    ExerciseSetDetailView(selectedExercise: exercise, order:order, onSave: onExerciseSelected)
+                    ExerciseSetDetailView(selectedExercise: exercise, order: order, onSave: onExerciseSelected)
                 }
             ) {
                 Text(exercise.i18NCode)
             }
         }
         .navigationTitle("Select Exercise")
-                .onAppear {
-                    let updatedSearchModel = SearchExercisesDto(exerciseCategoryId: exerciseCategoryId)
-                    exerciseViewModel.updateSearchModel(updatedSearchModel)
-                }
+        .onAppear {
+            let updatedSearchModel = SearchExercisesDto(exerciseCategoryId: exerciseCategoryId)
+            exerciseViewModel.updateSearchModel(updatedSearchModel)
+        }
     }
 }
 
 #Preview {
-    ExerciseSelectionView(exerciseCategoryId: UUID(),onExerciseSelected: { _ in }, order:1)
+    ExerciseSelectionView(exerciseCategoryId: UUID(), onExerciseSelected: { _ in }, order: 1)
 }

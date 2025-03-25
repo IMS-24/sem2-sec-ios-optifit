@@ -4,32 +4,33 @@ struct ExerciseSetDetailView: View {
     let selectedExercise: GetExerciseDto
     let order: Int
     let onSave: (CreateWorkoutExerciseDto) -> Void
-    
+
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var createWorkoutExerciseDto: CreateWorkoutExerciseDto
-    
+
     init(selectedExercise: GetExerciseDto, order: Int, onSave: @escaping (CreateWorkoutExerciseDto) -> Void) {
         self.selectedExercise = selectedExercise
         self.order = order
         self.onSave = onSave
-        
-        _createWorkoutExerciseDto = State(initialValue: CreateWorkoutExerciseDto(
-            id: UUID(),
-            order: order,
-            exercise: selectedExercise,
-            notes: "Frontend - <Not implemented yet>",
-            workoutSets: []
-        ))
+
+        _createWorkoutExerciseDto = State(
+            initialValue: CreateWorkoutExerciseDto(
+                id: UUID(),
+                order: order,
+                exercise: selectedExercise,
+                notes: "Frontend - <Not implemented yet>",
+                workoutSets: []
+            ))
     }
-    
+
     var body: some View {
         NavigationStack {
             Form {
                 Section("Exercise") {
                     Text(selectedExercise.i18NCode)
                 }
-                
+
                 Section("Sets") {
                     // Reuse the input view which now grows based on content.
                     WorkoutSetsEntryView(
@@ -44,13 +45,13 @@ struct ExerciseSetDetailView: View {
                             createWorkoutExerciseDto.workoutSets[index].weight = weightValue
                         }
                     )
-                    
+
                     // "Add Set" button placed outside the reusable view.
                     Button(action: addSet) {
                         Label("Add Set", systemImage: "plus.circle.fill")
                     }
                 }
-                
+
                 Section("Notes") {
                     Text("Coming Soon")
                 }
@@ -72,13 +73,17 @@ struct ExerciseSetDetailView: View {
             }
         }
     }
-    
+
     private func addSet() {
         let newOrder = (createWorkoutExerciseDto.workoutSets.last?.order ?? 0) + 1
-        createWorkoutExerciseDto.workoutSets.append(CreateWorkoutSetDto(id:UUID(),order: newOrder, reps: nil, weight: nil))
+        createWorkoutExerciseDto.workoutSets.append(CreateWorkoutSetDto(id: UUID(), order: newOrder, reps: nil, weight: nil))
     }
 }
 
 #Preview {
-    ExerciseSetDetailView(selectedExercise: GetExerciseDto(id: UUID(), i18NCode: "Exercise Name", description: "Exercise Description", exerciseCategoryId: UUID(), exerciseCategory: "Legs"), order: 1, onSave: { _ in})
+    let legs = ExerciseCategoryDto(id: UUID(), i18NCode: "Legs", exerciseIds: [])
+    ExerciseSetDetailView(
+        selectedExercise: GetExerciseDto(
+            id: UUID(), i18NCode: "Exercise Name", description: "Exercise Description", exerciseCategoryId: legs.id, exerciseCategory: legs), order: 1,
+        onSave: { _ in })
 }

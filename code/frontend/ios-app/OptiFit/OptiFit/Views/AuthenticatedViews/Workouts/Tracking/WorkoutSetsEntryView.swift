@@ -4,7 +4,7 @@ struct WorkoutSetsEntryView: View {
     let sets: [CreateWorkoutSetDto]
     let onDeleteSet: (Int) -> Void
     let onUpdateSet: (Int, String, String) -> Void
-    
+
     var body: some View {
         if sets.isEmpty {
             Text("No sets added yet.")
@@ -15,37 +15,43 @@ struct WorkoutSetsEntryView: View {
                     HStack(spacing: 12) {
                         Text("Set \(index + 1):")
                             .frame(width: 60, alignment: .leading)
-                        
+
                         // Reps field as a string to show placeholder when empty
-                        TextField("Reps", text: Binding(
-                            get: {
-                                let reps = set.reps ?? 0
-                                return reps == 0 ? "" : String(reps)
-                            },
-                            set: { newValue in
-                                onUpdateSet(index, newValue, weightString(for: set))
-                            }
-                        ))
+                        TextField(
+                            "Reps",
+                            text: Binding(
+                                get: {
+                                    let reps = set.reps ?? 0
+                                    return reps == 0 ? "" : String(reps)
+                                },
+                                set: { newValue in
+                                    onUpdateSet(index, newValue, weightString(for: set))
+                                }
+                            )
+                        )
                         .keyboardType(.numberPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(width: 60)
-                        
+
                         // Weight field as a string to show placeholder when empty
-                        TextField("Weight", text: Binding(
-                            get: {
-                                let weight = set.weight ?? 0.0
-                                return weight == 0.0 ? "" : String(weight)
-                            },
-                            set: { newValue in
-                                onUpdateSet(index, repsString(for: set), newValue)
-                            }
-                        ))
+                        TextField(
+                            "Weight",
+                            text: Binding(
+                                get: {
+                                    let weight = set.weight ?? 0.0
+                                    return weight == 0.0 ? "" : String(weight)
+                                },
+                                set: { newValue in
+                                    onUpdateSet(index, repsString(for: set), newValue)
+                                }
+                            )
+                        )
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(width: 80)
-                        
+
                         Spacer()
-                        
+
                         // Delete button for this set.
                         Button(action: {
                             onDeleteSet(index)
@@ -63,13 +69,13 @@ struct WorkoutSetsEntryView: View {
             }
         }
     }
-    
+
     // Helper: Convert reps to string for display.
     private func repsString(for set: CreateWorkoutSetDto) -> String {
         let reps = set.reps ?? 0
         return reps == 0 ? "" : String(reps)
     }
-    
+
     // Helper: Convert weight to string for display.
     private func weightString(for set: CreateWorkoutSetDto) -> String {
         let weight = set.weight ?? 0.0
@@ -78,9 +84,10 @@ struct WorkoutSetsEntryView: View {
 }
 
 #Preview {
-    WorkoutSetsEntryView(sets: [
-        CreateWorkoutSetDto(id: UUID(), order: 1, reps: 10, weight: 20),
-        CreateWorkoutSetDto(id: UUID(), order: 2, reps: 20, weight: 40),
-        CreateWorkoutSetDto(id: UUID(), order: 3, reps: 30, weight: 60),
-    ], onDeleteSet: {_ in}, onUpdateSet: {_,_,_ in})
+    WorkoutSetsEntryView(
+        sets: [
+            CreateWorkoutSetDto(id: UUID(), order: 1, reps: 10, weight: 20),
+            CreateWorkoutSetDto(id: UUID(), order: 2, reps: 20, weight: 40),
+            CreateWorkoutSetDto(id: UUID(), order: 3, reps: 30, weight: 60),
+        ], onDeleteSet: { _ in }, onUpdateSet: { _, _, _ in })
 }

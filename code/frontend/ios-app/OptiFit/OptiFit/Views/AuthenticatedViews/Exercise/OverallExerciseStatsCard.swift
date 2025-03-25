@@ -1,6 +1,5 @@
-
-
 import SwiftUI
+
 struct OverallExerciseStatsCard: View {
     let statistics: GetExerciseStatisticsDto
 
@@ -10,21 +9,21 @@ struct OverallExerciseStatsCard: View {
             .map { $0.weight }
             .max() ?? 0
     }
-    
+
     var overallMaxReps: Int {
         statistics.exerciseWorkoutsDto
             .flatMap { $0.workoutSets }
             .map { $0.reps }
             .max() ?? 0
     }
-    
+
     var overallMaxVolume: Double {
         statistics.exerciseWorkoutsDto
             .flatMap { $0.workoutSets }
             .map { Double($0.reps) * $0.weight }
             .max() ?? 0
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Overall Exercise Statistics")

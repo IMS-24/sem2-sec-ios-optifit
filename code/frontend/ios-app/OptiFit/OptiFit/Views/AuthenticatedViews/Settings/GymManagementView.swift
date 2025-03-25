@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct GymManagementView: View {
@@ -11,18 +10,18 @@ struct GymManagementView: View {
                     CityGymGroup(cityZip: key, gyms: groupedGyms[key] ?? [])
                 }
             }
-                    .navigationTitle("Gyms")
-                    .onAppear {
-                        Task {
-                            await gymViewModel.searchGyms()
-                        }
-                    }
-                    .toolbar {
-                        EditButton()
-                    }
-                    .alert(item: $gymViewModel.errorMessage) { error in
-                        Alert(title: Text("Error"), message: Text(error.message), dismissButton: .default(Text("OK")))
-                    }
+            .navigationTitle("Gyms")
+            .onAppear {
+                Task {
+                    await gymViewModel.searchGyms()
+                }
+            }
+            .toolbar {
+                EditButton()
+            }
+            .alert(item: $gymViewModel.errorMessage) { error in
+                Alert(title: Text("Error"), message: Text(error.message), dismissButton: .default(Text("OK")))
+            }
         }
     }
 
@@ -31,9 +30,7 @@ struct GymManagementView: View {
         Dictionary(grouping: gymViewModel.gyms, by: { CityZip(city: $0.city, zipCode: $0.zipCode) })
     }
 
-
 }
-
 
 #Preview {
     GymManagementView()

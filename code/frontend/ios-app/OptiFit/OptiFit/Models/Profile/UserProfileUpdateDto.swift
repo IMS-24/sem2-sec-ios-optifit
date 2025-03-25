@@ -1,5 +1,5 @@
-
 import Foundation
+
 struct UpdateUserProfileDto: Codable {
     var firstName: String = ""
     var lastName: String = ""

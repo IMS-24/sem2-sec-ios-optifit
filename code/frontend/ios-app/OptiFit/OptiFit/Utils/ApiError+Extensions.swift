@@ -1,5 +1,5 @@
-
 import Foundation
+
 extension ApiError: LocalizedError {
     var errorDescription: String? {
         switch self {

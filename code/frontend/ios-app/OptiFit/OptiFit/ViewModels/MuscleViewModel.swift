@@ -1,6 +1,5 @@
-
-import Foundation
 import Combine
+import Foundation
 
 @MainActor
 class MuscleViewModel: ObservableObject {
@@ -9,7 +8,6 @@ class MuscleViewModel: ObservableObject {
     private let muscleService = MuscleService()
     @Published var isLoading: Bool = false
     @Published var errorMessage: ErrorMessage?
-
 
     func searchMuscles() async {
         isLoading = true

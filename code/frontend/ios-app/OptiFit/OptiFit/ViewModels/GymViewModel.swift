@@ -1,6 +1,5 @@
-
-import Foundation
 import Combine
+import Foundation
 
 @MainActor
 class GymViewModel: ObservableObject {
@@ -9,7 +8,6 @@ class GymViewModel: ObservableObject {
     @Published var searchModel: SearchGymsDto = SearchGymsDto()
     @Published var isLoading: Bool = false
     private let gymService = GymService()
-
 
     func searchGyms() async {
         isLoading = true

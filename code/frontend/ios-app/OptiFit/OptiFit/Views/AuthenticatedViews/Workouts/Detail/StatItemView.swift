@@ -1,18 +1,17 @@
-
 import SwiftUI
 
 struct StatItemView: View {
     let icon: String
     let title: String
     let value: String
-    
+
     var body: some View {
         VStack {
             Image(systemName: icon)
-                .foregroundColor(Color("PrimaryAccent"))
+                .foregroundColor(Color(.primaryAccent))
             Text(value)
                 .font(.headline)
-                .foregroundColor(Color("PrimaryText"))
+                .foregroundColor(Color(.primaryText))
             Text(title)
                 .font(.caption)
                 .foregroundColor(.secondary)
