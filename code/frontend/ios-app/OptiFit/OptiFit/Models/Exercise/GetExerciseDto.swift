@@ -1,7 +1,7 @@
 import Foundation
 
 struct GetExerciseDto: Codable, Identifiable, Hashable, Equatable {
-    static func ==(lhs: GetExerciseDto, rhs: GetExerciseDto) -> Bool {
+    static func == (lhs: GetExerciseDto, rhs: GetExerciseDto) -> Bool {
         lhs.id == rhs.id
     }
 
@@ -9,6 +9,6 @@ struct GetExerciseDto: Codable, Identifiable, Hashable, Equatable {
     let i18NCode: String
     let description: String?
     let exerciseCategoryId: UUID
-    let exerciseCategory: String
-//    let imageURL: URL?
+    let exerciseCategory: ExerciseCategoryDto
+    //    let imageURL: URL?
 }

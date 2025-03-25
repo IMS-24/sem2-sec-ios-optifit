@@ -1,10 +1,9 @@
-import SwiftUI
 import Charts
-
+import SwiftUI
 
 struct OverallProgressPerExerciseCharts: View {
     let workoutExercises: [ExerciseWorkoutDto]
-    
+
     // Flatten all workout sets from all sessions into a single array.
     var allData: [SetProgressData] {
         workoutExercises.flatMap { workout in
@@ -19,27 +18,13 @@ struct OverallProgressPerExerciseCharts: View {
         }
         .sorted(by: { $0.date < $1.date })
     }
-    
+
     // Unique set orders (each will represent a separate line).
     var setOrders: [Int] {
         let orders = Set(allData.map { $0.setOrder })
         return orders.sorted()
     }
-    
-    /// Returns a distinct fixed color for a given set order.
-    func color(for setOrder: Int) -> Color {
-        switch setOrder {
-        case 1:
-            return .green
-        case 2:
-            return .red
-        case 3:
-            return .blue
-        default:
-            return .orange // fallback for any additional sets
-        }
-    }
-    
+
     var body: some View {
         VStack(spacing: 24) {
             // MARK: Weight Chart
@@ -51,17 +36,16 @@ struct OverallProgressPerExerciseCharts: View {
                         let series = allData.filter { $0.setOrder == order }
                             .sorted(by: { $0.date < $1.date })
                         ForEach(series) { point in
-                            let color = self.color(for: order)
                             LineMark(
                                 x: .value("Date", point.date),
                                 y: .value("Weight", point.weight)
                             )
-                            .foregroundStyle(color)
+                            .foregroundStyle(by: .value("order", String(order)))
                             PointMark(
                                 x: .value("Date", point.date),
                                 y: .value("Weight", point.weight)
                             )
-                            .foregroundStyle(color)
+                            .foregroundStyle(by: .value("order", String(order)))
                         }
                     }
                 }
@@ -72,12 +56,12 @@ struct OverallProgressPerExerciseCharts: View {
                         }
                     }
                 }
-                .chartYAxis {
-                    AxisMarks(position: .leading)
-                }
+//                .chartYAxis {
+//                    AxisMarks(position: .leading)
+//                }
                 .frame(height: 200)
             }
-            
+
             // MARK: Total Weight (Volume) Chart
             VStack(alignment: .leading) {
                 Text("Total Weight (Volume) Progress")
@@ -91,12 +75,12 @@ struct OverallProgressPerExerciseCharts: View {
                                 x: .value("Date", point.date),
                                 y: .value("Total Weight", point.totalWeight)
                             )
-                            .foregroundStyle(color(for: order))
+                            .foregroundStyle(by: .value("order", String(order)))
                             PointMark(
                                 x: .value("Date", point.date),
                                 y: .value("Total Weight", point.totalWeight)
                             )
-                            .foregroundStyle(color(for: order))
+                            .foregroundStyle(by: .value("order", String(order)))
                         }
                     }
                 }
@@ -112,7 +96,7 @@ struct OverallProgressPerExerciseCharts: View {
                 }
                 .frame(height: 200)
             }
-            
+
             // MARK: Reps Chart
             VStack(alignment: .leading) {
                 Text("Reps Progress")
@@ -126,12 +110,12 @@ struct OverallProgressPerExerciseCharts: View {
                                 x: .value("Date", point.date),
                                 y: .value("Reps", point.reps)
                             )
-                            .foregroundStyle(color(for: order))
+                            .foregroundStyle(by: .value("order", String(order)))
                             PointMark(
                                 x: .value("Date", point.date),
                                 y: .value("Reps", point.reps)
                             )
-                            .foregroundStyle(color(for: order))
+                            .foregroundStyle(by: .value("order", String(order)))
                         }
                     }
                 }
@@ -171,7 +155,7 @@ struct OverallProgressPerExerciseCharts: View {
                 exerciseId: UUID(),
                 workoutSets: [
                     GetWorkoutSetDto(id: UUID(), order: 1, reps: 10, weight: 100, workoutExerciseId: UUID()),
-                    GetWorkoutSetDto(id: UUID(), order: 2, reps: 15, weight: 90, workoutExerciseId: UUID())
+                    GetWorkoutSetDto(id: UUID(), order: 2, reps: 15, weight: 90, workoutExerciseId: UUID()),
                 ],
                 notes: "Workout 1 notes"
             ),
@@ -193,7 +177,7 @@ struct OverallProgressPerExerciseCharts: View {
                 workoutSets: [
                     GetWorkoutSetDto(id: UUID(), order: 1, reps: 12, weight: 105, workoutExerciseId: UUID()),
                     GetWorkoutSetDto(id: UUID(), order: 2, reps: 14, weight: 95, workoutExerciseId: UUID()),
-                    GetWorkoutSetDto(id: UUID(), order: 3, reps: 10, weight: 110, workoutExerciseId: UUID())
+                    GetWorkoutSetDto(id: UUID(), order: 3, reps: 10, weight: 110, workoutExerciseId: UUID()),
                 ],
                 notes: "Workout 2 notes"
             ),
@@ -214,10 +198,10 @@ struct OverallProgressPerExerciseCharts: View {
                 exerciseId: UUID(),
                 workoutSets: [
                     GetWorkoutSetDto(id: UUID(), order: 1, reps: 11, weight: 102, workoutExerciseId: UUID()),
-                    GetWorkoutSetDto(id: UUID(), order: 3, reps: 9, weight: 108, workoutExerciseId: UUID())
+                    GetWorkoutSetDto(id: UUID(), order: 3, reps: 9, weight: 108, workoutExerciseId: UUID()),
                 ],
                 notes: "Workout 3 notes"
-            )
+            ),
         ]
     )
 }

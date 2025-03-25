@@ -1,21 +1,21 @@
-import SwiftUI
 import PhotosUI
+import SwiftUI
 
 struct AddExerciseView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var exerciseViewModel: ExerciseViewModel
-    
+
     @State private var name: String = ""
     @State private var selectedExerciseCategory: UUID?
     @State private var selectedMuscles: Set<GetMuscleDto> = []
     @State private var description: String = ""
-    
+
     // Image selection state (currently not used)
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImage: UIImage? = nil
     @StateObject private var muscleViewModel = MuscleViewModel()
     @StateObject private var exerciseCategoryViewModel = ExerciseCategoryViewModel()
-    
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -23,42 +23,49 @@ struct AddExerciseView: View {
                     .ignoresSafeArea()
                 Form {
                     // Exercise Name Section
-                    Section(header: Text("Exercise Name")
-                        .font(.headline)) {
-                            TextField("Exercise Name", text: $name)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                        }
-                    
+                    Section(
+                        header: Text("Exercise Name")
+                            .font(.headline)
+                    ) {
+                        TextField("Exercise Name", text: $name)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                    }
+
                     // Exercise Type Section
-                    Section(header: Text("Exercise Type")
-                        .font(.headline)) {
-                            if exerciseViewModel.isLoading {
-                                ProgressView("Loading …")
-                            } else if let error = exerciseViewModel.errorMessage {
-                                Text(error.message)
-                                    .foregroundColor(.red)
-                            } else {
-                                Picker(selection: $selectedExerciseCategory, label: Text("Select Type")) {
-                                    ForEach(exerciseCategoryViewModel.exerciseCategories, id: \.id) { category in
-                                        Text(category.i18NCode)
-                                            .tag(category.id)
-                                    }
+                    Section(
+                        header: Text("Exercise Type")
+                            .font(.headline)
+                    ) {
+                        if exerciseViewModel.isLoading {
+                            ProgressView("Loading …")
+                        } else if let error = exerciseViewModel.errorMessage {
+                            Text(error.message)
+                                .foregroundColor(.red)
+                        } else {
+                            Picker(selection: $selectedExerciseCategory, label: Text("Select Type")) {
+                                ForEach(exerciseCategoryViewModel.exerciseCategories, id: \.id) { category in
+                                    Text(category.i18NCode)
+                                        .tag(category.id)
                                 }
-                                .pickerStyle(SegmentedPickerStyle())
                             }
+                            .pickerStyle(SegmentedPickerStyle())
                         }
-                    
+                    }
+
                     // Muscles Section
-                    Section(header: Text("Muscles")
-                        .font(.headline)) {
-                            if muscleViewModel.isLoading {
-                                ProgressView("Loading …")
-                            } else if let error = muscleViewModel.errorMessage {
-                                Text(error.message)
-                                    .foregroundColor(.red)
-                            } else {
-                                ForEach(muscleViewModel.muscles, id: \.id) { muscle in
-                                    Toggle(isOn: Binding(
+                    Section(
+                        header: Text("Muscles")
+                            .font(.headline)
+                    ) {
+                        if muscleViewModel.isLoading {
+                            ProgressView("Loading …")
+                        } else if let error = muscleViewModel.errorMessage {
+                            Text(error.message)
+                                .foregroundColor(.red)
+                        } else {
+                            ForEach(muscleViewModel.muscles, id: \.id) { muscle in
+                                Toggle(
+                                    isOn: Binding(
                                         get: { selectedMuscles.contains(muscle) },
                                         set: { isSelected in
                                             if isSelected {
@@ -67,25 +74,28 @@ struct AddExerciseView: View {
                                                 selectedMuscles.remove(muscle)
                                             }
                                         }
-                                    )) {
-                                        Text(muscle.i18NCode)
-                                    }
+                                    )
+                                ) {
+                                    Text(muscle.i18NCode)
                                 }
                             }
                         }
-                    
+                    }
+
                     // Description Section
-                    Section(header: Text("Description")
-                        .font(.headline)) {
-                            TextEditor(text: $description)
-                                .frame(minHeight: 100)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                                )
-                                .padding(.top, 4)
-                        }
-                    
+                    Section(
+                        header: Text("Description")
+                            .font(.headline)
+                    ) {
+                        TextEditor(text: $description)
+                            .frame(minHeight: 100)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                            )
+                            .padding(.top, 4)
+                    }
+
                     // Save Button Section
                     Section {
                         Button(action: saveExercise) {
@@ -110,23 +120,24 @@ struct AddExerciseView: View {
                 }
             }
             .alert(item: $exerciseViewModel.errorMessage) { error in
-                Alert(title: Text("Error"),
-                      message: Text(error.message),
-                      dismissButton: .default(Text("OK")))
+                Alert(
+                    title: Text("Error"),
+                    message: Text(error.message),
+                    dismissButton: .default(Text("OK")))
             }
         }
     }
-    
+
     private func saveExercise() {
         guard let selectedExerciseCategory = selectedExerciseCategory else {
             return
         }
         // Convert the image (if any) to JPEG data.
         let imageData = selectedImage?.jpegData(compressionQuality: 0.8)
-        
+
         // Convert the selected muscles into an array of UUIDs, or nil if none selected.
         let muscleIds: [UUID]? = selectedMuscles.isEmpty ? nil : selectedMuscles.map { $0.id }
-        
+
         let exercise = CreateExerciseDto(
             i18NCode: name,
             description: description,
@@ -134,7 +145,7 @@ struct AddExerciseView: View {
             exerciseCategoryId: selectedExerciseCategory,
             imageData: imageData
         )
-        
+
         Task {
             let _ = await exerciseViewModel.saveExercise(exerciseDto: exercise)
             dismiss()

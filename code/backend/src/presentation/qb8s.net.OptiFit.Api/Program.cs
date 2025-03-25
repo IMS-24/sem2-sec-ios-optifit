@@ -9,6 +9,7 @@ var configurationBuilder = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", true)
     .AddJsonFile("appsettings.Local.json", true)
+    .AddJsonFile("appsettings.Development.json", true)
     .AddEnvironmentVariables();
 IConfiguration configuration = configurationBuilder
     .Build();

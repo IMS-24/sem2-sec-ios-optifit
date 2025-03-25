@@ -20,7 +20,7 @@ public class CreateExerciseCommandHandler(
         var entity = mapper.Map<Core.Entities.Exercise>(request.CreateDto);
         dbContext.Exercises.Add(entity);
         await dbContext.SaveChangesAsync(cancellationToken);
-        var category = await dbContext.ExerciseCategories.FirstOrDefaultAsync(x => x.Id == entity.ExerciseCategoryId);
+        var category = await dbContext.ExerciseCategories.FirstOrDefaultAsync(x => x.Id == entity.ExerciseCategoryId, cancellationToken: cancellationToken);
         entity.ExerciseCategory = category;
         return mapper.Map<GetExerciseDto>(entity);
     }
