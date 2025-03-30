@@ -47,7 +47,8 @@ public class ExerciseController(ILogger<ExerciseController> logger, ICurrentUser
     }
 
     [HttpGet("categories")]
-    [SwaggerResponse(StatusCodes.Status200OK, typeof(GetExerciseCategoryDto), Description = "Get Exercise categories")]
+    [SwaggerResponse(StatusCodes.Status200OK, typeof(IList<GetExerciseCategoryDto>),
+        Description = "Get Exercise categories")]
     public async Task<ActionResult<IEnumerable<GetExerciseCategoryDto>>> GetExerciseCategories()
     {
         logger.LogInformation("{@Name} request", nameof(GetExerciseCategories));

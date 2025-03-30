@@ -56,6 +56,12 @@ struct VirtualTrainerView: View {
         .onAppear {
             loadMotivation()
         }
+        .alert(item: $viewModel.errorMessage) { error in
+            Alert(
+                title: Text("Error"),
+                message: Text(error.message),
+                dismissButton: .default(Text("OK")))
+        }
     }
 
     func loadMotivation() {

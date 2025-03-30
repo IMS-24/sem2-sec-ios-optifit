@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WorkoutSetsEntryView: View {
-    let sets: [CreateWorkoutSetDto]
+    let sets: [Components.Schemas.CreateWorkoutSetDto]
     let onDeleteSet: (Int) -> Void
     let onUpdateSet: (Int, String, String) -> Void
 
@@ -71,13 +71,13 @@ struct WorkoutSetsEntryView: View {
     }
 
     // Helper: Convert reps to string for display.
-    private func repsString(for set: CreateWorkoutSetDto) -> String {
+    private func repsString(for set:  Components.Schemas.CreateWorkoutSetDto) -> String {
         let reps = set.reps ?? 0
         return reps == 0 ? "" : String(reps)
     }
 
     // Helper: Convert weight to string for display.
-    private func weightString(for set: CreateWorkoutSetDto) -> String {
+    private func weightString(for set:  Components.Schemas.CreateWorkoutSetDto) -> String {
         let weight = set.weight ?? 0.0
         return weight == 0.0 ? "" : String(weight)
     }
@@ -86,8 +86,8 @@ struct WorkoutSetsEntryView: View {
 #Preview {
     WorkoutSetsEntryView(
         sets: [
-            CreateWorkoutSetDto(id: UUID(), order: 1, reps: 10, weight: 20),
-            CreateWorkoutSetDto(id: UUID(), order: 2, reps: 20, weight: 40),
-            CreateWorkoutSetDto(id: UUID(), order: 3, reps: 30, weight: 60),
+            Components.Schemas.CreateWorkoutSetDto(id: UUID().uuidString, order: 1, reps: 10, weight: 20),
+            Components.Schemas.CreateWorkoutSetDto(id: UUID().uuidString, order: 2, reps: 20, weight: 40),
+            Components.Schemas.CreateWorkoutSetDto(id: UUID().uuidString, order: 3, reps: 30, weight: 60),
         ], onDeleteSet: { _ in }, onUpdateSet: { _, _, _ in })
 }

@@ -9,7 +9,7 @@ class APIClient {
         method: String = "GET",
         body: Input? = nil
     ) async throws -> Output {
-        guard let url = URL(string: "\(Configuration.apiBaseURL.absoluteString)/\(endpoint)") else {
+        guard let url = URL(string: "\(AppConfiguration.apiBaseURL.absoluteString)/\(endpoint)") else {
             throw ApiError.invalidURL
         }
 

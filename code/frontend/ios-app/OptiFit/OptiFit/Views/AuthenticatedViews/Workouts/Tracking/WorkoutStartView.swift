@@ -28,9 +28,9 @@ struct WorkoutStartView: View {
                             .font(.headline)
                         Spacer()
                         Picker("Select Gym", selection: $selectedGym) {
-                            ForEach(gymViewModel.gyms) { gym in
-                                Text(gym.name)
-                                    .tag(gym.id as UUID?)
+                            ForEach(gymViewModel.gyms, id:\.id) { gym in
+                                Text(gym.name!)
+                                    .tag(gym.id)
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
@@ -49,9 +49,9 @@ struct WorkoutStartView: View {
                             .font(.headline)
                         Spacer()
                         Picker("Select Exercise Category", selection: $selectedExerciseCategoryId) {
-                            ForEach(exerciseCategoriesViewModel.exerciseCategories) { category in
-                                Text(category.i18NCode)
-                                    .tag(category.id as UUID?)
+                            ForEach(exerciseCategoriesViewModel.exerciseCategories, id: \.id) { category in
+                                Text(category.i18NCode!)
+                                    .tag(category.id)
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
@@ -74,8 +74,8 @@ struct WorkoutStartView: View {
             .navigationTitle("Start Workout")
             .padding()
             .navigationDestination(isPresented: $navigateToWorkoutTrackingView) {
-                if let gym = gymViewModel.gyms.first(where: { $0.id == selectedGym }),
-                    let exerciseCategory = exerciseCategoriesViewModel.exerciseCategories.first(where: { $0.id == selectedExerciseCategoryId })
+                if let gym = gymViewModel.gyms.first(where: { $0.id == selectedGym?.uuidString }),
+                   let exerciseCategory = exerciseCategoriesViewModel.exerciseCategories.first(where: { $0.id == selectedExerciseCategoryId?.uuidString })
                 {
                     WorkoutTrackingView(
                         gym: gym,
@@ -88,9 +88,11 @@ struct WorkoutStartView: View {
             .onAppear {
                 Task {
                     await exerciseCategoriesViewModel.fetchCategories()
-                    selectedExerciseCategoryId = exerciseCategoriesViewModel.exerciseCategories.first?.id
+                    //TODO:  FIx selection
+                    //selectedExerciseCategoryId = UUID(from: exerciseCategoriesViewModel.exerciseCategories.first?.id)
                     await gymViewModel.searchGyms()
-                    selectedGym = gymViewModel.gyms.first?.id
+                    //TODO: FIX Selection
+                    //selectedGym = gymViewModel.gyms.first?.id
                 }
             }
             .alert(item: $exerciseCategoriesViewModel.errorMessage) { error in

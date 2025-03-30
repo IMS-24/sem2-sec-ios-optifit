@@ -1,21 +1,21 @@
 import SwiftUI
 
 struct ExerciseListEntryView: View {
-    var exercise: GetExerciseDto
+    var exercise: Components.Schemas.GetExerciseDto
 
     var body: some View {
-        Text(exercise.i18NCode)
+        Text(exercise.i18NCode!)
     }
 }
 
 #Preview {
     ExerciseListEntryView(
-        exercise: GetExerciseDto(
-            id: UUID(),
+        exercise: Components.Schemas.GetExerciseDto(
+            id: UUID().uuidString,
             i18NCode: "ExerciseName",
             description: "Some description",
-            exerciseCategoryId: UUID(),
-            exerciseCategory: ExerciseCategoryDto(id: UUID(), i18NCode: "CategoryName", exerciseIds: [])
+            exerciseCategory: Components.Schemas.GetExerciseCategoryDto(id: UUID().uuidString, i18NCode: "CategoryName"),
+            exerciseCategoryId: UUID().uuidString
         )
     )
 }

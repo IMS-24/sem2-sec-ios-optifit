@@ -1,29 +1,31 @@
 import SwiftUI
 
 struct OverallExerciseStatsCard: View {
-    let statistics: GetExerciseStatisticsDto
-
+    let statistics: Components.Schemas.GetExerciseStatisticsDto
+    
+    // Extract all workout sets from the exercise workouts.
+    var allWorkoutSets: [Components.Schemas.GetWorkoutSetDto] {
+        (statistics.exerciseWorkoutsDto ?? []).flatMap { $0.workoutSets ?? [] }
+    }
+    
     var overallMaxWeight: Double {
-        statistics.exerciseWorkoutsDto
-            .flatMap { $0.workoutSets }
-            .map { $0.weight }
+        allWorkoutSets
+            .map { $0.weight ?? 0 }
             .max() ?? 0
     }
-
+    
     var overallMaxReps: Int {
-        statistics.exerciseWorkoutsDto
-            .flatMap { $0.workoutSets }
-            .map { $0.reps }
+        allWorkoutSets
+            .map { Int($0.reps ?? 0) }
             .max() ?? 0
     }
-
+    
     var overallMaxVolume: Double {
-        statistics.exerciseWorkoutsDto
-            .flatMap { $0.workoutSets }
-            .map { Double($0.reps) * $0.weight }
+        allWorkoutSets
+            .map { Double($0.reps ?? 0) * ($0.weight ?? 0) }
             .max() ?? 0
     }
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Overall Exercise Statistics")
@@ -52,7 +54,10 @@ struct OverallExerciseStatsCard: View {
             }
         }
         .padding()
-        .background(RoundedRectangle(cornerRadius: 12).fill(Color(.systemGray6)))
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color(.systemGray6))
+        )
         .padding(.horizontal)
     }
 }

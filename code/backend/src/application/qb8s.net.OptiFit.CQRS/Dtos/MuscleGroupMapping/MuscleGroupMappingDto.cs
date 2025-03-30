@@ -2,8 +2,9 @@ using qb8s.net.OptiFit.CQRS.Dtos.Base;
 
 namespace qb8s.net.OptiFit.CQRS.Dtos.MuscleGroupMapping;
 
-public class MuscleGroupMappingDto : BaseDto
+public class MuscleGroupMappingDto
 {
+    public Guid Id { get; set; }
     public Guid MuscleGroupId { get; set; }
     public Guid MuscleId { get; set; }
 }

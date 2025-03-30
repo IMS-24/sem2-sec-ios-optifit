@@ -3,25 +3,36 @@ import Foundation
 
 @MainActor
 class MuscleViewModel: ObservableObject {
-    @Published var muscles: [GetMuscleDto] = []
-    @Published var searchModel = SearchMusclesDto(pageSize: 10, pageIndex: 0)
-    private let muscleService = MuscleService()
-    @Published var isLoading: Bool = false
+    @Published var muscles: [Components.Schemas.GetMuscleDto] = []
     @Published var errorMessage: ErrorMessage?
+
+    private var searchModel: Components.Schemas.SearchMuscleDto = Components.Schemas.SearchMuscleDto()
+    private let muscleService = MuscleService()
+    
+    
+    private var currentPage: Int = 0
+    private var totalPages: Int = 1
+    @Published var isLoading: Bool = false
+    @Published var isLoadingMore: Bool = false
 
     func searchMuscles() async {
         isLoading = true
         errorMessage = nil
         do {
-            let response = try await muscleService.searchMuscles(searchModel: searchModel)
-            muscles = response.items
+            currentPage = 0
+            let result = try await muscleService.searchMuscles(searchModel: searchModel)
+            muscles = result.items ?? []
+            totalPages = (Int)(result.totalPages!)
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
         isLoading = false
     }
 
-    func updateSearchModel(_ newModel: SearchMusclesDto) async {
-        self.searchModel = newModel
+    func updateSearchModel(_ newSearchModel: Components.Schemas.SearchMuscleDto) {
+        self.searchModel = newSearchModel
+        Task {
+            await searchMuscles()
+        }
     }
 }

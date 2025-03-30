@@ -4,8 +4,9 @@ using qb8s.net.OptiFit.CQRS.Dtos.WorkoutExercise;
 
 namespace qb8s.net.OptiFit.CQRS.Dtos.Workout;
 
-public class GetWorkoutDto : BaseDto
+public class GetWorkoutDto
 {
+    public Guid Id { get; set; }
     public string Description { get; set; } = null!;
     public DateTimeOffset StartAtUtc { get; set; }
     public DateTimeOffset? EndAtUtc { get; set; }

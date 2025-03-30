@@ -1,6 +1,6 @@
 import Foundation
 
-enum Configuration {
+enum AppConfiguration {
     static private func string(for key: String) -> String {
         return Bundle.main.infoDictionary?[key] as! String
     }

@@ -1,10 +1,11 @@
 using AutoMapper;
-using qb8s.net.OptiFit.CQRS.Dtos.Base;
 
 namespace qb8s.net.OptiFit.CQRS.Dtos.Exercise;
 
-public class ExerciseExtendedDto : BaseI18NDto
+public class ExerciseExtendedDto
 {
+    public Guid? Id { get; set; }
+    public required string I18NCode { get; set; }
     public string Description { get; set; } = null!;
     public string ExerciseCategory { get; set; }
 }

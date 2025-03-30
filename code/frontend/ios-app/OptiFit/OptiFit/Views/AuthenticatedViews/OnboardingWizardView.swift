@@ -11,11 +11,12 @@ struct OnboardingWizardView: View {
             set: { newValue in
                 var profile =
                     userProfileViewModel.profile
-                    ?? UserProfileDto(
-                        id: UUID(),
+                    ?? Components.Schemas.UserProfileDto(
+
+                        email: "",
                         firstName: "",
                         lastName: "",
-                        email: "",
+
                         userRole: nil,
                         dateOfBirthUtc: Date(),
                         lastLoginUtc: nil,
@@ -35,11 +36,10 @@ struct OnboardingWizardView: View {
             set: { newValue in
                 var profile =
                     userProfileViewModel.profile
-                    ?? UserProfileDto(
-                        id: UUID(),
+                    ?? Components.Schemas.UserProfileDto(
+                        email: "",
                         firstName: "",
                         lastName: "",
-                        email: "",
                         userRole: nil,
                         dateOfBirthUtc: Date(),
                         lastLoginUtc: nil,
@@ -59,11 +59,10 @@ struct OnboardingWizardView: View {
             set: { newValue in
                 var profile =
                     userProfileViewModel.profile
-                    ?? UserProfileDto(
-                        id: UUID(),
+                    ?? Components.Schemas.UserProfileDto(
+                        email: "",
                         firstName: "",
                         lastName: "",
-                        email: "",
                         userRole: nil,
                         dateOfBirthUtc: Date(),
                         lastLoginUtc: nil,
@@ -83,11 +82,10 @@ struct OnboardingWizardView: View {
             set: { newValue in
                 var profile =
                     userProfileViewModel.profile
-                    ?? UserProfileDto(
-                        id: UUID(),
+                    ?? Components.Schemas.UserProfileDto(
+                        email: "",
                         firstName: "",
                         lastName: "",
-                        email: "",
                         userRole: nil,
                         dateOfBirthUtc: Date(),
                         lastLoginUtc: nil,
@@ -149,8 +147,8 @@ struct OnboardingWizardView: View {
         Task {
             // Call your update function using the (now updated) profile from the view model.
             if let profile = userProfileViewModel.profile {
-                let updatedProfile = UpdateUserProfileDto(
-                    firstName: profile.firstName, lastName: profile.lastName, email: profile.email, dateOfBirthUtc: profile.dateOfBirthUtc,
+                let updatedProfile = Components.Schemas.UpdateUserProfileDto(
+                    firstName: profile.firstName!, lastName: profile.lastName!, email: profile.email!, dateOfBirthUtc: profile.dateOfBirthUtc,
                     initialSetupDone: true)
                 await userProfileViewModel.updateProfile(profileToUpdate: updatedProfile)
             }
@@ -162,11 +160,10 @@ struct OnboardingWizardView_Previews: PreviewProvider {
     static var previews: some View {
         // Provide a default profile for preview.
         let viewModel = UserProfileViewModel()
-        viewModel.profile = UserProfileDto(
-            id: UUID(),
+        viewModel.profile = Components.Schemas.UserProfileDto(
+            email: "",
             firstName: "",
             lastName: "",
-            email: "",
             userRole: nil,
             dateOfBirthUtc: Date(),
             lastLoginUtc: nil,

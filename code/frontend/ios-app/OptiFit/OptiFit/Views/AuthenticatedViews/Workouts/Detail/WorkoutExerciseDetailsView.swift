@@ -1,18 +1,18 @@
 import SwiftUI
 
 struct WorkoutExerciseDetailsView: View {
-    let exercise: GetWorkoutExerciseDto
+    let exercise: Components.Schemas.WorkoutExerciseDto
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 // Header: Exercise title and description.
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(exercise.exercise.i18NCode)
+                    Text(exercise.exercise!.i18NCode!)
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(Color(.primaryText))
-                    if let desc = exercise.exercise.description, !desc.isEmpty {
+                    if let desc = exercise.exercise?.description, !desc.isEmpty {
                         Text(desc)
                             .font(.body)
                             .foregroundColor(Color(.primaryText))
@@ -25,7 +25,7 @@ struct WorkoutExerciseDetailsView: View {
                     Text("Set Details")
                         .font(.headline)
                         .padding(.horizontal)
-                    ForEach(sets.sorted(by: { $0.order < $1.order })) { set in
+                    ForEach(sets.sorted(by: { $0.order! < $1.order! }), id: \.id) { set in
                         WorkoutSetSummaryView(set: set)
                             .padding(.horizontal)
                     }
@@ -43,25 +43,26 @@ struct WorkoutExerciseDetailsView: View {
     }
 }
 #Preview {
-    let legs = ExerciseCategoryDto(id: UUID(), i18NCode: "Legs", exerciseIds: [])
+    let legs = Components.Schemas.GetExerciseCategoryDto(id: UUID().uuidString, i18NCode: "Legs")
     WorkoutExerciseDetailsView(
-        exercise: GetWorkoutExerciseDto(
-            id: UUID(),
+        exercise: Components.Schemas.WorkoutExerciseDto(
+            id: UUID().uuidString,
             order: 1,
-            workoutId: UUID(),
-            exercise: GetExerciseDto(
-                id: UUID(),
+            workoutId: UUID().uuidString,
+            exercise: Components.Schemas.GetExerciseDto(
+                id: UUID().uuidString,
                 i18NCode: "Exercise Name",
                 description: "Exercise Description",
-                exerciseCategoryId: legs.id,
-                exerciseCategory: legs),
+                exerciseCategory: legs,
+                exerciseCategoryId: legs.id
+            ),
             workoutSets: [
-                GetWorkoutSetDto(id: UUID(), order: 5, reps: 100, weight: 150, workoutExerciseId: UUID()),
-                GetWorkoutSetDto(id: UUID(), order: 3, reps: 100, weight: 150, workoutExerciseId: UUID()),
-                GetWorkoutSetDto(id: UUID(), order: 1, reps: 10, weight: 20, workoutExerciseId: UUID()),
-                GetWorkoutSetDto(id: UUID(), order: 2, reps: 100, weight: 150, workoutExerciseId: UUID()),
-                GetWorkoutSetDto(id: UUID(), order: 4, reps: 100, weight: 150, workoutExerciseId: UUID()),
-                GetWorkoutSetDto(id: UUID(), order: 6, reps: 100, weight: 150, workoutExerciseId: UUID()),
+                Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 5, reps: 100, weight: 150, workoutExerciseId: UUID().uuidString),
+                Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 3, reps: 100, weight: 150, workoutExerciseId: UUID().uuidString),
+                Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 1, reps: 10, weight: 20, workoutExerciseId: UUID().uuidString),
+                Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 2, reps: 100, weight: 150, workoutExerciseId: UUID().uuidString),
+                Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 4, reps: 100, weight: 150, workoutExerciseId: UUID().uuidString),
+                Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 6, reps: 100, weight: 150, workoutExerciseId: UUID().uuidString),
             ],
             notes: "Some Notes"
         )

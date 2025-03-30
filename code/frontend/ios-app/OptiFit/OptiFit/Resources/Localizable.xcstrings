@@ -21,17 +21,6 @@
         }
       }
     },
-    "%@ %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ %2$@"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
     "%@, %@" : {
       "localizations" : {
         "en" : {
@@ -43,16 +32,16 @@
       },
       "shouldTranslate" : false
     },
+    "%d reps" : {
+
+    },
+    "%d sets" : {
+
+    },
     "%lld" : {
 
     },
     "%lld min" : {
-
-    },
-    "%lld reps" : {
-
-    },
-    "%lld sets" : {
 
     },
     "🐸 Virtual Trainer" : {
@@ -149,15 +138,6 @@
     "Average" : {
 
     },
-    "Avg Reps" : {
-
-    },
-    "Avg Sets" : {
-
-    },
-    "Avg Weight" : {
-
-    },
     "Bad request. Please check your input and try again." : {
 
     },
@@ -220,6 +200,7 @@
 
     },
     "City: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -327,6 +308,7 @@
       }
     },
     "Done" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -620,9 +602,6 @@
     "No exercises added yet." : {
 
     },
-    "No exercises available." : {
-
-    },
     "No exercises performed yet." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -644,15 +623,6 @@
 
     },
     "No workout data available for this week" : {
-
-    },
-    "Normalized Reps" : {
-
-    },
-    "Normalized Sets" : {
-
-    },
-    "Normalized Weight" : {
 
     },
     "Notes" : {
@@ -685,9 +655,6 @@
 
     },
     "Order" : {
-
-    },
-    "Order: %lld" : {
 
     },
     "Overall Exercise Statistics" : {
@@ -739,15 +706,12 @@
     "Reps Progress" : {
 
     },
-    "Reps: %lld" : {
-
-    },
-    "Reps: %lld, Weight: %.2f" : {
+    "Reps: %d, Weight: %.2f" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Reps: %1$lld, Weight: %2$.2f"
+            "value" : "Reps: %1$d, Weight: %2$.2f"
           }
         }
       }
@@ -988,10 +952,8 @@
     "Welcome!" : {
 
     },
-    "Workout" : {
-
-    },
     "Workout Detail" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

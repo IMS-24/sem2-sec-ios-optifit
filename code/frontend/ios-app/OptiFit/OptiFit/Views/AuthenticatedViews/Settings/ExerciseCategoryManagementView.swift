@@ -5,17 +5,22 @@ struct ExerciseCategoryManagementView: View {
 
     var body: some View {
         NavigationView {
-            List(exerciseCategoriesViewModel.exerciseCategories) { exerciseCategory in
-                Section(header: Text(exerciseCategory.i18NCode)) {
-                }
-                .navigationTitle("Exercise Categories")
-                .onAppear {
-                    Task {
-                        await exerciseCategoriesViewModel.fetchCategories()
+//             ForEach(workoutExercises.indices, id: \.self) { index in
+            //            (exerciseCategoriesViewModel.exerciseCategories)
+            List{
+                
+                ForEach(exerciseCategoriesViewModel.exerciseCategories, id: \.self){ exerciseCategory in
+                    Section(header: Text(exerciseCategory.i18NCode!)) {
                     }
-                }
-                .alert(item: $exerciseCategoriesViewModel.errorMessage) { error in
-                    Alert(title: Text("Error"), message: Text(error.message), dismissButton: .default(Text("OK")))
+                    .navigationTitle("Exercise Categories")
+                    .onAppear {
+                        Task {
+                            await exerciseCategoriesViewModel.fetchCategories()
+                        }
+                    }
+                    .alert(item: $exerciseCategoriesViewModel.errorMessage) { error in
+                        Alert(title: Text("Error"), message: Text(error.message), dismissButton: .default(Text("OK")))
+                    }
                 }
             }
         }

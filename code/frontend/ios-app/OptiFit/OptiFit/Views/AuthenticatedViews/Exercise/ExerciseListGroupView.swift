@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct ExerciseListGroupView: View {
-    var groupedExercises: [String: [GetExerciseDto]]
+    var groupedExercises: [String: [Components.Schemas.GetExerciseDto]]
 
-    init(groupedExercises: [String: [GetExerciseDto]]) {
+    init(groupedExercises: [String: [Components.Schemas.GetExerciseDto]]) {
         self.groupedExercises = groupedExercises
     }
 
@@ -20,53 +20,47 @@ struct ExerciseListGroupView: View {
 
 #Preview {
     let exerciseCategories = [
-        ExerciseCategoryDto(
-            id: UUID(), i18NCode: "Leg", exerciseIds: []
-        ),
-        ExerciseCategoryDto(id: UUID(), i18NCode: "Core", exerciseIds: []),
+        Components.Schemas.GetExerciseCategoryDto(id: UUID().uuidString, i18NCode: "Leg"),
+        Components.Schemas.GetExerciseCategoryDto(id: UUID().uuidString, i18NCode: "Core"),
     ]
     ExerciseListGroupView(groupedExercises: [
         "Legs": [
-            GetExerciseDto(
-                id: UUID(uuidString: "846E8C2D-9D63-4C18-82FA-0D8C7512F326")!,
+            Components.Schemas.GetExerciseDto(
+                id: UUID(uuidString: "846E8C2D-9D63-4C18-82FA-0D8C7512F326")?.uuidString,
                 i18NCode: "Bench Press",
                 description: "A compound movement that works the chest, shoulders, and triceps.",
-                exerciseCategoryId: exerciseCategories[1].id,
-                exerciseCategory: exerciseCategories[1]  //,
-                //                imageURL: nil
+                exerciseCategory: exerciseCategories[1],
+                exerciseCategoryId: exerciseCategories[1].id
             ),
-            GetExerciseDto(
-                id: UUID(uuidString: "D3BE9295-9477-4A98-8AEA-A4DADE7A073D")!,
+            Components.Schemas.GetExerciseDto(
+                id: UUID(uuidString: "D3BE9295-9477-4A98-8AEA-A4DADE7A073D")?.uuidString,
                 i18NCode: "Cable Lateral Raise",
                 description: "A shoulder isolation movement that targets the side delts.",
-                exerciseCategoryId: exerciseCategories[1].id,
-                exerciseCategory: exerciseCategories[1]  //,
+                exerciseCategory: exerciseCategories[1],
+                exerciseCategoryId: exerciseCategories[1].id
             ),
         ],
         "Core": [
-            GetExerciseDto(
-                id: UUID(uuidString: "C99C49DC-A5A7-41B5-9A13-68F2149B6392")!,
+            Components.Schemas.GetExerciseDto(
+                id: UUID(uuidString: "C99C49DC-A5A7-41B5-9A13-68F2149B6392")?.uuidString,
                 i18NCode: "Box Jump",
                 description: "An explosive movement that enhances power and agility.",
-                exerciseCategoryId: exerciseCategories[2].id,
-                exerciseCategory: exerciseCategories[2]  //,
-                //                imageURL: nil
+                exerciseCategory: exerciseCategories[2],
+                exerciseCategoryId: exerciseCategories[2].id
             ),
-            GetExerciseDto(
-                id: UUID(uuidString: "9F2DA650-2043-4F4C-911B-AB0591AF0E72")!,
+            Components.Schemas.GetExerciseDto(
+                id: UUID(uuidString: "9F2DA650-2043-4F4C-911B-AB0591AF0E72")?.uuidString,
                 i18NCode: "Calf Raise",
                 description: "An exercise that strengthens and tones the calf muscles.",
-                exerciseCategoryId: exerciseCategories[2].id,
-                exerciseCategory: exerciseCategories[2]  //,
-                //                imageURL: nil
+                exerciseCategory: exerciseCategories[2],
+                exerciseCategoryId: exerciseCategories[2].id
             ),
-            GetExerciseDto(
-                id: UUID(uuidString: "A5556D61-7CBC-441D-8261-1C325EE098F4")!,
+            Components.Schemas.GetExerciseDto(
+                id: UUID(uuidString: "A5556D61-7CBC-441D-8261-1C325EE098F4")?.uuidString,
                 i18NCode: "Good Morning",
                 description: "A posterior chain exercise that strengthens the hamstrings and lower back.",
-                exerciseCategoryId: exerciseCategories[2].id,
-                exerciseCategory: exerciseCategories[2]  //,
-                //                imageURL: nil
+                exerciseCategory: exerciseCategories[2],
+                exerciseCategoryId: exerciseCategories[2].id
             ),
         ],
         //        "pull": [

@@ -18,14 +18,16 @@ public class CurrentUserService : ICurrentUserService
         _logger = logger;
 
         if (_httpContextAccessor.HttpContext == null) return;
-        logger.LogInformation("Current User Service - Init Current user ");
+        _logger.LogInformation("Current User Service - Init Current user ");
         if (_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) == null) return;
         AdUser = new AdUser
         {
-            Oid = new Guid(_httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier)),
+            OId = new Guid(_httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier)),
             FirstName = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.GivenName),
-            LastName = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Surname)
+            LastName = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Surname),
+            Email = _httpContextAccessor.HttpContext?.User.FindFirstValue("emails")
         };
+        _logger.LogInformation("Current User Service - Current user {@AdUser}", AdUser);
     }
 
 
@@ -34,7 +36,7 @@ public class CurrentUserService : ICurrentUserService
 
     public Guid GetCurrentUserId()
     {
-        var currentUser = _dbContext.Users.FirstOrDefault(x => x.OId == AdUser.Oid);
+        var currentUser = _dbContext.Users.FirstOrDefault(x => x.OId == AdUser.OId);
         return currentUser?.Id ?? Guid.Empty;
     }
 }

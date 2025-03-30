@@ -31,14 +31,14 @@ public class SearchWorkoutsQueryHandler(
                 .AsQueryable();
         //@formatter:on
         var predicate = PredicateBuilder.New<Core.Entities.Workout>(true);
-        if (request.Search.Id.HasValue)
-        {
-            predicate = predicate.And(x => x.Id == request.Search.Id);
-            query = query.Where(predicate);
-            return Task.FromResult(new PaginatedResult<GetWorkoutDto>(request.Search.PageSize,
-                request.Search.PageIndex,
-                query.AsEnumerable().Select(mapper.Map<GetWorkoutDto>)));
-        }
+        // if (request.Search.Id.HasValue)
+        // {
+        //     predicate = predicate.And(x => x.Id == request.Search.Id);
+        //     query = query.Where(predicate);
+        //     return Task.FromResult(new PaginatedResult<GetWorkoutDto>(request.Search.PageSize,
+        //         request.Search.PageIndex,
+        //         query.AsEnumerable().Select(mapper.Map<GetWorkoutDto>)));
+        // }
 
         if (request.userId.HasValue) predicate = predicate.And(x => x.UserId == request.userId);
 

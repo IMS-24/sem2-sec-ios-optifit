@@ -26,14 +26,14 @@ public class SearchMusclesQueryHandler(
             .AsQueryable();
         //@formatter:on
         var predicate = PredicateBuilder.New<Core.Entities.Muscle>(true);
-        if (request.Search.Id.HasValue)
-        {
-            predicate = predicate.And(x => x.Id == request.Search.Id);
-            query = query.Where(predicate);
-            return Task.FromResult(new PaginatedResult<GetMuscleDto>(request.Search.PageSize,
-                request.Search.PageIndex,
-                query.AsEnumerable().Select(mapper.Map<GetMuscleDto>)));
-        }
+        // if (request.Search.Id.HasValue)
+        // {
+        //     predicate = predicate.And(x => x.Id == request.Search.Id);
+        //     query = query.Where(predicate);
+        //     return Task.FromResult(new PaginatedResult<GetMuscleDto>(request.Search.PageSize,
+        //         request.Search.PageIndex,
+        //         query.AsEnumerable().Select(mapper.Map<GetMuscleDto>)));
+        // }
 
         if (request.Search.I18NCode != null)
             predicate = predicate.And(x => x.I18NCode.Contains(request.Search.I18NCode));

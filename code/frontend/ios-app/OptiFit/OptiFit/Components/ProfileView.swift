@@ -12,7 +12,7 @@ struct ProfileView: View {
                 VStack(alignment: .leading) {
                     if let profile = profileViewModel.profile {
                         Text("\(profile.firstName) \(profile.lastName)").font(.headline)
-                        Text(profile.email).font(.subheadline).foregroundColor(.gray)
+                        Text(profile.email!).font(.subheadline).foregroundColor(.gray)
 
                         if let dob = profile.dateOfBirthUtc {
                             Text("Birthdate: \(dob.formattedDate())").font(.subheadline).foregroundColor(.gray)
@@ -24,7 +24,7 @@ struct ProfileView: View {
                         Text("Registered at: \(profile.registeredUtc?.formattedDate() ?? "N/A")").font(.subheadline).foregroundColor(.gray)
                         Text("Updated at: \(profile.updatedUtc?.formattedDate() ?? "N/A")").font(.subheadline).foregroundColor(.gray)
                         Text("User Role: \(profile.userRole ?? "N/A")").font(.subheadline).foregroundColor(.gray)
-                        Text("Initial Setup Done: \(profile.initialSetupDone ? "Yes" : "No")").font(.subheadline).foregroundColor(.gray)
+                        Text("Initial Setup Done: \(profile.initialSetupDone! ? "Yes" : "No")").font(.subheadline).foregroundColor(.gray)
                     } else {
                         Text("Loading ...").font(.headline).font(.subheadline).foregroundColor(.gray)
                         Text("Please wait").font(.subheadline).foregroundColor(.gray).font(.subheadline).foregroundColor(.gray)
@@ -41,7 +41,7 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var userProfileViewModel: UserProfileViewModel {
         let x = UserProfileViewModel()
-        x.profile = .init(id: UUID(), firstName: "Johnny", lastName: "Chimpo", email: "dutchmen@gmail.com", initialSetupDone: true)
+        x.profile = .init(email: "dutchmen@gmail.com", firstName: "Johnny", lastName: "Chimpo", initialSetupDone: true)
         return x
     }
     static var previews: some View {

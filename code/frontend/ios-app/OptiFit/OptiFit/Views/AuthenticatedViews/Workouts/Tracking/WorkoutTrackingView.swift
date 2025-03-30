@@ -2,11 +2,11 @@ import SwiftUI
 
 struct WorkoutTrackingView: View {
     @Environment(\.dismiss) private var dismiss
-    let gym: GetGymDto
-    let exerciseCategory: ExerciseCategoryDto
+    let gym: Components.Schemas.GetGymDto
+    let exerciseCategory: Components.Schemas.GetExerciseCategoryDto
     let workoutStartDate: Date
 
-    @State private var workoutExercises: [CreateWorkoutExerciseDto] = []
+    @State private var workoutExercises: [Components.Schemas.CreateWorkoutExerciseDto] = []
     @State private var navigateToExerciseSheet: Bool = false
 
     @StateObject private var workoutViewModel = WorkoutViewModel()
@@ -17,11 +17,22 @@ struct WorkoutTrackingView: View {
     @State private var timer: Timer? = nil
     @State private var showCancelConfirmation = false
 
+    // Computed property that converts exerciseCategory.id to a UUID.
+    var categoryId: UUID {
+        do {
+            // Assuming exerciseCategory.id is of a type that can be cast to Decoder (which is unusual)
+            let id = try UUID(from: exerciseCategory.id as! Decoder)
+            return id
+        } catch {
+            return UUID() // Fallback if conversion fails.
+        }
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             // Header: Workout category (motto)
             HStack {
-                Text(exerciseCategory.i18NCode)
+                Text(exerciseCategory.i18NCode!)
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(Color(.primaryText))
@@ -85,10 +96,15 @@ struct WorkoutTrackingView: View {
                     .padding(.horizontal)
             } else {
                 List {
-                    // Use binding ForEach so the edit view can modify the exercise.
-                    ForEach($workoutExercises) { $workoutExercise in
-                        NavigationLink(destination: WorkoutExerciseEditView(workoutExercise: $workoutExercise)) {
-                            WorkoutExerciseListEntryView(workoutExercise: $workoutExercise)
+                    ForEach(workoutExercises.indices, id: \.self) { index in
+                        NavigationLink(
+                            destination: WorkoutExerciseEditView(
+                                workoutExercise: $workoutExercises[index]
+                            )
+                        ) {
+                            WorkoutExerciseListEntryView(
+                                workoutExercise: $workoutExercises[index]
+                            )
                         }
                     }
                     .onDelete(perform: deleteExercise)
@@ -122,7 +138,6 @@ struct WorkoutTrackingView: View {
         .navigationTitle("Track Workout")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            // Plus button to add an exercise.
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     navigateToExerciseSheet = true
@@ -135,11 +150,11 @@ struct WorkoutTrackingView: View {
         .sheet(isPresented: $navigateToExerciseSheet) {
             NavigationStack {
                 ExerciseSelectionView(
-                    exerciseCategoryId: exerciseCategory.id,
+                    exerciseCategoryId: categoryId,
                     onExerciseSelected: { newExercise in
                         // Set order for the new exercise before appending.
                         var newExerciseWithOrder = newExercise
-                        newExerciseWithOrder.order = workoutExercises.count + 1
+                        newExerciseWithOrder.order = Int32(workoutExercises.count + 1)
                         workoutExercises.append(newExerciseWithOrder)
                         navigateToExerciseSheet = false
                     },
@@ -163,7 +178,8 @@ struct WorkoutTrackingView: View {
             Alert(
                 title: Text("Error"),
                 message: Text(error.message),
-                dismissButton: .default(Text("OK")))
+                dismissButton: .default(Text("OK"))
+            )
         }
         .onAppear {
             startTimer()
@@ -205,12 +221,12 @@ struct WorkoutTrackingView: View {
     // Update each exercise's order property based on its current index.
     private func updateExerciseOrders() {
         for index in workoutExercises.indices {
-            workoutExercises[index].order = index + 1
+            workoutExercises[index].order = Int32(index) + 1
         }
     }
 
     private func saveWorkout() {
-        let workout = CreateWorkoutDto(
+        let workout = Components.Schemas.CreateWorkoutDto(
             description: description,
             startAtUtc: workoutStartDate,
             endAtUtc: Date(),
@@ -223,8 +239,9 @@ struct WorkoutTrackingView: View {
             dismiss()
         }
     }
+
+    // Only show the cancel confirmation; let the alert action handle dismissal.
     private func cancelWorkout() {
         showCancelConfirmation = true
-        dismiss()
     }
 }

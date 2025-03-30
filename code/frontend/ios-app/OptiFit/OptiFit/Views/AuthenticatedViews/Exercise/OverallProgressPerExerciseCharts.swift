@@ -2,22 +2,27 @@ import Charts
 import SwiftUI
 
 struct OverallProgressPerExerciseCharts: View {
-    let workoutExercises: [ExerciseWorkoutDto]
+    let workoutExercises: [Components.Schemas.ExerciseWorkoutDto]
 
     // Flatten all workout sets from all sessions into a single array.
     var allData: [SetProgressData] {
-        workoutExercises.flatMap { workout in
-            workout.workoutSets.map { set in
+        let data = workoutExercises.flatMap { exercise -> [SetProgressData] in
+            // Use nil-coalescing to safely unwrap workoutSets.
+            let sets = exercise.workoutSets ?? []
+            return sets.map { set in
+                // Force unwrapping is kept as in your code, but consider safer unwrapping in production.
                 SetProgressData(
-                    setOrder: set.order,
-                    date: workout.workout.startAtUtc,
-                    weight: set.weight,
-                    reps: set.reps
+                    setOrder: Int(set.order ?? 0),
+                    date: exercise.workout!.startAtUtc!,
+                    weight: Double(set.weight ?? 0),
+                    reps: Int(set.reps ?? 0)
                 )
             }
         }
-        .sorted(by: { $0.date < $1.date })
+        return data.sorted { $0.date < $1.date }
     }
+
+
 
     // Unique set orders (each will represent a separate line).
     var setOrders: [Int] {
@@ -138,67 +143,67 @@ struct OverallProgressPerExerciseCharts: View {
 #Preview {
     OverallProgressPerExerciseCharts(
         workoutExercises: [
-            ExerciseWorkoutDto(
-                id: UUID(),
+            Components.Schemas.ExerciseWorkoutDto(
+                id: UUID().uuidString,
                 order: 1,
-                workout: GetWorkoutDto(
-                    id: UUID(),
+                workout: Components.Schemas.GetWorkoutDto(
+                    id: UUID().uuidString,
                     description: "Workout 1",
                     startAtUtc: Date().addingTimeInterval(-86400 * 3),
                     endAtUtc: Date().addingTimeInterval(-86400 * 3 + 3600),
                     notes: "Notes 1",
-                    gymId: UUID(),
-                    gym: GetGymDto(address: "Address", zipCode: 12345, id: UUID(), name: "Gym 1", city: "City"),
+                    gymId: UUID().uuidString,
+                    gym: Components.Schemas.GetGymDto(id: UUID().uuidString, name: "Gym 1", address: "Address", city: "City", zipCode: 12345),
                     workoutExercises: [],
-                    workoutSummary: WorkoutSummary(totalTime: 60, totalSets: 2, totalReps: 25, totalWeight: 250, totalExercises: 1)
+                    workoutSummary: Components.Schemas.WorkoutSummary(totalTime: 60, totalSets: 2, totalReps: 25, totalWeight: 250, totalExercises: 1)
                 ),
-                exerciseId: UUID(),
+                exerciseId: UUID().uuidString,
                 workoutSets: [
-                    GetWorkoutSetDto(id: UUID(), order: 1, reps: 10, weight: 100, workoutExerciseId: UUID()),
-                    GetWorkoutSetDto(id: UUID(), order: 2, reps: 15, weight: 90, workoutExerciseId: UUID()),
+                    Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 1, reps: 10, weight: 100, workoutExerciseId: UUID().uuidString),
+                    Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 2, reps: 15, weight: 90, workoutExerciseId: UUID().uuidString),
                 ],
                 notes: "Workout 1 notes"
             ),
-            ExerciseWorkoutDto(
-                id: UUID(),
+            Components.Schemas.ExerciseWorkoutDto(
+                id: UUID().uuidString,
                 order: 2,
-                workout: GetWorkoutDto(
-                    id: UUID(),
+                workout: Components.Schemas.GetWorkoutDto(
+                    id: UUID().uuidString,
                     description: "Workout 2",
                     startAtUtc: Date().addingTimeInterval(-86400 * 2),
                     endAtUtc: Date().addingTimeInterval(-86400 * 2 + 3600),
                     notes: "Notes 2",
-                    gymId: UUID(),
-                    gym: GetGymDto(address: "Address", zipCode: 12345, id: UUID(), name: "Gym 1", city: "City"),
+                    gymId: UUID().uuidString,
+                    gym: Components.Schemas.GetGymDto(id: UUID().uuidString, name: "Gym 1", address: "Address", city: "City", zipCode: 12345),
                     workoutExercises: [],
-                    workoutSummary: WorkoutSummary(totalTime: 60, totalSets: 3, totalReps: 40, totalWeight: 350, totalExercises: 1)
+                    workoutSummary: Components.Schemas.WorkoutSummary(totalTime: 60, totalSets: 3, totalReps: 40, totalWeight: 350, totalExercises: 1)
                 ),
-                exerciseId: UUID(),
+                exerciseId: UUID().uuidString,
                 workoutSets: [
-                    GetWorkoutSetDto(id: UUID(), order: 1, reps: 12, weight: 105, workoutExerciseId: UUID()),
-                    GetWorkoutSetDto(id: UUID(), order: 2, reps: 14, weight: 95, workoutExerciseId: UUID()),
-                    GetWorkoutSetDto(id: UUID(), order: 3, reps: 10, weight: 110, workoutExerciseId: UUID()),
+                    Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 1, reps: 12, weight: 105, workoutExerciseId: UUID().uuidString),
+                    Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 2, reps: 14, weight: 95, workoutExerciseId: UUID().uuidString),
+                    Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 3, reps: 10, weight: 110, workoutExerciseId: UUID().uuidString),
                 ],
                 notes: "Workout 2 notes"
             ),
-            ExerciseWorkoutDto(
-                id: UUID(),
+            Components.Schemas.ExerciseWorkoutDto(
+                id: UUID().uuidString,
                 order: 3,
-                workout: GetWorkoutDto(
-                    id: UUID(),
+                workout: Components.Schemas.GetWorkoutDto(
+                    id: UUID().uuidString,
                     description: "Workout 3",
                     startAtUtc: Date().addingTimeInterval(-86400),
                     endAtUtc: Date().addingTimeInterval(-86400 + 3600),
                     notes: "Notes 3",
-                    gymId: UUID(),
-                    gym: GetGymDto(address: "Address", zipCode: 12345, id: UUID(), name: "Gym 1", city: "City"),
+                    gymId: UUID().uuidString,
+                    gym: Components.Schemas.GetGymDto(id: UUID().uuidString, name: "Gym 1", address: "Address", city: "City", zipCode: 12345),
                     workoutExercises: [],
-                    workoutSummary: WorkoutSummary(totalTime: 60, totalSets: 2, totalReps: 30, totalWeight: 280, totalExercises: 1)
+                    workoutSummary: Components.Schemas.WorkoutSummary(totalTime: 60, totalSets: 2, totalReps: 30, totalWeight: 280, totalExercises: 1)
                 ),
-                exerciseId: UUID(),
+                exerciseId: UUID().uuidString,
                 workoutSets: [
-                    GetWorkoutSetDto(id: UUID(), order: 1, reps: 11, weight: 102, workoutExerciseId: UUID()),
-                    GetWorkoutSetDto(id: UUID(), order: 3, reps: 9, weight: 108, workoutExerciseId: UUID()),
+                    Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 1, reps: 11, weight: 102, workoutExerciseId: UUID().uuidString),
+                    Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 3, reps: 9, weight: 108, workoutExerciseId: UUID().uuidString),
                 ],
                 notes: "Workout 3 notes"
             ),

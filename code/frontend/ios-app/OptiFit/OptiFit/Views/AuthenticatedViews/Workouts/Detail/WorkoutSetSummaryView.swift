@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WorkoutSetSummaryView: View {
-    let set: GetWorkoutSetDto
+    let set: Components.Schemas.GetWorkoutSetDto
     // Assumed maximum values to normalize the gauge.
     let maxReps: Int = 20
     let maxWeight: Double = 100.0
@@ -20,7 +20,7 @@ struct WorkoutSetSummaryView: View {
 
                 }
                 VStack {
-                    Text("Weight: \(set.weight, specifier: "%.1f")")
+                    Text("Weight: \(set.weight!, specifier: "%.1f")")
                 }
             }
         }
@@ -30,5 +30,5 @@ struct WorkoutSetSummaryView: View {
     }
 }
 #Preview {
-    WorkoutSetSummaryView(set: .init(id: UUID(), order: 1, reps: 10, weight: 20.0, workoutExerciseId: UUID()))
+    WorkoutSetSummaryView(set: .init(id: UUID().uuidString, order: 1, reps: 10, weight: 20.0, workoutExerciseId: UUID().uuidString))
 }

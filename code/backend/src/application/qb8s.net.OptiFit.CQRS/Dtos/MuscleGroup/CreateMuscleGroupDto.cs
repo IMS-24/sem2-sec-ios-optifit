@@ -2,8 +2,11 @@ using qb8s.net.OptiFit.CQRS.Dtos.Base;
 
 namespace qb8s.net.OptiFit.CQRS.Dtos.MuscleGroup;
 
-public class CreateMuscleGroupDto : BaseI18NDto
+public class CreateMuscleGroupDto
 {
+    public Guid? Id { get; set; }
+
+    public required string I18NCode { get; set; }
     // public IList<MuscleDto>? MuscleDtos { get; set; }
 }
 

@@ -2,9 +2,10 @@ using qb8s.net.OptiFit.Core.Entities.Base;
 
 namespace qb8s.net.OptiFit.CQRS.Dtos.Base;
 
-public class BaseI18NDto : BaseDto
+public class BaseI18NDto
 {
-    public required string I18NCode { get; set; }
+    public Guid Id { get; set; }
+    public string I18NCode { get; set; }
 }
 
 public class BaseI18NProfile : BaseProfile

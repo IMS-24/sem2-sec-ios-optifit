@@ -5,6 +5,7 @@ namespace qb8s.net.OptiFit.CQRS.Dtos.Workout;
 
 public class CreateWorkoutDto
 {
+    public Guid? Id { get; set; }
     public string? Description { get; set; } = null!;
     public DateTimeOffset StartAtUtc { get; set; }
     public DateTimeOffset? EndAtUtc { get; set; }
@@ -33,6 +34,7 @@ public class CreateWorkoutDtoProfile : Profile
 
 public class CreateWorkoutExerciseDto
 {
+    public Guid Id { get; set; }
     public int Order { get; set; }
     public GetExerciseDto Exercise { get; set; }
     public string? Notes { get; set; } = null!;
@@ -44,6 +46,7 @@ public class CreateWorkoutExerciseProfile : Profile
     public CreateWorkoutExerciseProfile()
     {
         CreateMap<CreateWorkoutExerciseDto, Core.Entities.WorkoutExercise>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.Notes, opt => opt.MapFrom(src => src.Notes))
             .ForMember(dest => dest.Order, opt => opt.MapFrom(src => src.Order))
             .ForMember(dest => dest.ExerciseId, opt => opt.MapFrom(src => src.Exercise.Id))
@@ -55,6 +58,7 @@ public class CreateWorkoutExerciseProfile : Profile
 
 public class CreateWorkoutSetDto
 {
+    public Guid Id { get; set; }
     public int Order { get; set; }
     public int Reps { get; set; }
     public decimal Weight { get; set; }

@@ -2,7 +2,7 @@ import Charts
 import SwiftUI
 
 struct WorkoutSummaryView: View {
-    var data: [String: WorkoutSummary?]
+    var data: [String: Components.Schemas.WorkoutSummary?]
     var currentMonday: Date
 
     private func weekdayString(from key: String) -> String {
@@ -51,7 +51,7 @@ struct WorkoutSummaryView: View {
                     ForEach(data.sorted(by: { $0.key < $1.key }), id: \.key) { dayKey, summary in
                         BarMark(
                             x: .value("Day", weekdayString(from: dayKey)),
-                            y: .value("Total Time", summary!.totalTime)
+                            y: .value("Total Time", summary!.totalTime ?? 0)
                         )
                         .foregroundStyle(.blue)
                     }
@@ -113,7 +113,7 @@ struct WorkoutSummaryView: View {
 
     /// Total time summed over the week (assumed to be in minutes).
     private var totalTime: Double {
-        data.values.reduce(0) { $0 + $1!.totalTime }
+        data.values.reduce(0) { $0 + $1!.totalTime! }
     }
 
     /// Format total time as hours and minutes.
@@ -123,28 +123,26 @@ struct WorkoutSummaryView: View {
         return "\(hours)h \(minutes)m"
     }
 
-    private var totalSets: Int {
-        data.values.reduce(0) { $0 + $1!.totalSets }
+    private var totalSets: Int32 {
+        data.values.reduce(0) { $0 + $1!.totalSets! }
     }
 
-    private var totalReps: Int {
-        data.values.reduce(0) { $0 + $1!.totalReps }
+    private var totalReps: Int32 {
+        data.values.reduce(0) { $0 + $1!.totalReps! }
     }
 
     private var totalWeight: Double {
-        data.values.reduce(0.0) {
-            $0 + (NSDecimalNumber(decimal: $1!.totalWeight).doubleValue)
-        }
+        data.values.reduce(0.0) { $0 + $1!.totalWeight! }
     }
 
-    private var totalExercises: Int {
-        data.values.reduce(0) { $0 + $1!.totalExercises }
+    private var totalExercises: Int32 {
+        data.values.reduce(0) { $0 + $1!.totalExercises! }
     }
 }
 
 struct DailySummaryCard: View {
     let dayKey: String
-    let summary: WorkoutSummary
+    let summary: Components.Schemas.WorkoutSummary
 
     // Convert the complete day string to a weekday abbreviation.
     private var weekday: String {
@@ -169,7 +167,7 @@ struct DailySummaryCard: View {
                     Image(systemName: "clock.fill")
                         .foregroundColor(.white)
                         .font(.caption)
-                    Text("\(Int(summary.totalTime)) min")
+                    Text("\(Int(summary.totalTime!)) min")
                         .font(.caption)
                         .foregroundColor(.white)
                 }
@@ -177,7 +175,7 @@ struct DailySummaryCard: View {
                     Image(systemName: "flame.fill")
                         .foregroundColor(.white)
                         .font(.caption)
-                    Text("\(summary.totalSets) sets")
+                    Text("\(summary.totalSets!) sets")
                         .font(.caption)
                         .foregroundColor(.white)
                 }
@@ -185,7 +183,7 @@ struct DailySummaryCard: View {
                     Image(systemName: "repeat")
                         .foregroundColor(.white)
                         .font(.caption)
-                    Text("\(summary.totalReps) reps")
+                    Text("\(summary.totalReps!) reps")
                         .font(.caption)
                         .foregroundColor(.white)
                 }
@@ -206,10 +204,10 @@ struct DailySummaryCard: View {
 struct WorkoutSummaryView_Previews: PreviewProvider {
     static var previews: some View {
         // Dummy data for previewing the summary view.
-        let dummyData: [String: WorkoutSummary] = [
-            "2025-03-09": WorkoutSummary(totalTime: 90, totalSets: 10, totalReps: 120, totalWeight: 500, totalExercises: 5),
-            "2025-03-10": WorkoutSummary(totalTime: 75, totalSets: 8, totalReps: 100, totalWeight: 400, totalExercises: 4),
-            "2025-03-11": WorkoutSummary(totalTime: 60, totalSets: 6, totalReps: 80, totalWeight: 300, totalExercises: 3),
+        let dummyData: [String: Components.Schemas.WorkoutSummary] = [
+            "2025-03-09": Components.Schemas.WorkoutSummary(totalTime: 90, totalSets: 10, totalReps: 120, totalWeight: 500, totalExercises: 5),
+            "2025-03-10": Components.Schemas.WorkoutSummary(totalTime: 75, totalSets: 8, totalReps: 100, totalWeight: 400, totalExercises: 4),
+            "2025-03-11": Components.Schemas.WorkoutSummary(totalTime: 60, totalSets: 6, totalReps: 80, totalWeight: 300, totalExercises: 3),
         ]
         // For preview, pass a fixed date for currentMonday.
         WorkoutSummaryView(data: dummyData, currentMonday: Date())

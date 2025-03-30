@@ -137,9 +137,119 @@ export class ExerciseClient {
     }
 
     /**
+     * @return Update Exercise
+     */
+    updateExercise(id: string, updateExerciseDto: UpdateExerciseDto): Observable<GetExerciseDto> {
+        let url_ = this.baseUrl + "/api/Exercise/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(updateExerciseDto);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateExercise(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateExercise(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<GetExerciseDto>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<GetExerciseDto>;
+        }));
+    }
+
+    protected processUpdateExercise(response: HttpResponseBase): Observable<GetExerciseDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GetExerciseDto;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<GetExerciseDto>(null as any);
+    }
+
+    /**
+     * @return Delete Exercise
+     */
+    deleteExercise(id: string): Observable<string> {
+        let url_ = this.baseUrl + "/api/Exercise/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteExercise(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteExercise(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<string>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<string>;
+        }));
+    }
+
+    protected processDeleteExercise(response: HttpResponseBase): Observable<string> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as string;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<string>(null as any);
+    }
+
+    /**
      * @return Get Exercise categories
      */
-    getExerciseCategories(): Observable<GetExerciseCategoryDto> {
+    getExerciseCategories(): Observable<GetExerciseCategoryDto[]> {
         let url_ = this.baseUrl + "/api/Exercise/categories";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -158,14 +268,14 @@ export class ExerciseClient {
                 try {
                     return this.processGetExerciseCategories(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<GetExerciseCategoryDto>;
+                    return _observableThrow(e) as any as Observable<GetExerciseCategoryDto[]>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<GetExerciseCategoryDto>;
+                return _observableThrow(response_) as any as Observable<GetExerciseCategoryDto[]>;
         }));
     }
 
-    protected processGetExerciseCategories(response: HttpResponseBase): Observable<GetExerciseCategoryDto> {
+    protected processGetExerciseCategories(response: HttpResponseBase): Observable<GetExerciseCategoryDto[]> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -175,7 +285,7 @@ export class ExerciseClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GetExerciseCategoryDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GetExerciseCategoryDto[];
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -183,7 +293,7 @@ export class ExerciseClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<GetExerciseCategoryDto>(null as any);
+        return _observableOf<GetExerciseCategoryDto[]>(null as any);
     }
 
     /**
@@ -237,59 +347,6 @@ export class ExerciseClient {
             }));
         }
         return _observableOf<GetExerciseStatisticsDto>(null as any);
-    }
-
-    /**
-     * @return Delete Exercise
-     */
-    deleteExercise(id: string): Observable<GetExerciseDto> {
-        let url_ = this.baseUrl + "/api/Exercise/{id}";
-        if (id === undefined || id === null)
-            throw new Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDeleteExercise(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processDeleteExercise(response_ as any);
-                } catch (e) {
-                    return _observableThrow(e) as any as Observable<GetExerciseDto>;
-                }
-            } else
-                return _observableThrow(response_) as any as Observable<GetExerciseDto>;
-        }));
-    }
-
-    protected processDeleteExercise(response: HttpResponseBase): Observable<GetExerciseDto> {
-        const status = response.status;
-        const responseBlob =
-            response instanceof HttpResponse ? response.body :
-            (response as any).error instanceof Blob ? (response as any).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GetExerciseDto;
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<GetExerciseDto>(null as any);
     }
 }
 
@@ -904,7 +961,7 @@ export class VirtualTrainerClient {
     /**
      * @return Get Motivational Quote
      */
-    getMotivationalQuotes(level: number): Observable<UserInsultCountDto> {
+    getMotivationalQuote(level: number): Observable<GetMotivationDto> {
         let url_ = this.baseUrl + "/api/VirtualTrainer/motivation/{level}";
         if (level === undefined || level === null)
             throw new Error("The parameter 'level' must be defined.");
@@ -920,20 +977,20 @@ export class VirtualTrainerClient {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetMotivationalQuotes(response_);
+            return this.processGetMotivationalQuote(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetMotivationalQuotes(response_ as any);
+                    return this.processGetMotivationalQuote(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<UserInsultCountDto>;
+                    return _observableThrow(e) as any as Observable<GetMotivationDto>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<UserInsultCountDto>;
+                return _observableThrow(response_) as any as Observable<GetMotivationDto>;
         }));
     }
 
-    protected processGetMotivationalQuotes(response: HttpResponseBase): Observable<UserInsultCountDto> {
+    protected processGetMotivationalQuote(response: HttpResponseBase): Observable<GetMotivationDto> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -943,7 +1000,7 @@ export class VirtualTrainerClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as UserInsultCountDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GetMotivationDto;
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -951,7 +1008,7 @@ export class VirtualTrainerClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<UserInsultCountDto>(null as any);
+        return _observableOf<GetMotivationDto>(null as any);
     }
 }
 
@@ -1147,50 +1204,46 @@ export interface PaginatedResultOfGetExerciseDto {
     hasNextPage?: boolean;
 }
 
-export interface BaseDto {
+export interface GetExerciseDto {
     id?: string | null;
-}
-
-export interface BaseI18NDto extends BaseDto {
     i18NCode?: string;
-}
-
-export interface GetExerciseDto extends BaseI18NDto {
     description?: string | null;
-    exerciseCategory?: string;
+    exerciseCategory?: GetExerciseCategoryDto;
     exerciseCategoryId?: string;
 }
 
-export interface PaginationDto {
-    pageSize?: number;
-    pageIndex?: number;
+export interface GetExerciseCategoryDto {
+    id?: string;
+    i18NCode?: string;
 }
 
-export interface SearchBaseDto extends PaginationDto {
-    id?: string | null;
+export interface SearchExerciseDto {
     orderBy?: string | null;
     orderDirection?: string | null;
-}
-
-export interface SearchI18NDto extends SearchBaseDto {
+    pageSize?: number;
+    pageIndex?: number;
     i18NCode?: string | null;
-}
-
-export interface SearchExerciseDto extends SearchI18NDto {
     description?: string | null;
     exerciseCategoryId?: string | null;
 }
 
-export interface CreateI18NDto {
+export interface CreateExerciseDto {
     i18NCode?: string;
-}
-
-export interface CreateExerciseDto extends CreateI18NDto {
     description?: string;
     exerciseCategoryId?: string;
+    createExerciseMuscleMappingDtos?: CreateExerciseMuscleMappingDto[];
 }
 
-export interface GetExerciseCategoryDto extends BaseI18NDto {
+export interface CreateExerciseMuscleMappingDto {
+    exerciseId?: string;
+    muscleId?: string;
+    intensity?: number | null;
+}
+
+export interface UpdateExerciseDto {
+    i18NCode?: string | null;
+    description?: string | null;
+    exerciseCategoryId?: string;
 }
 
 export interface GetExerciseStatisticsDto {
@@ -1199,7 +1252,8 @@ export interface GetExerciseStatisticsDto {
     exerciseWorkoutsDto?: ExerciseWorkoutDto[];
 }
 
-export interface ExerciseWorkoutDto extends BaseDto {
+export interface ExerciseWorkoutDto {
+    id?: string;
     order?: number;
     workout?: GetWorkoutDto;
     exerciseId?: string;
@@ -1207,7 +1261,8 @@ export interface ExerciseWorkoutDto extends BaseDto {
     notes?: string;
 }
 
-export interface GetWorkoutDto extends BaseDto {
+export interface GetWorkoutDto {
+    id?: string;
     description?: string;
     startAtUtc?: Date;
     endAtUtc?: Date | null;
@@ -1218,17 +1273,16 @@ export interface GetWorkoutDto extends BaseDto {
     workoutSummary?: WorkoutSummary;
 }
 
-export interface BaseNamedDto extends BaseDto {
+export interface GetGymDto {
+    id?: string;
     name?: string;
-}
-
-export interface GetGymDto extends BaseNamedDto {
     address?: string | null;
     city?: string | null;
     zipCode?: number | null;
 }
 
-export interface WorkoutExerciseDto extends BaseDto {
+export interface WorkoutExerciseDto {
+    id?: string;
     order?: number;
     workoutId?: string;
     exercise?: GetExerciseDto;
@@ -1236,7 +1290,8 @@ export interface WorkoutExerciseDto extends BaseDto {
     notes?: string;
 }
 
-export interface GetWorkoutSetDto extends BaseDto {
+export interface GetWorkoutSetDto {
+    id?: string;
     order?: number;
     reps?: number;
     weight?: number;
@@ -1261,17 +1316,20 @@ export interface PaginatedResultOfGetGymDto {
     hasNextPage?: boolean;
 }
 
-export interface SearchNamedDto extends SearchBaseDto {
+export interface SearchGymsDto {
     name?: string | null;
-}
-
-export interface SearchGymsDto extends SearchNamedDto {
     address?: string | null;
     city?: string | null;
     zipCode?: number | null;
+    orderBy?: string | null;
+    orderDirection?: string | null;
+    pageSize?: number;
+    pageIndex?: number;
 }
 
-export interface CreateGymDto extends BaseNamedDto {
+export interface CreateGymDto {
+    id?: string;
+    name?: string;
     address?: string | null;
     city?: string | null;
     zipCode?: number | null;
@@ -1287,10 +1345,17 @@ export interface PaginatedResultOfGetMuscleDto {
     hasNextPage?: boolean;
 }
 
-export interface GetMuscleDto extends BaseI18NDto {
+export interface GetMuscleDto {
+    id?: string | null;
+    i18NCode?: string;
 }
 
-export interface SearchMuscleDto extends SearchI18NDto {
+export interface SearchMuscleDto {
+    i18NCode?: string | null;
+    orderBy?: string | null;
+    orderDirection?: string | null;
+    pageIndex?: number;
+    pageSize?: number;
 }
 
 export interface PaginatedResultOfGetMuscleGroupDto {
@@ -1303,10 +1368,17 @@ export interface PaginatedResultOfGetMuscleGroupDto {
     hasNextPage?: boolean;
 }
 
-export interface GetMuscleGroupDto extends BaseI18NDto {
+export interface GetMuscleGroupDto {
+    id?: string | null;
+    i18NCode?: string;
 }
 
-export interface SearchMuscleGroupDto extends SearchI18NDto {
+export interface SearchMuscleGroupDto {
+    i18NCode?: string | null;
+    orderBy?: string | null;
+    orderDirection?: string | null;
+    pageSize?: number;
+    pageIndex?: number;
 }
 
 export interface PaginatedResultOfMuscleGroupMappingDto {
@@ -1319,12 +1391,18 @@ export interface PaginatedResultOfMuscleGroupMappingDto {
     hasNextPage?: boolean;
 }
 
-export interface MuscleGroupMappingDto extends BaseDto {
+export interface MuscleGroupMappingDto {
+    id?: string;
     muscleGroupId?: string;
     muscleId?: string;
 }
 
-export interface SearchMuscleGroupMappingDto extends SearchBaseDto {
+export interface SearchMuscleGroupMappingDto {
+    id?: string | null;
+    pageSize?: number;
+    pageIndex?: number;
+    orderBy?: string | null;
+    orderDirection?: string | null;
 }
 
 export interface UserProfileDto {
@@ -1363,15 +1441,10 @@ export interface UpdateUserProfileDto {
 }
 
 export interface InitializeUserProfileDto {
-    firstName?: string;
-    lastName?: string;
-    oId?: string;
-    email?: string;
     dateOfBirthUtc?: Date;
 }
 
-export interface UserInsultCountDto {
-    userId?: string;
+export interface GetMotivationDto {
     message?: string;
     totalInsultCount?: number;
 }
@@ -1386,12 +1459,18 @@ export interface PaginatedResultOfGetWorkoutDto {
     hasNextPage?: boolean;
 }
 
-export interface SearchWorkoutDto extends SearchBaseDto {
+export interface SearchWorkoutDto {
+    id?: string | null;
     from?: Date | null;
     to?: Date | null;
+    orderBy?: string | null;
+    orderDirection?: string | null;
+    pageSize?: number;
+    pageIndex?: number;
 }
 
 export interface CreateWorkoutDto {
+    id?: string | null;
     description?: string | null;
     startAtUtc?: Date;
     endAtUtc?: Date | null;
@@ -1401,6 +1480,7 @@ export interface CreateWorkoutDto {
 }
 
 export interface CreateWorkoutExerciseDto {
+    id?: string;
     order?: number;
     exercise?: GetExerciseDto;
     notes?: string | null;
@@ -1408,6 +1488,7 @@ export interface CreateWorkoutExerciseDto {
 }
 
 export interface CreateWorkoutSetDto {
+    id?: string;
     order?: number;
     reps?: number;
     weight?: number;

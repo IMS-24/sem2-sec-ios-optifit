@@ -4,10 +4,10 @@ import SwiftUI
 
 @MainActor
 class UserProfileViewModel: ObservableObject {
-    @Published var profile: UserProfileDto?
-    @Published var stats: UserStatsDto?
+    @Published var profile: Components.Schemas.UserProfileDto?
+    @Published var stats: Components.Schemas.UserStatsDto?
     @Published var errorMessage: ErrorMessage?
-    @Published var workoutSummary: [WorkoutSummary] = []
+    @Published var workoutSummary: [Components.Schemas.WorkoutSummary] = []
     @Published var isLoading: Bool = false
     @Published var oId: UUID?
 
@@ -39,14 +39,14 @@ class UserProfileViewModel: ObservableObject {
         isLoading = false
     }
 
-    func setProfile(_ profile: UserProfileDto) {
+    func setProfile(_ profile: Components.Schemas.UserProfileDto) {
         self.profile = profile
     }
     func unsetProfile() {
         self.profile = nil
     }
 
-    func updateProfile(profileToUpdate: UpdateUserProfileDto) async {
+    func updateProfile(profileToUpdate: Components.Schemas.UpdateUserProfileDto) async {
 
         isLoading = true
         errorMessage = nil
@@ -70,7 +70,7 @@ class UserProfileViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
         do {
-            let success = try await profileService.deleteProfile(userId: currentUser.id)
+            let success = try await profileService.deleteProfile()
             if success {
                 self.profile = nil
             } else {
@@ -82,7 +82,7 @@ class UserProfileViewModel: ObservableObject {
         isLoading = false
     }
 
-    func initializeProfile(_ profile: UserProfileInitializeDto) async {
+    func initializeProfile(_ profile: Components.Schemas.InitializeUserProfileDto) async {
         isLoading = true
         errorMessage = nil
         do {

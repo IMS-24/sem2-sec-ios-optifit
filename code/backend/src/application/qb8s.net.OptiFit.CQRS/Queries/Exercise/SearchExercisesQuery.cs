@@ -26,14 +26,14 @@ public class SearchExercisesQueryHandler(
             .AsQueryable();
         //@formatter:on
         var predicate = PredicateBuilder.New<Core.Entities.Exercise>(true);
-        if (request.Search.Id.HasValue)
-        {
-            predicate = predicate.And(x => x.Id == request.Search.Id);
-            query = query.Where(predicate);
-            // return Task.FromResult(new PaginatedResult<GetExerciseDto>(request.Search.PageSize,
-            //     request.Search.PageIndex,
-            //     query.AsEnumerable().Select(mapper.Map<GetExerciseDto>)));
-        }
+        // if (request.Search.Id.HasValue)
+        // {
+        //     predicate = predicate.And(x => x.Id == request.Search.Id);
+        //     query = query.Where(predicate);
+        //     // return Task.FromResult(new PaginatedResult<GetExerciseDto>(request.Search.PageSize,
+        //     //     request.Search.PageIndex,
+        //     //     query.AsEnumerable().Select(mapper.Map<GetExerciseDto>)));
+        // }
 
 
         if (request.Search.I18NCode != null)

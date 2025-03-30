@@ -1,27 +1,27 @@
 import SwiftUI
 
 struct WorkoutExerciseListEntryView: View {
-    @Binding var workoutExercise: CreateWorkoutExerciseDto
+    @Binding var workoutExercise: Components.Schemas.CreateWorkoutExerciseDto
 
     // Total weight computed from each set: weight * reps.
     var totalWeight: Double {
-        workoutExercise.workoutSets.reduce(0) { sum, set in
+        workoutExercise.workoutSets?.reduce(0) { sum, set in
             let weight = set.weight ?? 0.0
             let reps = set.reps ?? 1
             return sum + weight * Double(reps)
-        }
+        } ?? 0
     }
 
     // Total reps computed from each set.
     var totalReps: Int {
-        workoutExercise.workoutSets.reduce(0) { $0 + ($1.reps ?? 0) }
+        Int(workoutExercise.workoutSets?.reduce(0) { $0 + ($1.reps ?? 0) } ?? 0)
     }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             // Header Row: Exercise name and order.
             HStack {
-                Text(workoutExercise.exercise.i18NCode)
+                Text((workoutExercise.exercise?.i18NCode)!)
                     .font(.headline)
                 Spacer()
                 Text("Order: \(workoutExercise.order)")
@@ -35,7 +35,7 @@ struct WorkoutExerciseListEntryView: View {
                     Text("Total Sets")
                         .font(.caption)
                         .foregroundColor(.secondary)
-                    Text("\(workoutExercise.workoutSets.count)")
+                    Text("\(workoutExercise.workoutSets?.count)")
                         .font(.body)
                 }
                 Spacer()
