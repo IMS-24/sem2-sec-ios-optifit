@@ -37,79 +37,51 @@ struct WorkoutDetailView: View {
 
     var body: some View {
         ScrollView {
-//            VStack(spacing: 16) {
-//                // Workout Overview Section with icons and stats.
-//                WorkoutOverviewSection(
-//                    start: formattedStart,
-//                    end: formattedEnd,
-//                    gym: workout.gym!,
-//                    summary: summary
-//                )
-//
-//                // Description Section
-//                Section(header: Text("Description").font(.headline)) {
-//                    if isEditing {
-//                        TextField("Description", text: $descriptionText)
-//                            .textFieldStyle(RoundedBorderTextFieldStyle())
-//                    } else {
-//                        Text(descriptionText)
-//                    }
-//                }
-//                .padding(.horizontal)
-//
-//                // Notes Section
-//                Section(header: Text("Notes").font(.headline)) {
-//                    if isEditing {
-//                        TextField("Notes", text: $notesText)
-//                            .textFieldStyle(RoundedBorderTextFieldStyle())
-//                    } else {
-//                        Text(notesText)
-//                    }
-//                }
-//                .padding(.horizontal)
-//
-//                // Exercises Section – List of performed exercises.
-//                VStack(alignment: .leading, spacing: 8) {
-//                    Text("Exercises")
-//                        .font(.headline)
-//                        .padding(.horizontal)
-//                    if let exercises = workout.workoutExercises, !exercises.isEmpty {
-//                        ForEach(exercises) { exercise in
-//                            NavigationLink {
-//                                WorkoutExerciseDetailsView(exercise: exercise)
-//                            } label: {
-//                                HStack {
-//                                    Text(exercise.exercise.i18NCode)
-//                                        .font(.body)
-//                                        .foregroundColor(Color(.primaryText))
-//                                    Spacer()
-//                                    Image(systemName: "chevron.right")
-//                                        .foregroundColor(.secondary)
-//                                }
-//                                .padding()
-//                                .background(Color(.secondaryBackground))
-//                                .cornerRadius(8)
-//                            }
-//                            .padding(.horizontal)
-//                        }
-//                    } else {
-//                        Text("No exercises available.")
-//                            .foregroundColor(.secondary)
-//                            .padding(.horizontal)
-//                    }
-//                }
-//
-//                Spacer()
-//            }
-//            .padding(.vertical)
-//        }
-//        .navigationTitle("Workout Detail")
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarTrailing) {
-//                Button(isEditing ? "Done" : "Edit") {
-//                    isEditing.toggle()
-//                }
-//            }
+            VStack(spacing: 16) {
+                //                // Workout Overview Section with icons and stats.
+                WorkoutOverviewSection(
+                    start: formattedStart,
+                    end: formattedEnd,
+                    gym: workout.gym!,
+                    summary: summary
+                )
+
+                // Description Section
+                Section(header: Text("Description").font(.headline)) {
+                    if isEditing {
+                        TextField("Description", text: $descriptionText)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                    } else {
+                        Text(descriptionText)
+                    }
+                }
+                .padding(.horizontal)
+
+                // Notes Section
+                Section(header: Text("Notes").font(.headline)) {
+                    if isEditing {
+                        TextField("Notes", text: $notesText)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                    } else {
+                        Text(notesText)
+                    }
+                }
+                .padding(.horizontal)
+
+                // Exercises Section – List of performed exercises.
+                WorkoutExercisesView(workout: workout)
+
+                Spacer()
+            }
+            .padding(.vertical)
+        }
+        .navigationTitle("Workout Detail")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(isEditing ? "Done" : "Edit") {
+                    isEditing.toggle()
+                }
+            }
         }
     }
 }

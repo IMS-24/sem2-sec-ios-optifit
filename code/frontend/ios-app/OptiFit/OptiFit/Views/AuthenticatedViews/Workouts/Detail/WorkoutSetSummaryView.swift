@@ -7,26 +7,21 @@ struct WorkoutSetSummaryView: View {
     let maxWeight: Double = 100.0
 
     var body: some View {
-        VStack(spacing: 8) {
-            HStack {
-                Text("Set \(set.order)")
+        VStack(alignment: .leading, spacing: 8) {
+            HStack{
+                Text("\(set.order!)")
                     .font(.headline)
-                    .foregroundColor(Color(.primaryText))
+                    .foregroundColor(Color(.primaryAccent))
                 Spacer()
-            }
-            HStack(spacing: 16) {
-                VStack {
-                    Text("Reps: \(set.reps)")
-
-                }
-                VStack {
-                    Text("Weight: \(set.weight!, specifier: "%.1f")")
-                }
+                Text("Reps: \(set.reps!)")
+                Spacer()
+                Text("Weight: \(set.weight!, specifier: "%.1f") kg")
             }
         }
-        .padding()
-        .background(Color(.secondaryBackground))
-        .cornerRadius(10)
+            .padding()
+            .background(Color(.secondaryBackground))
+            .cornerRadius(12)
+       
     }
 }
 #Preview {

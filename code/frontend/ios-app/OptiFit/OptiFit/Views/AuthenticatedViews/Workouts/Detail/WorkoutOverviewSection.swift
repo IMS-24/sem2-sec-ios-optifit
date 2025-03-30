@@ -18,7 +18,7 @@ struct WorkoutOverviewSection: View {
             }
             // Gym Location Row
             HStack {
-                Label("\(gym.name), \(gym.city)", systemImage: "mappin.and.ellipse")
+                Label("\(gym.name!), \(gym.city!)", systemImage: "mappin.and.ellipse")
                     .font(.subheadline)
                 Spacer()
             }

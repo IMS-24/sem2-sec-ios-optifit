@@ -1,51 +1,23 @@
 import SwiftUI
 
 struct WorkoutExerciseDetailsView: View {
-    let exercise: Components.Schemas.WorkoutExerciseDto
+    let workoutExercise: Components.Schemas.WorkoutExerciseDto
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                // Header: Exercise title and description.
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(exercise.exercise!.i18NCode!)
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color(.primaryText))
-                    if let desc = exercise.exercise?.description, !desc.isEmpty {
-                        Text(desc)
-                            .font(.body)
-                            .foregroundColor(Color(.primaryText))
-                    }
-                }
-                .padding(.horizontal)
-
-                // Instead of one combined bar chart, show each set as its own graphical card.
-                if let sets = exercise.workoutSets, !sets.isEmpty {
-                    Text("Set Details")
-                        .font(.headline)
-                        .padding(.horizontal)
-                    ForEach(sets.sorted(by: { $0.order! < $1.order! }), id: \.id) { set in
-                        WorkoutSetSummaryView(set: set)
-                            .padding(.horizontal)
-                    }
-                } else {
-                    Text("No sets available.")
-                        .foregroundColor(.secondary)
-                        .padding(.horizontal)
-                }
-
+                WorkoutExerciseSetDetailView(workoutSets: workoutExercise.workoutSets)
                 Spacer()
             }
             .padding(.vertical)
         }
-        .navigationTitle("Exercise Details")
+        .navigationTitle(workoutExercise.exercise!.i18NCode!)
     }
 }
 #Preview {
     let legs = Components.Schemas.GetExerciseCategoryDto(id: UUID().uuidString, i18NCode: "Legs")
     WorkoutExerciseDetailsView(
-        exercise: Components.Schemas.WorkoutExerciseDto(
+        workoutExercise: Components.Schemas.WorkoutExerciseDto(
             id: UUID().uuidString,
             order: 1,
             workoutId: UUID().uuidString,

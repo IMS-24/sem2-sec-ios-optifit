@@ -32,6 +32,9 @@
       },
       "shouldTranslate" : false
     },
+    "%d" : {
+
+    },
     "%d reps" : {
 
     },
@@ -308,7 +311,6 @@
       }
     },
     "Done" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -405,9 +407,6 @@
           }
         }
       }
-    },
-    "Exercise Details" : {
-
     },
     "Exercise Name" : {
       "localizations" : {
@@ -602,6 +601,9 @@
     "No exercises added yet." : {
 
     },
+    "No exercises available." : {
+
+    },
     "No exercises performed yet." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -704,6 +706,9 @@
       }
     },
     "Reps Progress" : {
+
+    },
+    "Reps: %d" : {
 
     },
     "Reps: %d, Weight: %.2f" : {
@@ -943,7 +948,7 @@
     "Weight Progress" : {
 
     },
-    "Weight: %.1f" : {
+    "Weight: %.1f kg" : {
 
     },
     "Welcome to OptiFit, your ultimate fitness companion. Track workouts, monitor progress, and get motivated every day!" : {
@@ -953,7 +958,6 @@
 
     },
     "Workout Detail" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
