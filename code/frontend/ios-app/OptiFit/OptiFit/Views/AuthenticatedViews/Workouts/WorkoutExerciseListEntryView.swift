@@ -24,7 +24,7 @@ struct WorkoutExerciseListEntryView: View {
                 Text((workoutExercise.exercise?.i18NCode)!)
                     .font(.headline)
                 Spacer()
-                Text("Order: \(workoutExercise.order)")
+                Text("Order: \(workoutExercise.order!)")
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
@@ -35,7 +35,7 @@ struct WorkoutExerciseListEntryView: View {
                     Text("Total Sets")
                         .font(.caption)
                         .foregroundColor(.secondary)
-                    Text("\(workoutExercise.workoutSets?.count)")
+                    Text("\(workoutExercise.workoutSets?.count ?? 0)")
                         .font(.body)
                 }
                 Spacer()

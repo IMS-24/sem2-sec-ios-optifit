@@ -77,6 +77,7 @@ class ExerciseViewModel: ObservableObject {
         errorMessage = nil
         do {
             searchModel.pageIndex = 0
+            searchModel.pageSize = 40
             currentPage = 0
             let result = try await exerciseService.searchExercises(searchModel: searchModel)
             exercises = result.items ?? []

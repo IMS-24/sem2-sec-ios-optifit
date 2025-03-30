@@ -2,37 +2,19 @@ import SwiftUI
 
 struct WorkoutTrackingView: View {
     @Environment(\.dismiss) private var dismiss
-    let gym: Components.Schemas.GetGymDto
-    let exerciseCategory: Components.Schemas.GetExerciseCategoryDto
-    let workoutStartDate: Date
 
-    @State private var workoutExercises: [Components.Schemas.CreateWorkoutExerciseDto] = []
     @State private var navigateToExerciseSheet: Bool = false
 
     @StateObject private var workoutViewModel = WorkoutViewModel()
-    @State private var description: String = ""
+    @EnvironmentObject private var currentWorkoutViewModel: CurrentWorkoutViewModel
 
-    // Timer-related state for stopwatch functionality.
-    @State private var elapsedTime: TimeInterval = 0
-    @State private var timer: Timer? = nil
     @State private var showCancelConfirmation = false
-
-    // Computed property that converts exerciseCategory.id to a UUID.
-    var categoryId: UUID {
-        do {
-            // Assuming exerciseCategory.id is of a type that can be cast to Decoder (which is unusual)
-            let id = try UUID(from: exerciseCategory.id as! Decoder)
-            return id
-        } catch {
-            return UUID() // Fallback if conversion fails.
-        }
-    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             // Header: Workout category (motto)
             HStack {
-                Text(exerciseCategory.i18NCode!)
+                Text(currentWorkoutViewModel.selectedExerciseCategory?.i18NCode ?? "Unknown")
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(Color(.primaryText))
@@ -45,7 +27,7 @@ struct WorkoutTrackingView: View {
                 HStack(spacing: 4) {
                     Image(systemName: "mappin.and.ellipse")
                         .foregroundColor(Color(.primaryAccent))
-                    Text("\(gym.name), \(gym.city)")
+                    Text("\(currentWorkoutViewModel.selectedGym?.name ?? "Unkown"), \(currentWorkoutViewModel.selectedGym?.city ?? "Unknown")")
                         .font(.subheadline)
                         .foregroundColor(Color(.primaryText))
                 }
@@ -74,12 +56,12 @@ struct WorkoutTrackingView: View {
             }
             .padding(.vertical, 8)
 
-            // Description Field
+            // Notes Field
             VStack(alignment: .leading, spacing: 4) {
-                Text("Description")
+                Text("Notes")
                     .font(.headline)
                     .foregroundColor(Color(.primaryText))
-                TextEditor(text: $description)
+                TextEditor(text: $currentWorkoutViewModel.notes)
                     .frame(height: 60)
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
@@ -89,26 +71,26 @@ struct WorkoutTrackingView: View {
             .padding(.horizontal)
 
             // Exercise List Section
-            if workoutExercises.isEmpty {
+            if currentWorkoutViewModel.workoutExercises.isEmpty {
                 Text("No exercises added yet.")
                     .foregroundColor(.gray)
                     .padding(.vertical)
                     .padding(.horizontal)
             } else {
                 List {
-                    ForEach(workoutExercises.indices, id: \.self) { index in
+                    ForEach(currentWorkoutViewModel.workoutExercises.indices, id: \.self) { index in
                         NavigationLink(
                             destination: WorkoutExerciseEditView(
-                                workoutExercise: $workoutExercises[index]
+                                workoutExercise: $currentWorkoutViewModel.workoutExercises[index]
                             )
                         ) {
                             WorkoutExerciseListEntryView(
-                                workoutExercise: $workoutExercises[index]
+                                workoutExercise: $currentWorkoutViewModel.workoutExercises[index]
                             )
                         }
                     }
-                    .onDelete(perform: deleteExercise)
-                    .onMove(perform: moveExercise)
+                    .onDelete(perform: currentWorkoutViewModel.removeExercise)
+                    .onMove(perform: currentWorkoutViewModel.moveExercise)
                 }
                 .listStyle(InsetGroupedListStyle())
             }
@@ -150,29 +132,29 @@ struct WorkoutTrackingView: View {
         .sheet(isPresented: $navigateToExerciseSheet) {
             NavigationStack {
                 ExerciseSelectionView(
-                    exerciseCategoryId: categoryId,
-                    onExerciseSelected: { newExercise in
+                    onSave: { newExercise in
                         // Set order for the new exercise before appending.
                         var newExerciseWithOrder = newExercise
-                        newExerciseWithOrder.order = Int32(workoutExercises.count + 1)
-                        workoutExercises.append(newExerciseWithOrder)
+                        newExerciseWithOrder.order = Int32(currentWorkoutViewModel.workoutExercises.count + 1)
+                        currentWorkoutViewModel.workoutExercises.append(newExerciseWithOrder)
                         navigateToExerciseSheet = false
                     },
-                    order: workoutExercises.count + 1
+                    order: currentWorkoutViewModel.workoutExercises.count + 1
                 )
             }
         }
+        //TODO: FIX Cancel Alert
         // Cancel confirmation alert.
-        .alert(isPresented: $showCancelConfirmation) {
-            Alert(
-                title: Text("Cancel Workout"),
-                message: Text("Are you sure you want to cancel this workout?"),
-                primaryButton: .destructive(Text("Cancel Workout")) {
-                    dismiss()
-                },
-                secondaryButton: .cancel()
-            )
-        }
+        //        .alert(isPresented: $showCancelConfirmation) {
+        //            Alert(
+        //                title: Text("Cancel Workout"),
+        //                message: Text("Are you sure you want to cancel this workout?"),
+        //                primaryButton: .destructive(Text("Cancel Workout")) {
+        //                    dismiss()
+        //                },
+        //                secondaryButton: .cancel()
+        //            )
+        //        }
         // Error alert.
         .alert(item: $workoutViewModel.errorMessage) { error in
             Alert(
@@ -182,66 +164,37 @@ struct WorkoutTrackingView: View {
             )
         }
         .onAppear {
-            startTimer()
+            currentWorkoutViewModel.startTimer()
         }
         .onDisappear {
-            timer?.invalidate()
+            currentWorkoutViewModel.invalidateTimer()
         }
     }
 
     var formattedStartTime: String {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
-        return formatter.string(from: workoutStartDate)
+        return formatter.string(from: currentWorkoutViewModel.workoutStartDate)
     }
 
     var elapsedTimeString: String {
-        let minutes = Int(elapsedTime) / 60
-        let seconds = Int(elapsedTime) % 60
+        let minutes = Int(currentWorkoutViewModel.elapsedTime) / 60
+        let seconds = Int(currentWorkoutViewModel.elapsedTime) % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
 
-    private func startTimer() {
-        elapsedTime = Date().timeIntervalSince(workoutStartDate)
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-            elapsedTime = Date().timeIntervalSince(workoutStartDate)
-        }
-    }
-
-    private func deleteExercise(at offsets: IndexSet) {
-        workoutExercises.remove(atOffsets: offsets)
-        updateExerciseOrders()
-    }
-
-    private func moveExercise(from source: IndexSet, to destination: Int) {
-        workoutExercises.move(fromOffsets: source, toOffset: destination)
-        updateExerciseOrders()
-    }
-
-    // Update each exercise's order property based on its current index.
-    private func updateExerciseOrders() {
-        for index in workoutExercises.indices {
-            workoutExercises[index].order = Int32(index) + 1
-        }
-    }
-
     private func saveWorkout() {
-        let workout = Components.Schemas.CreateWorkoutDto(
-            description: description,
-            startAtUtc: workoutStartDate,
-            endAtUtc: Date(),
-            notes: "TODO: Implement notes on UI",
-            gymId: gym.id,
-            workoutExercises: workoutExercises
-        )
         Task {
-            let _ = await workoutViewModel.saveWorkout(workout)
-            dismiss()
+            if let savedWorkout = await currentWorkoutViewModel.saveWorkout() {
+                workoutViewModel.appendWorkout(savedWorkout)
+                dismiss()
+            }
         }
     }
 
     // Only show the cancel confirmation; let the alert action handle dismissal.
     private func cancelWorkout() {
         showCancelConfirmation = true
+        currentWorkoutViewModel.cancelWorkout()
     }
 }

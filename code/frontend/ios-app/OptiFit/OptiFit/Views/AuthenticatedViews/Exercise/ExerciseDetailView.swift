@@ -11,25 +11,15 @@ struct ExerciseDetailView: View {
     @State private var editableDescription: String
     @State private var editableCategory: Components.Schemas.GetExerciseCategoryDto
     @State private var newCategoryId: UUID
-    
+
     // Added startEditing parameter to allow launching in edit mode
     init(exercise: Components.Schemas.GetExerciseDto, startEditing: Bool = false) {
-        var categoryId: UUID {
-            do {
-                // Assuming exerciseCategory.id is of a type that can be cast to Decoder (which is unusual)
-                let id = try UUID(from: exercise.exerciseCategory?.id as! Decoder)
-                return id
-            } catch {
-                return UUID()  // Fallback if conversion fails.
-            }
-        }
         self.exercise = exercise
         _editableName = State(initialValue: exercise.i18NCode!)
         _editableDescription = State(initialValue: exercise.description ?? "")
         _editableCategory = State(initialValue: exercise.exerciseCategory!)
         _isEditing = State(initialValue: startEditing)
-        //TODO: FIX selection
-        _newCategoryId = State(initialValue: categoryId)
+        _newCategoryId = State(initialValue: UUID(uuidString: exercise.exerciseCategoryId!) ?? UUID())
     }
 
     var body: some View {
@@ -113,16 +103,7 @@ struct ExerciseDetailView: View {
             .padding(.vertical)
             .onAppear {
                 Task {
-                    var exerciseId: UUID {
-                        do {
-                            // Assuming exerciseCategory.id is of a type that can be cast to Decoder (which is unusual)
-                            let id = try UUID(from: exercise.id as! Decoder)
-                            return id
-                        } catch {
-                            return UUID()  // Fallback if conversion fails.
-                        }
-                    }
-                    let res = await exerciseViewModel.loadStatistics(exerciseId: exerciseId)
+                    let res = await exerciseViewModel.loadStatistics(exerciseId: UUID(uuidString: exercise.id!) ?? UUID())
                     self.getExerciseStatisticsDto = res
                 }
             }
@@ -154,16 +135,9 @@ struct ExerciseDetailView: View {
                                     //                                exerciseCategory: editableCategory
                             )
                             // Call view model update; assume it returns a Bool indicating success.
-                            var exerciseId: UUID {
-                                do {
-                                    // Assuming exerciseCategory.id is of a type that can be cast to Decoder (which is unusual)
-                                    let id = try UUID(from: exercise.id as! Decoder)
-                                    return id
-                                } catch {
-                                    return UUID()  // Fallback if conversion fails.
-                                }
-                            }
-                            let success = await exerciseViewModel.updateExercise(id: exerciseId, exerciseDto: updatedExercise)
+                            let success = await exerciseViewModel.updateExercise(
+                                id: UUID(uuidString: exercise.id!) ?? UUID(),
+                                exerciseDto: updatedExercise)
                             if success {
                                 isEditing = false
                             } else {

@@ -19,7 +19,7 @@ struct ExerciseSetDetailView: View {
                 id: UUID().uuidString,
                 order: Int32(order),
                 exercise: selectedExercise,
-                notes: "Frontend - <Not implemented yet>",
+                notes: "",
                 workoutSets: []
             ))
     }
@@ -41,6 +41,7 @@ struct ExerciseSetDetailView: View {
                             }
                         },
                         onUpdateSet: { index, newReps, newWeight in
+                            print("Update set:\(index): [\(newReps), \(newWeight)]")
                             if createWorkoutExerciseDto.workoutSets != nil {
                                 let repsValue = Int(newReps) ?? 0
                                 let weightValue = Double(newWeight) ?? 0.0
@@ -57,7 +58,18 @@ struct ExerciseSetDetailView: View {
                 }
 
                 Section("Notes") {
-                    Text("Coming Soon")
+                    TextEditor(
+                        text: Binding(
+                            get: { createWorkoutExerciseDto.notes ?? "" },
+                            set: { createWorkoutExerciseDto.notes = $0 }
+                        )
+                    )
+                    .frame(height: 150)  // Adjust height as needed
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                    )
+                    .padding(.vertical, 4)
                 }
             }
             .navigationTitle("Add Set Info")

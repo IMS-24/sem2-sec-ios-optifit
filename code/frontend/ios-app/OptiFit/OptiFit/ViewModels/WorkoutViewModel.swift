@@ -20,6 +20,7 @@ class WorkoutViewModel: ObservableObject {
         errorMessage = nil
         do {
             currentPage = 0
+            searchModel.pageSize = Int32(100)
             let result = try await workoutService.searchWorkouts(searchModel: searchModel)
             workouts = result.items ?? []
             totalPages = (Int)(result.totalPages!)
@@ -60,6 +61,10 @@ class WorkoutViewModel: ObservableObject {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
         isLoading = false
+    }
+
+    func appendWorkout(_ workout: Components.Schemas.GetWorkoutDto) {
+        self.workouts.append(workout)
     }
 
     func updateSearchModel(_ newModel: Components.Schemas.SearchWorkoutDto) {

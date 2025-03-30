@@ -57,6 +57,8 @@ struct WorkoutDetailView: View {
                 }
                 .padding(.horizontal)
 
+                // Exercises Section – List of performed exercises.
+                WorkoutExercisesView(workout: workout)
                 // Notes Section
                 Section(header: Text("Notes").font(.headline)) {
                     if isEditing {
@@ -67,9 +69,6 @@ struct WorkoutDetailView: View {
                     }
                 }
                 .padding(.horizontal)
-
-                // Exercises Section – List of performed exercises.
-                WorkoutExercisesView(workout: workout)
 
                 Spacer()
             }
@@ -89,7 +88,23 @@ struct WorkoutDetailView: View {
 #Preview {
     WorkoutDetailView(
         workout: Components.Schemas.GetWorkoutDto(
-            id: UUID().uuidString, description: "", startAtUtc: Date(), endAtUtc: Date(), notes: "Notes", gymId: UUID().uuidString,
-            gym: Components.Schemas.GetGymDto(id: UUID().uuidString, name: "Home", address: "Daham", city: "Graz", zipCode: 8020), workoutExercises: [],
+            id: UUID().uuidString,
+            description: "",
+            startAtUtc: Date(),
+            endAtUtc: Date(),
+            notes: "Notes",
+            gymId: UUID().uuidString,
+            gym: Components.Schemas.GetGymDto(
+                id: UUID().uuidString,
+                name: "Home",
+                address: "Daham",
+                city: "Graz",
+                zipCode: 8020
+            ),
+            workoutExercises: [
+                .init(id: UUID().uuidString, order: 1, workoutId: "", exercise: .init(id: UUID().uuidString, i18NCode: "Bench Press"), workoutSets: [
+                    .init(id: "1", order: 1, reps: 10, weight: 25.50, workoutExerciseId: ""),
+                ], notes: "Some Notes")
+            ],
             workoutSummary: Components.Schemas.WorkoutSummary(totalTime: 10, totalSets: 20, totalReps: 30, totalWeight: 155.50, totalExercises: 10)))
 }

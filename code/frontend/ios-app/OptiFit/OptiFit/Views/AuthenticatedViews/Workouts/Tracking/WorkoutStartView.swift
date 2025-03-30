@@ -1,20 +1,18 @@
 import SwiftUI
 
 struct WorkoutStartView: View {
-    @State private var selectedGym: UUID?
-    @State private var selectedExerciseCategoryId: UUID?
-    @State private var workoutDate = Date()
     @State private var navigateToWorkoutTrackingView = false
 
     @StateObject private var gymViewModel = GymViewModel()
     @StateObject private var exerciseCategoriesViewModel = ExerciseCategoryViewModel()
+    @StateObject private var currentWorkoutViewModel = CurrentWorkoutViewModel()
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
 
                 // Date Picker Section
-                DatePicker("Date", selection: $workoutDate, displayedComponents: [.date, .hourAndMinute])
+                DatePicker("Date", selection: $currentWorkoutViewModel.workoutStartDate, displayedComponents: [.date, .hourAndMinute])
                     .datePickerStyle(.compact)
                     .padding(.horizontal)
 
@@ -27,10 +25,10 @@ struct WorkoutStartView: View {
                         Text("Select Gym")
                             .font(.headline)
                         Spacer()
-                        Picker("Select Gym", selection: $selectedGym) {
-                            ForEach(gymViewModel.gyms, id:\.id) { gym in
-                                Text(gym.name!)
-                                    .tag(gym.id)
+                        Picker("Select Gym", selection: $currentWorkoutViewModel.selectedGym) {
+                            ForEach(gymViewModel.gyms, id: \.id) { gym in
+                                Text(gym.name ?? "Unknown Gym")
+                                    .tag(gym)
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
@@ -48,10 +46,10 @@ struct WorkoutStartView: View {
                         Text("Select Exercise Category")
                             .font(.headline)
                         Spacer()
-                        Picker("Select Exercise Category", selection: $selectedExerciseCategoryId) {
+                        Picker("Select Exercise Category", selection: $currentWorkoutViewModel.selectedExerciseCategory) {
                             ForEach(exerciseCategoriesViewModel.exerciseCategories, id: \.id) { category in
-                                Text(category.i18NCode!)
-                                    .tag(category.id)
+                                Text(category.i18NCode ?? "Unknown")
+                                    .tag(category)
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
@@ -74,25 +72,30 @@ struct WorkoutStartView: View {
             .navigationTitle("Start Workout")
             .padding()
             .navigationDestination(isPresented: $navigateToWorkoutTrackingView) {
-                if let gym = gymViewModel.gyms.first(where: { $0.id == selectedGym?.uuidString }),
-                   let exerciseCategory = exerciseCategoriesViewModel.exerciseCategories.first(where: { $0.id == selectedExerciseCategoryId?.uuidString })
+                if let gym = gymViewModel.gyms.first(where: { $0.id == currentWorkoutViewModel.selectedGym!.id }),
+                    let exerciseCategory = exerciseCategoriesViewModel.exerciseCategories.first(where: {
+                        $0.id == currentWorkoutViewModel.selectedExerciseCategory!.id
+                    })
                 {
-                    WorkoutTrackingView(
-                        gym: gym,
-                        exerciseCategory: exerciseCategory,
-                        workoutStartDate: workoutDate)
+                    WorkoutTrackingView()
+                        .environmentObject(currentWorkoutViewModel)
                 } else {
                     Text("Selection missing")
                 }
             }
             .onAppear {
                 Task {
+                    // First, fetch exercise categories and preselect the first category (if available)
                     await exerciseCategoriesViewModel.fetchCategories()
-                    //TODO:  FIx selection
-                    //selectedExerciseCategoryId = UUID(from: exerciseCategoriesViewModel.exerciseCategories.first?.id)
+                    if let firstCategory = exerciseCategoriesViewModel.exerciseCategories.first {
+                        currentWorkoutViewModel.setExerciseCategory(firstCategory)
+                    }
+
+                    // Then, fetch gyms and preselect the first gym (if available)
                     await gymViewModel.searchGyms()
-                    //TODO: FIX Selection
-                    //selectedGym = gymViewModel.gyms.first?.id
+                    if let firstGym = gymViewModel.gyms.first {
+                        currentWorkoutViewModel.setGym(firstGym)
+                    }
                 }
             }
             .alert(item: $exerciseCategoriesViewModel.errorMessage) { error in
@@ -103,8 +106,4 @@ struct WorkoutStartView: View {
             }
         }
     }
-}
-
-#Preview {
-    WorkoutStartView()
 }

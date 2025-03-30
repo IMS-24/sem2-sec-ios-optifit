@@ -35,6 +35,16 @@
     "%d" : {
 
     },
+    "%d %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$d %2$@"
+          }
+        }
+      }
+    },
     "%d reps" : {
 
     },
@@ -113,9 +123,6 @@
           }
         }
       }
-    },
-    "Are you sure you want to cancel this workout?" : {
-
     },
     "Are you sure?" : {
       "localizations" : {
@@ -199,9 +206,6 @@
         }
       }
     },
-    "Cancel Workout" : {
-
-    },
     "City: %@" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -212,9 +216,6 @@
           }
         }
       }
-    },
-    "Coming Soon" : {
-
     },
     "Contact Support" : {
       "localizations" : {
@@ -657,6 +658,9 @@
 
     },
     "Order" : {
+
+    },
+    "Order: %d" : {
 
     },
     "Overall Exercise Statistics" : {

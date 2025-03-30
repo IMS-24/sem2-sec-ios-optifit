@@ -9,7 +9,7 @@ struct WorkoutExerciseEditView: View {
                 Text(workoutExercise.exercise!.i18NCode!)
             }
             Section(header: Text("Order")) {
-                Text("\(workoutExercise.order)")
+                Text("\(workoutExercise.order!)")
             }
             Section(header: Text("Sets")) {
                 if ((workoutExercise.workoutSets?.isEmpty) != nil) {
@@ -33,35 +33,3 @@ struct WorkoutExerciseEditView: View {
         .navigationTitle("Edit Exercise")
     }
 }
-//
-//struct WorkoutExerciseEditView_PreviewWrapper: View {
-//    @State var legs = State(initialValue: .init(id: UUID(), i18NCode: "Legs", exerciseIds: []))
-//
-//    @State var workoutExercise: CreateWorkoutExerciseDto = State(initialValue:.init(
-//        id: UUID(),
-//        order: 1,
-//        exercise: GetExerciseDto(
-//            id: UUID(),
-//            i18NCode: "Exercise Name",
-//            description: "Exercise Description",
-//            exerciseCategoryId: legs.id,
-//            exerciseCategory: legs
-//        ),
-//        workoutSets: [
-//            CreateWorkoutSetDto(id: UUID(), order: 1, reps: 10, weight: 10.1),
-//            CreateWorkoutSetDto(id: UUID(), order: 2, reps: 20, weight: 20),
-//            CreateWorkoutSetDto(id: UUID(), order: 3, reps: 30, weight: 30)
-//        ]
-//    )
-//    )
-//
-//    var body: some View {
-//        NavigationStack {
-//            WorkoutExerciseEditView(workoutExercise: $workoutExercise)
-//        }
-//    }
-//}
-//
-//#Preview {
-//    WorkoutExerciseEditView_PreviewWrapper()
-//}

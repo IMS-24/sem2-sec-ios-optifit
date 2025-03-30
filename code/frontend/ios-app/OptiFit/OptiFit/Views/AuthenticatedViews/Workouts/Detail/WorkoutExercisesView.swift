@@ -24,7 +24,7 @@ struct WorkoutExercisesView: View {
                         WorkoutExerciseDetailsView(workoutExercise: workoutExercise)
                     } label: {
                         HStack {
-                            Text(workoutExercise.exercise!.i18NCode!)
+                            Text("\(workoutExercise.order!) \(workoutExercise.exercise!.i18NCode!)")
                                 .font(.body)
                                 .foregroundColor(Color(.primaryText))
                             Spacer()
