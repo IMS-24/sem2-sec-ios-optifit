@@ -69,19 +69,19 @@ struct HomeView: View {
                 VStack(spacing: 16) {
                     HeaderView()
                         .padding()
-                        .background(Color("SecondaryBackground"))
+                        .background(Color(.secondaryBackground))
                         .cornerRadius(10)
 
                     // Pass aggregated summaries and currentMonday to WorkoutSummaryView.
                     WorkoutSummaryView(data: aggregatedSummaries, currentMonday: currentMonday)
                         .padding()
-                        .background(Color("SecondaryBackground"))
+                        .background(Color(.secondaryBackground))
                         .cornerRadius(10)
 
-                    QuickActionsView()
-                        .padding()
-                        .background(Color("SecondaryBackground"))
-                        .cornerRadius(10)
+//                    QuickActionsView()
+//                        .padding()
+//                        .background(Color("SecondaryBackground"))
+//                        .cornerRadius(10)
                 }
                 .padding()
                 .gesture(
@@ -108,11 +108,11 @@ struct HomeView: View {
                 ToolbarItem(placement: .principal) {
                     Text("Home")
                         .font(.headline)
-                        .foregroundColor(Color("PrimaryText"))
+                        .foregroundColor(Color(.primaryText))
                 }
             }
         }
-        .accentColor(Color("PrimaryAccent"))
+        .accentColor(Color(.primaryAccent))
         .onAppear {
             Task {
                 await userProfileViewModel.loadStats()

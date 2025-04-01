@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%.1f" : {
+
+    },
+    "%.1f kg" : {
+
+    },
     "%.2f" : {
 
     },
@@ -712,9 +718,6 @@
     "Reps Progress" : {
 
     },
-    "Reps: %d" : {
-
-    },
     "Reps: %d, Weight: %.2f" : {
       "localizations" : {
         "en" : {
@@ -870,9 +873,6 @@
         }
       }
     },
-    "Trainer" : {
-
-    },
     "Type:" : {
       "localizations" : {
         "de" : {
@@ -950,9 +950,6 @@
       }
     },
     "Weight Progress" : {
-
-    },
-    "Weight: %.1f kg" : {
 
     },
     "Welcome to OptiFit, your ultimate fitness companion. Track workouts, monitor progress, and get motivated every day!" : {

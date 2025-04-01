@@ -1,11 +1,3 @@
-//
-//  CustomTextField.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 01.04.25.
-//
-
-
 import SwiftUI
 import UIKit
 
@@ -14,18 +6,34 @@ struct CustomTextField: UIViewRepresentable {
     var placeholder: String
     var keyboardType: UIKeyboardType = .default
     var onEditingEnded: (() -> Void)? = nil
-
+    
     func makeUIView(context: Context) -> UITextField {
         let textField = UITextField(frame: .zero)
         textField.placeholder = placeholder
         textField.keyboardType = keyboardType
-        textField.borderStyle = .roundedRect
+        textField.borderStyle = .none  // No border for a cleaner look.
+        textField.font = UIFont.preferredFont(forTextStyle: .body)
+        textField.textColor = UIColor.label
         textField.delegate = context.coordinator
+        
+        // Optional: Add a subtle bottom line.
+        let bottomLine = CALayer()
+        bottomLine.backgroundColor = UIColor.systemGray4.cgColor
+        textField.layer.addSublayer(bottomLine)
+        textField.layer.masksToBounds = true
+        // Adjust the bottom line frame in layoutSubviews.
+        context.coordinator.bottomLine = bottomLine
+        
         return textField
     }
     
     func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.text = text
+        
+        // Update the bottom line frame.
+        if let bottomLine = context.coordinator.bottomLine {
+            bottomLine.frame = CGRect(x: 0, y: uiView.bounds.height - 1, width: uiView.bounds.width, height: 1)
+        }
     }
     
     func makeCoordinator() -> Coordinator {
@@ -35,16 +43,15 @@ struct CustomTextField: UIViewRepresentable {
     class Coordinator: NSObject, UITextFieldDelegate {
         @Binding var text: String
         var onEditingEnded: (() -> Void)?
-
+        var bottomLine: CALayer?
+        
         init(text: Binding<String>, onEditingEnded: (() -> Void)?) {
             _text = text
             self.onEditingEnded = onEditingEnded
         }
         
         func textFieldDidEndEditing(_ textField: UITextField) {
-            // Update the binding when editing ends.
             self.text = textField.text ?? ""
-            // Call the update callback.
             onEditingEnded?()
         }
         

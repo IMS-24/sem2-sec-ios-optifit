@@ -41,9 +41,9 @@ struct NavigationBarView: View {
                 SettingsView()
 
             }
-            Tab("Trainer", systemImage: "figure.strengthtraining.functional") {
-                VirtualTrainerView()
-            }
+//            Tab("Trainer", systemImage: "figure.strengthtraining.functional") {
+//                VirtualTrainerView()
+//            }
         }
     }
 }
