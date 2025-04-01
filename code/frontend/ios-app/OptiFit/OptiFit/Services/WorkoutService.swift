@@ -1,17 +1,32 @@
 import Foundation
+import OpenAPIRuntime
+import OpenAPIURLSession
+import SwiftUI
 
 @MainActor
 class WorkoutService: ObservableObject {
-    @Published var workouts: [GetWorkoutDto] = []
-    private let apiClient: APIClient = APIClient()
+    var baseUrl = AppConfiguration.apiBaseURL
+    let configuration = Configuration(
+        dateTranscoder: DotNetDateTranscoder()
+    )
+    let client: Client
 
-    private let baseURL = "workout"
-
-    func searchWorkouts(searchModel: SearchWorkoutsDto) async throws -> PaginatedResult<GetWorkoutDto>? {
-        return try await apiClient.request(endpoint: "\(baseURL)/search", method: .init("POST"), body: searchModel)
+    init() {
+        client = Client(
+            serverURL: baseUrl,
+            configuration: configuration,
+            transport: URLSessionTransport(),
+            middlewares: [AuthenticationMiddleware()]
+        )
     }
 
-    func postWorkout(_ workout: CreateWorkoutDto) async throws -> GetWorkoutDto {
-        return try await apiClient.request(endpoint: "\(baseURL)", method: .init("POST"), body: workout)
+    func searchWorkouts(searchModel: Components.Schemas.SearchWorkoutDto) async throws -> Components.Schemas.PaginatedResultOfGetWorkoutDto {
+        let result = try await client.Workout_SearchWorkouts(.init(body: .json(searchModel)))
+        return try result.ok.body.json
+    }
+
+    func postWorkout(_ workout: Components.Schemas.CreateWorkoutDto) async throws -> Components.Schemas.GetWorkoutDto {
+        let result = try await client.Workout_CreateWorkout(.init(body: .json(workout)))
+        return try result.ok.body.json
     }
 }

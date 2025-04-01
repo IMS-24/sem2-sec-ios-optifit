@@ -1,12 +1,25 @@
 import Foundation
+import OpenAPIRuntime
+import OpenAPIURLSession
+import SwiftUI
 
 @MainActor
 class MuscleGroupService: ObservableObject {
-    private let apiClient: APIClient = APIClient()
-    private let baseURL = "musclegroup"
+    var baseUrl = AppConfiguration.apiBaseURL
+    let configuration = Configuration()
+    let client: Client
 
-    func searchMuscleGroups(searchModel: SearchMuscleGroupsDto) async throws -> PaginatedResult<GetMuscleGroupDto> {
-        return try await apiClient.request(endpoint: "\(baseURL)/search", method: .init("POST"), body: searchModel)
+    init() {
+        client = Client(
+            serverURL: baseUrl,
+            configuration: configuration,
+            transport: URLSessionTransport(),
+            middlewares: [AuthenticationMiddleware()]
+        )
+    }
+    func searchMuscleGroups(searchModel: Components.Schemas.SearchMuscleGroupDto) async throws -> Components.Schemas.PaginatedResultOfGetMuscleGroupDto {
+        let result = try await client.MuscleGroup_SearchMuscleGroups(.init(body: .json(searchModel)))
+        return try result.ok.body.json
 
     }
 }

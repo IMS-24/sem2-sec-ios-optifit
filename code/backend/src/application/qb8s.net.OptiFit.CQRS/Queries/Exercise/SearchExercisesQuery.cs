@@ -26,14 +26,14 @@ public class SearchExercisesQueryHandler(
             .AsQueryable();
         //@formatter:on
         var predicate = PredicateBuilder.New<Core.Entities.Exercise>(true);
-        if (request.Search.Id.HasValue)
-        {
-            predicate = predicate.And(x => x.Id == request.Search.Id);
-            query = query.Where(predicate);
-            // return Task.FromResult(new PaginatedResult<GetExerciseDto>(request.Search.PageSize,
-            //     request.Search.PageIndex,
-            //     query.AsEnumerable().Select(mapper.Map<GetExerciseDto>)));
-        }
+        // if (request.Search.Id.HasValue)
+        // {
+        //     predicate = predicate.And(x => x.Id == request.Search.Id);
+        //     query = query.Where(predicate);
+        //     // return Task.FromResult(new PaginatedResult<GetExerciseDto>(request.Search.PageSize,
+        //     //     request.Search.PageIndex,
+        //     //     query.AsEnumerable().Select(mapper.Map<GetExerciseDto>)));
+        // }
 
 
         if (request.Search.I18NCode != null)
@@ -42,7 +42,8 @@ public class SearchExercisesQueryHandler(
         if (request.Search.ExerciseCategoryId.HasValue)
             predicate = predicate.And(x => x.ExerciseCategoryId == request.Search.ExerciseCategoryId);
         query = query.Where(predicate);
-        query = query.OrderBy(x => x.I18NCode);
+        query = query.OrderBy(exercise => exercise.ExerciseCategory.I18NCode)
+            .ThenBy(exercise => exercise.I18NCode);
         return Task.FromResult(new PaginatedResult<GetExerciseDto>(request.Search.PageSize,
             request.Search.PageIndex,
             query.AsEnumerable().Select(mapper.Map<GetExerciseDto>)));

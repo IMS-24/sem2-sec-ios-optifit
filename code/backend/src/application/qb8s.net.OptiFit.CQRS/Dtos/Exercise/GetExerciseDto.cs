@@ -3,8 +3,10 @@ using qb8s.net.OptiFit.CQRS.Dtos.ExerciseCategory;
 
 namespace qb8s.net.OptiFit.CQRS.Dtos.Exercise;
 
-public class GetExerciseDto : BaseI18NDto
+public class GetExerciseDto
 {
+    public Guid? Id { get; set; }
+    public required string I18NCode { get; set; }
     public string? Description { get; set; }
     public GetExerciseCategoryDto ExerciseCategory { get; set; }
 

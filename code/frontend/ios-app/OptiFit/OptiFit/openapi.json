@@ -1,0 +1,1612 @@
+{
+  "x-generator": "NSwag v14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "My Title",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://0.0.0.0:7014"
+    }
+  ],
+  "paths": {
+    "/api/Exercise/search": {
+      "post": {
+        "tags": [
+          "Exercise"
+        ],
+        "operationId": "Exercise_SearchExercises",
+        "requestBody": {
+          "x-name": "search",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchExerciseDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Search Exercies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedResultOfGetExerciseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Exercise": {
+      "post": {
+        "tags": [
+          "Exercise"
+        ],
+        "operationId": "Exercise_CreateExercise",
+        "requestBody": {
+          "x-name": "createExerciseDto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateExerciseDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Create Exercise",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetExerciseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Exercise/{id}": {
+      "put": {
+        "tags": [
+          "Exercise"
+        ],
+        "operationId": "Exercise_UpdateExercise",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "updateExerciseDto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateExerciseDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "Update Exercise",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetExerciseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Exercise"
+        ],
+        "operationId": "Exercise_DeleteExercise",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete Exercise",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Exercise/categories": {
+      "get": {
+        "tags": [
+          "Exercise"
+        ],
+        "operationId": "Exercise_GetExerciseCategories",
+        "responses": {
+          "200": {
+            "description": "Get Exercise categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetExerciseCategoryDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Exercise/{id}/stats": {
+      "get": {
+        "tags": [
+          "Exercise"
+        ],
+        "operationId": "Exercise_GetExerciseStats",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Exercise Stats",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetExerciseStatisticsDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Gym/search": {
+      "post": {
+        "tags": [
+          "Gym"
+        ],
+        "operationId": "Gym_SearchGyms",
+        "requestBody": {
+          "x-name": "search",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchGymsDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Search Gyms",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedResultOfGetGymDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Gym": {
+      "post": {
+        "tags": [
+          "Gym"
+        ],
+        "operationId": "Gym_CreateGym",
+        "requestBody": {
+          "x-name": "createGymDto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGymDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Create Gym",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetGymDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Muscle/search": {
+      "post": {
+        "tags": [
+          "Muscle"
+        ],
+        "operationId": "Muscle_SearchMuscles",
+        "requestBody": {
+          "x-name": "search",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchMuscleDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Search Muscles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedResultOfGetMuscleDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/MuscleGroup/search": {
+      "post": {
+        "tags": [
+          "MuscleGroup"
+        ],
+        "operationId": "MuscleGroup_SearchMuscleGroups",
+        "requestBody": {
+          "x-name": "search",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchMuscleGroupDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Search Muscle Groups",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedResultOfGetMuscleGroupDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/MuscleGroupMapping/search": {
+      "post": {
+        "tags": [
+          "MuscleGroupMapping"
+        ],
+        "operationId": "MuscleGroupMapping_SearchMuscleGroupMappings",
+        "requestBody": {
+          "x-name": "search",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchMuscleGroupMappingDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Search Muscle Group Mappings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedResultOfMuscleGroupMappingDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Profile": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "operationId": "Profile_GetUserProfile",
+        "responses": {
+          "200": {
+            "description": "Get User Profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfileDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Profile"
+        ],
+        "operationId": "Profile_DeleteUserProfile",
+        "responses": {
+          "200": {
+            "description": "Delete User Profile"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Profile"
+        ],
+        "operationId": "Profile_UpdateUserProfile",
+        "requestBody": {
+          "x-name": "update",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserProfileDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Update User Profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfileDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Profile/stats": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "operationId": "Profile_GetUserStats",
+        "responses": {
+          "200": {
+            "description": "Get User Stats",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserStatsDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Profile/initialize": {
+      "post": {
+        "tags": [
+          "Profile"
+        ],
+        "operationId": "Profile_InitializeUserProfile",
+        "requestBody": {
+          "x-name": "initializeUserProfile",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InitializeUserProfileDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Initialize User Profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfileDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/VirtualTrainer/motivation/{level}": {
+      "get": {
+        "tags": [
+          "VirtualTrainer"
+        ],
+        "operationId": "VirtualTrainer_GetMotivationalQuote",
+        "parameters": [
+          {
+            "name": "level",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Motivational Quote",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMotivationDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Workout/search": {
+      "post": {
+        "tags": [
+          "Workout"
+        ],
+        "operationId": "Workout_SearchWorkouts",
+        "requestBody": {
+          "x-name": "search",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchWorkoutDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Search Workouts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedResultOfGetWorkoutDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Workout": {
+      "post": {
+        "tags": [
+          "Workout"
+        ],
+        "operationId": "Workout_CreateWorkout",
+        "requestBody": {
+          "x-name": "createWorkoutDto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWorkoutDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Create Workout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetWorkoutDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Workout/stats": {
+      "get": {
+        "tags": [
+          "Workout"
+        ],
+        "operationId": "Workout_GetWorkoutStats",
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Workout statistics with query parameters: from,to",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedResultOfGetWorkoutDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PaginatedResultOfGetExerciseDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetExerciseDto"
+            }
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasPreviousPage": {
+            "type": "boolean"
+          },
+          "hasNextPage": {
+            "type": "boolean"
+          }
+        }
+      },
+      "GetExerciseDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid",
+            "nullable": true
+          },
+          "i18NCode": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "exerciseCategory": {
+            "$ref": "#/components/schemas/GetExerciseCategoryDto"
+          },
+          "exerciseCategoryId": {
+            "type": "string",
+            "format": "guid"
+          }
+        }
+      },
+      "GetExerciseCategoryDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "i18NCode": {
+            "type": "string"
+          }
+        }
+      },
+      "SearchExerciseDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "orderBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderDirection": {
+            "type": "string",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "i18NCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "exerciseCategoryId": {
+            "type": "string",
+            "format": "guid",
+            "nullable": true
+          }
+        }
+      },
+      "CreateExerciseDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "i18NCode": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "exerciseCategoryId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "createExerciseMuscleMappingDtos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateExerciseMuscleMappingDto"
+            }
+          }
+        }
+      },
+      "CreateExerciseMuscleMappingDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "exerciseId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "muscleId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "intensity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateExerciseDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "i18NCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "exerciseCategoryId": {
+            "type": "string",
+            "format": "guid"
+          }
+        }
+      },
+      "GetExerciseStatisticsDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "exerciseDto": {
+            "$ref": "#/components/schemas/GetExerciseDto"
+          },
+          "exerciseWorkoutsDto": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExerciseWorkoutDto"
+            }
+          }
+        }
+      },
+      "ExerciseWorkoutDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workout": {
+            "$ref": "#/components/schemas/GetWorkoutDto"
+          },
+          "exerciseId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "workoutSets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetWorkoutSetDto"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      },
+      "GetWorkoutDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "description": {
+            "type": "string"
+          },
+          "startAtUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endAtUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string"
+          },
+          "gymId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "gym": {
+            "$ref": "#/components/schemas/GetGymDto"
+          },
+          "workoutExercises": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkoutExerciseDto"
+            }
+          },
+          "workoutSummary": {
+            "$ref": "#/components/schemas/WorkoutSummary"
+          }
+        }
+      },
+      "GetGymDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "WorkoutExerciseDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workoutId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "exercise": {
+            "$ref": "#/components/schemas/GetExerciseDto"
+          },
+          "workoutSets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetWorkoutSetDto"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      },
+      "GetWorkoutSetDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reps": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "weight": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "workoutExerciseId": {
+            "type": "string",
+            "format": "guid"
+          }
+        }
+      },
+      "WorkoutSummary": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "totalTime": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalSets": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalReps": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalWeight": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "totalExercises": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PaginatedResultOfGetGymDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetGymDto"
+            }
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasPreviousPage": {
+            "type": "boolean"
+          },
+          "hasNextPage": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SearchGymsDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "orderBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderDirection": {
+            "type": "string",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "CreateGymDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "PaginatedResultOfGetMuscleDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetMuscleDto"
+            }
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasPreviousPage": {
+            "type": "boolean"
+          },
+          "hasNextPage": {
+            "type": "boolean"
+          }
+        }
+      },
+      "GetMuscleDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid",
+            "nullable": true
+          },
+          "i18NCode": {
+            "type": "string"
+          }
+        }
+      },
+      "SearchMuscleDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "i18NCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderDirection": {
+            "type": "string",
+            "nullable": true
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PaginatedResultOfGetMuscleGroupDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetMuscleGroupDto"
+            }
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasPreviousPage": {
+            "type": "boolean"
+          },
+          "hasNextPage": {
+            "type": "boolean"
+          }
+        }
+      },
+      "GetMuscleGroupDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid",
+            "nullable": true
+          },
+          "i18NCode": {
+            "type": "string"
+          }
+        }
+      },
+      "SearchMuscleGroupDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "i18NCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderDirection": {
+            "type": "string",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PaginatedResultOfMuscleGroupMappingDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MuscleGroupMappingDto"
+            }
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasPreviousPage": {
+            "type": "boolean"
+          },
+          "hasNextPage": {
+            "type": "boolean"
+          }
+        }
+      },
+      "MuscleGroupMappingDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "muscleGroupId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "muscleId": {
+            "type": "string",
+            "format": "guid"
+          }
+        }
+      },
+      "SearchMuscleGroupMappingDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orderBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderDirection": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UserProfileDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "userName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "userRole": {
+            "type": "string"
+          },
+          "dateOfBirthUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lastLoginUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "registeredUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "initialSetupDone": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UserStatsDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "activeDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalWorkouts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalExercises": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalSets": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalReps": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalWeight": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalDuration": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCalories": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workoutStreak": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "averageDuration": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "UpdateUserProfileDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfBirthUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "initialSetupDone": {
+            "type": "boolean"
+          }
+        }
+      },
+      "InitializeUserProfileDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "dateOfBirthUtc": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "GetMotivationDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "totalInsultCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PaginatedResultOfGetWorkoutDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetWorkoutDto"
+            }
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasPreviousPage": {
+            "type": "boolean"
+          },
+          "hasNextPage": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SearchWorkoutDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid",
+            "nullable": true
+          },
+          "from": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "to": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "orderBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderDirection": {
+            "type": "string",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "CreateWorkoutDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "startAtUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endAtUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "gymId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "workoutExercises": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateWorkoutExerciseDto"
+            }
+          }
+        }
+      },
+      "CreateWorkoutExerciseDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "exercise": {
+            "$ref": "#/components/schemas/GetExerciseDto"
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "workoutSets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateWorkoutSetDto"
+            }
+          }
+        }
+      },
+      "CreateWorkoutSetDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reps": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "weight": {
+            "type": "number",
+            "format": "decimal"
+          }
+        }
+      }
+    }
+  }
+}

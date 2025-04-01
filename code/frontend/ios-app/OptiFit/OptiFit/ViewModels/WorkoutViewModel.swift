@@ -4,9 +4,9 @@ import SwiftUI
 
 @MainActor
 class WorkoutViewModel: ObservableObject {
-    @Published var workouts: [GetWorkoutDto] = []
+    @Published var workouts: [Components.Schemas.GetWorkoutDto] = []
     @Published var errorMessage: ErrorMessage?
-    @Published var searchModel = SearchWorkoutsDto()
+    @Published var searchModel = Components.Schemas.SearchWorkoutDto()
 
     // Pagination state
     private var currentPage: Int = 0
@@ -19,12 +19,11 @@ class WorkoutViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
         do {
-            searchModel.pageIndex = 0
             currentPage = 0
-            if let result = try await workoutService.searchWorkouts(searchModel: searchModel) {
-                workouts = result.items
-                totalPages = result.totalPages
-            }
+            searchModel.pageSize = Int32(100)
+            let result = try await workoutService.searchWorkouts(searchModel: searchModel)
+            workouts = result.items ?? []
+            totalPages = (Int)(result.totalPages!)
 
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
@@ -38,11 +37,12 @@ class WorkoutViewModel: ObservableObject {
         }
         isLoadingMore = true
         currentPage += 1
-        searchModel.pageIndex = currentPage
+        searchModel.pageIndex = Int32(currentPage)
         do {
-            if let res = try await workoutService.searchWorkouts(searchModel: searchModel) {
-                workouts.append(contentsOf: res.items)
-            }
+            let result = try await workoutService.searchWorkouts(searchModel: searchModel)
+
+            workouts.append(contentsOf: result.items ?? [])
+
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
 
@@ -50,7 +50,7 @@ class WorkoutViewModel: ObservableObject {
         isLoadingMore = false
     }
 
-    func saveWorkout(_ workout: CreateWorkoutDto) async {
+    func saveWorkout(_ workout: Components.Schemas.CreateWorkoutDto) async {
         isLoading = true
         errorMessage = nil
         do {
@@ -63,7 +63,11 @@ class WorkoutViewModel: ObservableObject {
         isLoading = false
     }
 
-    func updateSearchModel(_ newModel: SearchWorkoutsDto) {
+    func appendWorkout(_ workout: Components.Schemas.GetWorkoutDto) {
+        self.workouts.append(workout)
+    }
+
+    func updateSearchModel(_ newModel: Components.Schemas.SearchWorkoutDto) {
         self.searchModel = newModel
         Task {
             await searchWorkouts()

@@ -2,12 +2,13 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using qb8s.net.OptiFit.CQRS.Dtos.AdUser;
 using qb8s.net.OptiFit.CQRS.Dtos.User;
 using qb8s.net.OptiFit.Persistence.Context;
 
 namespace qb8s.net.OptiFit.CQRS.Commands.User;
 
-public record InitializeUserProfileCommand(InitializeUserProfileDto Profile) : IRequest<UserProfileDto>;
+public record InitializeUserProfileCommand(InitializeUserProfileDto Profile, AdUser AdUser) : IRequest<UserProfileDto>;
 
 public class InitializeUserProfileCommandHandler(
     ApplicationDbContext dbContext,
@@ -18,7 +19,7 @@ public class InitializeUserProfileCommandHandler(
     {
         logger.LogInformation("Update User Profile Command : {@Dto}", request.Profile);
         var existingProfile =
-            await dbContext.Users.FirstOrDefaultAsync(user => user.OId == request.Profile.OId, cancellationToken);
+            await dbContext.Users.FirstOrDefaultAsync(user => user.OId == request.AdUser.OId, cancellationToken);
         UserProfileDto res;
         var defaultRole =
             (await dbContext.UserRoles.ToListAsync(cancellationToken)).FirstOrDefault(
@@ -30,6 +31,10 @@ public class InitializeUserProfileCommandHandler(
             entity.RegisteredUtc = DateTimeOffset.UtcNow;
             entity.UpdatedUtc = DateTimeOffset.UtcNow;
             entity.UserRoleId = defaultRole.Id;
+            entity.OId = request.AdUser.OId;
+            entity.FirstName = request.AdUser.FirstName;
+            entity.LastName = request.AdUser.LastName;
+            entity.Email = request.AdUser.Email;
             request.Profile.DateOfBirthUtc = request.Profile.DateOfBirthUtc.AddMilliseconds(666);
             if (request.Profile.DateOfBirthUtc.AddYears(10) < DateTimeOffset.UtcNow.AddYears(-105))
                 entity.DateOfBirthUtc = null;

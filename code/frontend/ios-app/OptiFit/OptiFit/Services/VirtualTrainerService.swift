@@ -1,12 +1,26 @@
 import Foundation
+import OpenAPIRuntime
+import OpenAPIURLSession
 
 @MainActor
 class VirtualTrainerService: ObservableObject {
-    private let baseURL = "virtualtrainer"
-    private let apiClient: APIClient = APIClient()
+    var baseUrl = AppConfiguration.apiBaseURL
+    let configuration = Configuration()
+    let client: Client
 
-    func fetchMotivation(level: Int) async throws -> InsultDto {
-        return try await apiClient.request(endpoint: "\(baseURL)/motivation/\(level)", method: .init("GET"))
+    init() {
+        client = Client(
+            serverURL: baseUrl,
+            configuration: configuration,
+            transport: URLSessionTransport(),
+            middlewares: [AuthenticationMiddleware()]
+        )
+    }
+
+    func fetchMotivation(level: Int) async throws -> Components.Schemas.GetMotivationDto {
+        let result = try await client.VirtualTrainer_GetMotivationalQuote(.init(path: .init(level: Int32(level))))
+        print("Response : \(result)")
+        return try result.ok.body.json
 
     }
 }

@@ -1,25 +1,25 @@
 import SwiftUI
 
 struct ExerciseDetailView: View {
-    let exercise: GetExerciseDto
+    let exercise: Components.Schemas.GetExerciseDto
     @StateObject private var exerciseViewModel = ExerciseViewModel()
     @Environment(\.dismiss) private var dismiss
 
-    @State private var getExerciseStatisticsDto: GetExerciseStatisticsDto?
+    @State private var getExerciseStatisticsDto: Components.Schemas.GetExerciseStatisticsDto?
     @State private var isEditing: Bool
     @State private var editableName: String
     @State private var editableDescription: String
-    @State private var editableCategory: ExerciseCategoryDto
+    @State private var editableCategory: Components.Schemas.GetExerciseCategoryDto
     @State private var newCategoryId: UUID
 
     // Added startEditing parameter to allow launching in edit mode
-    init(exercise: GetExerciseDto, startEditing: Bool = false) {
+    init(exercise: Components.Schemas.GetExerciseDto, startEditing: Bool = false) {
         self.exercise = exercise
-        _editableName = State(initialValue: exercise.i18NCode)
+        _editableName = State(initialValue: exercise.i18NCode!)
         _editableDescription = State(initialValue: exercise.description ?? "")
-        _editableCategory = State(initialValue: exercise.exerciseCategory)
+        _editableCategory = State(initialValue: exercise.exerciseCategory!)
         _isEditing = State(initialValue: startEditing)
-        _newCategoryId = State(initialValue: exercise.exerciseCategoryId)
+        _newCategoryId = State(initialValue: UUID(uuidString: exercise.exerciseCategoryId!) ?? UUID())
     }
 
     var body: some View {
@@ -86,7 +86,7 @@ struct ExerciseDetailView: View {
                         //                            .foregroundColor(.gray)
                         //                            .padding(.horizontal)
                     } else {
-                        Text(editableCategory.i18NCode.capitalized)
+                        Text(editableCategory.i18NCode!.capitalized)
                             .font(.subheadline)
                             .foregroundColor(.gray)
                             .padding(.horizontal)
@@ -103,7 +103,7 @@ struct ExerciseDetailView: View {
             .padding(.vertical)
             .onAppear {
                 Task {
-                    let res = await exerciseViewModel.loadStatistics(exerciseId: exercise.id)
+                    let res = await exerciseViewModel.loadStatistics(exerciseId: UUID(uuidString: exercise.id!) ?? UUID())
                     self.getExerciseStatisticsDto = res
                 }
             }
@@ -115,10 +115,11 @@ struct ExerciseDetailView: View {
                 // When editing, show Cancel and Save buttons.
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
+
                         // Reset changes and exit edit mode.
-                        editableName = exercise.i18NCode
+                        editableName = exercise.i18NCode!
                         editableDescription = exercise.description ?? ""
-                        editableCategory = exercise.exerciseCategory
+                        editableCategory = exercise.exerciseCategory!
                         isEditing = false
                     }
                 }
@@ -126,15 +127,17 @@ struct ExerciseDetailView: View {
                     Button("Save") {
                         Task {
                             // Create an updated exercise object
-                            let updatedExercise = UpdateExerciseDto(
+                            let updatedExercise = Components.Schemas.UpdateExerciseDto(
                                 //                                id: exercise.id,
                                 i18NCode: editableName,
                                 description: editableDescription,
-                                exerciseCategoryId: newCategoryId
+                                exerciseCategoryId: newCategoryId.uuidString
                                     //                                exerciseCategory: editableCategory
                             )
                             // Call view model update; assume it returns a Bool indicating success.
-                            let success = await exerciseViewModel.updateExercise(id: exercise.id, exerciseDto: updatedExercise)
+                            let success = await exerciseViewModel.updateExercise(
+                                id: UUID(uuidString: exercise.id!) ?? UUID(),
+                                exerciseDto: updatedExercise)
                             if success {
                                 isEditing = false
                             } else {
@@ -153,7 +156,16 @@ struct ExerciseDetailView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(role: .destructive) {
                         Task {
-                            let success = await exerciseViewModel.deleteExercise(exerciseId: exercise.id)
+                            var exerciseId: UUID {
+                                do {
+                                    // Assuming exerciseCategory.id is of a type that can be cast to Decoder (which is unusual)
+                                    let id = try UUID(from: exercise.id as! Decoder)
+                                    return id
+                                } catch {
+                                    return UUID()  // Fallback if conversion fails.
+                                }
+                            }
+                            let success = await exerciseViewModel.deleteExercise(exerciseId: exerciseId)
                             if success {
                                 dismiss()
                             } else {

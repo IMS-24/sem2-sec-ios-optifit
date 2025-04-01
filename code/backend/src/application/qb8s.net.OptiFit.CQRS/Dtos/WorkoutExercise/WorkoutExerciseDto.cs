@@ -4,8 +4,9 @@ using qb8s.net.OptiFit.CQRS.Dtos.WorkoutSet;
 
 namespace qb8s.net.OptiFit.CQRS.Dtos.WorkoutExercise;
 
-public class WorkoutExerciseDto : BaseDto
+public class WorkoutExerciseDto
 {
+    public Guid Id { get; set; }
     public int Order { get; set; }
     public Guid WorkoutId { get; set; }
     public GetExerciseDto Exercise { get; set; } = null!;

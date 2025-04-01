@@ -2,8 +2,9 @@ using qb8s.net.OptiFit.Core.Entities.Base;
 
 namespace qb8s.net.OptiFit.CQRS.Dtos.Base;
 
-public class BaseNamedDto : BaseDto
+public class BaseNamedDto
 {
+    public Guid Id { get; set; }
     public required string Name { get; set; }
 }
 

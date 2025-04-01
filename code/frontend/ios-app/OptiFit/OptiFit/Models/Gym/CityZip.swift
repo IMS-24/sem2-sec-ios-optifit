@@ -1,4 +1,5 @@
-struct CityZip: Hashable {
+struct CityZip: Hashable, Identifiable {
     let city: String
-    let zipCode: Int
+    let zipCode: String
+    var id: String { zipCode }
 }

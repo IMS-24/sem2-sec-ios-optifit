@@ -1,28 +1,47 @@
 import Foundation
+import OpenAPIRuntime
+import OpenAPIURLSession
 import SwiftUI
 
 @MainActor
 class ProfileService: ObservableObject {
-    private let baseURL = "Profile"
-    private let apiClient: APIClient = APIClient()
+    var baseUrl = AppConfiguration.apiBaseURL
+    let configuration = Configuration(
+        dateTranscoder: DotNetDateTranscoder()
+    )
+    let client: Client
 
-    func fetchProfile() async throws -> UserProfileDto {
-        return try await apiClient.request(endpoint: "\(baseURL)", method: .init("GET"))
+    init() {
+        client = Client(
+            serverURL: baseUrl,
+            configuration: configuration,
+            transport: URLSessionTransport(),
+            middlewares: [AuthenticationMiddleware()]
+        )
     }
 
-    func updateProfile(profile: UpdateUserProfileDto) async throws -> UserProfileDto {
-        return try await apiClient.request(endpoint: "\(baseURL)", method: .init("PUT"), body: profile)
+    func fetchProfile() async throws -> Components.Schemas.UserProfileDto {
+        let result = try await client.Profile_GetUserProfile()
+        return try result.ok.body.json
     }
 
-    func deleteProfile(userId: UUID) async throws -> Bool {
-        return try await apiClient.request(endpoint: "\(baseURL)", method: .init("DELETE"))
+    func updateProfile(profile: Components.Schemas.UpdateUserProfileDto) async throws -> Components.Schemas.UserProfileDto {
+        let result = try await client.Profile_UpdateUserProfile(.init(body: .json(profile)))
+        return try result.ok.body.json
     }
 
-    func getStats() async throws -> UserStatsDto {
-        return try await apiClient.request(endpoint: "\(baseURL)/stats", method: .init("GET"))
+    func deleteProfile() async throws -> Bool {
+        let _ = try await client.Profile_DeleteUserProfile()
+        return true
     }
 
-    func initializeUserProfile(_ profile: UserProfileInitializeDto) async throws -> UserProfileDto {
-        return try await apiClient.request(endpoint: "\(baseURL)/initialize", method: .init("POST"), body: profile)
+    func getStats() async throws -> Components.Schemas.UserStatsDto {
+        let result = try await client.Profile_GetUserStats()
+        return try result.ok.body.json
+    }
+
+    func initializeUserProfile(_ profile: Components.Schemas.InitializeUserProfileDto) async throws -> Components.Schemas.UserProfileDto {
+        let result = try await client.Profile_InitializeUserProfile(.init(body: .json(profile)))
+        return try result.ok.body.json
     }
 }

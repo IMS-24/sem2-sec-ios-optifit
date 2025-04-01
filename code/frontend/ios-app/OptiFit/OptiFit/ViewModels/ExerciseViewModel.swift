@@ -4,10 +4,10 @@ import SwiftUI
 
 @MainActor
 class ExerciseViewModel: ObservableObject {
-    @Published var exercises: [GetExerciseDto] = []
+    @Published var exercises: [Components.Schemas.GetExerciseDto] = []
     @Published var errorMessage: ErrorMessage?
-    @Published var searchModel = SearchExercisesDto()
-    @Published var exerciseCategories: [ExerciseCategoryDto] = []
+    @Published var searchModel = Components.Schemas.SearchExerciseDto()
+    @Published var exerciseCategories: [Components.Schemas.GetExerciseCategoryDto] = []
 
     // Pagination state
     private var currentPage: Int = 0
@@ -17,7 +17,7 @@ class ExerciseViewModel: ObservableObject {
 
     private let exerciseService = ExerciseService()
 
-    func saveExercise(exerciseDto: CreateExerciseDto) async {
+    func saveExercise(exerciseDto: Components.Schemas.CreateExerciseDto) async {
         isLoading = true
         errorMessage = nil
         do {
@@ -29,7 +29,7 @@ class ExerciseViewModel: ObservableObject {
         isLoading = false
     }
 
-    func updateExercise(id: UUID, exerciseDto: UpdateExerciseDto) async -> Bool {
+    func updateExercise(id: UUID, exerciseDto: Components.Schemas.UpdateExerciseDto) async -> Bool {
         isLoading = true
         errorMessage = nil
         var res = false
@@ -60,7 +60,7 @@ class ExerciseViewModel: ObservableObject {
 
             let deletedId = try await exerciseService.deleteExercise(exerciseId: exerciseId)
             withAnimation {
-                if let index = exercises.firstIndex(where: { $0.id == deletedId }) {
+                if let index = exercises.firstIndex(where: { $0.id == deletedId.uuidString }) {
                     exercises.remove(at: index)
                 }
             }
@@ -77,10 +77,11 @@ class ExerciseViewModel: ObservableObject {
         errorMessage = nil
         do {
             searchModel.pageIndex = 0
+            searchModel.pageSize = 40
             currentPage = 0
-            let res = try await exerciseService.searchExercises(searchModel: searchModel)
-            exercises = res.items
-            totalPages = res.totalPages
+            let result = try await exerciseService.searchExercises(searchModel: searchModel)
+            exercises = result.items ?? []
+            totalPages = (Int)(result.totalPages!)
 
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
@@ -94,10 +95,10 @@ class ExerciseViewModel: ObservableObject {
         }
         isLoadingMore = true
         currentPage += 1
-        searchModel.pageIndex = currentPage
+        searchModel.pageIndex = Int32(currentPage)
         do {
-            let res = try await exerciseService.searchExercises(searchModel: searchModel)
-            exercises.append(contentsOf: res.items)
+            let result = try await exerciseService.searchExercises(searchModel: searchModel)
+            exercises.append(contentsOf: result.items ?? [])
 
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
@@ -115,7 +116,7 @@ class ExerciseViewModel: ObservableObject {
         isLoading = false
     }
 
-    func loadStatistics(exerciseId: UUID) async -> GetExerciseStatisticsDto? {
+    func loadStatistics(exerciseId: UUID) async -> Components.Schemas.GetExerciseStatisticsDto? {
         do {
             let statisticsRes = try await exerciseService.fetchExerciseStatistics(exerciseId: exerciseId)
             return statisticsRes
@@ -125,7 +126,7 @@ class ExerciseViewModel: ObservableObject {
         }
     }
 
-    func updateSearchModel(_ newModel: SearchExercisesDto) {
+    func updateSearchModel(_ newModel: Components.Schemas.SearchExerciseDto) {
         self.searchModel = newModel
         Task {
             await searchExercises()

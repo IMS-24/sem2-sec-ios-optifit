@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28A106202D9355D400A5AB4A /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 28A1061F2D9355D400A5AB4A /* OpenAPIRuntime */; };
+		28A106232D9355E600A5AB4A /* OpenAPIURLSession in Frameworks */ = {isa = PBXBuildFile; productRef = 28A106222D9355E600A5AB4A /* OpenAPIURLSession */; };
 		28DE01542D78D55D00FE943A /* MSAL in Frameworks */ = {isa = PBXBuildFile; productRef = 28DE01532D78D55D00FE943A /* MSAL */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28A106202D9355D400A5AB4A /* OpenAPIRuntime in Frameworks */,
+				28A106232D9355E600A5AB4A /* OpenAPIURLSession in Frameworks */,
 				28DE01542D78D55D00FE943A /* MSAL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +128,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				28A106252D93560800A5AB4A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				288C8F202D609205002B0719 /* OptiFit */,
@@ -131,6 +136,8 @@
 			name = OptiFit;
 			packageProductDependencies = (
 				28DE01532D78D55D00FE943A /* MSAL */,
+				28A1061F2D9355D400A5AB4A /* OpenAPIRuntime */,
+				28A106222D9355E600A5AB4A /* OpenAPIURLSession */,
 			);
 			productName = OptiFit;
 			productReference = 288C8F1E2D609205002B0719 /* OptiFit.app */;
@@ -217,6 +224,9 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				28DE01522D78D55D00FE943A /* XCRemoteSwiftPackageReference "microsoft-authentication-library-for-objc" */,
+				28A1061D2D9355B100A5AB4A /* XCRemoteSwiftPackageReference "swift-openapi-generator" */,
+				28A1061E2D9355D400A5AB4A /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */,
+				28A106212D9355E600A5AB4A /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 288C8F1F2D609205002B0719 /* Products */;
@@ -289,11 +299,17 @@
 			target = 288C8F1D2D609205002B0719 /* OptiFit */;
 			targetProxy = 288C8F392D609207002B0719 /* PBXContainerItemProxy */;
 		};
+		28A106252D93560800A5AB4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 28A106242D93560800A5AB4A /* OpenAPIGenerator */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		288C8F402D609207002B0719 /* Debug */ = {
+		288C8F402D609207002B0719 /* Testing */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 288C8F202D609205002B0719 /* OptiFit */;
+			baseConfigurationReferenceRelativePath = configs/Testing.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -351,14 +367,16 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TESTING;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Debug;
+			name = Testing;
 		};
-		288C8F412D609207002B0719 /* Release */ = {
+		288C8F412D609207002B0719 /* Production */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 288C8F202D609205002B0719 /* OptiFit */;
+			baseConfigurationReferenceRelativePath = configs/Production.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -409,31 +427,32 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PRODUCTION;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Production;
 		};
-		288C8F432D609207002B0719 /* Debug */ = {
+		288C8F432D609207002B0719 /* Testing */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				API_BASE_URL = "https://api-optifit.mstoegerer.net/api";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				API_BASE_URL = "${inherited}";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "${inherited}";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				B2C_AUTHORITY = optif1t.b2clogin.com;
-				B2C_CLIENT_ID = "284ae6b3-8bd8-47cb-9ab1-98e74f4441db";
-				B2C_POLICY = b2c_1_susi;
-				B2C_SCOPES = "https://optif1t.onmicrosoft.com/4e883ca0-1d29-4a61-ab49-d259b448b564/Profile.Read";
-				B2C_TENANT = optif1t.onmicrosoft.com;
+				B2C_AUTHORITY = "${inherited}";
+				B2C_CLIENT_ID = "${inherited}";
+				B2C_POLICY = "${inherited}";
+				B2C_SCOPES = "${inherited}";
+				B2C_TENANT = "${inherited}";
 				CODE_SIGN_ENTITLEMENTS = OptiFit/OptiFit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "${inherited}";
 				DEVELOPMENT_ASSET_PATHS = "\"OptiFit/Preview Content\"";
 				DEVELOPMENT_TEAM = 6GPJ6GH9KJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OptiFit/Info.plist;
+				INFOPLIST_FILE = "${inherited}";
 				INFOPLIST_KEY_CFBundleDisplayName = OptiFit;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -445,34 +464,35 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = qb8s.net.OptiFit.OptiFit;
+				MARKETING_VERSION = "${inherited}";
+				PRODUCT_BUNDLE_IDENTIFIER = "${inherited}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Debug;
+			name = Testing;
 		};
-		288C8F442D609207002B0719 /* Release */ = {
+		288C8F442D609207002B0719 /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				API_BASE_URL = "https://api-optifit.mstoegerer.net/api";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				API_BASE_URL = "${inherited}";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "${inherited}";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				B2C_AUTHORITY = optif1t.b2clogin.com;
-				B2C_CLIENT_ID = "284ae6b3-8bd8-47cb-9ab1-98e74f4441db";
-				B2C_POLICY = b2c_1_susi;
-				B2C_SCOPES = "https://optif1t.onmicrosoft.com/4e883ca0-1d29-4a61-ab49-d259b448b564/Profile.Read";
-				B2C_TENANT = optif1t.onmicrosoft.com;
+				B2C_AUTHORITY = "${inherited}";
+				B2C_CLIENT_ID = "${inherited}";
+				B2C_POLICY = "${inherited}";
+				B2C_SCOPES = "${inherited}";
+				B2C_TENANT = "${inherited}";
 				CODE_SIGN_ENTITLEMENTS = OptiFit/OptiFit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "${inherited}";
 				DEVELOPMENT_ASSET_PATHS = "\"OptiFit/Preview Content\"";
 				DEVELOPMENT_TEAM = 6GPJ6GH9KJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OptiFit/Info.plist;
+				INFOPLIST_FILE = "${inherited}";
 				INFOPLIST_KEY_CFBundleDisplayName = OptiFit;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -484,16 +504,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = qb8s.net.OptiFit.OptiFit;
+				MARKETING_VERSION = "${inherited}";
+				PRODUCT_BUNDLE_IDENTIFIER = "${inherited}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "${inherited}";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Release;
+			name = Production;
 		};
-		288C8F462D609207002B0719 /* Debug */ = {
+		288C8F462D609207002B0719 /* Testing */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -510,9 +531,9 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OptiFit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OptiFit";
 			};
-			name = Debug;
+			name = Testing;
 		};
-		288C8F472D609207002B0719 /* Release */ = {
+		288C8F472D609207002B0719 /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -529,9 +550,9 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OptiFit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OptiFit";
 			};
-			name = Release;
+			name = Production;
 		};
-		288C8F492D609207002B0719 /* Debug */ = {
+		288C8F492D609207002B0719 /* Testing */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -546,9 +567,9 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = OptiFit;
 			};
-			name = Debug;
+			name = Testing;
 		};
-		288C8F4A2D609207002B0719 /* Release */ = {
+		288C8F4A2D609207002B0719 /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -563,7 +584,293 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = OptiFit;
 			};
-			name = Release;
+			name = Production;
+		};
+		28B05D002D9C56FC008D7DA5 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 288C8F202D609205002B0719 /* OptiFit */;
+			baseConfigurationReferenceRelativePath = configs/Staging.xcconfig;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = STAGING;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Staging;
+		};
+		28B05D012D9C56FC008D7DA5 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				API_BASE_URL = "${inherited}";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "${inherited}";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				B2C_AUTHORITY = "${inherited}";
+				B2C_CLIENT_ID = "${inherited}";
+				B2C_POLICY = "${inherited}";
+				B2C_SCOPES = "${inherited}";
+				B2C_TENANT = "${inherited}";
+				CODE_SIGN_ENTITLEMENTS = OptiFit/OptiFit.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "${inherited}";
+				DEVELOPMENT_ASSET_PATHS = "\"OptiFit/Preview Content\"";
+				DEVELOPMENT_TEAM = 6GPJ6GH9KJ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "${inherited}";
+				INFOPLIST_KEY_CFBundleDisplayName = OptiFit;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = "${inherited}";
+				PRODUCT_BUNDLE_IDENTIFIER = "${inherited}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Staging;
+		};
+		28B05D022D9C56FC008D7DA5 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6GPJ6GH9KJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = qb8s.net.OptiFit.OptiFitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OptiFit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OptiFit";
+			};
+			name = Staging;
+		};
+		28B05D032D9C56FC008D7DA5 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6GPJ6GH9KJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = qb8s.net.OptiFit.OptiFitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OptiFit;
+			};
+			name = Staging;
+		};
+		28B05D442D9C8408008D7DA5 /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 288C8F202D609205002B0719 /* OptiFit */;
+			baseConfigurationReferenceRelativePath = configs/Development.xcconfig;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEVELOPMENT;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Development;
+		};
+		28B05D452D9C8408008D7DA5 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				API_BASE_URL = "${inherited}";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "${inherited}";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				B2C_AUTHORITY = "${inherited}";
+				B2C_CLIENT_ID = "${inherited}";
+				B2C_POLICY = "${inherited}";
+				B2C_SCOPES = "${inherited}";
+				B2C_TENANT = "${inherited}";
+				CODE_SIGN_ENTITLEMENTS = OptiFit/OptiFit.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = "${inherited}";
+				DEVELOPMENT_ASSET_PATHS = "\"OptiFit/Preview Content\"";
+				DEVELOPMENT_TEAM = 6GPJ6GH9KJ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "${inherited}";
+				INFOPLIST_KEY_CFBundleDisplayName = OptiFit;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = "${inherited}";
+				PRODUCT_BUNDLE_IDENTIFIER = "${inherited}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Development;
+		};
+		28B05D462D9C8408008D7DA5 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6GPJ6GH9KJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = qb8s.net.OptiFit.OptiFitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OptiFit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OptiFit";
+			};
+			name = Development;
+		};
+		28B05D472D9C8408008D7DA5 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6GPJ6GH9KJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = qb8s.net.OptiFit.OptiFitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OptiFit;
+			};
+			name = Development;
 		};
 /* End XCBuildConfiguration section */
 
@@ -571,42 +878,74 @@
 		288C8F192D609205002B0719 /* Build configuration list for PBXProject "OptiFit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				288C8F402D609207002B0719 /* Debug */,
-				288C8F412D609207002B0719 /* Release */,
+				288C8F402D609207002B0719 /* Testing */,
+				28B05D002D9C56FC008D7DA5 /* Staging */,
+				28B05D442D9C8408008D7DA5 /* Development */,
+				288C8F412D609207002B0719 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 		288C8F422D609207002B0719 /* Build configuration list for PBXNativeTarget "OptiFit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				288C8F432D609207002B0719 /* Debug */,
-				288C8F442D609207002B0719 /* Release */,
+				288C8F432D609207002B0719 /* Testing */,
+				28B05D012D9C56FC008D7DA5 /* Staging */,
+				28B05D452D9C8408008D7DA5 /* Development */,
+				288C8F442D609207002B0719 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 		288C8F452D609207002B0719 /* Build configuration list for PBXNativeTarget "OptiFitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				288C8F462D609207002B0719 /* Debug */,
-				288C8F472D609207002B0719 /* Release */,
+				288C8F462D609207002B0719 /* Testing */,
+				28B05D022D9C56FC008D7DA5 /* Staging */,
+				28B05D462D9C8408008D7DA5 /* Development */,
+				288C8F472D609207002B0719 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 		288C8F482D609207002B0719 /* Build configuration list for PBXNativeTarget "OptiFitUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				288C8F492D609207002B0719 /* Debug */,
-				288C8F4A2D609207002B0719 /* Release */,
+				288C8F492D609207002B0719 /* Testing */,
+				28B05D032D9C56FC008D7DA5 /* Staging */,
+				28B05D472D9C8408008D7DA5 /* Development */,
+				288C8F4A2D609207002B0719 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		28A1061D2D9355B100A5AB4A /* XCRemoteSwiftPackageReference "swift-openapi-generator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-openapi-generator.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.1;
+			};
+		};
+		28A1061E2D9355D400A5AB4A /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-openapi-runtime";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.1;
+			};
+		};
+		28A106212D9355E600A5AB4A /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-openapi-urlsession";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 		28DE01522D78D55D00FE943A /* XCRemoteSwiftPackageReference "microsoft-authentication-library-for-objc" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AzureAD/microsoft-authentication-library-for-objc";
@@ -618,6 +957,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		28A1061F2D9355D400A5AB4A /* OpenAPIRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28A1061E2D9355D400A5AB4A /* XCRemoteSwiftPackageReference "swift-openapi-runtime" */;
+			productName = OpenAPIRuntime;
+		};
+		28A106222D9355E600A5AB4A /* OpenAPIURLSession */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28A106212D9355E600A5AB4A /* XCRemoteSwiftPackageReference "swift-openapi-urlsession" */;
+			productName = OpenAPIURLSession;
+		};
+		28A106242D93560800A5AB4A /* OpenAPIGenerator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28A1061D2D9355B100A5AB4A /* XCRemoteSwiftPackageReference "swift-openapi-generator" */;
+			productName = "plugin:OpenAPIGenerator";
+		};
 		28DE01532D78D55D00FE943A /* MSAL */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 28DE01522D78D55D00FE943A /* XCRemoteSwiftPackageReference "microsoft-authentication-library-for-objc" */;

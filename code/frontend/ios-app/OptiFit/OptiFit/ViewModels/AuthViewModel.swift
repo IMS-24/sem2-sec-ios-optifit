@@ -11,7 +11,7 @@ final class AuthViewModel: ObservableObject {
     @Published var editProfileEnabled: Bool = false
     @Published var refreshTokenEnabled: Bool = false
     @Published var currentAccount: MSALAccount? = nil
-    @Published var initUserProfile: UserProfileInitializeDto? = nil
+    @Published var initUserProfile: Components.Schemas.InitializeUserProfileDto? = nil
 
     private let authService = AuthService()
 
@@ -27,11 +27,7 @@ final class AuthViewModel: ObservableObject {
                 self.user = try authService.decodeJWT(result.accessToken)
                 if let user = self.user {
                     self.user?.firstLogin = true
-                    let userProfile = UserProfileInitializeDto(
-                        firstName: user.given_name ?? "No",
-                        lastName: user.family_name ?? "Lastname",
-                        oId: user.id,
-                        email: user.emails?.first ?? "No@email.com",
+                    let userProfile = Components.Schemas.InitializeUserProfileDto(
                         dateOfBirthUtc: nil)
                     self.initUserProfile = userProfile
                 }

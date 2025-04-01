@@ -3,8 +3,8 @@ import SwiftUI
 struct WorkoutOverviewSection: View {
     let start: String
     let end: String
-    let gym: GetGymDto
-    let summary: WorkoutSummary?
+    let gym: Components.Schemas.GetGymDto
+    let summary: Components.Schemas.WorkoutSummary?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -18,7 +18,7 @@ struct WorkoutOverviewSection: View {
             }
             // Gym Location Row
             HStack {
-                Label("\(gym.name), \(gym.city)", systemImage: "mappin.and.ellipse")
+                Label("\(gym.name!), \(gym.city!)", systemImage: "mappin.and.ellipse")
                     .font(.subheadline)
                 Spacer()
             }
@@ -26,13 +26,13 @@ struct WorkoutOverviewSection: View {
             // Summary Stats Row
             HStack {
                 if let summary = summary {
-                    StatItemView(icon: "flame.fill", title: "Sets", value: "\(summary.totalSets)")
+                    StatItemView(icon: "flame.fill", title: "Sets", value: "\(summary.totalSets!)")
                     Spacer()
-                    StatItemView(icon: "number", title: "Reps", value: "\(summary.totalReps)")
+                    StatItemView(icon: "number", title: "Reps", value: "\(summary.totalReps!)")
                     Spacer()
-                    StatItemView(icon: "scalemass", title: "Weight", value: "\(summary.totalWeight) kg")
+                    StatItemView(icon: "scalemass", title: "Weight", value: "\(summary.totalWeight!) kg")
                     Spacer()
-                    StatItemView(icon: "list.number", title: "Ex.", value: "\(summary.totalExercises)")
+                    StatItemView(icon: "list.number", title: "Ex.", value: "\(summary.totalExercises!)")
                 }
             }
 
@@ -46,6 +46,11 @@ struct WorkoutOverviewSection: View {
 
 #Preview {
     WorkoutOverviewSection(
-        start: Date().ISO8601Format(), end: Date().ISO8601Format(), gym: GetGymDto(address: "Daham", zipCode: 8020, id: UUID(), name: "Home", city: "Graz"),
-        summary: WorkoutSummary(totalTime: 50, totalSets: 20, totalReps: 200, totalWeight: 155.50, totalExercises: 2))
+        start: Date()
+            .ISO8601Format(),
+        end: Date()
+            .ISO8601Format(),
+        gym: Components.Schemas
+            .GetGymDto(id: UUID().uuidString, name: "Home", address: "Daham", city: "Graz", zipCode: 8020),
+        summary: Components.Schemas.WorkoutSummary(totalTime: 50, totalSets: 20, totalReps: 200, totalWeight: 155.50, totalExercises: 2))
 }

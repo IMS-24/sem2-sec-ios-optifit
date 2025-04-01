@@ -1,25 +1,14 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%.2f" : {
+    "%.1f" : {
 
     },
-    "%@ - Day at %@ started at %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ - Trainingstag im %2$@ begann um %3$@"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ - Training day at %2$@ began at %3$@"
-          }
-        }
-      }
+    "%.1f kg" : {
+
+    },
+    "%.2f" : {
+
     },
     "%@ %@" : {
       "localizations" : {
@@ -29,8 +18,7 @@
             "value" : "%1$@ %2$@"
           }
         }
-      },
-      "shouldTranslate" : false
+      }
     },
     "%@, %@" : {
       "localizations" : {
@@ -43,16 +31,32 @@
       },
       "shouldTranslate" : false
     },
+    "%@:" : {
+
+    },
+    "%d" : {
+
+    },
+    "%d %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$d %2$@"
+          }
+        }
+      }
+    },
+    "%d reps" : {
+
+    },
+    "%d sets" : {
+
+    },
     "%lld" : {
 
     },
     "%lld min" : {
-
-    },
-    "%lld reps" : {
-
-    },
-    "%lld sets" : {
 
     },
     "🐸 Virtual Trainer" : {
@@ -104,27 +108,6 @@
         }
       }
     },
-    "ApplicationName" : {
-      "comment" : "OptiFit",
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OptiFit"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OptiFit"
-          }
-        }
-      }
-    },
-    "Are you sure you want to cancel this workout?" : {
-
-    },
     "Are you sure?" : {
       "localizations" : {
         "de" : {
@@ -147,15 +130,6 @@
       }
     },
     "Average" : {
-
-    },
-    "Avg Reps" : {
-
-    },
-    "Avg Sets" : {
-
-    },
-    "Avg Weight" : {
 
     },
     "Bad request. Please check your input and try again." : {
@@ -184,17 +158,6 @@
         }
       }
     },
-    "Calculated Stats" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Berechnete Statistik"
-          }
-        }
-      }
-    },
     "Calories" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -216,22 +179,6 @@
         }
       }
     },
-    "Cancel Workout" : {
-
-    },
-    "City: %@" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stadt: %@"
-          }
-        }
-      }
-    },
-    "Coming Soon" : {
-
-    },
     "Contact Support" : {
       "localizations" : {
         "de" : {
@@ -244,17 +191,6 @@
     },
     "Continue" : {
 
-    },
-    "Cooming Soon" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not implemented yet"
-          }
-        }
-      }
     },
     "Dark Mode" : {
       "localizations" : {
@@ -336,17 +272,6 @@
         }
       }
     },
-    "Duration:" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dauer"
-          }
-        }
-      }
-    },
     "Edit" : {
       "localizations" : {
         "de" : {
@@ -362,28 +287,6 @@
     },
     "Email" : {
 
-    },
-    "End" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beenden"
-          }
-        }
-      }
-    },
-    "Enter Sets" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sätze bearbeiten"
-          }
-        }
-      }
     },
     "Enter your email" : {
 
@@ -423,9 +326,6 @@
           }
         }
       }
-    },
-    "Exercise Details" : {
-
     },
     "Exercise Name" : {
       "localizations" : {
@@ -494,6 +394,9 @@
         }
       }
     },
+    "Hide Build Info" : {
+
+    },
     "Home" : {
       "localizations" : {
         "de" : {
@@ -552,9 +455,6 @@
           }
         }
       }
-    },
-    "Login" : {
-
     },
     "Logout" : {
       "localizations" : {
@@ -623,17 +523,6 @@
     "No exercises available." : {
 
     },
-    "No exercises performed yet." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Keine Übung ausgeführt"
-          }
-        }
-      }
-    },
     "No sets added yet." : {
 
     },
@@ -644,15 +533,6 @@
 
     },
     "No workout data available for this week" : {
-
-    },
-    "Normalized Reps" : {
-
-    },
-    "Normalized Sets" : {
-
-    },
-    "Normalized Weight" : {
 
     },
     "Notes" : {
@@ -678,16 +558,13 @@
     "Onboarding" : {
 
     },
-    "OptiFit" : {
-
-    },
     "order" : {
 
     },
     "Order" : {
 
     },
-    "Order: %lld" : {
+    "Order: %d" : {
 
     },
     "Overall Exercise Statistics" : {
@@ -739,15 +616,12 @@
     "Reps Progress" : {
 
     },
-    "Reps: %lld" : {
-
-    },
-    "Reps: %lld, Weight: %.2f" : {
+    "Reps: %d, Weight: %.2f" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Reps: %1$lld, Weight: %2$.2f"
+            "value" : "Reps: %1$d, Weight: %2$.2f"
           }
         }
       }
@@ -843,6 +717,9 @@
         }
       }
     },
+    "Show Build Info" : {
+
+    },
     "Start Workout" : {
       "localizations" : {
         "de" : {
@@ -897,9 +774,6 @@
         }
       }
     },
-    "Trainer" : {
-
-    },
     "Type:" : {
       "localizations" : {
         "de" : {
@@ -926,20 +800,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rechte: %@"
-          }
-        }
-      }
-    },
-    "Version: TBD" : {
-
-    },
-    "View Exercises" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Übungen anzeigen"
           }
         }
       }
@@ -979,16 +839,10 @@
     "Weight Progress" : {
 
     },
-    "Weight: %.1f" : {
-
-    },
     "Welcome to OptiFit, your ultimate fitness companion. Track workouts, monitor progress, and get motivated every day!" : {
 
     },
     "Welcome!" : {
-
-    },
-    "Workout" : {
 
     },
     "Workout Detail" : {
@@ -1004,17 +858,6 @@
     "Workout on %@" : {
 
     },
-    "Workout Summary" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Workout Zusammenfassung"
-          }
-        }
-      }
-    },
     "Workouts" : {
       "localizations" : {
         "de" : {
@@ -1028,7 +871,7 @@
     "You are not authorized to perform this action." : {
 
     },
-    "Your ultimate fitness companion to track workouts, monitor progress, and get motivated every day!" : {
+    "Your ultimate fitness companion to track workouts, monitor progress, and stay motivated." : {
 
     },
     "ZIP Code: %@" : {

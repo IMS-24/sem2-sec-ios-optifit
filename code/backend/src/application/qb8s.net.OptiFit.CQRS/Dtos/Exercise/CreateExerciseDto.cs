@@ -1,12 +1,15 @@
 using AutoMapper;
-using qb8s.net.OptiFit.CQRS.Dtos.Base.Create;
 
 namespace qb8s.net.OptiFit.CQRS.Dtos.Exercise;
 
-public class CreateExerciseDto : CreateI18NDto
+public class CreateExerciseDto
 {
+    public string I18NCode { get; set; } = null!;
     public string Description { get; set; } = null!;
     public Guid ExerciseCategoryId { get; set; }
+
+    public IList<CreateExerciseMuscleMappingDto> CreateExerciseMuscleMappingDtos { get; set; } =
+        new List<CreateExerciseMuscleMappingDto>();
 }
 
 public class CreateExerciseDtoProfile : Profile

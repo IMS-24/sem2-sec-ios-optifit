@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>B2C_AUTHORITY</key>
+	<string>$(B2C_AUTHORITY)</string>
+	<key>API_BASE_URL</key>
+	<string>https://$(API_BASE_URL)</string>
+	<key>B2C_CLIENT_ID</key>
+	<string>$(B2C_CLIENT_ID)</string>
+	<key>B2C_POLICY</key>
+	<string>$(B2C_POLICY)</string>
+	<key>B2C_SCOPES</key>
+	<string>https://$(B2C_SCOPES)</string>
+	<key>B2C_TENANT</key>
+	<string>$(B2C_TENANT)</string>
+	<key>APP_NAME</key>
+	<string>$(APP_NAME)</string>
+	<key>GIT_HASH</key>
+	<string>$(GIT_HASH)</string>
+	<key>GIT_BRANCH</key>
+	<string>$(GIT_BRANCH)</string>
+	<key>FULL_SEMVER</key>
+	<string>$(FULL_SEMVER)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>msal</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>msauth.$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>msauthv2</string>
+		<string>msauthv3</string>
+	</array>
+</dict>
+</plist>

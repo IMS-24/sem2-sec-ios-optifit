@@ -2,8 +2,10 @@ using qb8s.net.OptiFit.CQRS.Dtos.Base;
 
 namespace qb8s.net.OptiFit.CQRS.Dtos.Gym;
 
-public class GetGymDto : BaseNamedDto
+public class GetGymDto
 {
+    public Guid Id { get; set; }
+    public string Name { get; set; } = null!;
     public string? Address { get; set; }
     public string? City { get; set; }
     public int? ZipCode { get; set; }

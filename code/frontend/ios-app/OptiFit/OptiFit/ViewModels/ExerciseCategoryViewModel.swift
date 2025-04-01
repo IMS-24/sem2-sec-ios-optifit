@@ -3,7 +3,7 @@ import Foundation
 
 @MainActor
 class ExerciseCategoryViewModel: ObservableObject {
-    @Published var exerciseCategories: [ExerciseCategoryDto] = []
+    @Published var exerciseCategories: [Components.Schemas.GetExerciseCategoryDto] = []
     @Published var errorMessage: ErrorMessage?
     @Published var isLoading: Bool = false
 

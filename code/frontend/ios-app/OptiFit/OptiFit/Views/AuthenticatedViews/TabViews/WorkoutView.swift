@@ -4,34 +4,52 @@ struct WorkoutView: View {
     @StateObject var workoutViewModel: WorkoutViewModel
     @State private var navigateToStartWorkout = false
 
-    private var groupedWorkouts: [String: [GetWorkoutDto]] {
+    // Group workouts by month.
+    private var groupedWorkouts: [String: [Components.Schemas.GetWorkoutDto]] {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM yyyy"
-        return Dictionary(grouping: workoutViewModel.workouts, by: { formatter.string(from: $0.startAtUtc) })
+        let workouts = workoutViewModel.workouts
+
+        // Group by month string, using "Unknown" if startAtUtc is nil.
+        let grouped = Dictionary(grouping: workouts) { workout -> String in
+            if let startDate = workout.startAtUtc {
+                return formatter.string(from: startDate)
+            } else {
+                return "Unknown"
+            }
+        }
+        return grouped
+    }
+
+    // Sorted list of month keys.
+    private var sortedMonths: [String] {
+        groupedWorkouts.keys.sorted(by: >)
     }
 
     var body: some View {
         NavigationStack {
             List {
-                ForEach(groupedWorkouts.keys.sorted(by: { $0 > $1 }), id: \.self) { month in
+                ForEach(sortedMonths, id: \.self) { month in
                     Section(
                         header: Text(month)
                             .font(.headline)
                             .foregroundColor(Color(.primaryText))
                     ) {
+                        GroupedWorkoutView(
+                            groupedWorkouts: groupedWorkouts, groupBy: month,
+                            onLoadMore: {
+                                //TODO: Implement loadMore
+                                // Check if this workout is the last in the list before loading more.
+                                //                            if let lastWorkout = workoutViewModel.workouts.last,
+                                //                               workout.id == lastWorkout.id
+                                //                            {
+                                //                                Task {
+                                //                                    await workoutViewModel.loadMoreWorkouts()
+                                //                                }
+                                //                            }
+                                print("Load more .... <Not Implemented>")
+                            })
 
-                        ForEach(groupedWorkouts[month] ?? []) { workout in
-                            NavigationLink(destination: WorkoutDetailView(workout: workout)) {
-                                WorkoutListEntryView(workout: workout)
-                            }
-                            .onAppear {
-                                if workout == workoutViewModel.workouts.last {
-                                    Task {
-                                        await workoutViewModel.loadMoreWorkouts()
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -59,7 +77,8 @@ struct WorkoutView: View {
                 Alert(
                     title: Text("Error"),
                     message: Text(error.message),
-                    dismissButton: .default(Text("OK")))
+                    dismissButton: .default(Text("OK"))
+                )
             }
         }
         .background(Color(.primaryBackground).ignoresSafeArea())

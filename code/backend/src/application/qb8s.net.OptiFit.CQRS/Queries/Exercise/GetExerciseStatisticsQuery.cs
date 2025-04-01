@@ -23,7 +23,7 @@ public class GetExerciseStatisticsQueryHandler(
         logger.LogInformation("Get Exercise Stats Query : {@Request}", request);
 
         // Project directly into the DTO
-        //@Formatter: off
+        //@Formatter:off
         var result = await dbContext
             .Exercises
             .Include(exercise => exercise.ExerciseCategory)
@@ -35,7 +35,7 @@ public class GetExerciseStatisticsQueryHandler(
             .Include(exercise => exercise.WorkoutExercises)
             .ThenInclude(workoutExercise => workoutExercise.Workout)
             .ThenInclude(workout => workout.Gym)
-            .Where(e => e.Id == request.ExerciseId)
+            .Where(e => e.Id == request.ExerciseId && e.WorkoutExercises.All(we => we.Workout.UserId == request.UserId))
             .Select(e => new GetExerciseStatisticsDto
             {
                 ExerciseDto = mapper.Map<GetExerciseDto>(e),
@@ -62,7 +62,7 @@ public class GetExerciseStatisticsQueryHandler(
                     }).ToList()
             })
             .FirstOrDefaultAsync(cancellationToken);
-
+//@formatter:on
         // if (result == null)
         // Handle the case when no matching exercise is found.
         // For example, you might throw an exception or return an empty DTO.

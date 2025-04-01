@@ -13,9 +13,9 @@ public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Applicati
             IConfiguration configuration = new ConfigurationManager()
                 .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(),
                     "../../presentation/qb8s.net.OptiFit.Api/"))
-                //.AddJsonFile("appsettings.json", true)
-                .AddJsonFile("appsettings.Local.json", true)
-                //.AddJsonFile("appsettings.Development.json", true)
+                .AddJsonFile("appsettings.json", true)
+                // .AddJsonFile("appsettings.Local.json", true)
+                // .AddJsonFile("appsettings.Development.json", true)
                 .AddEnvironmentVariables()
                 .Build();
             Console.WriteLine("Settings: \n" +

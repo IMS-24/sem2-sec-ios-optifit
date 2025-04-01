@@ -7,9 +7,8 @@ using qb8s.net.OptiFit.CQRS.Queries.VirtualTrainer;
 
 namespace qb8s.net.OptiFit.Api.Controllers;
 
-public class UserInsultCountDto
+public class GetMotivationDto
 {
-    public Guid UserId { get; set; }
     public string Message { get; set; }
     public int TotalInsultCount { get; set; }
 }
@@ -67,11 +66,11 @@ public class VirtualTrainerController(ILogger<VirtualTrainerController> logger, 
     };
 
     [HttpGet("motivation/{level:int}")]
-    [SwaggerResponse(HttpStatusCode.OK, typeof(UserInsultCountDto), Description = "Get Motivational Quote")]
+    [SwaggerResponse(HttpStatusCode.OK, typeof(GetMotivationDto), Description = "Get Motivational Quote")]
     [Authorize]
-    public async Task<ActionResult<UserInsultCountDto>> GetMotivationalQuotes(int level = 1)
+    public async Task<ActionResult<GetMotivationDto>> GetMotivationalQuote(int level = 1)
     {
-        logger.LogDebug("User '{UserId}' requested motivational quote at level '{Level}'",
+        logger.LogInformation("User '{UserId}' requested motivational quote at level '{Level}'",
             currentUserService.GetCurrentUserId(), level);
         /*var closestLevel = InsultCategories.Keys.OrderBy(x => Math.Abs(x - level)).FirstOrDefault();
         logger.LogDebug("Closest level found: '{ClosestLevel}'", closestLevel);
@@ -86,6 +85,7 @@ public class VirtualTrainerController(ILogger<VirtualTrainerController> logger, 
             TotalInsultCount = level
         };*/
         var dto = await Mediator.Send(new GetInsultQuery(level, currentUserService.GetCurrentUserId()));
+        logger.LogInformation("Generated DTO: {@Dto}", dto);
         return Ok(dto);
     }
 }

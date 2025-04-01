@@ -67,7 +67,9 @@ public class ProfileController(ILogger<ProfileController> logger, ICurrentUserSe
         [FromBody] InitializeUserProfileDto initializeUserProfile)
     {
         logger.LogInformation("{@Name} request", nameof(InitializeUserProfile));
-        var result = await Mediator.Send(new InitializeUserProfileCommand(initializeUserProfile));
+
+        var result =
+            await Mediator.Send(new InitializeUserProfileCommand(initializeUserProfile, currentUserService.AdUser));
         return Ok(result);
     }
 }

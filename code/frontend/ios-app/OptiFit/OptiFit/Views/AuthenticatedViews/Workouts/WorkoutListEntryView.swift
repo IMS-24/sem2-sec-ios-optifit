@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WorkoutListEntryView: View {
-    @State var workout: GetWorkoutDto
+    @State var workout: Components.Schemas.GetWorkoutDto
 
     var body: some View {
         VStack(spacing: 8) {
@@ -12,7 +12,7 @@ struct WorkoutListEntryView: View {
                         .foregroundColor(Color(.primaryAccent))
                     Text(
                         DateFormatter.localizedString(
-                            from: workout.startAtUtc,
+                            from: workout.startAtUtc!,
                             dateStyle: .medium,
                             timeStyle: .none)
                     )
@@ -25,7 +25,7 @@ struct WorkoutListEntryView: View {
                         .foregroundColor(Color(.primaryAccent))
                     Text(
                         DateFormatter.localizedString(
-                            from: workout.startAtUtc,
+                            from: workout.startAtUtc!,
                             dateStyle: .none,
                             timeStyle: .short)
                     )
@@ -39,7 +39,7 @@ struct WorkoutListEntryView: View {
                 HStack(spacing: 4) {
                     Image(systemName: "dumbbell")
                         .foregroundColor(Color("Success"))
-                    Text(workout.gym.name)
+                    Text(workout.gym!.name!)
                         .font(.subheadline)
                         .foregroundColor(Color(.primaryText))
                 }
@@ -55,7 +55,7 @@ struct WorkoutListEntryView: View {
 
             // Third Row: Exercise Title and Notes Icon (if available)
             HStack {
-                Text(workout.description)
+                Text(workout.description!)
                     .font(.body)
                     .fontWeight(.medium)
                     .foregroundColor(Color(.primaryText))

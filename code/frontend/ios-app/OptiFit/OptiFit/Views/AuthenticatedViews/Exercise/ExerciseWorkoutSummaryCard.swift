@@ -2,7 +2,7 @@ import Charts
 import SwiftUI
 
 struct ExerciseWorkoutSummaryCard: View {
-    let workoutExercise: ExerciseWorkoutDto
+    let workoutExercise: Components.Schemas.ExerciseWorkoutDto
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -11,7 +11,7 @@ struct ExerciseWorkoutSummaryCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Workout on \(workoutExercise.workout.startAtUtc, formatter: dateFormatter)")
+            Text("Workout on \((workoutExercise.workout?.startAtUtc!)!, formatter: dateFormatter)")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
@@ -26,25 +26,25 @@ struct ExerciseWorkoutSummaryCard: View {
 
 #Preview {
     ExerciseWorkoutSummaryCard(
-        workoutExercise: ExerciseWorkoutDto(
-            id: UUID(),
+        workoutExercise: Components.Schemas.ExerciseWorkoutDto(
+            id: UUID().uuidString,
             order: 1,
-            workout: GetWorkoutDto(
-                id: UUID(),
+            workout: Components.Schemas.GetWorkoutDto(
+                id: UUID().uuidString,
                 description: "Some Test Workout",
                 startAtUtc: Date(),
                 endAtUtc: Date(),
                 notes: "Some Notes",
-                gymId: UUID(),
-                gym: GetGymDto(
-                    address: "Daham",
-                    zipCode: 8020,
-                    id: UUID(),
+                gymId: UUID().uuidString,
+                gym: Components.Schemas.GetGymDto(
+                    id: UUID().uuidString,
                     name: "Home Gym",
-                    city: "Graz"
+                    address: "Daham",
+                    city: "Graz",
+                    zipCode: 8020
                 ),
                 workoutExercises: [],
-                workoutSummary: WorkoutSummary(
+                workoutSummary: Components.Schemas.WorkoutSummary(
                     totalTime: 90,
                     totalSets: 15,
                     totalReps: 300,
@@ -52,11 +52,11 @@ struct ExerciseWorkoutSummaryCard: View {
                     totalExercises: 5
                 )
             ),
-            exerciseId: UUID(),
+            exerciseId: UUID().uuidString,
             workoutSets: [
-                GetWorkoutSetDto(id: UUID(), order: 1, reps: 20, weight: 100, workoutExerciseId: UUID()),
-                GetWorkoutSetDto(id: UUID(), order: 2, reps: 15, weight: 120, workoutExerciseId: UUID()),
-                GetWorkoutSetDto(id: UUID(), order: 3, reps: 10, weight: 100, workoutExerciseId: UUID()),
+                Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 1, reps: 20, weight: 100, workoutExerciseId: UUID().uuidString),
+                Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 2, reps: 15, weight: 120, workoutExerciseId: UUID().uuidString),
+                Components.Schemas.GetWorkoutSetDto(id: UUID().uuidString, order: 3, reps: 10, weight: 100, workoutExerciseId: UUID().uuidString),
             ],
             notes: "Some Notes"
         )
