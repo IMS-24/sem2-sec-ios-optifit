@@ -1,11 +1,11 @@
 import Foundation
 import Security
 
-class KeychainHelper {
-    static let shared = KeychainHelper()
+final class KeychainHelper: @unchecked Sendable {
+    @MainActor static let shared = KeychainHelper()
 
     /// Saves a token to the Keychain.
-    func save(token: String, service: String, account: String) -> Bool {
+    nonisolated func save(token: String, service: String, account: String) -> Bool {
         guard let tokenData = token.data(using: .utf8) else {
             return false
         }
@@ -28,7 +28,7 @@ class KeychainHelper {
     }
 
     /// Retrieves a token from the Keychain.
-    func readToken(service: String, account: String) -> String? {
+    nonisolated func readToken(service: String, account: String) -> String? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
@@ -47,7 +47,7 @@ class KeychainHelper {
     }
 
     /// Deletes a token from the Keychain.
-    func deleteToken(service: String, account: String) {
+    nonisolated func deleteToken(service: String, account: String) {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,

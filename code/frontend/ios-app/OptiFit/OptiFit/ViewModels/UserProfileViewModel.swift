@@ -64,7 +64,7 @@ class UserProfileViewModel: ObservableObject {
     }
 
     func deleteProfile() async {
-        guard let currentUser = profile else {
+        guard profile != nil else {
             return
         }
         isLoading = true

@@ -21,7 +21,7 @@ struct AuthContentView: View {
 }
 
 struct NavigationBarView: View {
-    @StateObject private var idleTimerManager = IdleTimerManager.shared
+//    @StateObject private var idleTimerManager = IdleTimerManager.shared
     @StateObject var workoutViewModel: WorkoutViewModel = WorkoutViewModel()
     var body: some View {
         TabView {

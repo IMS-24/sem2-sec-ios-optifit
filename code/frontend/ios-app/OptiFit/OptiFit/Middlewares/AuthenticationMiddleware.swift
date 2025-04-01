@@ -42,7 +42,7 @@ extension AuthenticationMiddleware: ClientMiddleware {
         operationID: String,
         next: (HTTPRequest, HTTPBody?, URL) async throws -> (HTTPResponse, HTTPBody?)
     ) async throws -> (HTTPResponse, HTTPBody?) {
-        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else {
+        guard let token = await KeychainHelper.shared.readToken(service: service, account: account) else {
             throw ApiError.unauthorized("No token found")
         }
         var request = request

@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct OptiFitApp: App {
-    @StateObject private var idleTimerManager = IdleTimerManager.shared
+//    @StateObject private var idleTimerManager = IdleTimerManager.shared
     @StateObject private var authViewModel = AuthViewModel()
 
     var body: some Scene {

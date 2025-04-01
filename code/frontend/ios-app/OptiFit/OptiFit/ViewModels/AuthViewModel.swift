@@ -25,8 +25,8 @@ final class AuthViewModel: ObservableObject {
             authService.persistToken(accessToken)
             do {
                 self.user = try authService.decodeJWT(result.accessToken)
-                if let user = self.user {
-                    self.user?.firstLogin = true
+                if var user = self.user {
+                    user.firstLogin = true
                     let userProfile = Components.Schemas.InitializeUserProfileDto(
                         dateOfBirthUtc: nil)
                     self.initUserProfile = userProfile

@@ -1,11 +1,13 @@
 import UIKit
 
 class HapticFeedbackManager {
-    static let shared = HapticFeedbackManager()
+    @MainActor static let shared = HapticFeedbackManager()
 
     // Triggers a strong vibration
-    func triggerVibration() {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.error)  // Strongest vibration type
+    func triggerVibration() async {
+        Task{
+            let generator = await UINotificationFeedbackGenerator()
+            await generator.notificationOccurred(.error)  // Strongest vibration type
+        }
     }
 }

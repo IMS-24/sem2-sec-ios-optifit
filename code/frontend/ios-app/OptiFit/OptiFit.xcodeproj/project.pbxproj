@@ -36,10 +36,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		2831138F2D620E26000AD9FC /* Exceptions for "OptiFit" folder in "OptiFit" target */ = {
+		28CA59452D9C9A0C00549917 /* Exceptions for "OptiFit" folder in "OptiFit" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				PLIST/Development.plist,
+				PLIST/Production.plist,
+				PLIST/Staging.plist,
+				PLIST/Testing.plist,
 			);
 			target = 288C8F1D2D609205002B0719 /* OptiFit */;
 		};
@@ -49,7 +52,7 @@
 		288C8F202D609205002B0719 /* OptiFit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				2831138F2D620E26000AD9FC /* Exceptions for "OptiFit" folder in "OptiFit" target */,
+				28CA59452D9C9A0C00549917 /* Exceptions for "OptiFit" folder in "OptiFit" target */,
 			);
 			path = OptiFit;
 			sourceTree = "<group>";
@@ -469,7 +472,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Testing;
@@ -509,7 +512,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "${inherited}";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Production;
@@ -688,7 +691,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Staging;
@@ -831,7 +834,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Development;

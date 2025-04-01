@@ -15,7 +15,7 @@ class APIClient {
 
         var request = URLRequest(url: url)
         request.httpMethod = method
-        guard let token = KeychainHelper.shared.readToken(service: service, account: account) else {
+        guard let token = await KeychainHelper.shared.readToken(service: service, account: account) else {
             throw ApiError.unauthorized("No token found")
         }
         request.addAuthorizationHeader(with: token)

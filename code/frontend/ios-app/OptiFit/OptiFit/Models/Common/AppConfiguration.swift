@@ -47,8 +47,6 @@ enum AppConfiguration {
         #elseif DEVELOPMENT
             return "DEV"
         #endif
-        
-        return "Not Specified"
     }
 
     static var fullSemVersion: String {

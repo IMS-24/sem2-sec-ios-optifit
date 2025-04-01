@@ -10,7 +10,7 @@ struct WorkoutSetSummaryView: View {
             HStack {
                 ZStack {
                     Circle()
-                        .fill(Color.accentColor)
+                        .fill(Color.primaryAccent)
                         .frame(width: 40, height: 40)
                     Text("\(set.order ?? 0)")
                         .font(.headline)
