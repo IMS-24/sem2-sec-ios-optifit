@@ -11,8 +11,11 @@ struct ProfileView: View {
                     .frame(width: 50, height: 50)
                 VStack(alignment: .leading) {
                     if let profile = profileViewModel.profile {
-                        Text("\(profile.firstName) \(profile.lastName)").font(.headline)
-                        Text(profile.email!).font(.subheadline).foregroundColor(.gray)
+                        Text("\(profile.firstName!) \(profile.lastName!)")
+                            .font(.headline)
+                        Text(profile.email!)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
 
                         if let dob = profile.dateOfBirthUtc {
                             Text("Birthdate: \(dob.formattedDate())").font(.subheadline).foregroundColor(.gray)

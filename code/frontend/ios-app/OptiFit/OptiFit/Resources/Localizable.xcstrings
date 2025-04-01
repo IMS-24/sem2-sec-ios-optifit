@@ -10,19 +10,12 @@
     "%.2f" : {
 
     },
-    "%@ - Day at %@ started at %@" : {
-      "extractionState" : "stale",
+    "%@ %@" : {
       "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ - Trainingstag im %2$@ begann um %3$@"
-          }
-        },
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ - Training day at %2$@ began at %3$@"
+            "state" : "new",
+            "value" : "%1$@ %2$@"
           }
         }
       }
@@ -37,6 +30,9 @@
         }
       },
       "shouldTranslate" : false
+    },
+    "%@:" : {
+
     },
     "%d" : {
 
@@ -112,24 +108,6 @@
         }
       }
     },
-    "ApplicationName" : {
-      "comment" : "OptiFit",
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OptiFit"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OptiFit"
-          }
-        }
-      }
-    },
     "Are you sure?" : {
       "localizations" : {
         "de" : {
@@ -180,17 +158,6 @@
         }
       }
     },
-    "Calculated Stats" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Berechnete Statistik"
-          }
-        }
-      }
-    },
     "Calories" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -212,17 +179,6 @@
         }
       }
     },
-    "City: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stadt: %@"
-          }
-        }
-      }
-    },
     "Contact Support" : {
       "localizations" : {
         "de" : {
@@ -235,17 +191,6 @@
     },
     "Continue" : {
 
-    },
-    "Cooming Soon" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not implemented yet"
-          }
-        }
-      }
     },
     "Dark Mode" : {
       "localizations" : {
@@ -327,17 +272,6 @@
         }
       }
     },
-    "Duration:" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dauer"
-          }
-        }
-      }
-    },
     "Edit" : {
       "localizations" : {
         "de" : {
@@ -353,28 +287,6 @@
     },
     "Email" : {
 
-    },
-    "End" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beenden"
-          }
-        }
-      }
-    },
-    "Enter Sets" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sätze bearbeiten"
-          }
-        }
-      }
     },
     "Enter your email" : {
 
@@ -482,6 +394,9 @@
         }
       }
     },
+    "Hide Build Info" : {
+
+    },
     "Home" : {
       "localizations" : {
         "de" : {
@@ -540,9 +455,6 @@
           }
         }
       }
-    },
-    "Login" : {
-
     },
     "Logout" : {
       "localizations" : {
@@ -611,17 +523,6 @@
     "No exercises available." : {
 
     },
-    "No exercises performed yet." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Keine Übung ausgeführt"
-          }
-        }
-      }
-    },
     "No sets added yet." : {
 
     },
@@ -655,9 +556,6 @@
       }
     },
     "Onboarding" : {
-
-    },
-    "OptiFit" : {
 
     },
     "order" : {
@@ -819,6 +717,9 @@
         }
       }
     },
+    "Show Build Info" : {
+
+    },
     "Start Workout" : {
       "localizations" : {
         "de" : {
@@ -903,20 +804,6 @@
         }
       }
     },
-    "Version: TBD" : {
-
-    },
-    "View Exercises" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Übungen anzeigen"
-          }
-        }
-      }
-    },
     "Volume" : {
 
     },
@@ -971,17 +858,6 @@
     "Workout on %@" : {
 
     },
-    "Workout Summary" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Workout Zusammenfassung"
-          }
-        }
-      }
-    },
     "Workouts" : {
       "localizations" : {
         "de" : {
@@ -995,7 +871,7 @@
     "You are not authorized to perform this action." : {
 
     },
-    "Your ultimate fitness companion to track workouts, monitor progress, and get motivated every day!" : {
+    "Your ultimate fitness companion to track workouts, monitor progress, and stay motivated." : {
 
     },
     "ZIP Code: %@" : {

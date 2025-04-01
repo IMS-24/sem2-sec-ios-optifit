@@ -5,62 +5,81 @@ struct LoginView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var jwtToken: String = ""
     @State private var showMoreInfo: Bool = false
-
+    @State private var showEnvInfo: Bool = false
+    
     var body: some View {
         ZStack {
-            // Background gradient for a fancy look
+            // Background gradient
             LinearGradient(
-                gradient: Gradient(colors: [Color.blue.opacity(0.3), Color.purple.opacity(0.3)]),
+                gradient: Gradient(colors: [Color.blue.opacity(0.4), Color.purple.opacity(0.4)]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
-            .edgesIgnoringSafeArea(.all)
-
-            VStack(spacing: 40) {
+            .ignoresSafeArea()
+            
+            VStack(spacing: 30) {
                 Spacer()
-
-                // App Title, Version, and Description
-                VStack(spacing: 8) {
-                    Text("OptiFit")
+                
+                // Glass card
+                VStack(spacing: 16) {
+                    Image("pepe_logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                        .shadow(radius: 10)
+                    
+                    Text(AppConfiguration.appName)
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(.white)
-                    Text("Version: TBD")
-                        .font(.subheadline)
-                        .foregroundColor(.white.opacity(0.8))
-                    Text("Your ultimate fitness companion to track workouts, monitor progress, and get motivated every day!")
+                        .foregroundColor(.primaryText)
+                    
+                    Text("Your ultimate fitness companion to track workouts, monitor progress, and stay motivated.")
                         .font(.body)
                         .multilineTextAlignment(.center)
-                        .foregroundColor(.white)
+                        .foregroundColor(.primaryText.opacity(0.9))
                         .padding(.horizontal)
-                }
-
-                // Logo
-                Image("pepe_logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200, height: 200)
-                    .shadow(radius: 10)
-
-                // JWT Token debugging display
-                //                VStack(alignment: .leading, spacing: 8) {
-                //                    Text("JWT Token:")
-                //                        .font(.headline)
-                //                    TextEditor(text: $jwtToken)
-                //                        .frame(height: 100)
-                //                        .padding(4)
-                //                        .background(Color.white.opacity(0.7))
-                //                        .cornerRadius(8)
-                //                        .disabled(true) // Make it read-only
-                //                }
-                //                .padding(.horizontal)
-
-                // Buttons for Login and More Info
-                HStack(spacing: 40) {
+                    
+                    // Show/hide environment info
                     Button(action: {
+                        withAnimation {
+                            showEnvInfo.toggle()
+                        }
+                    }) {
+                        HStack {
+                            Image(systemName: showEnvInfo ? "chevron.up.circle" : "chevron.down.circle")
+                            Text(showEnvInfo ? "Hide Build Info" : "Show Build Info")
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.primaryText.opacity(0.85))
+                        .padding(.top, 4)
+                    }
+                    
+                    if showEnvInfo {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Group {
+                                InfoRow(label: "Git Hash", value: AppConfiguration.gitHash)
+                                InfoRow(label: "Branch", value: AppConfiguration.gitBranch)
+                                InfoRow(label: "Version", value: AppConfiguration.fullSemVersion)
+                                InfoRow(label: "Environment", value: AppConfiguration.Environment)
+                            }
+                        }
+                        .padding(12)
+                        .background(Color.primaryText.opacity(0.1))
+                        .cornerRadius(12)
+                        .transition(.opacity.combined(with: .move(edge: .top)))
+                    }
+                }
+                .padding()
+                .background(.ultraThinMaterial)
+                .cornerRadius(24)
+                .shadow(radius: 10)
+                .padding(.horizontal)
+                
+                // Buttons
+                HStack(spacing: 20) {
+                    GradientButton(title: "Login", gradient: Gradient(colors: [Color.blue, Color.purple])) {
                         Task {
                             await viewModel.authorize()
-                            // Assume your AuthViewModel stores the JWT token in a property called accessToken.
                             if let token = viewModel.accessToken {
                                 jwtToken = token
                                 print("JWT Token: \(token)")
@@ -68,37 +87,60 @@ struct LoginView: View {
                                 jwtToken = "No JWT token available"
                             }
                         }
-                    }) {
-                        Text("Login")
-                            .font(.title2)
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
                     }
-
-                    Button(action: {
+                    
+                    GradientButton(title: "More Info", gradient: Gradient(colors: [Color.gray, Color.black])) {
                         showMoreInfo = true
                         print("More Info tapped")
-                    }) {
-                        Text("More Info")
-                            .font(.title2)
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .padding()
-                            .background(Color.gray)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
                     }
                 }
                 .padding(.horizontal)
-
+                
                 Spacer()
             }
-            .padding()
             .sheet(isPresented: $showMoreInfo) {
                 MoreInfoView()
             }
+        }
+    }
+}
+
+struct InfoRow: View {
+    let label: String
+    let value: String
+    
+    var body: some View {
+        HStack {
+            Text("\(label):")
+                .fontWeight(.semibold)
+                .foregroundColor(.primaryText)
+            Spacer()
+            Text(value)
+                .foregroundColor(.primaryText.opacity(0.9))
+                .lineLimit(1)
+                .truncationMode(.middle)
+        }
+    }
+}
+
+struct GradientButton: View {
+    let title: String
+    let gradient: Gradient
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+                .font(.headline)
+                .padding(.vertical, 12)
+                .frame(minWidth: 100)
+                .frame(maxWidth: .infinity)
+                .background(
+                    LinearGradient(gradient: gradient, startPoint: .topLeading, endPoint: .bottomTrailing)
+                )
+                .foregroundColor(.white)
+                .cornerRadius(14)
+                .shadow(radius: 5)
         }
     }
 }
@@ -109,6 +151,7 @@ struct MoreInfoView: View {
             Text("More Info")
                 .font(.largeTitle)
                 .bold()
+                .foregroundColor(.white)
             Text("Welcome to OptiFit, your ultimate fitness companion. Track workouts, monitor progress, and get motivated every day!")
                 .multilineTextAlignment(.center)
                 .padding()

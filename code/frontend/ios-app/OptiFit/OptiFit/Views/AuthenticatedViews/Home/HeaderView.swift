@@ -7,7 +7,7 @@ struct HeaderView: View {
         HStack {
             // Use email if available; if not, use name; if still nil, show "No user"
             Text(viewModel.user?.emails?.first ?? viewModel.user?.name ?? viewModel.user?.id.uuidString ?? "No user")
-                .font(.largeTitle)
+                .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.blue)
 

@@ -28,4 +28,35 @@ enum AppConfiguration {
     static var b2cScopes: [String] {
         string(for: "B2C_SCOPES").split(separator: ",").map(String.init)
     }
+
+    static var appName: String {
+        string(for: "APP_NAME")
+    }
+
+    static var gitHash: String {
+        string(for: "GIT_HASH")
+    }
+
+    static var Environment: String {
+        #if STAGING
+            return "STAGE"
+        #elseif PRODUCTION
+            return "PROD"
+        #elseif TESTING
+            return "QA"
+        #elseif DEVELOPMENT
+            return "DEV"
+        #endif
+        
+        return "Not Specified"
+    }
+
+    static var fullSemVersion: String {
+        string(for: "FULL_SEMVER")
+    }
+
+    static var gitBranch: String {
+        string(for: "GIT_BRANCH")
+    }
+
 }
