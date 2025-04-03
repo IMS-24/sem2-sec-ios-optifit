@@ -101,6 +101,7 @@ struct WorkoutStartView: View {
                     if let firstGym = gymViewModel.gyms.first {
                         currentWorkoutViewModel.setGym(firstGym)
                     }
+                    currentWorkoutViewModel.workoutStartDate = Date()
                 }
             }
             .alert(item: $exerciseCategoriesViewModel.errorMessage) { error in

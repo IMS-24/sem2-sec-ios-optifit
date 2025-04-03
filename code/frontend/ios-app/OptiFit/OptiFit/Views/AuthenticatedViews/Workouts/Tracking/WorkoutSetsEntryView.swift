@@ -1,5 +1,4 @@
 import SwiftUI
-
 struct WorkoutSetsEntryView: View {
     @Binding var sets: [Components.Schemas.CreateWorkoutSetDto]
     let onDeleteSet: (Int) -> Void
@@ -10,7 +9,7 @@ struct WorkoutSetsEntryView: View {
                 .foregroundColor(.gray)
         } else {
             VStack(spacing: 12) {
-                ForEach(sets.indices, id: \.self) { index in
+                ForEach(Array(sets.enumerated()), id: \.element.id) { (index, set) in
                     WorkoutSetRowView(
                         set: $sets[index],
                         index: index,
@@ -21,6 +20,7 @@ struct WorkoutSetsEntryView: View {
         }
     }
 }
+
 //
 //#Preview {
 //    WorkoutSetsEntryView(

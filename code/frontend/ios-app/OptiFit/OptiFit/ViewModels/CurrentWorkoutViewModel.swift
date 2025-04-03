@@ -29,24 +29,8 @@ class CurrentWorkoutViewModel: ObservableObject {
     }
 
     // Create a new workout if needed and start the timer.
-    func startTimer() {
-        if workout == nil {
-            workout = Components.Schemas.CreateWorkoutDto(
-                id: nil,
-                description: description,
-                startAtUtc: workoutStartDate,
-                endAtUtc: nil,
-                notes: notes,  // Use the view model's notes
-                gymId: selectedGym?.id,
-                workoutExercises: []
-            )
-        } else {
-            workout?.startAtUtc = workoutStartDate
-            workout?.gymId = selectedGym?.id
-            // Ensure workout notes are in sync.
-            workout?.notes = notes
-            workout?.description = description
-        }
+    private func startTimer() {
+        workout?.gymId = selectedGym?.id
 
         elapsedTime = Date().timeIntervalSince(workoutStartDate)
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
@@ -62,23 +46,9 @@ class CurrentWorkoutViewModel: ObservableObject {
 
     func setGym(_ gym: Components.Schemas.GetGymDto) {
         selectedGym = gym
-        // If there's no workout yet, create one.
-        if workout == nil {
-            workout = Components.Schemas.CreateWorkoutDto(
-                id: nil,
-                description: description,
-                startAtUtc: workoutStartDate,
-                endAtUtc: nil,
-                notes: notes,  // Use the view model's notes
-                gymId: gym.id,
-                workoutExercises: []
-            )
-        } else {
-            workout?.notes = notes
-            workout?.description = description
-            workout?.startAtUtc = workoutStartDate
-            workout?.gymId = gym.id
-        }
+
+        workout?.gymId = gym.id
+
     }
 
     func setExerciseCategory(_ category: Components.Schemas.GetExerciseCategoryDto?) {
@@ -143,6 +113,26 @@ class CurrentWorkoutViewModel: ObservableObject {
             errorMessage = ErrorMessage(message: error.localizedDescription)
         }
         return nil
+    }
+
+    func startWorkout() {
+        print("[Debug] - Start workout")
+        workoutStartDate = Date()
+        startTimer()
+        workout = Components.Schemas.CreateWorkoutDto(
+            id: nil,
+            description: description,
+            startAtUtc: workoutStartDate,
+            endAtUtc: nil,
+            notes: notes,  // Use the view model's notes
+            gymId: selectedGym?.id,
+            workoutExercises: []
+        )
+    }
+    func stopWorkout() {
+        print("[Debug] - Stop workout")
+        invalidateTimer()
+        workout = nil
     }
 
     func cancelWorkout() {

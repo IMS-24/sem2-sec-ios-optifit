@@ -2,6 +2,7 @@ import SwiftUI
 
 struct WorkoutTrackingView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var activeAlert: ActiveAlert?
 
     @State private var navigateToExerciseSheet = false
     @StateObject private var workoutViewModel = WorkoutViewModel()
@@ -71,7 +72,7 @@ struct WorkoutTrackingView: View {
             // Action buttons for save and cancel.
             WorkoutTrackingActionButtonView(
                 onSave: saveWorkout,
-                onCancel: { showCancelConfirmation = true }
+                onCancel: { activeAlert = .cancel }
             )
         }
         .padding(.vertical)
@@ -100,31 +101,31 @@ struct WorkoutTrackingView: View {
                 )
             }
         }
-        // Cancel confirmation alert.
-        .alert(isPresented: $showCancelConfirmation) {
-            Alert(
-                title: Text("Cancel Workout"),
-                message: Text("Are you sure you want to cancel this workout?"),
-                primaryButton: .destructive(Text("Cancel Workout")) {
-                    currentWorkoutViewModel.cancelWorkout()
-                    dismiss()
-                },
-                secondaryButton: .cancel()
-            )
-        }
-        // Error alert.
-        .alert(item: $currentWorkoutViewModel.errorMessage) { error in
-            Alert(
-                title: Text("Error"),
-                message: Text(error.message),
-                dismissButton: .default(Text("OK"))
-            )
+        .alert(item: $activeAlert) { alert in
+            switch alert {
+            case .cancel:
+                return Alert(
+                    title: Text("Cancel Workout"),
+                    message: Text("Are you sure you want to cancel this workout?"),
+                    primaryButton: .destructive(Text("Cancel Workout")) {
+                        currentWorkoutViewModel.cancelWorkout()
+                        dismiss()
+                    },
+                    secondaryButton: .cancel()
+                )
+            case .error(let message):
+                return Alert(
+                    title: Text("Error"),
+                    message: Text(message),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
         .onAppear {
-            currentWorkoutViewModel.startTimer()
+            currentWorkoutViewModel.startWorkout()
         }
         .onDisappear {
-            currentWorkoutViewModel.invalidateTimer()
+            currentWorkoutViewModel.stopWorkout()
         }
     }
 

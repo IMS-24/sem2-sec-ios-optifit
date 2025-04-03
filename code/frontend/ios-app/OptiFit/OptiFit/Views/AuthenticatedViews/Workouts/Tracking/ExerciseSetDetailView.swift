@@ -16,7 +16,19 @@ struct ExerciseSetDetailView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var createWorkoutExerciseDto: Components.Schemas.CreateWorkoutExerciseDto
-    
+    private var isValid: Bool {
+        guard let sets = createWorkoutExerciseDto.workoutSets, !sets.isEmpty else {
+            return false
+        }
+        // Check that each set has non-nil and positive reps and weight.
+        for set in sets {
+            guard let reps = set.reps, let weight = set.weight, reps > 0, weight > 0 else {
+                return false
+            }
+        }
+        return true
+    }
+
     init(selectedExercise: Components.Schemas.GetExerciseDto, order: Int, onSave: @escaping (Components.Schemas.CreateWorkoutExerciseDto) -> Void) {
         self.selectedExercise = selectedExercise
         self.order = order
@@ -87,6 +99,7 @@ struct ExerciseSetDetailView: View {
                         onSave(workoutExercise)
                         dismiss()
                     }
+                    .disabled(!isValid)
                 }
             }
         }
