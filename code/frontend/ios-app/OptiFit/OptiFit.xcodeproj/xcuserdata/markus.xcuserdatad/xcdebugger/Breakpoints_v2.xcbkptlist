@@ -7,15 +7,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "14B0CB22-3F76-4C18-9ABE-6E83BBFAC10B"
+            uuid = "1D39FF90-977B-4FC8-8E41-0A7F2BFEB8DA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OptiFit/Views/AuthenticatedViews/Workouts/Tracking/ExerciseSetDetailView.swift"
+            filePath = "OptiFit/ViewModels/WorkoutViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "appendWorkout(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2E97305-A4BC-4D90-A8ED-569FB3D9F899"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OptiFit/ViewModels/CurrentWorkoutViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "startWorkout()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4B0D43CC-3378-4C24-BF07-BE07061F4576"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OptiFit/Views/AuthenticatedViews/Workouts/Tracking/WorkoutTrackingView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -23,167 +55,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F637D1FC-DC50-4DFE-9F9B-07C9E0863C18"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/Views/AuthenticatedViews/Workouts/Tracking/WorkoutTrackingView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "saveWorkout()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F637D1FC-DC50-4DFE-9F9B-07C9E0863C18 - f8b3ada9a95b5b38"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 () async -&gt; () in OptiFit.WorkoutTrackingView.saveWorkout() -&gt; ()"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Views/AuthenticatedViews/Workouts/Tracking/WorkoutTrackingView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "188"
-                  endingLineNumber = "188">
-               </Location>
-               <Location
-                  uuid = "F637D1FC-DC50-4DFE-9F9B-07C9E0863C18 - 3233ed9acbf21d43"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 () async -&gt; () in OptiFit.WorkoutTrackingView.saveWorkout() -&gt; ()"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Views/AuthenticatedViews/Workouts/Tracking/WorkoutTrackingView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "188"
-                  endingLineNumber = "188">
-               </Location>
-               <Location
-                  uuid = "F637D1FC-DC50-4DFE-9F9B-07C9E0863C18 - e2320f1a8c9d9f26"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 () async -&gt; () in OptiFit.WorkoutTrackingView.saveWorkout() -&gt; ()"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/Views/AuthenticatedViews/Workouts/Tracking/WorkoutTrackingView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "188"
-                  endingLineNumber = "188">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F714A9CD-50F4-410B-8EEC-8026EC4F126B"
+            uuid = "67D67EB7-2454-4AA7-81CB-C2B854590AE0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OptiFit/ViewModels/CurrentWorkoutViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "saveWorkout()"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "stopWorkout()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "06CE40C6-E9C6-48A1-BDFD-54B6B78C8C1B"
+            uuid = "F9F8A8BF-D417-436F-BB31-0412FAE33ED9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OptiFit/ViewModels/CurrentWorkoutViewModel.swift"
+            filePath = "OptiFit/Views/AuthenticatedViews/Workouts/Tracking/ExerciseSetDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "saveWorkout()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "06CE40C6-E9C6-48A1-BDFD-54B6B78C8C1B - aedbe8bf8e6ff37c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for OptiFit.CurrentWorkoutViewModel.saveWorkout() async -&gt; Swift.Optional&lt;OptiFit.Components.Schemas.GetWorkoutDto&gt;"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/ViewModels/CurrentWorkoutViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72">
-               </Location>
-               <Location
-                  uuid = "06CE40C6-E9C6-48A1-BDFD-54B6B78C8C1B - 30e8c0cab29dd5d8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for OptiFit.CurrentWorkoutViewModel.saveWorkout() async -&gt; Swift.Optional&lt;OptiFit.Components.Schemas.GetWorkoutDto&gt;"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/ViewModels/CurrentWorkoutViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72">
-               </Location>
-               <Location
-                  uuid = "06CE40C6-E9C6-48A1-BDFD-54B6B78C8C1B - 64cdf83c23053f72"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for OptiFit.CurrentWorkoutViewModel.saveWorkout() async -&gt; Swift.Optional&lt;OptiFit.Components.Schemas.GetWorkoutDto&gt;"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/ViewModels/CurrentWorkoutViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72">
-               </Location>
-               <Location
-                  uuid = "06CE40C6-E9C6-48A1-BDFD-54B6B78C8C1B - 41c8c07d96a9dd71"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for OptiFit.CurrentWorkoutViewModel.saveWorkout() async -&gt; Swift.Optional&lt;OptiFit.Components.Schemas.GetWorkoutDto&gt;"
-                  moduleName = "OptiFit.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/markus/dev/qb8s/OptiFit/code/frontend/ios-app/OptiFit/OptiFit/ViewModels/CurrentWorkoutViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7E4C1DC7-FF59-48AD-A4D9-C49536B512B2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OptiFit/ViewModels/CurrentWorkoutViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "saveWorkout()"
-            landmarkType = "7">
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
