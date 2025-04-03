@@ -32,7 +32,7 @@ struct WorkoutTrackingHeaderView: View {
             HStack(spacing: 4) {
                 Image(systemName: "mappin.and.ellipse")
                     .foregroundColor(Color(.primaryAccent))
-                Text("\(gym.name), \(gym.city)")
+                Text("\(gym.name!), \(gym.city!)")
                     .font(.subheadline)
                     .foregroundColor(Color(.primaryText))
             }

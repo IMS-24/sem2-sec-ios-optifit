@@ -26,6 +26,9 @@ struct ExerciseView: View {
                         }
                 }
             }
+            .refreshable {
+                await exerciseViewModel.searchExercises()
+            }
             .listStyle(InsetGroupedListStyle())
             .navigationTitle("Exercises")
             .toolbar {
@@ -45,9 +48,6 @@ struct ExerciseView: View {
             // Navigation destination for editing an existing exercise.
             .navigationDestination(item: $selectedExerciseForEdit) { exercise in
                 ExerciseDetailView(exercise: exercise, startEditing: true)
-            }
-            .refreshable {
-                await exerciseViewModel.searchExercises()
             }
             .onAppear {
                 Task {

@@ -3,13 +3,13 @@ import SwiftUI
 struct WorkoutView: View {
     @EnvironmentObject var workoutViewModel: WorkoutViewModel
     @State private var navigateToStartWorkout = false
-
+    
     // Group workouts by month.
     private var groupedWorkouts: [String: [Components.Schemas.GetWorkoutDto]] {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM yyyy"
         let workouts = workoutViewModel.workouts
-
+        
         // Group by month string, using "Unknown" if startAtUtc is nil.
         let grouped = Dictionary(grouping: workouts) { workout -> String in
             if let startDate = workout.startAtUtc {
@@ -20,11 +20,14 @@ struct WorkoutView: View {
         }
         return grouped
     }
-
+    
     var body: some View {
         NavigationStack {
             List {
                 GroupedWorkoutListView(groupedWorkouts: groupedWorkouts)
+            }
+            .refreshable {
+                await workoutViewModel.searchWorkouts()
             }
             .listStyle(InsetGroupedListStyle())
             .navigationTitle("Workouts")
@@ -57,10 +60,3 @@ struct WorkoutView: View {
         .background(Color(.primaryBackground).ignoresSafeArea())
     }
 }
-//
-//struct WorkoutView_Previews: PreviewProvider {
-//    static let workoutViewModel: WorkoutViewModel = WorkoutViewModel()
-//    static var previews: some View {
-//        WorkoutView(workoutViewModel: workoutViewModel)
-//    }
-//}

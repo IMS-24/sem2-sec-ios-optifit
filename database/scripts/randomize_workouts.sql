@@ -1,12 +1,17 @@
--- Step 1: Update start_at_utc with a random past timestamp.
--- The random value is computed as a fraction of the total number of days (equal to the row count) to subtract from the current timestamp.
-WITH total_count AS (
-    SELECT count(*) AS cnt
+-- Step 1: Update start_at_utc with a unique random past timestamp.
+-- We use a CTE to assign a random row number to each workout.
+WITH cte AS (
+    SELECT
+        id,
+        row_number() OVER (ORDER BY random()) AS rn,
+        count(*) OVER () AS total_count
     FROM workout
 )
 UPDATE workout
-SET start_at_utc = current_timestamp - (random() * (cnt::numeric) * interval '1 day')
-    FROM total_count;
+SET start_at_utc = current_timestamp
+    - (((rn - 1)::numeric / NULLIF(total_count - 1, 0)) * (total_count::numeric * interval '1 day'))
+FROM cte
+WHERE workout.id = cte.id;
 
 -- Step 2: Update end_at_utc based on start_at_utc plus a random interval.
 -- The random interval is generated as a random number of seconds between 2700 (45 minutes) and 10800 (180 minutes).

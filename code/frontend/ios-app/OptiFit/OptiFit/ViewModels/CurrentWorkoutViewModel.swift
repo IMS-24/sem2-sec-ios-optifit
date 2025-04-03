@@ -103,10 +103,14 @@ class CurrentWorkoutViewModel: ObservableObject {
             errorMessage = nil
 
             let created = try await workoutService.postWorkout(currentWorkout)
-            isLoading = false
+
             invalidateTimer()
             workout = nil
             elapsedTime = 0
+            description = ""
+            notes = ""
+
+            isLoading = false
             return created
 
         } catch {
@@ -133,6 +137,8 @@ class CurrentWorkoutViewModel: ObservableObject {
         print("[Debug] - Stop workout")
         invalidateTimer()
         workout = nil
+        notes  = ""
+        description = ""
     }
 
     func cancelWorkout() {
@@ -142,6 +148,8 @@ class CurrentWorkoutViewModel: ObservableObject {
             workout = nil
         }
         elapsedTime = 0
+        description = ""
+        notes = ""
         errorMessage = nil
     }
 }

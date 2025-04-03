@@ -62,7 +62,19 @@ struct WorkoutStartView: View {
                     }
                     .padding(.vertical, 5)
                 }
-
+                // Notes field.
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Description")
+                        .font(.headline)
+                        .foregroundColor(Color(.primaryText))
+                    TextEditor(text: $currentWorkoutViewModel.description)
+                        .frame(height: 60)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                        )
+                }
+                .padding(.horizontal)
                 // Start Workout Button
                 Button("Start Workout") {
                     navigateToWorkoutTrackingView = true
