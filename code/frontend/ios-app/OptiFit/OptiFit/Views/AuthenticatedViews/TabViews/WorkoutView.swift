@@ -21,37 +21,33 @@ struct WorkoutView: View {
         return grouped
     }
 
-    // Sorted list of month keys.
-    private var sortedMonths: [String] {
-        groupedWorkouts.keys.sorted(by: >)
-    }
-
     var body: some View {
         NavigationStack {
             List {
-                ForEach(sortedMonths, id: \.self) { month in
-                    Section(
-                        header: Text(month)
-                            .font(.headline)
-                            .foregroundColor(Color(.primaryText))
-                    ) {
-                        GroupedWorkoutView(
-                            groupedWorkouts: groupedWorkouts, groupBy: month,
-                            onLoadMore: {
-                                //TODO: Implement loadMore
-                                // Check if this workout is the last in the list before loading more.
-                                //                            if let lastWorkout = workoutViewModel.workouts.last,
-                                //                               workout.id == lastWorkout.id
-                                //                            {
-                                //                                Task {
-                                //                                    await workoutViewModel.loadMoreWorkouts()
-                                //                                }
-                                //                            }
-                                print("Load more .... <Not Implemented>")
-                            })
-
-                    }
-                }
+                GroupedWorkoutListView(groupedWorkouts: groupedWorkouts)
+                //                ForEach(sortedMonths, id: \.self) { month in
+                //                    Section(
+                //                        header: Text(month)
+                //                            .font(.headline)
+                //                            .foregroundColor(Color(.primaryText))
+                //                    ) {
+                //                        GroupedWorkoutView(
+                //                            groupedWorkouts: groupedWorkouts, groupBy: month,
+                //                            onLoadMore: {
+                //                                //TODO: Implement loadMore
+                //                                // Check if this workout is the last in the list before loading more.
+                //                                //                            if let lastWorkout = workoutViewModel.workouts.last,
+                //                                //                               workout.id == lastWorkout.id
+                //                                //                            {
+                //                                //                                Task {
+                //                                //                                    await workoutViewModel.loadMoreWorkouts()
+                //                                //                                }
+                //                                //                            }
+                //                                print("Load more .... <Not Implemented>")
+                //                            })
+                //
+                //                    }
+                //                }
             }
             .listStyle(InsetGroupedListStyle())
             .navigationTitle("Workouts")
