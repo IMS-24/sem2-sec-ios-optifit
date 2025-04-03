@@ -4,7 +4,7 @@ struct HomeView: View {
     @EnvironmentObject var viewModel: AuthViewModel
 
     @StateObject private var userProfileViewModel = UserProfileViewModel()
-    @StateObject private var workoutViewModel = WorkoutViewModel()
+    @StateObject private var workoutViewModel: WorkoutViewModel = WorkoutViewModel()
 
     // Aggregates workout summaries by complete day ("yyyy-MM-dd").
     private var aggregatedSummaries: [String: Components.Schemas.WorkoutSummary] {
@@ -78,10 +78,10 @@ struct HomeView: View {
                         .background(Color(.secondaryBackground))
                         .cornerRadius(10)
 
-//                    QuickActionsView()
-//                        .padding()
-//                        .background(Color("SecondaryBackground"))
-//                        .cornerRadius(10)
+                    //                    QuickActionsView()
+                    //                        .padding()
+                    //                        .background(Color("SecondaryBackground"))
+                    //                        .cornerRadius(10)
                 }
                 .padding()
                 .gesture(

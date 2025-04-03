@@ -20,6 +20,7 @@ class WorkoutViewModel: ObservableObject {
         errorMessage = nil
         do {
             currentPage = 0
+            searchModel.pageIndex = Int32(currentPage)
             searchModel.pageSize = Int32(100)
             let result = try await workoutService.searchWorkouts(searchModel: searchModel)
             workouts = result.items ?? []

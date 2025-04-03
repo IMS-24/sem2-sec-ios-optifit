@@ -41,13 +41,7 @@ struct ExerciseSetDetailView: View {
                             }
                         },
                         onUpdateSet: { index, newReps, newWeight in
-                            print("Update set:\(index): [\(newReps), \(newWeight)]")
-                            if createWorkoutExerciseDto.workoutSets != nil {
-                                let repsValue = Int(newReps) ?? 0
-                                let weightValue = Double(newWeight) ?? 0.0
-                                createWorkoutExerciseDto.workoutSets![index].reps = Int32(repsValue)
-                                createWorkoutExerciseDto.workoutSets![index].weight = weightValue
-                            }
+                            updateSet(index: index, newReps: newReps, newWeight: newWeight)
                         }
                     )
 
@@ -76,6 +70,7 @@ struct ExerciseSetDetailView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
+
                         let workoutExercise = Components.Schemas.CreateWorkoutExerciseDto(
                             id: UUID().uuidString,
                             order: Int32(order),
@@ -83,6 +78,7 @@ struct ExerciseSetDetailView: View {
                             notes: createWorkoutExerciseDto.notes,
                             workoutSets: createWorkoutExerciseDto.workoutSets
                         )
+                        print("[DEBUG] Save workoutExercise: \(workoutExercise)")
                         onSave(workoutExercise)
                     }
                 }
@@ -90,6 +86,15 @@ struct ExerciseSetDetailView: View {
         }
     }
 
+    private func updateSet(index: Int, newReps: String, newWeight: String) {
+        print("Update set:\(index): [\(newReps), \(newWeight)]")
+        if createWorkoutExerciseDto.workoutSets != nil {
+            let repsValue = Int(newReps) ?? 0
+            let weightValue = Double(newWeight) ?? 0.0
+            createWorkoutExerciseDto.workoutSets![index].reps = Int32(repsValue)
+            createWorkoutExerciseDto.workoutSets![index].weight = weightValue
+        }
+    }
     private func addSet() {
         let newOrder = (createWorkoutExerciseDto.workoutSets?.last?.order ?? 0) + 1
         let set = Components.Schemas.CreateWorkoutSetDto(

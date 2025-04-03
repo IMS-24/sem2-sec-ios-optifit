@@ -2,10 +2,10 @@ import SwiftUI
 
 struct WorkoutStartView: View {
     @State private var navigateToWorkoutTrackingView = false
-
+    private var defaultExerciseCategory: Components.Schemas.GetExerciseCategoryDto? = nil
     @StateObject private var gymViewModel = GymViewModel()
     @StateObject private var exerciseCategoriesViewModel = ExerciseCategoryViewModel()
-    @StateObject private var currentWorkoutViewModel = CurrentWorkoutViewModel()
+    @EnvironmentObject private var currentWorkoutViewModel: CurrentWorkoutViewModel
 
     var body: some View {
         NavigationStack {
@@ -47,10 +47,15 @@ struct WorkoutStartView: View {
                             .font(.headline)
                         Spacer()
                         Picker("Select Exercise Category", selection: $currentWorkoutViewModel.selectedExerciseCategory) {
-                            ForEach(exerciseCategoriesViewModel.exerciseCategories, id: \.id) { category in
-                                Text(category.i18NCode ?? "Unknown")
-                                    .tag(category)
-                            }
+                            
+                                Text("General Workout")
+                                    .tag(defaultExerciseCategory)
+                            
+                                ForEach(exerciseCategoriesViewModel.exerciseCategories, id: \.id) { category in
+                                    Text(category.i18NCode ?? "Unknown")
+                                        .tag(category)
+                                }
+                            
                         }
                         .pickerStyle(MenuPickerStyle())
                         .padding(.horizontal)
@@ -72,16 +77,16 @@ struct WorkoutStartView: View {
             .navigationTitle("Start Workout")
             .padding()
             .navigationDestination(isPresented: $navigateToWorkoutTrackingView) {
-                if let gym = gymViewModel.gyms.first(where: { $0.id == currentWorkoutViewModel.selectedGym!.id }),
-                    let exerciseCategory = exerciseCategoriesViewModel.exerciseCategories.first(where: {
-                        $0.id == currentWorkoutViewModel.selectedExerciseCategory!.id
-                    })
-                {
+//                if let gym = gymViewModel.gyms.first(where: { $0.id == currentWorkoutViewModel.selectedGym!.id }),
+//                    let exerciseCategory = exerciseCategoriesViewModel.exerciseCategories.first(where: {
+//                        $0.id == currentWorkoutViewModel.selectedExerciseCategory?.id
+//                    })
+//                {
                     WorkoutTrackingView()
-                        .environmentObject(currentWorkoutViewModel)
-                } else {
-                    Text("Selection missing")
-                }
+//                        .environmentObject(currentWorkoutViewModel)
+//                } else {
+//                    Text("Selection missing")
+//                }
             }
             .onAppear {
                 Task {

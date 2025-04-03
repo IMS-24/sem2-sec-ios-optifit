@@ -363,6 +363,9 @@
     "First Name" : {
 
     },
+    "General Workout" : {
+
+    },
     "Gym" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -683,6 +686,7 @@
 
     },
     "Selection missing" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

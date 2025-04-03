@@ -1,9 +1,3 @@
-//
-//  CurrentWorkoutViewModel.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 30.03.25.
-//
 import Combine
 import Foundation
 import SwiftUI
@@ -38,7 +32,7 @@ class CurrentWorkoutViewModel: ObservableObject {
     func setGym(_ gym: Components.Schemas.GetGymDto) {
         self.selectedGym = gym
     }
-    func setExerciseCategory(_ category: Components.Schemas.GetExerciseCategoryDto) {
+    func setExerciseCategory(_ category: Components.Schemas.GetExerciseCategoryDto?) {
         self.selectedExerciseCategory = category
     }
 
@@ -62,25 +56,27 @@ class CurrentWorkoutViewModel: ObservableObject {
         }
     }
     func saveWorkout() async -> Components.Schemas.GetWorkoutDto? {
-        let workout = Components.Schemas.CreateWorkoutDto(
-            description: description,
-            startAtUtc: workoutStartDate,
-            endAtUtc: Date(),
-            notes: notes,
-            gymId: selectedGym!.id,
-            workoutExercises: workoutExercises
-        )
-        print("Save workout: \(workout)")
-        isLoading = true
-        errorMessage = nil
-        var created: Components.Schemas.GetWorkoutDto?
         do {
-            created = try await workoutService.postWorkout(workout)
+            let workout = Components.Schemas.CreateWorkoutDto(
+                description: description,
+                startAtUtc: workoutStartDate,
+                endAtUtc: Date(),
+                notes: notes,
+                gymId: selectedGym!.id,
+                workoutExercises: workoutExercises
+            )
+            print("Save workout: \(workout)")
+            isLoading = true
+            errorMessage = nil
+
+            let created = try await workoutService.postWorkout(workout)
+            isLoading = false
+            return created
+
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
-        isLoading = false
-        return created
+        return nil
     }
 
     func cancelWorkout() {

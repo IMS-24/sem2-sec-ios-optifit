@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WorkoutView: View {
-    @StateObject var workoutViewModel: WorkoutViewModel
+    @EnvironmentObject var workoutViewModel: WorkoutViewModel
     @State private var navigateToStartWorkout = false
 
     // Group workouts by month.
@@ -25,29 +25,6 @@ struct WorkoutView: View {
         NavigationStack {
             List {
                 GroupedWorkoutListView(groupedWorkouts: groupedWorkouts)
-                //                ForEach(sortedMonths, id: \.self) { month in
-                //                    Section(
-                //                        header: Text(month)
-                //                            .font(.headline)
-                //                            .foregroundColor(Color(.primaryText))
-                //                    ) {
-                //                        GroupedWorkoutView(
-                //                            groupedWorkouts: groupedWorkouts, groupBy: month,
-                //                            onLoadMore: {
-                //                                //TODO: Implement loadMore
-                //                                // Check if this workout is the last in the list before loading more.
-                //                                //                            if let lastWorkout = workoutViewModel.workouts.last,
-                //                                //                               workout.id == lastWorkout.id
-                //                                //                            {
-                //                                //                                Task {
-                //                                //                                    await workoutViewModel.loadMoreWorkouts()
-                //                                //                                }
-                //                                //                            }
-                //                                print("Load more .... <Not Implemented>")
-                //                            })
-                //
-                //                    }
-                //                }
             }
             .listStyle(InsetGroupedListStyle())
             .navigationTitle("Workouts")
@@ -80,10 +57,10 @@ struct WorkoutView: View {
         .background(Color(.primaryBackground).ignoresSafeArea())
     }
 }
-
-struct WorkoutView_Previews: PreviewProvider {
-    static let workoutViewModel: WorkoutViewModel = WorkoutViewModel()
-    static var previews: some View {
-        WorkoutView(workoutViewModel: workoutViewModel)
-    }
-}
+//
+//struct WorkoutView_Previews: PreviewProvider {
+//    static let workoutViewModel: WorkoutViewModel = WorkoutViewModel()
+//    static var previews: some View {
+//        WorkoutView(workoutViewModel: workoutViewModel)
+//    }
+//}

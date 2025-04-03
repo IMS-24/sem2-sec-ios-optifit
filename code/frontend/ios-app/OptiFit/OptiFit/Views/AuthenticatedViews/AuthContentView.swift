@@ -3,6 +3,9 @@ import SwiftUI
 
 struct AuthContentView: View {
     @EnvironmentObject var userProfileViewModel: UserProfileViewModel
+    @StateObject var workoutViewModel: WorkoutViewModel = WorkoutViewModel()
+    @StateObject var exerciseViewModel: ExerciseViewModel = ExerciseViewModel()
+    @StateObject var currentWorkoutViewModel: CurrentWorkoutViewModel = CurrentWorkoutViewModel()
 
     @State private var showOnboarding = false
 
@@ -14,39 +17,15 @@ struct AuthContentView: View {
                     showOnboarding = true
                 }
             }
+            .environmentObject(workoutViewModel)
+            .environmentObject(exerciseViewModel)
+            .environmentObject(currentWorkoutViewModel)
         //                .fullScreenCover(isPresented: $showOnboarding) {
         //                    OnboardingWizardView()
         //                }
     }
 }
 
-struct NavigationBarView: View {
-//    @StateObject private var idleTimerManager = IdleTimerManager.shared
-    @StateObject var workoutViewModel: WorkoutViewModel = WorkoutViewModel()
-    var body: some View {
-        TabView {
-            Tab("Home", systemImage: "house.fill") {
-                HomeView()
-
-            }
-            Tab("Workouts", systemImage: "gym.bag.fill") {
-                WorkoutView(workoutViewModel: workoutViewModel)
-
-            }
-            Tab("Exercises", systemImage: "dumbbell.fill") {
-                ExerciseView()
-
-            }
-            Tab("Settings", systemImage: "gearshape.fill") {
-                SettingsView()
-
-            }
-//            Tab("Trainer", systemImage: "figure.strengthtraining.functional") {
-//                VirtualTrainerView()
-//            }
-        }
-    }
-}
 
 //struct AuthContentView_Previews: PreviewProvider {
 //    static var previews: some View {

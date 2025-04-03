@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ExerciseView: View {
-    @StateObject private var exerciseViewModel = ExerciseViewModel()
+    @EnvironmentObject private var exerciseViewModel: ExerciseViewModel
     @State private var navigateToAddExercise = false
     // Holds the exercise selected for editing via swipe action.
     @State private var selectedExerciseForEdit: Components.Schemas.GetExerciseDto? = nil

@@ -1,28 +1,21 @@
 import SwiftUI
 
 struct GroupedWorkoutListView: View {
-    var groupedWorkouts: [String: [Components.Schemas.GetWorkoutDto]]
-
-    private var sortedMonths: [String] {
-        groupedWorkouts.keys.sorted(by: >)
-    }
+    let groupedWorkouts: [String: [Components.Schemas.GetWorkoutDto]]
 
     var body: some View {
-        ForEach(sortedMonths, id: \.self) { month in
-            Section(
-                header: Text(month)
-                    .font(.headline)
-                    .foregroundColor(Color(.primaryText))
-            ) {
-                GroupedWorkoutView(
-                    groupedWorkouts: groupedWorkouts, groupBy: month,
-                    onLoadMore: {
-                        //TODO: Implement load more
-    
-                        print("[TODO - GroupedWorkoutListView]: Implement load more")
-                    })
+        GroupedListView(
+            groupedItems: groupedWorkouts,
+            onLoadMore: {
+                print("[TODO - GroupedWorkoutListView]: Implement load more")
 
-            }
-        }
+            },
+            content: { group, exercises, loadMore in
+                GroupedWorkoutView(
+                    groupedWorkouts: groupedWorkouts,
+                    group: group,
+                    onLoadMore: loadMore
+                )
+            })
     }
 }
