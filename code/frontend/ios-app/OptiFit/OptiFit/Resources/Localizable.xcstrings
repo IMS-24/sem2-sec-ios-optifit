@@ -108,6 +108,9 @@
         }
       }
     },
+    "Are you sure you want to cancel this workout?" : {
+
+    },
     "Are you sure?" : {
       "localizations" : {
         "de" : {
@@ -178,6 +181,9 @@
           }
         }
       }
+    },
+    "Cancel Workout" : {
+
     },
     "Contact Support" : {
       "localizations" : {

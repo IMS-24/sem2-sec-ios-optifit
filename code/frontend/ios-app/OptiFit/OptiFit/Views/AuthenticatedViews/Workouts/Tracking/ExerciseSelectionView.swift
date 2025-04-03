@@ -3,17 +3,17 @@ import SwiftUI
 struct ExerciseSelectionView: View {
     @StateObject private var exerciseViewModel = ExerciseViewModel()
     @EnvironmentObject private var currentWorkoutViewModel: CurrentWorkoutViewModel
-
+    
     let onSave: (Components.Schemas.CreateWorkoutExerciseDto) -> Void
     let order: Int
-
+    
     private var groupedExercises: [String: [Components.Schemas.GetExerciseDto]] {
-
-        Dictionary(grouping: exerciseViewModel.exercises, by: { $0.exerciseCategory?.i18NCode! ?? "" })
+        Dictionary(grouping: exerciseViewModel.exercises, by: { $0.exerciseCategory?.i18NCode ?? "" })
     }
     private var sortedGroups: [String] {
         groupedExercises.keys.sorted(by: >)
     }
+    
     var body: some View {
         List {
             ForEach(sortedGroups, id: \.self) { group in
@@ -22,13 +22,19 @@ struct ExerciseSelectionView: View {
                         .font(.headline)
                         .foregroundColor(Color(.primaryText))
                 ) {
-                    ForEach(exerciseViewModel.exercises, id: \.self) { exercise in
-                        NavigationLink(
-                            destination: LazyView {
-                                ExerciseSetDetailView(selectedExercise: exercise, order: order, onSave: onSave)
+                    if let exercises = groupedExercises[group] {
+                        ForEach(exercises, id: \.self) { exercise in
+                            NavigationLink(
+                                destination: LazyView {
+                                    ExerciseSetDetailView(
+                                        selectedExercise: exercise,
+                                        order: order,
+                                        onSave: onSave
+                                    )
+                                }
+                            ) {
+                                Text(exercise.i18NCode ?? "Unknown")
                             }
-                        ) {
-                            Text(exercise.i18NCode!)
                         }
                     }
                 }
@@ -47,7 +53,3 @@ struct ExerciseSelectionView: View {
         }
     }
 }
-//
-//#Preview {
-//    ExerciseSelectionView(exerciseCategoryId: UUID(), onExerciseSelected: { _ in }, order: 1)
-//}

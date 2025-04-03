@@ -3,60 +3,45 @@ import SwiftUI
 struct WorkoutTrackingView: View {
     @Environment(\.dismiss) private var dismiss
 
-    @State private var navigateToExerciseSheet: Bool = false
-
+    @State private var navigateToExerciseSheet = false
     @StateObject private var workoutViewModel = WorkoutViewModel()
     @EnvironmentObject private var currentWorkoutViewModel: CurrentWorkoutViewModel
 
     @State private var showCancelConfirmation = false
 
+    // A computed binding to the workout exercises.
+    private var workoutExercisesBinding: Binding<[Components.Schemas.CreateWorkoutExerciseDto]> {
+        Binding<[Components.Schemas.CreateWorkoutExerciseDto]>(
+            get: {
+                // If no workout exists, return an empty array.
+                currentWorkoutViewModel.workout?.workoutExercises ?? []
+            },
+            set: { newValue in
+                if var workout = currentWorkoutViewModel.workout {
+                    workout.workoutExercises = newValue
+                    currentWorkoutViewModel.workout = workout
+                }
+            }
+        )
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            // Header: Workout category (motto)
-            HStack {
-                Text(currentWorkoutViewModel.selectedExerciseCategory?.i18NCode ?? "Unknown")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color(.primaryText))
-                Spacer()
+            // Header: Show only if gym and exercise category are available.
+            if let exerciseCategory = currentWorkoutViewModel.selectedExerciseCategory,
+                let gym = currentWorkoutViewModel.selectedGym
+            {
+                WorkoutTrackingHeaderView(
+                    exerciseCategory: exerciseCategory,
+                    gym: gym,
+                    workoutStartDate: currentWorkoutViewModel.workoutStartDate
+                )
             }
-            .padding(.horizontal)
 
-            // Header: Gym name & city, Start time
-            HStack {
-                HStack(spacing: 4) {
-                    Image(systemName: "mappin.and.ellipse")
-                        .foregroundColor(Color(.primaryAccent))
-                    Text("\(currentWorkoutViewModel.selectedGym?.name ?? "Unkown"), \(currentWorkoutViewModel.selectedGym?.city ?? "Unknown")")
-                        .font(.subheadline)
-                        .foregroundColor(Color(.primaryText))
-                }
-                Spacer()
-                HStack(spacing: 4) {
-                    Image(systemName: "clock")
-                        .foregroundColor(Color(.primaryAccent))
-                    Text(formattedStartTime)
-                        .font(.subheadline)
-                        .foregroundColor(Color(.primaryText))
-                }
-            }
-            .padding(.horizontal)
+            // Timer view.
+            WorkoutTrackingTimerView(elapsedTime: currentWorkoutViewModel.elapsedTime)
 
-            // Timer (centered)
-            HStack {
-                Spacer()
-                HStack(spacing: 4) {
-                    Image(systemName: "stopwatch")
-                        .foregroundColor(Color(.primaryAccent))
-                    Text(elapsedTimeString)
-                        .font(.headline)
-                        .foregroundColor(Color(.primaryAccent))
-                }
-                Spacer()
-            }
-            .padding(.vertical, 8)
-
-            // Notes Field
+            // Notes field.
             VStack(alignment: .leading, spacing: 4) {
                 Text("Notes")
                     .font(.headline)
@@ -70,51 +55,24 @@ struct WorkoutTrackingView: View {
             }
             .padding(.horizontal)
 
-            // Exercise List Section
-            if currentWorkoutViewModel.workoutExercises.isEmpty {
-                Text("No exercises added yet.")
-                    .foregroundColor(.gray)
-                    .padding(.vertical)
-                    .padding(.horizontal)
-            } else {
-                List {
-                    ForEach(currentWorkoutViewModel.workoutExercises.indices, id: \.self) { index in
-                        NavigationLink(
-                            destination: WorkoutExerciseEditView(
-                                workoutExercise: $currentWorkoutViewModel.workoutExercises[index]
-                            )
-                        ) {
-                            WorkoutExerciseListEntryView(
-                                workoutExercise: $currentWorkoutViewModel.workoutExercises[index]
-                            )
-                        }
-                    }
-                    .onDelete(perform: currentWorkoutViewModel.removeExercise)
-                    .onMove(perform: currentWorkoutViewModel.moveExercise)
+            // Exercise list section using binding.
+            WorkoutExercisesListView(
+                workoutExercises: workoutExercisesBinding,
+                onDelete: { indexSet in
+                    currentWorkoutViewModel.removeExercise(at: indexSet)
+                },
+                onMove: { source, destination in
+                    currentWorkoutViewModel.moveExercise(from: source, to: destination)
                 }
-                .listStyle(InsetGroupedListStyle())
-            }
+            )
 
             Spacer()
 
-            // Bottom Action Buttons: Save and Cancel
-            HStack {
-                Button(action: saveWorkout) {
-                    Label("Save", systemImage: "checkmark")
-                }
-                .buttonStyle(.bordered)
-                .controlSize(.small)
-
-                Spacer()
-
-                Button(action: cancelWorkout) {
-                    Label("Cancel", systemImage: "xmark")
-                }
-                .buttonStyle(.bordered)
-                .controlSize(.small)
-                .tint(.red)
-            }
-            .padding(.horizontal)
+            // Action buttons for save and cancel.
+            WorkoutTrackingActionButtonView(
+                onSave: saveWorkout,
+                onCancel: { showCancelConfirmation = true }
+            )
         }
         .padding(.vertical)
         .navigationTitle("Track Workout")
@@ -133,30 +91,29 @@ struct WorkoutTrackingView: View {
             NavigationStack {
                 ExerciseSelectionView(
                     onSave: { newExercise in
-                        // Set order for the new exercise before appending.
                         var newExerciseWithOrder = newExercise
-                        newExerciseWithOrder.order = Int32(currentWorkoutViewModel.workoutExercises.count + 1)
-                        currentWorkoutViewModel.workoutExercises.append(newExerciseWithOrder)
+                        newExerciseWithOrder.order = Int32(workoutExercisesBinding.wrappedValue.count + 1)
+                        currentWorkoutViewModel.addExercise(newExerciseWithOrder)
                         navigateToExerciseSheet = false
                     },
-                    order: currentWorkoutViewModel.workoutExercises.count + 1
+                    order: workoutExercisesBinding.wrappedValue.count + 1
                 )
             }
         }
-        //TODO: FIX Cancel Alert
         // Cancel confirmation alert.
-        //        .alert(isPresented: $showCancelConfirmation) {
-        //            Alert(
-        //                title: Text("Cancel Workout"),
-        //                message: Text("Are you sure you want to cancel this workout?"),
-        //                primaryButton: .destructive(Text("Cancel Workout")) {
-        //                    dismiss()
-        //                },
-        //                secondaryButton: .cancel()
-        //            )
-        //        }
+        .alert(isPresented: $showCancelConfirmation) {
+            Alert(
+                title: Text("Cancel Workout"),
+                message: Text("Are you sure you want to cancel this workout?"),
+                primaryButton: .destructive(Text("Cancel Workout")) {
+                    currentWorkoutViewModel.cancelWorkout()
+                    dismiss()
+                },
+                secondaryButton: .cancel()
+            )
+        }
         // Error alert.
-        .alert(item: $workoutViewModel.errorMessage) { error in
+        .alert(item: $currentWorkoutViewModel.errorMessage) { error in
             Alert(
                 title: Text("Error"),
                 message: Text(error.message),
@@ -171,18 +128,6 @@ struct WorkoutTrackingView: View {
         }
     }
 
-    var formattedStartTime: String {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter.string(from: currentWorkoutViewModel.workoutStartDate)
-    }
-
-    var elapsedTimeString: String {
-        let minutes = Int(currentWorkoutViewModel.elapsedTime) / 60
-        let seconds = Int(currentWorkoutViewModel.elapsedTime) % 60
-        return String(format: "%02d:%02d", minutes, seconds)
-    }
-
     private func saveWorkout() {
         Task {
             if let savedWorkout = await currentWorkoutViewModel.saveWorkout() {
@@ -190,11 +135,5 @@ struct WorkoutTrackingView: View {
                 dismiss()
             }
         }
-    }
-
-    // Only show the cancel confirmation; let the alert action handle dismissal.
-    private func cancelWorkout() {
-        showCancelConfirmation = true
-        currentWorkoutViewModel.cancelWorkout()
     }
 }
