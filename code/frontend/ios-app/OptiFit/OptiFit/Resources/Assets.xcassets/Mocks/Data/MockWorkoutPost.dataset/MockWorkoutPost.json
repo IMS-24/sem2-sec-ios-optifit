@@ -1,0 +1,224 @@
+{
+    "id": "b27b2c8f-74ba-45b0-a164-0551076207f5",
+    "description": "Workout_with_exercises_and_sets+morph",
+    "startAtUtc": "2025-02-28T16:07:46.970068+00:00",
+    "endAtUtc": "2025-02-28T17:30:46.970068+00:00",
+    "notes": "Distributed clear-thinking knowledge base",
+    "gymId": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+    "gym": {
+        "id": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+        "name": "Ultimate Gym",
+        "address": "Puchstraße 17",
+        "city": "Graz",
+        "zipCode": 8020
+    },
+    "workoutExercises": [
+        {
+            "id": "96d935c6-59de-4bcc-893e-295f340fbed5",
+            "order": 1,
+            "workoutId": "b27b2c8f-74ba-45b0-a164-0551076207f5",
+            "exercise": {
+                "id": "f30c0c4f-f585-40b5-aa0d-95cecdff30ba",
+                "i18NCode": "Side Plank",
+                "description": "A core stabilization exercise that strengthens the obliques.",
+                "exerciseCategory": {
+                    "id": "a75ab238-fd04-4351-a412-96e495346f33",
+                    "i18NCode": "core"
+                },
+                "exerciseCategoryId": "a75ab238-fd04-4351-a412-96e495346f33",
+                "muscleMapping": []
+            },
+            "workoutSets": [
+                {
+                    "id": "28befba4-4758-498c-b899-84a3b52cddd7",
+                    "order": 1,
+                    "reps": 10,
+                    "weight": 65.4,
+                    "workoutExerciseId": "96d935c6-59de-4bcc-893e-295f340fbed5"
+                },
+                {
+                    "id": "07e3de15-77be-4822-ac0c-2e771336499c",
+                    "order": 2,
+                    "reps": 9,
+                    "weight": 39.5,
+                    "workoutExerciseId": "96d935c6-59de-4bcc-893e-295f340fbed5"
+                },
+                {
+                    "id": "36dd44fc-1d74-468c-b2ae-9141ac08506e",
+                    "order": 3,
+                    "reps": 7,
+                    "weight": 46.5,
+                    "workoutExerciseId": "96d935c6-59de-4bcc-893e-295f340fbed5"
+                }
+            ],
+            "notes": "Auto-generated note for exercise "
+        },
+        {
+            "id": "7c99a481-4ecd-4da7-b2ab-db4fa2cd089c",
+            "order": 2,
+            "workoutId": "b27b2c8f-74ba-45b0-a164-0551076207f5",
+            "exercise": {
+                "id": "d4283c1c-c508-4627-8dfc-73f8af294373",
+                "i18NCode": "Plank",
+                "description": "A core stabilization exercise that strengthens the entire midsection.",
+                "exerciseCategory": {
+                    "id": "a75ab238-fd04-4351-a412-96e495346f33",
+                    "i18NCode": "core"
+                },
+                "exerciseCategoryId": "a75ab238-fd04-4351-a412-96e495346f33",
+                "muscleMapping": []
+            },
+            "workoutSets": [
+                {
+                    "id": "74dc5d38-964e-4ea9-9dd3-a6c646e29ba0",
+                    "order": 1,
+                    "reps": 11,
+                    "weight": 83.7,
+                    "workoutExerciseId": "7c99a481-4ecd-4da7-b2ab-db4fa2cd089c"
+                },
+                {
+                    "id": "c78d4d06-6b40-4901-95ce-30042d9aa0c8",
+                    "order": 2,
+                    "reps": 5,
+                    "weight": 74.3,
+                    "workoutExerciseId": "7c99a481-4ecd-4da7-b2ab-db4fa2cd089c"
+                },
+                {
+                    "id": "622499a9-a2bc-4870-98a5-239db2d11b81",
+                    "order": 3,
+                    "reps": 6,
+                    "weight": 67.8,
+                    "workoutExerciseId": "7c99a481-4ecd-4da7-b2ab-db4fa2cd089c"
+                },
+                {
+                    "id": "465090ef-81f1-48f6-8760-271e6cafef96",
+                    "order": 4,
+                    "reps": 5,
+                    "weight": 12.1,
+                    "workoutExerciseId": "7c99a481-4ecd-4da7-b2ab-db4fa2cd089c"
+                }
+            ],
+            "notes": "Auto-generated note for exercise "
+        },
+        {
+            "id": "5c1ac5f0-507a-4076-9124-2652566d1089",
+            "order": 3,
+            "workoutId": "b27b2c8f-74ba-45b0-a164-0551076207f5",
+            "exercise": {
+                "id": "86e0bfe4-ad3d-43c7-8480-65cb9cae576b",
+                "i18NCode": "Dumbbell Curl",
+                "description": "An isolation exercise that builds the biceps.",
+                "exerciseCategory": {
+                    "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                    "i18NCode": "push"
+                },
+                "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "muscleMapping": []
+            },
+            "workoutSets": [
+                {
+                    "id": "39c53831-54d2-4971-90b9-560cd918893b",
+                    "order": 1,
+                    "reps": 15,
+                    "weight": 88.6,
+                    "workoutExerciseId": "5c1ac5f0-507a-4076-9124-2652566d1089"
+                },
+                {
+                    "id": "89b91d9b-711d-4498-9fe7-b2023e694fa8",
+                    "order": 2,
+                    "reps": 14,
+                    "weight": 64.8,
+                    "workoutExerciseId": "5c1ac5f0-507a-4076-9124-2652566d1089"
+                },
+                {
+                    "id": "b616dd3a-1ab0-4830-af91-06f57dd2d7a5",
+                    "order": 3,
+                    "reps": 9,
+                    "weight": 37.3,
+                    "workoutExerciseId": "5c1ac5f0-507a-4076-9124-2652566d1089"
+                },
+                {
+                    "id": "9132dd09-cca0-460e-9126-494cb4181950",
+                    "order": 4,
+                    "reps": 9,
+                    "weight": 96.2,
+                    "workoutExerciseId": "5c1ac5f0-507a-4076-9124-2652566d1089"
+                }
+            ],
+            "notes": "Auto-generated note for exercise "
+        },
+        {
+            "id": "7683f437-37e4-4429-a439-fac1f848b5f6",
+            "order": 4,
+            "workoutId": "b27b2c8f-74ba-45b0-a164-0551076207f5",
+            "exercise": {
+                "id": "846e8c2d-9d63-4c18-82fa-0d8c7512f326",
+                "i18NCode": "Bench Press",
+                "description": "A compound movement that works the chest, shoulders, and triceps.",
+                "exerciseCategory": {
+                    "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                    "i18NCode": "push"
+                },
+                "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "muscleMapping": []
+            },
+            "workoutSets": [
+                {
+                    "id": "6e60b7bd-50c9-4b7e-b4df-f20b8bb67a20",
+                    "order": 1,
+                    "reps": 14,
+                    "weight": 49.5,
+                    "workoutExerciseId": "7683f437-37e4-4429-a439-fac1f848b5f6"
+                },
+                {
+                    "id": "93dd9fb7-1dd1-405c-88b7-3e6d6621fcdd",
+                    "order": 2,
+                    "reps": 5,
+                    "weight": 84.9,
+                    "workoutExerciseId": "7683f437-37e4-4429-a439-fac1f848b5f6"
+                },
+                {
+                    "id": "0033413d-db85-4171-9172-86900da0fc24",
+                    "order": 3,
+                    "reps": 10,
+                    "weight": 43.1,
+                    "workoutExerciseId": "7683f437-37e4-4429-a439-fac1f848b5f6"
+                }
+            ],
+            "notes": "Auto-generated note for exercise "
+        },
+        {
+            "id": "6a84fe0a-e9c9-438e-8517-5af4cc71bada",
+            "order": 5,
+            "workoutId": "b27b2c8f-74ba-45b0-a164-0551076207f5",
+            "exercise": {
+                "id": "a5556d61-7cbc-441d-8261-1c325ee098f4",
+                "i18NCode": "Good Morning",
+                "description": "A posterior chain exercise that strengthens the hamstrings and lower back.",
+                "exerciseCategory": {
+                    "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                    "i18NCode": "legs"
+                },
+                "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "muscleMapping": []
+            },
+            "workoutSets": [
+                {
+                    "id": "785cbc90-6027-4574-ab4e-ef77232cbfc1",
+                    "order": 1,
+                    "reps": 14,
+                    "weight": 26.3,
+                    "workoutExerciseId": "6a84fe0a-e9c9-438e-8517-5af4cc71bada"
+                }
+            ],
+            "notes": "Auto-generated note for exercise "
+        }
+    ],
+    "workoutSummary": {
+        "totalTime": 83,
+        "totalSets": 15,
+        "totalReps": 143,
+        "totalWeight": 8448.9,
+        "totalExercises": 5
+    }
+}

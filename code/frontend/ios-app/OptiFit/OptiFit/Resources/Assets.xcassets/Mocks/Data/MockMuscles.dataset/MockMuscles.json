@@ -1,0 +1,682 @@
+{
+    "items": [
+        {
+            "id": "7aafc169-e3ab-4fa9-afa4-c82640d7359d",
+            "i18NCode": "adductor_longus_and_pectineus",
+            "groupMapping": [
+                {
+                    "id": "0bb8cbe6-8986-4871-8b5d-0101a9cf3c93",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "7aafc169-e3ab-4fa9-afa4-c82640d7359d"
+                }
+            ]
+        },
+        {
+            "id": "699d985d-0a73-45b2-9f7c-df004db7cb38",
+            "i18NCode": "adductor_magnus",
+            "groupMapping": [
+                {
+                    "id": "a91bdaf1-2547-4e93-8c64-60b967f80bf3",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "699d985d-0a73-45b2-9f7c-df004db7cb38"
+                }
+            ]
+        },
+        {
+            "id": "fa48dea0-0493-4923-841a-51a8b6649b30",
+            "i18NCode": "biceps_brachii",
+            "groupMapping": [
+                {
+                    "id": "3006945e-9c4d-477b-8740-b033cac055b2",
+                    "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                    "muscleGroup": {
+                        "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                        "i18NCode": "arms"
+                    },
+                    "muscleId": "fa48dea0-0493-4923-841a-51a8b6649b30"
+                }
+            ]
+        },
+        {
+            "id": "8906c044-9e04-464b-8cb9-51781ad15ab3",
+            "i18NCode": "biceps_femoris",
+            "groupMapping": [
+                {
+                    "id": "a0613a49-1c57-4845-8ad0-975dac01272c",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "8906c044-9e04-464b-8cb9-51781ad15ab3"
+                }
+            ]
+        },
+        {
+            "id": "85778671-d563-4b78-9f32-cb9598ad5ed3",
+            "i18NCode": "brachialis",
+            "groupMapping": [
+                {
+                    "id": "bcbc8be5-7083-4e74-ba03-c31a3d326de0",
+                    "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                    "muscleGroup": {
+                        "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                        "i18NCode": "arms"
+                    },
+                    "muscleId": "85778671-d563-4b78-9f32-cb9598ad5ed3"
+                }
+            ]
+        },
+        {
+            "id": "a1730500-474e-4de7-8e56-3a0d31fb49ad",
+            "i18NCode": "brachioradialis",
+            "groupMapping": [
+                {
+                    "id": "ceebd0cb-7b9d-43ec-9c17-28cc75a68fa6",
+                    "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                    "muscleGroup": {
+                        "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                        "i18NCode": "arms"
+                    },
+                    "muscleId": "a1730500-474e-4de7-8e56-3a0d31fb49ad"
+                }
+            ]
+        },
+        {
+            "id": "825714d1-5df8-4d08-b28e-fa89c284ff73",
+            "i18NCode": "deltoid_anterior",
+            "groupMapping": [
+                {
+                    "id": "9b358071-a6aa-4e29-a4cb-2bc219585294",
+                    "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                    "muscleGroup": {
+                        "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                        "i18NCode": "shoulders"
+                    },
+                    "muscleId": "825714d1-5df8-4d08-b28e-fa89c284ff73"
+                }
+            ]
+        },
+        {
+            "id": "11fe1942-1954-4e4c-ac71-a65763b0d75b",
+            "i18NCode": "deltoid_lateral",
+            "groupMapping": [
+                {
+                    "id": "4cd0e90d-d738-44ca-a018-9675c2407af5",
+                    "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                    "muscleGroup": {
+                        "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                        "i18NCode": "shoulders"
+                    },
+                    "muscleId": "11fe1942-1954-4e4c-ac71-a65763b0d75b"
+                }
+            ]
+        },
+        {
+            "id": "23893afe-3d7b-4202-90e9-30d5f8ce1875",
+            "i18NCode": "deltoid_posterior",
+            "groupMapping": [
+                {
+                    "id": "56c19c96-b597-405d-bd58-cdce4b91007e",
+                    "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                    "muscleGroup": {
+                        "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                        "i18NCode": "back"
+                    },
+                    "muscleId": "23893afe-3d7b-4202-90e9-30d5f8ce1875"
+                }
+            ]
+        },
+        {
+            "id": "321ebc13-5400-44f6-9334-14bac89618ad",
+            "i18NCode": "erector_spinae",
+            "groupMapping": [
+                {
+                    "id": "07fc11a4-5198-4edd-9323-b09519544087",
+                    "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                    "muscleGroup": {
+                        "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                        "i18NCode": "shoulders"
+                    },
+                    "muscleId": "321ebc13-5400-44f6-9334-14bac89618ad"
+                },
+                {
+                    "id": "901360e1-0852-4740-aaba-4b51a2dadd8f",
+                    "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                    "muscleGroup": {
+                        "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                        "i18NCode": "back"
+                    },
+                    "muscleId": "321ebc13-5400-44f6-9334-14bac89618ad"
+                }
+            ]
+        },
+        {
+            "id": "64b7017d-e26e-4f93-b92d-ba73b3941a36",
+            "i18NCode": "extensor_carpi_radialis",
+            "groupMapping": [
+                {
+                    "id": "6bc18f0c-d74c-490c-a442-a6f46b0b1519",
+                    "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                    "muscleGroup": {
+                        "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                        "i18NCode": "arms"
+                    },
+                    "muscleId": "64b7017d-e26e-4f93-b92d-ba73b3941a36"
+                }
+            ]
+        },
+        {
+            "id": "49580807-5aa7-4996-a0e9-0eb1a5919368",
+            "i18NCode": "external_obliques",
+            "groupMapping": [
+                {
+                    "id": "869d7620-93ce-4618-89a8-e0980793508f",
+                    "muscleGroupId": "ca487800-5fb6-46bd-a4a2-920234fa3008",
+                    "muscleGroup": {
+                        "id": "ca487800-5fb6-46bd-a4a2-920234fa3008",
+                        "i18NCode": "core"
+                    },
+                    "muscleId": "49580807-5aa7-4996-a0e9-0eb1a5919368"
+                }
+            ]
+        },
+        {
+            "id": "d0f1a9f4-36b5-4b08-96b7-78ca232313eb",
+            "i18NCode": "flexor_carpi_radialis",
+            "groupMapping": [
+                {
+                    "id": "72755086-3587-4c5d-9208-7bc7a62ad586",
+                    "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                    "muscleGroup": {
+                        "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                        "i18NCode": "arms"
+                    },
+                    "muscleId": "d0f1a9f4-36b5-4b08-96b7-78ca232313eb"
+                }
+            ]
+        },
+        {
+            "id": "45220fe9-fb78-467c-98b6-7945e896e9f3",
+            "i18NCode": "flexor_carpi_ulnaris",
+            "groupMapping": [
+                {
+                    "id": "273d6feb-0f9d-4ec7-946e-eafc841cab9d",
+                    "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                    "muscleGroup": {
+                        "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                        "i18NCode": "arms"
+                    },
+                    "muscleId": "45220fe9-fb78-467c-98b6-7945e896e9f3"
+                }
+            ]
+        },
+        {
+            "id": "abc82724-f31f-40c1-a1f9-2bcf8ff5e7ab",
+            "i18NCode": "gastrocnemius_lateral",
+            "groupMapping": [
+                {
+                    "id": "9bde4afe-0027-4c6e-a64f-96e7f6ad78b0",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "abc82724-f31f-40c1-a1f9-2bcf8ff5e7ab"
+                }
+            ]
+        },
+        {
+            "id": "c896e9b8-168c-406e-b065-5b2c668bca9a",
+            "i18NCode": "gastrocnemius_medial",
+            "groupMapping": [
+                {
+                    "id": "65f18292-d074-4ce0-9f06-d00698ddac9b",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "c896e9b8-168c-406e-b065-5b2c668bca9a"
+                }
+            ]
+        },
+        {
+            "id": "947fc6f1-2efb-4037-9d4c-52efdd0bd8ff",
+            "i18NCode": "gluteus_maximus",
+            "groupMapping": [
+                {
+                    "id": "6d37bdb7-d372-4a91-b89a-dee09076ee56",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "947fc6f1-2efb-4037-9d4c-52efdd0bd8ff"
+                }
+            ]
+        },
+        {
+            "id": "ae989ab5-ad02-43e1-b6d6-34724be14d29",
+            "i18NCode": "gluteus_medius",
+            "groupMapping": [
+                {
+                    "id": "66b2d341-bd71-4acf-a0af-b0edc0dc45ce",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "ae989ab5-ad02-43e1-b6d6-34724be14d29"
+                }
+            ]
+        },
+        {
+            "id": "4ae8771a-0491-435f-82df-661a02c8cb69",
+            "i18NCode": "gracilis",
+            "groupMapping": [
+                {
+                    "id": "3db6755d-13f0-4ab0-b2bc-6e5dd4343bed",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "4ae8771a-0491-435f-82df-661a02c8cb69"
+                }
+            ]
+        },
+        {
+            "id": "062c3b7f-e3e7-4106-9e70-91860a7b32d7",
+            "i18NCode": "infraspinatus",
+            "groupMapping": [
+                {
+                    "id": "2a3803e9-006d-4b2b-a93f-425b24dc7219",
+                    "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                    "muscleGroup": {
+                        "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                        "i18NCode": "shoulders"
+                    },
+                    "muscleId": "062c3b7f-e3e7-4106-9e70-91860a7b32d7"
+                }
+            ]
+        },
+        {
+            "id": "8f97c242-448a-459f-8722-d00e789f488c",
+            "i18NCode": "latissimus_dorsi",
+            "groupMapping": [
+                {
+                    "id": "9aa919ba-71f6-4230-b7c3-c31d2dfda69b",
+                    "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                    "muscleGroup": {
+                        "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                        "i18NCode": "back"
+                    },
+                    "muscleId": "8f97c242-448a-459f-8722-d00e789f488c"
+                }
+            ]
+        },
+        {
+            "id": "6ceece66-b399-4d45-ba58-f83397d51947",
+            "i18NCode": "lower_trapezius",
+            "groupMapping": [
+                {
+                    "id": "abb74748-eae2-4130-85d9-561a841371ad",
+                    "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                    "muscleGroup": {
+                        "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                        "i18NCode": "back"
+                    },
+                    "muscleId": "6ceece66-b399-4d45-ba58-f83397d51947"
+                }
+            ]
+        },
+        {
+            "id": "e3446e83-664f-423a-9969-90a5a6ec6a03",
+            "i18NCode": "omohyoid",
+            "groupMapping": [
+                {
+                    "id": "2b85e782-ece9-4b2c-b842-1f7b4f0a9cb8",
+                    "muscleGroupId": "d96149dd-5a5e-4cca-a94a-842693ae62cc",
+                    "muscleGroup": {
+                        "id": "d96149dd-5a5e-4cca-a94a-842693ae62cc",
+                        "i18NCode": "neck"
+                    },
+                    "muscleId": "e3446e83-664f-423a-9969-90a5a6ec6a03"
+                }
+            ]
+        },
+        {
+            "id": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3",
+            "i18NCode": "pectoralis_major",
+            "groupMapping": [
+                {
+                    "id": "921265d2-ad78-425e-b63e-c8b44a1c05a5",
+                    "muscleGroupId": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                    "muscleGroup": {
+                        "id": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                        "i18NCode": "chest"
+                    },
+                    "muscleId": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3"
+                }
+            ]
+        },
+        {
+            "id": "4805c4a7-9d81-4eee-951a-ba82aaeb0efb",
+            "i18NCode": "pectoralis_minor",
+            "groupMapping": [
+                {
+                    "id": "966b7f6b-9881-4f0e-b217-4b80013839e7",
+                    "muscleGroupId": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                    "muscleGroup": {
+                        "id": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                        "i18NCode": "chest"
+                    },
+                    "muscleId": "4805c4a7-9d81-4eee-951a-ba82aaeb0efb"
+                }
+            ]
+        },
+        {
+            "id": "cb23da08-21ad-43e6-8143-ef5112f4e834",
+            "i18NCode": "peroneus_longus",
+            "groupMapping": [
+                {
+                    "id": "92511e42-782d-4c50-8797-7d21e13014d6",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "cb23da08-21ad-43e6-8143-ef5112f4e834"
+                }
+            ]
+        },
+        {
+            "id": "0d858c1e-ce72-49bf-98b4-90486c78f4cb",
+            "i18NCode": "rectus_abdominus",
+            "groupMapping": [
+                {
+                    "id": "3bf585d5-06c2-4b5e-b738-fc7049c78aad",
+                    "muscleGroupId": "ca487800-5fb6-46bd-a4a2-920234fa3008",
+                    "muscleGroup": {
+                        "id": "ca487800-5fb6-46bd-a4a2-920234fa3008",
+                        "i18NCode": "core"
+                    },
+                    "muscleId": "0d858c1e-ce72-49bf-98b4-90486c78f4cb"
+                }
+            ]
+        },
+        {
+            "id": "b4ba2b1a-cff9-4f90-bf16-1a9e3911a62d",
+            "i18NCode": "rectus_abdominus_lower",
+            "groupMapping": [
+                {
+                    "id": "8026649e-dad4-4d9d-92dd-bf1b1b355ce5",
+                    "muscleGroupId": "ca487800-5fb6-46bd-a4a2-920234fa3008",
+                    "muscleGroup": {
+                        "id": "ca487800-5fb6-46bd-a4a2-920234fa3008",
+                        "i18NCode": "core"
+                    },
+                    "muscleId": "b4ba2b1a-cff9-4f90-bf16-1a9e3911a62d"
+                }
+            ]
+        },
+        {
+            "id": "0d508e78-63fd-4791-9cf7-9ae27c592992",
+            "i18NCode": "rectus_femoris",
+            "groupMapping": [
+                {
+                    "id": "1766a227-83e4-4ecc-998c-3b9305a1cd01",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "0d508e78-63fd-4791-9cf7-9ae27c592992"
+                }
+            ]
+        },
+        {
+            "id": "8c31da5a-9148-4808-990e-8d4ddda5238e",
+            "i18NCode": "rhomboids",
+            "groupMapping": [
+                {
+                    "id": "1f1e1c94-3cb9-4119-95ac-2ac59f70be4e",
+                    "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                    "muscleGroup": {
+                        "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                        "i18NCode": "back"
+                    },
+                    "muscleId": "8c31da5a-9148-4808-990e-8d4ddda5238e"
+                }
+            ]
+        },
+        {
+            "id": "a0b6e588-5ff2-4492-b6b8-cd3a08447613",
+            "i18NCode": "sartorius",
+            "groupMapping": [
+                {
+                    "id": "654346ee-4f8c-435f-94fd-525217b33204",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "a0b6e588-5ff2-4492-b6b8-cd3a08447613"
+                }
+            ]
+        },
+        {
+            "id": "86d26416-93cf-444a-ac45-cf524887d321",
+            "i18NCode": "semitendinosus",
+            "groupMapping": [
+                {
+                    "id": "b8cdc988-55db-4979-b867-f953eaa7f1aa",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "86d26416-93cf-444a-ac45-cf524887d321"
+                }
+            ]
+        },
+        {
+            "id": "eb36b354-ef08-4bbf-b41b-244788bd62e1",
+            "i18NCode": "serratus_anterior",
+            "groupMapping": [
+                {
+                    "id": "86cb778d-7bd2-47ea-b9da-374e175a0e19",
+                    "muscleGroupId": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                    "muscleGroup": {
+                        "id": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                        "i18NCode": "chest"
+                    },
+                    "muscleId": "eb36b354-ef08-4bbf-b41b-244788bd62e1"
+                },
+                {
+                    "id": "87723876-7436-4415-8a10-af0308683b03",
+                    "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                    "muscleGroup": {
+                        "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                        "i18NCode": "shoulders"
+                    },
+                    "muscleId": "eb36b354-ef08-4bbf-b41b-244788bd62e1"
+                }
+            ]
+        },
+        {
+            "id": "4823559d-03bb-43c8-826e-5412ddd7d791",
+            "i18NCode": "soleus",
+            "groupMapping": [
+                {
+                    "id": "5b3a35a9-0316-4645-866d-a76e4c108464",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "4823559d-03bb-43c8-826e-5412ddd7d791"
+                }
+            ]
+        },
+        {
+            "id": "1fc2ee21-48de-4d04-be6b-705137cc0aba",
+            "i18NCode": "sternocleidomastoid",
+            "groupMapping": [
+                {
+                    "id": "5a345d20-15b9-441a-9305-48606fcedcf3",
+                    "muscleGroupId": "d96149dd-5a5e-4cca-a94a-842693ae62cc",
+                    "muscleGroup": {
+                        "id": "d96149dd-5a5e-4cca-a94a-842693ae62cc",
+                        "i18NCode": "neck"
+                    },
+                    "muscleId": "1fc2ee21-48de-4d04-be6b-705137cc0aba"
+                }
+            ]
+        },
+        {
+            "id": "30efc5a1-dbaf-431b-af06-c4cfbedc3dbe",
+            "i18NCode": "tensor_fasciae_latae",
+            "groupMapping": [
+                {
+                    "id": "3b1cf97b-18d9-47d5-a58f-bd73e3108641",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "30efc5a1-dbaf-431b-af06-c4cfbedc3dbe"
+                }
+            ]
+        },
+        {
+            "id": "434ffe54-9c02-4fd0-b30c-8c4b47521c5c",
+            "i18NCode": "teres_major",
+            "groupMapping": [
+                {
+                    "id": "6684811a-ce2b-4e26-8535-3f18c46042c9",
+                    "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                    "muscleGroup": {
+                        "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                        "i18NCode": "shoulders"
+                    },
+                    "muscleId": "434ffe54-9c02-4fd0-b30c-8c4b47521c5c"
+                }
+            ]
+        },
+        {
+            "id": "c1f824e4-215e-4aa5-b2eb-76980cb1fad2",
+            "i18NCode": "teres_minor",
+            "groupMapping": [
+                {
+                    "id": "229785ef-b58a-427d-b103-241d2022f7db",
+                    "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                    "muscleGroup": {
+                        "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                        "i18NCode": "shoulders"
+                    },
+                    "muscleId": "c1f824e4-215e-4aa5-b2eb-76980cb1fad2"
+                }
+            ]
+        },
+        {
+            "id": "752d6779-4e22-4b59-b690-a4d839e67277",
+            "i18NCode": "thoracolumbar_fascia",
+            "groupMapping": [
+                {
+                    "id": "05c17e09-8246-485d-b97e-34911eb9497d",
+                    "muscleGroupId": "ca487800-5fb6-46bd-a4a2-920234fa3008",
+                    "muscleGroup": {
+                        "id": "ca487800-5fb6-46bd-a4a2-920234fa3008",
+                        "i18NCode": "core"
+                    },
+                    "muscleId": "752d6779-4e22-4b59-b690-a4d839e67277"
+                }
+            ]
+        },
+        {
+            "id": "a8b00e77-002c-4db3-a22f-892934250f1b",
+            "i18NCode": "trapezius",
+            "groupMapping": [
+                {
+                    "id": "7bc92a90-408e-4033-9b84-0b2b5c07dca2",
+                    "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                    "muscleGroup": {
+                        "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                        "i18NCode": "shoulders"
+                    },
+                    "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b"
+                },
+                {
+                    "id": "adb3a641-1fce-4cee-9992-8411ef57a3a3",
+                    "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                    "muscleGroup": {
+                        "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                        "i18NCode": "back"
+                    },
+                    "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b"
+                }
+            ]
+        },
+        {
+            "id": "80c63a73-a8f0-4d38-a038-898dbca6876e",
+            "i18NCode": "triceps_brachii",
+            "groupMapping": [
+                {
+                    "id": "9493ba2b-0248-4ac7-af1b-6956b2fb02ce",
+                    "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                    "muscleGroup": {
+                        "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                        "i18NCode": "arms"
+                    },
+                    "muscleId": "80c63a73-a8f0-4d38-a038-898dbca6876e"
+                }
+            ]
+        },
+        {
+            "id": "45e5c3af-5e10-406e-b708-2abad02694b5",
+            "i18NCode": "vastus_lateralis",
+            "groupMapping": [
+                {
+                    "id": "e62e8d59-e2b8-4214-8b8c-237eaadd2860",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "45e5c3af-5e10-406e-b708-2abad02694b5"
+                }
+            ]
+        },
+        {
+            "id": "26a51504-ec29-4c34-83d0-f30eb96f3618",
+            "i18NCode": "vastus_medialis",
+            "groupMapping": [
+                {
+                    "id": "e06b5396-7edc-4b07-9e0b-1305aca44a34",
+                    "muscleGroupId": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                    "muscleGroup": {
+                        "id": "4279276a-ec31-4dc7-b4b4-b490d67acbd0",
+                        "i18NCode": "legs"
+                    },
+                    "muscleId": "26a51504-ec29-4c34-83d0-f30eb96f3618"
+                }
+            ]
+        }
+    ],
+    "pageIndex": 0,
+    "pageSize": 100,
+    "totalCount": 43,
+    "totalPages": 1,
+    "hasPreviousPage": false,
+    "hasNextPage": false
+}

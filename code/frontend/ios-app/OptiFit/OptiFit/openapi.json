@@ -674,6 +674,12 @@
           "exerciseCategoryId": {
             "type": "string",
             "format": "guid"
+          },
+          "muscleMapping": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetExerciseMuscleMappingDto"
+            }
           }
         }
       },
@@ -684,6 +690,87 @@
           "id": {
             "type": "string",
             "format": "guid"
+          },
+          "i18NCode": {
+            "type": "string"
+          }
+        }
+      },
+      "GetExerciseMuscleMappingDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "exerciseId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "muscleId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "muscleDto": {
+            "$ref": "#/components/schemas/GetMuscleDto"
+          },
+          "intensity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "GetMuscleDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid",
+            "nullable": true
+          },
+          "i18NCode": {
+            "type": "string"
+          },
+          "groupMapping": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MuscleGroupMappingDto"
+            }
+          }
+        }
+      },
+      "MuscleGroupMappingDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "muscleGroupId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "muscleGroup": {
+            "$ref": "#/components/schemas/GetMuscleGroupDto"
+          },
+          "muscleId": {
+            "type": "string",
+            "format": "guid"
+          }
+        }
+      },
+      "GetMuscleGroupDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid",
+            "nullable": true
           },
           "i18NCode": {
             "type": "string"
@@ -1115,20 +1202,6 @@
           }
         }
       },
-      "GetMuscleDto": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "guid",
-            "nullable": true
-          },
-          "i18NCode": {
-            "type": "string"
-          }
-        }
-      },
       "SearchMuscleDto": {
         "type": "object",
         "additionalProperties": false,
@@ -1189,20 +1262,6 @@
           }
         }
       },
-      "GetMuscleGroupDto": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "guid",
-            "nullable": true
-          },
-          "i18NCode": {
-            "type": "string"
-          }
-        }
-      },
       "SearchMuscleGroupDto": {
         "type": "object",
         "additionalProperties": false,
@@ -1260,24 +1319,6 @@
           },
           "hasNextPage": {
             "type": "boolean"
-          }
-        }
-      },
-      "MuscleGroupMappingDto": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "guid"
-          },
-          "muscleGroupId": {
-            "type": "string",
-            "format": "guid"
-          },
-          "muscleId": {
-            "type": "string",
-            "format": "guid"
           }
         }
       },

@@ -1,0 +1,1390 @@
+{
+    "items": [
+        {
+            "id": "5e3dcfa2-ddb7-409d-ab6e-2555d6f988df",
+            "i18NCode": "Cable Crunch",
+            "description": "A weighted crunch variation that targets the abs more intensely.",
+            "exerciseCategory": {
+                "id": "a75ab238-fd04-4351-a412-96e495346f33",
+                "i18NCode": "core"
+            },
+            "exerciseCategoryId": "a75ab238-fd04-4351-a412-96e495346f33",
+            "muscleMapping": []
+        },
+        {
+            "id": "28c267c0-6aca-4e25-999a-f265299fbe12",
+            "i18NCode": "Hanging Knee Raise",
+            "description": "A hanging exercise that engages the core and lower abs.",
+            "exerciseCategory": {
+                "id": "a75ab238-fd04-4351-a412-96e495346f33",
+                "i18NCode": "core"
+            },
+            "exerciseCategoryId": "a75ab238-fd04-4351-a412-96e495346f33",
+            "muscleMapping": [
+                {
+                    "id": "34a5e9a8-4fb2-43d4-802e-fa72af850b07",
+                    "exerciseId": "28c267c0-6aca-4e25-999a-f265299fbe12",
+                    "muscleId": "eb36b354-ef08-4bbf-b41b-244788bd62e1",
+                    "muscleDto": {
+                        "id": "eb36b354-ef08-4bbf-b41b-244788bd62e1",
+                        "i18NCode": "serratus_anterior",
+                        "groupMapping": [
+                            {
+                                "id": "86cb778d-7bd2-47ea-b9da-374e175a0e19",
+                                "muscleGroupId": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                "muscleGroup": {
+                                    "id": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                    "i18NCode": "chest"
+                                },
+                                "muscleId": "eb36b354-ef08-4bbf-b41b-244788bd62e1"
+                            },
+                            {
+                                "id": "87723876-7436-4415-8a10-af0308683b03",
+                                "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                "muscleGroup": {
+                                    "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                    "i18NCode": "shoulders"
+                                },
+                                "muscleId": "eb36b354-ef08-4bbf-b41b-244788bd62e1"
+                            }
+                        ]
+                    },
+                    "intensity": 84
+                }
+            ]
+        },
+        {
+            "id": "a94a7606-e5d9-4c71-92fd-7c1997d4d213",
+            "i18NCode": "Hanging Leg Raise",
+            "description": "A challenging core exercise that targets the lower abs.",
+            "exerciseCategory": {
+                "id": "a75ab238-fd04-4351-a412-96e495346f33",
+                "i18NCode": "core"
+            },
+            "exerciseCategoryId": "a75ab238-fd04-4351-a412-96e495346f33",
+            "muscleMapping": []
+        },
+        {
+            "id": "d4283c1c-c508-4627-8dfc-73f8af294373",
+            "i18NCode": "Plank",
+            "description": "A core stabilization exercise that strengthens the entire midsection.",
+            "exerciseCategory": {
+                "id": "a75ab238-fd04-4351-a412-96e495346f33",
+                "i18NCode": "core"
+            },
+            "exerciseCategoryId": "a75ab238-fd04-4351-a412-96e495346f33",
+            "muscleMapping": [
+                {
+                    "id": "0eb7f30c-9114-4817-8740-e57a0ee20f2f",
+                    "exerciseId": "d4283c1c-c508-4627-8dfc-73f8af294373",
+                    "muscleId": "eb36b354-ef08-4bbf-b41b-244788bd62e1",
+                    "muscleDto": {
+                        "id": "eb36b354-ef08-4bbf-b41b-244788bd62e1",
+                        "i18NCode": "serratus_anterior",
+                        "groupMapping": [
+                            {
+                                "id": "86cb778d-7bd2-47ea-b9da-374e175a0e19",
+                                "muscleGroupId": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                "muscleGroup": {
+                                    "id": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                    "i18NCode": "chest"
+                                },
+                                "muscleId": "eb36b354-ef08-4bbf-b41b-244788bd62e1"
+                            },
+                            {
+                                "id": "87723876-7436-4415-8a10-af0308683b03",
+                                "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                "muscleGroup": {
+                                    "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                    "i18NCode": "shoulders"
+                                },
+                                "muscleId": "eb36b354-ef08-4bbf-b41b-244788bd62e1"
+                            }
+                        ]
+                    },
+                    "intensity": 78
+                }
+            ]
+        },
+        {
+            "id": "f1e0327e-eac3-400e-8a4a-bc76bf1a7628",
+            "i18NCode": "Russian Twist",
+            "description": "A twisting motion that engages the obliques and improves core rotation.",
+            "exerciseCategory": {
+                "id": "a75ab238-fd04-4351-a412-96e495346f33",
+                "i18NCode": "core"
+            },
+            "exerciseCategoryId": "a75ab238-fd04-4351-a412-96e495346f33",
+            "muscleMapping": []
+        },
+        {
+            "id": "f30c0c4f-f585-40b5-aa0d-95cecdff30ba",
+            "i18NCode": "Side Plank",
+            "description": "A core stabilization exercise that strengthens the obliques.",
+            "exerciseCategory": {
+                "id": "a75ab238-fd04-4351-a412-96e495346f33",
+                "i18NCode": "core"
+            },
+            "exerciseCategoryId": "a75ab238-fd04-4351-a412-96e495346f33",
+            "muscleMapping": [
+                {
+                    "id": "41a97dd9-7a93-4f10-89f8-ba94ad06c857",
+                    "exerciseId": "f30c0c4f-f585-40b5-aa0d-95cecdff30ba",
+                    "muscleId": "eb36b354-ef08-4bbf-b41b-244788bd62e1",
+                    "muscleDto": {
+                        "id": "eb36b354-ef08-4bbf-b41b-244788bd62e1",
+                        "i18NCode": "serratus_anterior",
+                        "groupMapping": [
+                            {
+                                "id": "86cb778d-7bd2-47ea-b9da-374e175a0e19",
+                                "muscleGroupId": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                "muscleGroup": {
+                                    "id": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                    "i18NCode": "chest"
+                                },
+                                "muscleId": "eb36b354-ef08-4bbf-b41b-244788bd62e1"
+                            },
+                            {
+                                "id": "87723876-7436-4415-8a10-af0308683b03",
+                                "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                "muscleGroup": {
+                                    "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                    "i18NCode": "shoulders"
+                                },
+                                "muscleId": "eb36b354-ef08-4bbf-b41b-244788bd62e1"
+                            }
+                        ]
+                    },
+                    "intensity": 71
+                }
+            ]
+        },
+        {
+            "id": "4a627ee2-a6e0-4c09-bc8a-588a8b058fcd",
+            "i18NCode": "Asdf asdf asdf as",
+            "description": "Asdf asdf",
+            "exerciseCategory": {
+                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "i18NCode": "legs"
+            },
+            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "muscleMapping": [
+                {
+                    "id": "44ee9e6c-6f1b-4128-8d2c-97f2a8ed6dbc",
+                    "exerciseId": "4a627ee2-a6e0-4c09-bc8a-588a8b058fcd",
+                    "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b",
+                    "muscleDto": {
+                        "id": "a8b00e77-002c-4db3-a22f-892934250f1b",
+                        "i18NCode": "trapezius",
+                        "groupMapping": [
+                            {
+                                "id": "7bc92a90-408e-4033-9b84-0b2b5c07dca2",
+                                "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                "muscleGroup": {
+                                    "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                    "i18NCode": "shoulders"
+                                },
+                                "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b"
+                            },
+                            {
+                                "id": "adb3a641-1fce-4cee-9992-8411ef57a3a3",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b"
+                            }
+                        ]
+                    },
+                    "intensity": null
+                },
+                {
+                    "id": "74bd4fab-2031-4c60-b3e2-c5e60c041f38",
+                    "exerciseId": "4a627ee2-a6e0-4c09-bc8a-588a8b058fcd",
+                    "muscleId": "fa48dea0-0493-4923-841a-51a8b6649b30",
+                    "muscleDto": {
+                        "id": "fa48dea0-0493-4923-841a-51a8b6649b30",
+                        "i18NCode": "biceps_brachii",
+                        "groupMapping": [
+                            {
+                                "id": "3006945e-9c4d-477b-8740-b033cac055b2",
+                                "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                "muscleGroup": {
+                                    "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                    "i18NCode": "arms"
+                                },
+                                "muscleId": "fa48dea0-0493-4923-841a-51a8b6649b30"
+                            }
+                        ]
+                    },
+                    "intensity": null
+                },
+                {
+                    "id": "d438fc2d-fb5b-4f11-9676-893c9e12753f",
+                    "exerciseId": "4a627ee2-a6e0-4c09-bc8a-588a8b058fcd",
+                    "muscleId": "c1f824e4-215e-4aa5-b2eb-76980cb1fad2",
+                    "muscleDto": {
+                        "id": "c1f824e4-215e-4aa5-b2eb-76980cb1fad2",
+                        "i18NCode": "teres_minor",
+                        "groupMapping": [
+                            {
+                                "id": "229785ef-b58a-427d-b103-241d2022f7db",
+                                "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                "muscleGroup": {
+                                    "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                    "i18NCode": "shoulders"
+                                },
+                                "muscleId": "c1f824e4-215e-4aa5-b2eb-76980cb1fad2"
+                            }
+                        ]
+                    },
+                    "intensity": null
+                },
+                {
+                    "id": "da99d2b7-a6ea-426e-a320-504052c81ca0",
+                    "exerciseId": "4a627ee2-a6e0-4c09-bc8a-588a8b058fcd",
+                    "muscleId": "85778671-d563-4b78-9f32-cb9598ad5ed3",
+                    "muscleDto": {
+                        "id": "85778671-d563-4b78-9f32-cb9598ad5ed3",
+                        "i18NCode": "brachialis",
+                        "groupMapping": [
+                            {
+                                "id": "bcbc8be5-7083-4e74-ba03-c31a3d326de0",
+                                "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                "muscleGroup": {
+                                    "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                    "i18NCode": "arms"
+                                },
+                                "muscleId": "85778671-d563-4b78-9f32-cb9598ad5ed3"
+                            }
+                        ]
+                    },
+                    "intensity": null
+                }
+            ]
+        },
+        {
+            "id": "c99c49dc-a5a7-41b5-9a13-68f2149b6392",
+            "i18NCode": "Box Jump",
+            "description": "An explosive movement that enhances power and agility.",
+            "exerciseCategory": {
+                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "i18NCode": "legs"
+            },
+            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "muscleMapping": []
+        },
+        {
+            "id": "9f2da650-2043-4f4c-911b-ab0591af0e72",
+            "i18NCode": "Calf Raise",
+            "description": "An exercise that strengthens and tones the calf muscles.",
+            "exerciseCategory": {
+                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "i18NCode": "legs"
+            },
+            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "muscleMapping": []
+        },
+        {
+            "id": "a5556d61-7cbc-441d-8261-1c325ee098f4",
+            "i18NCode": "Good Morning",
+            "description": "A posterior chain exercise that strengthens the hamstrings and lower back.",
+            "exerciseCategory": {
+                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "i18NCode": "legs"
+            },
+            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "muscleMapping": []
+        },
+        {
+            "id": "3ee301a5-f46e-4879-a605-074b1398b050",
+            "i18NCode": "Leg Extensions",
+            "description": "The leg extension is a resistance weight training exercise that targets the quadriceps muscle",
+            "exerciseCategory": {
+                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "i18NCode": "legs"
+            },
+            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "muscleMapping": []
+        },
+        {
+            "id": "94d0cb28-60b0-4fd0-bfc7-85bccca7b509",
+            "i18NCode": "Leg Press",
+            "description": "A machine-based exercise that isolates the quads and glutes.",
+            "exerciseCategory": {
+                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "i18NCode": "legs"
+            },
+            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "muscleMapping": []
+        },
+        {
+            "id": "639f0a0f-c192-4483-ad01-11a94066d419",
+            "i18NCode": "Lunges",
+            "description": "A unilateral leg exercise that improves balance and leg strength.",
+            "exerciseCategory": {
+                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "i18NCode": "legs"
+            },
+            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "muscleMapping": []
+        },
+        {
+            "id": "2e1803a6-1ee0-491c-8121-2f73877dfa3b",
+            "i18NCode": "Lying Leg Press",
+            "description": "Engages more of the posterior chain, including glutes and hamstrings, due to the different angle of push and body position where the user lies back, pushing the platform upward. Easier on knees.",
+            "exerciseCategory": {
+                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "i18NCode": "legs"
+            },
+            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "muscleMapping": []
+        },
+        {
+            "id": "d2156cf4-4955-450c-85e4-28bb380b2f7a",
+            "i18NCode": "Romanian Deadlift",
+            "description": "A deadlift variation that targets the hamstrings and glutes.",
+            "exerciseCategory": {
+                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "i18NCode": "legs"
+            },
+            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "muscleMapping": [
+                {
+                    "id": "73878d15-c6a1-4d96-9fc7-cbd6e898b81e",
+                    "exerciseId": "d2156cf4-4955-450c-85e4-28bb380b2f7a",
+                    "muscleId": "321ebc13-5400-44f6-9334-14bac89618ad",
+                    "muscleDto": {
+                        "id": "321ebc13-5400-44f6-9334-14bac89618ad",
+                        "i18NCode": "erector_spinae",
+                        "groupMapping": [
+                            {
+                                "id": "07fc11a4-5198-4edd-9323-b09519544087",
+                                "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                "muscleGroup": {
+                                    "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                    "i18NCode": "shoulders"
+                                },
+                                "muscleId": "321ebc13-5400-44f6-9334-14bac89618ad"
+                            },
+                            {
+                                "id": "901360e1-0852-4740-aaba-4b51a2dadd8f",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "321ebc13-5400-44f6-9334-14bac89618ad"
+                            }
+                        ]
+                    },
+                    "intensity": 82
+                }
+            ]
+        },
+        {
+            "id": "5ac658c0-c51a-40a8-80d6-335431775625",
+            "i18NCode": "Seated Leg Press",
+            "description": "Lll",
+            "exerciseCategory": {
+                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "i18NCode": "legs"
+            },
+            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "muscleMapping": []
+        },
+        {
+            "id": "6757f69f-848c-4e64-9a6d-efca00d0834b",
+            "i18NCode": "Squat",
+            "description": "A fundamental lower-body exercise that targets the quads, hamstrings, and glutes.",
+            "exerciseCategory": {
+                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "i18NCode": "legs"
+            },
+            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "muscleMapping": []
+        },
+        {
+            "id": "c545d72c-a127-4a62-b8d4-712ddb7a5ef9",
+            "i18NCode": "Standing Calf Raise",
+            "description": "To do a calf raise with dumbbells, hold a dumbbell in each hand and stand with your feet about shoulder-width apart. Let your arms hang straight below your shoulders. Rise up onto your toes, then slowly return to the starting position. You'll feel tension in the muscles in the back of your lower legs.",
+            "exerciseCategory": {
+                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "i18NCode": "legs"
+            },
+            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "muscleMapping": []
+        },
+        {
+            "id": "33558c2a-0b5c-4add-bea1-cf8bcb626a78",
+            "i18NCode": "Step-Up",
+            "description": "A unilateral lower-body exercise that improves balance and strength.",
+            "exerciseCategory": {
+                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                "i18NCode": "legs"
+            },
+            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "muscleMapping": []
+        },
+        {
+            "id": "d3d536fe-8d14-4eb3-af07-05281bc3b92e",
+            "i18NCode": "Bent-Over Row",
+            "description": "A pulling movement that targets the upper and middle back.",
+            "exerciseCategory": {
+                "id": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+                "i18NCode": "pull"
+            },
+            "exerciseCategoryId": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+            "muscleMapping": [
+                {
+                    "id": "46a583f7-3b6e-4941-b46b-e106b9835b7f",
+                    "exerciseId": "d3d536fe-8d14-4eb3-af07-05281bc3b92e",
+                    "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b",
+                    "muscleDto": {
+                        "id": "a8b00e77-002c-4db3-a22f-892934250f1b",
+                        "i18NCode": "trapezius",
+                        "groupMapping": [
+                            {
+                                "id": "7bc92a90-408e-4033-9b84-0b2b5c07dca2",
+                                "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                "muscleGroup": {
+                                    "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                    "i18NCode": "shoulders"
+                                },
+                                "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b"
+                            },
+                            {
+                                "id": "adb3a641-1fce-4cee-9992-8411ef57a3a3",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b"
+                            }
+                        ]
+                    },
+                    "intensity": 57
+                },
+                {
+                    "id": "52360103-7c7d-418a-bd16-cada904708b8",
+                    "exerciseId": "d3d536fe-8d14-4eb3-af07-05281bc3b92e",
+                    "muscleId": "8c31da5a-9148-4808-990e-8d4ddda5238e",
+                    "muscleDto": {
+                        "id": "8c31da5a-9148-4808-990e-8d4ddda5238e",
+                        "i18NCode": "rhomboids",
+                        "groupMapping": [
+                            {
+                                "id": "1f1e1c94-3cb9-4119-95ac-2ac59f70be4e",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "8c31da5a-9148-4808-990e-8d4ddda5238e"
+                            }
+                        ]
+                    },
+                    "intensity": 91
+                },
+                {
+                    "id": "6174d974-6d94-4651-b279-db069b71f00c",
+                    "exerciseId": "d3d536fe-8d14-4eb3-af07-05281bc3b92e",
+                    "muscleId": "8f97c242-448a-459f-8722-d00e789f488c",
+                    "muscleDto": {
+                        "id": "8f97c242-448a-459f-8722-d00e789f488c",
+                        "i18NCode": "latissimus_dorsi",
+                        "groupMapping": [
+                            {
+                                "id": "9aa919ba-71f6-4230-b7c3-c31d2dfda69b",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "8f97c242-448a-459f-8722-d00e789f488c"
+                            }
+                        ]
+                    },
+                    "intensity": 73
+                }
+            ]
+        },
+        {
+            "id": "893082e1-3f21-4076-9771-112aa67faca0",
+            "i18NCode": "Deadlift",
+            "description": "A full-body exercise that primarily targets the posterior chain, including hamstrings and lower back.",
+            "exerciseCategory": {
+                "id": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+                "i18NCode": "pull"
+            },
+            "exerciseCategoryId": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+            "muscleMapping": [
+                {
+                    "id": "704061c6-8c88-4a80-bf42-ed81ff2b379a",
+                    "exerciseId": "893082e1-3f21-4076-9771-112aa67faca0",
+                    "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b",
+                    "muscleDto": {
+                        "id": "a8b00e77-002c-4db3-a22f-892934250f1b",
+                        "i18NCode": "trapezius",
+                        "groupMapping": [
+                            {
+                                "id": "7bc92a90-408e-4033-9b84-0b2b5c07dca2",
+                                "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                "muscleGroup": {
+                                    "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                    "i18NCode": "shoulders"
+                                },
+                                "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b"
+                            },
+                            {
+                                "id": "adb3a641-1fce-4cee-9992-8411ef57a3a3",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b"
+                            }
+                        ]
+                    },
+                    "intensity": 55
+                },
+                {
+                    "id": "92c18389-e8e1-4f4a-bbe3-a91592cdd2ee",
+                    "exerciseId": "893082e1-3f21-4076-9771-112aa67faca0",
+                    "muscleId": "8f97c242-448a-459f-8722-d00e789f488c",
+                    "muscleDto": {
+                        "id": "8f97c242-448a-459f-8722-d00e789f488c",
+                        "i18NCode": "latissimus_dorsi",
+                        "groupMapping": [
+                            {
+                                "id": "9aa919ba-71f6-4230-b7c3-c31d2dfda69b",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "8f97c242-448a-459f-8722-d00e789f488c"
+                            }
+                        ]
+                    },
+                    "intensity": 98
+                },
+                {
+                    "id": "9be53d85-bc85-4297-b61d-bc0c4558c755",
+                    "exerciseId": "893082e1-3f21-4076-9771-112aa67faca0",
+                    "muscleId": "321ebc13-5400-44f6-9334-14bac89618ad",
+                    "muscleDto": {
+                        "id": "321ebc13-5400-44f6-9334-14bac89618ad",
+                        "i18NCode": "erector_spinae",
+                        "groupMapping": [
+                            {
+                                "id": "07fc11a4-5198-4edd-9323-b09519544087",
+                                "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                "muscleGroup": {
+                                    "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                    "i18NCode": "shoulders"
+                                },
+                                "muscleId": "321ebc13-5400-44f6-9334-14bac89618ad"
+                            },
+                            {
+                                "id": "901360e1-0852-4740-aaba-4b51a2dadd8f",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "321ebc13-5400-44f6-9334-14bac89618ad"
+                            }
+                        ]
+                    },
+                    "intensity": 75
+                }
+            ]
+        },
+        {
+            "id": "4036e7d8-7e01-49fb-a669-4a0835624952",
+            "i18NCode": "Lat Pulldown",
+            "description": "A machine exercise that mimics the pull-up, targeting the lats.",
+            "exerciseCategory": {
+                "id": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+                "i18NCode": "pull"
+            },
+            "exerciseCategoryId": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+            "muscleMapping": [
+                {
+                    "id": "163f57b3-2115-4a92-90cb-818560ff23bc",
+                    "exerciseId": "4036e7d8-7e01-49fb-a669-4a0835624952",
+                    "muscleId": "8f97c242-448a-459f-8722-d00e789f488c",
+                    "muscleDto": {
+                        "id": "8f97c242-448a-459f-8722-d00e789f488c",
+                        "i18NCode": "latissimus_dorsi",
+                        "groupMapping": [
+                            {
+                                "id": "9aa919ba-71f6-4230-b7c3-c31d2dfda69b",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "8f97c242-448a-459f-8722-d00e789f488c"
+                            }
+                        ]
+                    },
+                    "intensity": 59
+                },
+                {
+                    "id": "8a610386-d1fb-4b97-96e0-274472ccc003",
+                    "exerciseId": "4036e7d8-7e01-49fb-a669-4a0835624952",
+                    "muscleId": "fa48dea0-0493-4923-841a-51a8b6649b30",
+                    "muscleDto": {
+                        "id": "fa48dea0-0493-4923-841a-51a8b6649b30",
+                        "i18NCode": "biceps_brachii",
+                        "groupMapping": [
+                            {
+                                "id": "3006945e-9c4d-477b-8740-b033cac055b2",
+                                "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                "muscleGroup": {
+                                    "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                    "i18NCode": "arms"
+                                },
+                                "muscleId": "fa48dea0-0493-4923-841a-51a8b6649b30"
+                            }
+                        ]
+                    },
+                    "intensity": 97
+                },
+                {
+                    "id": "b9489c78-5824-4a77-b860-e02343bb33fc",
+                    "exerciseId": "4036e7d8-7e01-49fb-a669-4a0835624952",
+                    "muscleId": "8c31da5a-9148-4808-990e-8d4ddda5238e",
+                    "muscleDto": {
+                        "id": "8c31da5a-9148-4808-990e-8d4ddda5238e",
+                        "i18NCode": "rhomboids",
+                        "groupMapping": [
+                            {
+                                "id": "1f1e1c94-3cb9-4119-95ac-2ac59f70be4e",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "8c31da5a-9148-4808-990e-8d4ddda5238e"
+                            }
+                        ]
+                    },
+                    "intensity": 79
+                }
+            ]
+        },
+        {
+            "id": "eaf2eb61-9e12-4cfa-b88a-d5f7de5de717",
+            "i18NCode": "Pull-Up",
+            "description": "A bodyweight exercise that targets the lats and upper back.",
+            "exerciseCategory": {
+                "id": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+                "i18NCode": "pull"
+            },
+            "exerciseCategoryId": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+            "muscleMapping": [
+                {
+                    "id": "093c5b00-0bc6-4551-958c-f3d69653b843",
+                    "exerciseId": "eaf2eb61-9e12-4cfa-b88a-d5f7de5de717",
+                    "muscleId": "8f97c242-448a-459f-8722-d00e789f488c",
+                    "muscleDto": {
+                        "id": "8f97c242-448a-459f-8722-d00e789f488c",
+                        "i18NCode": "latissimus_dorsi",
+                        "groupMapping": [
+                            {
+                                "id": "9aa919ba-71f6-4230-b7c3-c31d2dfda69b",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "8f97c242-448a-459f-8722-d00e789f488c"
+                            }
+                        ]
+                    },
+                    "intensity": 53
+                },
+                {
+                    "id": "2562e3e9-971d-47af-be18-82735cc6378a",
+                    "exerciseId": "eaf2eb61-9e12-4cfa-b88a-d5f7de5de717",
+                    "muscleId": "fa48dea0-0493-4923-841a-51a8b6649b30",
+                    "muscleDto": {
+                        "id": "fa48dea0-0493-4923-841a-51a8b6649b30",
+                        "i18NCode": "biceps_brachii",
+                        "groupMapping": [
+                            {
+                                "id": "3006945e-9c4d-477b-8740-b033cac055b2",
+                                "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                "muscleGroup": {
+                                    "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                    "i18NCode": "arms"
+                                },
+                                "muscleId": "fa48dea0-0493-4923-841a-51a8b6649b30"
+                            }
+                        ]
+                    },
+                    "intensity": 52
+                },
+                {
+                    "id": "7f38a406-6010-47f0-be6f-72f0606797dc",
+                    "exerciseId": "eaf2eb61-9e12-4cfa-b88a-d5f7de5de717",
+                    "muscleId": "8c31da5a-9148-4808-990e-8d4ddda5238e",
+                    "muscleDto": {
+                        "id": "8c31da5a-9148-4808-990e-8d4ddda5238e",
+                        "i18NCode": "rhomboids",
+                        "groupMapping": [
+                            {
+                                "id": "1f1e1c94-3cb9-4119-95ac-2ac59f70be4e",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "8c31da5a-9148-4808-990e-8d4ddda5238e"
+                            }
+                        ]
+                    },
+                    "intensity": 68
+                }
+            ]
+        },
+        {
+            "id": "cde03d42-1c08-4fbe-bbf5-7b04c24b419b",
+            "i18NCode": "Reverse Fly",
+            "description": "An isolation exercise that targets the rear delts and upper back.",
+            "exerciseCategory": {
+                "id": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+                "i18NCode": "pull"
+            },
+            "exerciseCategoryId": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+            "muscleMapping": [
+                {
+                    "id": "3aa44312-a4a7-4664-b7ee-8ca7ba816f86",
+                    "exerciseId": "cde03d42-1c08-4fbe-bbf5-7b04c24b419b",
+                    "muscleId": "8c31da5a-9148-4808-990e-8d4ddda5238e",
+                    "muscleDto": {
+                        "id": "8c31da5a-9148-4808-990e-8d4ddda5238e",
+                        "i18NCode": "rhomboids",
+                        "groupMapping": [
+                            {
+                                "id": "1f1e1c94-3cb9-4119-95ac-2ac59f70be4e",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "8c31da5a-9148-4808-990e-8d4ddda5238e"
+                            }
+                        ]
+                    },
+                    "intensity": 77
+                },
+                {
+                    "id": "ee838998-e423-4f16-a044-a23bfc207ad0",
+                    "exerciseId": "cde03d42-1c08-4fbe-bbf5-7b04c24b419b",
+                    "muscleId": "23893afe-3d7b-4202-90e9-30d5f8ce1875",
+                    "muscleDto": {
+                        "id": "23893afe-3d7b-4202-90e9-30d5f8ce1875",
+                        "i18NCode": "deltoid_posterior",
+                        "groupMapping": [
+                            {
+                                "id": "56c19c96-b597-405d-bd58-cdce4b91007e",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "23893afe-3d7b-4202-90e9-30d5f8ce1875"
+                            }
+                        ]
+                    },
+                    "intensity": 75
+                }
+            ]
+        },
+        {
+            "id": "1505ca8b-946e-4d5c-9260-ca8b9e47de82",
+            "i18NCode": "Seated Row",
+            "description": "A rowing exercise that strengthens the upper and middle back.",
+            "exerciseCategory": {
+                "id": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+                "i18NCode": "pull"
+            },
+            "exerciseCategoryId": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+            "muscleMapping": []
+        },
+        {
+            "id": "846e8c2d-9d63-4c18-82fa-0d8c7512f326",
+            "i18NCode": "Bench Press",
+            "description": "A compound movement that works the chest, shoulders, and triceps.",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": [
+                {
+                    "id": "140b1276-0665-4d2c-8396-e8863fa8738b",
+                    "exerciseId": "846e8c2d-9d63-4c18-82fa-0d8c7512f326",
+                    "muscleId": "80c63a73-a8f0-4d38-a038-898dbca6876e",
+                    "muscleDto": {
+                        "id": "80c63a73-a8f0-4d38-a038-898dbca6876e",
+                        "i18NCode": "triceps_brachii",
+                        "groupMapping": [
+                            {
+                                "id": "9493ba2b-0248-4ac7-af1b-6956b2fb02ce",
+                                "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                "muscleGroup": {
+                                    "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                    "i18NCode": "arms"
+                                },
+                                "muscleId": "80c63a73-a8f0-4d38-a038-898dbca6876e"
+                            }
+                        ]
+                    },
+                    "intensity": 73
+                },
+                {
+                    "id": "70210eac-22d6-4ae6-bcbd-7681fc04b870",
+                    "exerciseId": "846e8c2d-9d63-4c18-82fa-0d8c7512f326",
+                    "muscleId": "825714d1-5df8-4d08-b28e-fa89c284ff73",
+                    "muscleDto": {
+                        "id": "825714d1-5df8-4d08-b28e-fa89c284ff73",
+                        "i18NCode": "deltoid_anterior",
+                        "groupMapping": [
+                            {
+                                "id": "9b358071-a6aa-4e29-a4cb-2bc219585294",
+                                "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                "muscleGroup": {
+                                    "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                    "i18NCode": "shoulders"
+                                },
+                                "muscleId": "825714d1-5df8-4d08-b28e-fa89c284ff73"
+                            }
+                        ]
+                    },
+                    "intensity": 80
+                },
+                {
+                    "id": "738ed3dc-5b36-44d8-8617-c005a4d7a1d3",
+                    "exerciseId": "846e8c2d-9d63-4c18-82fa-0d8c7512f326",
+                    "muscleId": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3",
+                    "muscleDto": {
+                        "id": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3",
+                        "i18NCode": "pectoralis_major",
+                        "groupMapping": [
+                            {
+                                "id": "921265d2-ad78-425e-b63e-c8b44a1c05a5",
+                                "muscleGroupId": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                "muscleGroup": {
+                                    "id": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                    "i18NCode": "chest"
+                                },
+                                "muscleId": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3"
+                            }
+                        ]
+                    },
+                    "intensity": 51
+                }
+            ]
+        },
+        {
+            "id": "f11d5552-e4e3-4bfc-8bce-16538c99ff0d",
+            "i18NCode": "Butterfly",
+            "description": "An isolation exercise that stretches and strengthens the chest muscles.",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": [
+                {
+                    "id": "8fefc035-d57d-4181-9435-5a10823075d5",
+                    "exerciseId": "f11d5552-e4e3-4bfc-8bce-16538c99ff0d",
+                    "muscleId": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3",
+                    "muscleDto": {
+                        "id": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3",
+                        "i18NCode": "pectoralis_major",
+                        "groupMapping": [
+                            {
+                                "id": "921265d2-ad78-425e-b63e-c8b44a1c05a5",
+                                "muscleGroupId": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                "muscleGroup": {
+                                    "id": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                    "i18NCode": "chest"
+                                },
+                                "muscleId": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3"
+                            }
+                        ]
+                    },
+                    "intensity": 68
+                }
+            ]
+        },
+        {
+            "id": "d3be9295-9477-4a98-8aea-a4dade7a073d",
+            "i18NCode": "Cable Lateral Raise",
+            "description": "A shoulder isolation movement that targets the side delts.",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": []
+        },
+        {
+            "id": "36600b9c-d083-4f76-b54e-bbc552cbab65",
+            "i18NCode": "Dip Machine",
+            "description": "Dippy",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": []
+        },
+        {
+            "id": "86e0bfe4-ad3d-43c7-8480-65cb9cae576b",
+            "i18NCode": "Dumbbell Curl",
+            "description": "An isolation exercise that builds the biceps.",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": [
+                {
+                    "id": "e7e750b4-f796-421b-9726-d8d2500fa0d9",
+                    "exerciseId": "86e0bfe4-ad3d-43c7-8480-65cb9cae576b",
+                    "muscleId": "fa48dea0-0493-4923-841a-51a8b6649b30",
+                    "muscleDto": {
+                        "id": "fa48dea0-0493-4923-841a-51a8b6649b30",
+                        "i18NCode": "biceps_brachii",
+                        "groupMapping": [
+                            {
+                                "id": "3006945e-9c4d-477b-8740-b033cac055b2",
+                                "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                "muscleGroup": {
+                                    "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                    "i18NCode": "arms"
+                                },
+                                "muscleId": "fa48dea0-0493-4923-841a-51a8b6649b30"
+                            }
+                        ]
+                    },
+                    "intensity": 58
+                }
+            ]
+        },
+        {
+            "id": "eff5ffe2-c660-4906-83a8-e8c08794d536",
+            "i18NCode": "Dumbbell Shoulder Press",
+            "description": "A pressing exercise for building shoulder strength and stability.",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": []
+        },
+        {
+            "id": "6468037d-a276-4a4e-bee4-e24149a75114",
+            "i18NCode": "Face Pull",
+            "description": "A pulling exercise that targets the rear delts and upper back.",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": [
+                {
+                    "id": "3eec8a19-7f54-4580-936e-9bb5d3b33f89",
+                    "exerciseId": "6468037d-a276-4a4e-bee4-e24149a75114",
+                    "muscleId": "8c31da5a-9148-4808-990e-8d4ddda5238e",
+                    "muscleDto": {
+                        "id": "8c31da5a-9148-4808-990e-8d4ddda5238e",
+                        "i18NCode": "rhomboids",
+                        "groupMapping": [
+                            {
+                                "id": "1f1e1c94-3cb9-4119-95ac-2ac59f70be4e",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "8c31da5a-9148-4808-990e-8d4ddda5238e"
+                            }
+                        ]
+                    },
+                    "intensity": 72
+                },
+                {
+                    "id": "782a547a-dbc4-4ab2-a219-20bf861288d0",
+                    "exerciseId": "6468037d-a276-4a4e-bee4-e24149a75114",
+                    "muscleId": "23893afe-3d7b-4202-90e9-30d5f8ce1875",
+                    "muscleDto": {
+                        "id": "23893afe-3d7b-4202-90e9-30d5f8ce1875",
+                        "i18NCode": "deltoid_posterior",
+                        "groupMapping": [
+                            {
+                                "id": "56c19c96-b597-405d-bd58-cdce4b91007e",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "23893afe-3d7b-4202-90e9-30d5f8ce1875"
+                            }
+                        ]
+                    },
+                    "intensity": 96
+                },
+                {
+                    "id": "aff9f9e2-47ea-4fb7-96c0-9e9ad844edbd",
+                    "exerciseId": "6468037d-a276-4a4e-bee4-e24149a75114",
+                    "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b",
+                    "muscleDto": {
+                        "id": "a8b00e77-002c-4db3-a22f-892934250f1b",
+                        "i18NCode": "trapezius",
+                        "groupMapping": [
+                            {
+                                "id": "7bc92a90-408e-4033-9b84-0b2b5c07dca2",
+                                "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                "muscleGroup": {
+                                    "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                    "i18NCode": "shoulders"
+                                },
+                                "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b"
+                            },
+                            {
+                                "id": "adb3a641-1fce-4cee-9992-8411ef57a3a3",
+                                "muscleGroupId": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                "muscleGroup": {
+                                    "id": "d26ed0c4-2941-49e9-9c09-efce5663ab92",
+                                    "i18NCode": "back"
+                                },
+                                "muscleId": "a8b00e77-002c-4db3-a22f-892934250f1b"
+                            }
+                        ]
+                    },
+                    "intensity": 78
+                }
+            ]
+        },
+        {
+            "id": "d1f068af-9b40-4e39-b92c-66021dd81dc9",
+            "i18NCode": "Hammer Curl",
+            "description": "A variation of the curl that emphasizes the brachialis muscle.",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": [
+                {
+                    "id": "ff3c7a9c-aa74-47ff-b091-c958dc71719c",
+                    "exerciseId": "d1f068af-9b40-4e39-b92c-66021dd81dc9",
+                    "muscleId": "fa48dea0-0493-4923-841a-51a8b6649b30",
+                    "muscleDto": {
+                        "id": "fa48dea0-0493-4923-841a-51a8b6649b30",
+                        "i18NCode": "biceps_brachii",
+                        "groupMapping": [
+                            {
+                                "id": "3006945e-9c4d-477b-8740-b033cac055b2",
+                                "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                "muscleGroup": {
+                                    "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                    "i18NCode": "arms"
+                                },
+                                "muscleId": "fa48dea0-0493-4923-841a-51a8b6649b30"
+                            }
+                        ]
+                    },
+                    "intensity": 94
+                }
+            ]
+        },
+        {
+            "id": "5e65e833-8f70-467c-8caa-41deaef24393",
+            "i18NCode": "Incline Bench Press",
+            "description": "A pressing movement that targets the upper chest and shoulders.",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": [
+                {
+                    "id": "4eaa8c13-65f0-4172-955d-8dd40889085c",
+                    "exerciseId": "5e65e833-8f70-467c-8caa-41deaef24393",
+                    "muscleId": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3",
+                    "muscleDto": {
+                        "id": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3",
+                        "i18NCode": "pectoralis_major",
+                        "groupMapping": [
+                            {
+                                "id": "921265d2-ad78-425e-b63e-c8b44a1c05a5",
+                                "muscleGroupId": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                "muscleGroup": {
+                                    "id": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                    "i18NCode": "chest"
+                                },
+                                "muscleId": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3"
+                            }
+                        ]
+                    },
+                    "intensity": 50
+                },
+                {
+                    "id": "6b528a43-e2f5-4f6c-82d2-a96d0ccd6fe8",
+                    "exerciseId": "5e65e833-8f70-467c-8caa-41deaef24393",
+                    "muscleId": "80c63a73-a8f0-4d38-a038-898dbca6876e",
+                    "muscleDto": {
+                        "id": "80c63a73-a8f0-4d38-a038-898dbca6876e",
+                        "i18NCode": "triceps_brachii",
+                        "groupMapping": [
+                            {
+                                "id": "9493ba2b-0248-4ac7-af1b-6956b2fb02ce",
+                                "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                "muscleGroup": {
+                                    "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                    "i18NCode": "arms"
+                                },
+                                "muscleId": "80c63a73-a8f0-4d38-a038-898dbca6876e"
+                            }
+                        ]
+                    },
+                    "intensity": 89
+                },
+                {
+                    "id": "f01213b1-25c4-46ca-aaf4-83b5051ddf54",
+                    "exerciseId": "5e65e833-8f70-467c-8caa-41deaef24393",
+                    "muscleId": "825714d1-5df8-4d08-b28e-fa89c284ff73",
+                    "muscleDto": {
+                        "id": "825714d1-5df8-4d08-b28e-fa89c284ff73",
+                        "i18NCode": "deltoid_anterior",
+                        "groupMapping": [
+                            {
+                                "id": "9b358071-a6aa-4e29-a4cb-2bc219585294",
+                                "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                "muscleGroup": {
+                                    "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                    "i18NCode": "shoulders"
+                                },
+                                "muscleId": "825714d1-5df8-4d08-b28e-fa89c284ff73"
+                            }
+                        ]
+                    },
+                    "intensity": 82
+                }
+            ]
+        },
+        {
+            "id": "27a9c16f-c788-43d2-a2f3-8a762eb52fdb",
+            "i18NCode": "Overhead Press",
+            "description": "A pressing movement that strengthens the shoulders and triceps.",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": [
+                {
+                    "id": "892042c5-dd11-4ae5-8436-86758a13c30a",
+                    "exerciseId": "27a9c16f-c788-43d2-a2f3-8a762eb52fdb",
+                    "muscleId": "825714d1-5df8-4d08-b28e-fa89c284ff73",
+                    "muscleDto": {
+                        "id": "825714d1-5df8-4d08-b28e-fa89c284ff73",
+                        "i18NCode": "deltoid_anterior",
+                        "groupMapping": [
+                            {
+                                "id": "9b358071-a6aa-4e29-a4cb-2bc219585294",
+                                "muscleGroupId": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                "muscleGroup": {
+                                    "id": "af4d7669-3a4a-480b-b8aa-17e39ad4d8c8",
+                                    "i18NCode": "shoulders"
+                                },
+                                "muscleId": "825714d1-5df8-4d08-b28e-fa89c284ff73"
+                            }
+                        ]
+                    },
+                    "intensity": 78
+                },
+                {
+                    "id": "cb021116-d975-449d-ab34-fd21619d45cf",
+                    "exerciseId": "27a9c16f-c788-43d2-a2f3-8a762eb52fdb",
+                    "muscleId": "80c63a73-a8f0-4d38-a038-898dbca6876e",
+                    "muscleDto": {
+                        "id": "80c63a73-a8f0-4d38-a038-898dbca6876e",
+                        "i18NCode": "triceps_brachii",
+                        "groupMapping": [
+                            {
+                                "id": "9493ba2b-0248-4ac7-af1b-6956b2fb02ce",
+                                "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                "muscleGroup": {
+                                    "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                    "i18NCode": "arms"
+                                },
+                                "muscleId": "80c63a73-a8f0-4d38-a038-898dbca6876e"
+                            }
+                        ]
+                    },
+                    "intensity": 77
+                }
+            ]
+        },
+        {
+            "id": "8fe6267c-b18a-422c-bbef-a7b9605669f9",
+            "i18NCode": "Overhead Shoulder Press",
+            "description": "Overhead",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": []
+        },
+        {
+            "id": "ba6262c5-e858-494b-b84a-111acf0f816f",
+            "i18NCode": "Seated Chest Press",
+            "description": "The chest press strengthens the muscles on the front of your chest",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": []
+        },
+        {
+            "id": "6ece25eb-bb3f-49ca-b096-26cf16ec7586",
+            "i18NCode": "Skull Crusher",
+            "description": "An isolation exercise that works the triceps effectively.",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": []
+        },
+        {
+            "id": "1b78d632-75a6-40e3-b289-904552f70f5c",
+            "i18NCode": "Test",
+            "description": "Test muscles",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": [
+                {
+                    "id": "bdb4fbd3-7095-41fe-93e3-48b4545f57b3",
+                    "exerciseId": "1b78d632-75a6-40e3-b289-904552f70f5c",
+                    "muscleId": "85778671-d563-4b78-9f32-cb9598ad5ed3",
+                    "muscleDto": {
+                        "id": "85778671-d563-4b78-9f32-cb9598ad5ed3",
+                        "i18NCode": "brachialis",
+                        "groupMapping": [
+                            {
+                                "id": "bcbc8be5-7083-4e74-ba03-c31a3d326de0",
+                                "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                "muscleGroup": {
+                                    "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                    "i18NCode": "arms"
+                                },
+                                "muscleId": "85778671-d563-4b78-9f32-cb9598ad5ed3"
+                            }
+                        ]
+                    },
+                    "intensity": null
+                },
+                {
+                    "id": "f3c2b20a-2169-452a-9b38-363838970261",
+                    "exerciseId": "1b78d632-75a6-40e3-b289-904552f70f5c",
+                    "muscleId": "fa48dea0-0493-4923-841a-51a8b6649b30",
+                    "muscleDto": {
+                        "id": "fa48dea0-0493-4923-841a-51a8b6649b30",
+                        "i18NCode": "biceps_brachii",
+                        "groupMapping": [
+                            {
+                                "id": "3006945e-9c4d-477b-8740-b033cac055b2",
+                                "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                "muscleGroup": {
+                                    "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                    "i18NCode": "arms"
+                                },
+                                "muscleId": "fa48dea0-0493-4923-841a-51a8b6649b30"
+                            }
+                        ]
+                    },
+                    "intensity": null
+                }
+            ]
+        },
+        {
+            "id": "e7e6e065-1743-4c1e-8c8f-e7d5dd1a0536",
+            "i18NCode": "Tricep Dip",
+            "description": "A compound movement for strengthening the triceps and chest.",
+            "exerciseCategory": {
+                "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                "i18NCode": "push"
+            },
+            "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+            "muscleMapping": [
+                {
+                    "id": "80c87831-b503-4421-a710-adf45067d5df",
+                    "exerciseId": "e7e6e065-1743-4c1e-8c8f-e7d5dd1a0536",
+                    "muscleId": "80c63a73-a8f0-4d38-a038-898dbca6876e",
+                    "muscleDto": {
+                        "id": "80c63a73-a8f0-4d38-a038-898dbca6876e",
+                        "i18NCode": "triceps_brachii",
+                        "groupMapping": [
+                            {
+                                "id": "9493ba2b-0248-4ac7-af1b-6956b2fb02ce",
+                                "muscleGroupId": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                "muscleGroup": {
+                                    "id": "0a8ec2e6-f77d-4fdd-a216-e2bf7714c7f2",
+                                    "i18NCode": "arms"
+                                },
+                                "muscleId": "80c63a73-a8f0-4d38-a038-898dbca6876e"
+                            }
+                        ]
+                    },
+                    "intensity": 85
+                },
+                {
+                    "id": "e21b8a7b-d607-46fa-8813-017514b7ff74",
+                    "exerciseId": "e7e6e065-1743-4c1e-8c8f-e7d5dd1a0536",
+                    "muscleId": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3",
+                    "muscleDto": {
+                        "id": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3",
+                        "i18NCode": "pectoralis_major",
+                        "groupMapping": [
+                            {
+                                "id": "921265d2-ad78-425e-b63e-c8b44a1c05a5",
+                                "muscleGroupId": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                "muscleGroup": {
+                                    "id": "e05de925-1e66-4547-8950-1d26e5de9e11",
+                                    "i18NCode": "chest"
+                                },
+                                "muscleId": "dbf4ee29-c4d0-4d5e-8846-78c2632d4ea3"
+                            }
+                        ]
+                    },
+                    "intensity": 85
+                }
+            ]
+        }
+    ],
+    "pageIndex": 0,
+    "pageSize": 100,
+    "totalCount": 40,
+    "totalPages": 1,
+    "hasPreviousPage": false,
+    "hasNextPage": false
+}

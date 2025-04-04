@@ -11,7 +11,7 @@ public class GetExerciseDto
     public GetExerciseCategoryDto ExerciseCategory { get; set; }
 
     public Guid ExerciseCategoryId { get; set; }
-    // public IList<Guid> MuscleIds { get; set; } = new List<Guid>();
+    public IList<GetExerciseMuscleMappingDto> MuscleMapping { get; set; } = new List<GetExerciseMuscleMappingDto>();
 }
 
 public class GetExerciseDtoProfile : BaseI18NProfile
@@ -23,6 +23,7 @@ public class GetExerciseDtoProfile : BaseI18NProfile
             .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
             .ForMember(dest => dest.ExerciseCategory, opt => opt.MapFrom(src => src.ExerciseCategory))
             .ForMember(dest => dest.ExerciseCategoryId, opt => opt.MapFrom(src => src.ExerciseCategoryId))
+            .ForMember(dest => dest.MuscleMapping, opt => opt.MapFrom(src => src.ExerciseMuscleMappings))
             ;
     }
 }

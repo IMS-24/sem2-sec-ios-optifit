@@ -1,0 +1,45 @@
+{
+    "items": [
+        {
+            "id": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+            "name": "Ultimate Gym",
+            "address": "Puchstraße 17",
+            "city": "Graz",
+            "zipCode": 8020
+        },
+        {
+            "id": "41c03cf2-7244-4b01-a126-948b9410ff22",
+            "name": "FITINN",
+            "address": "Europaplatz 5 Hauptbahnhof (1. Stock)",
+            "city": "Graz",
+            "zipCode": 8020
+        },
+        {
+            "id": "07b01add-6ac8-4a3b-a796-a881e867ac96",
+            "name": "clever fit",
+            "address": "Europaplatz 12",
+            "city": "Graz",
+            "zipCode": 8020
+        },
+        {
+            "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "name": "John Reed",
+            "address": "Conrad-von-Hötzendorf-Straße 99a",
+            "city": "Graz",
+            "zipCode": 8020
+        },
+        {
+            "id": "7ab28913-715e-4828-867c-7e2e5463724f",
+            "name": "McFit gym",
+            "address": "Europaplatz 20",
+            "city": "Graz",
+            "zipCode": 8020
+        }
+    ],
+    "pageIndex": 0,
+    "pageSize": 10,
+    "totalCount": 5,
+    "totalPages": 1,
+    "hasPreviousPage": false,
+    "hasNextPage": false
+}

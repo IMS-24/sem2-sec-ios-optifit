@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%.1f" : {
-
-    },
     "%.1f kg" : {
 
     },
@@ -108,6 +105,9 @@
         }
       }
     },
+    "Are you sure you want to cancel this workout?" : {
+
+    },
     "Are you sure?" : {
       "localizations" : {
         "de" : {
@@ -130,6 +130,9 @@
       }
     },
     "Average" : {
+
+    },
+    "Back" : {
 
     },
     "Bad request. Please check your input and try again." : {
@@ -178,6 +181,9 @@
           }
         }
       }
+    },
+    "Cancel Workout" : {
+
     },
     "Contact Support" : {
       "localizations" : {
@@ -327,6 +333,9 @@
         }
       }
     },
+    "Exercise Category" : {
+
+    },
     "Exercise Name" : {
       "localizations" : {
         "de" : {
@@ -338,6 +347,7 @@
       }
     },
     "Exercise Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -361,6 +371,12 @@
 
     },
     "First Name" : {
+
+    },
+    "Front" : {
+
+    },
+    "General Workout" : {
 
     },
     "Gym" : {
@@ -507,6 +523,15 @@
     "More Info" : {
 
     },
+    "Muscle Code: %@" : {
+
+    },
+    "Muscle Details" : {
+
+    },
+    "Muscle Groups Overview" : {
+
+    },
     "Muscles" : {
       "localizations" : {
         "de" : {
@@ -521,6 +546,9 @@
 
     },
     "No exercises available." : {
+
+    },
+    "No muscle data available" : {
 
     },
     "No sets added yet." : {
@@ -646,6 +674,9 @@
         }
       }
     },
+    "Select Category" : {
+
+    },
     "Select Exercise" : {
       "localizations" : {
         "de" : {
@@ -670,6 +701,7 @@
       }
     },
     "Select Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -683,6 +715,7 @@
 
     },
     "Selection missing" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -693,6 +726,9 @@
       }
     },
     "Set" : {
+
+    },
+    "Set %d" : {
 
     },
     "Set %lld" : {

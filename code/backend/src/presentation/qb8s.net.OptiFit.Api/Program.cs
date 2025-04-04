@@ -24,7 +24,8 @@ builder.Host.UseSerilog((ctx, cfg) =>
 //Custom Services
 builder.Services
     .AddInfrastructureService(configuration)
-    .AddCqrsServices();
+    .AddCqrsServices()
+    .AddApplicationServices();
 
 
 // Add services to the container.

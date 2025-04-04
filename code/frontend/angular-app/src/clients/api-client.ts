@@ -1210,10 +1210,37 @@ export interface GetExerciseDto {
     description?: string | null;
     exerciseCategory?: GetExerciseCategoryDto;
     exerciseCategoryId?: string;
+    muscleMapping?: GetExerciseMuscleMappingDto[];
 }
 
 export interface GetExerciseCategoryDto {
     id?: string;
+    i18NCode?: string;
+}
+
+export interface GetExerciseMuscleMappingDto {
+    id?: string;
+    exerciseId?: string;
+    muscleId?: string;
+    muscleDto?: GetMuscleDto;
+    intensity?: number | null;
+}
+
+export interface GetMuscleDto {
+    id?: string | null;
+    i18NCode?: string;
+    groupMapping?: MuscleGroupMappingDto[];
+}
+
+export interface MuscleGroupMappingDto {
+    id?: string;
+    muscleGroupId?: string;
+    muscleGroup?: GetMuscleGroupDto;
+    muscleId?: string;
+}
+
+export interface GetMuscleGroupDto {
+    id?: string | null;
     i18NCode?: string;
 }
 
@@ -1345,11 +1372,6 @@ export interface PaginatedResultOfGetMuscleDto {
     hasNextPage?: boolean;
 }
 
-export interface GetMuscleDto {
-    id?: string | null;
-    i18NCode?: string;
-}
-
 export interface SearchMuscleDto {
     i18NCode?: string | null;
     orderBy?: string | null;
@@ -1368,11 +1390,6 @@ export interface PaginatedResultOfGetMuscleGroupDto {
     hasNextPage?: boolean;
 }
 
-export interface GetMuscleGroupDto {
-    id?: string | null;
-    i18NCode?: string;
-}
-
 export interface SearchMuscleGroupDto {
     i18NCode?: string | null;
     orderBy?: string | null;
@@ -1389,12 +1406,6 @@ export interface PaginatedResultOfMuscleGroupMappingDto {
     totalPages?: number;
     hasPreviousPage?: boolean;
     hasNextPage?: boolean;
-}
-
-export interface MuscleGroupMappingDto {
-    id?: string;
-    muscleGroupId?: string;
-    muscleId?: string;
 }
 
 export interface SearchMuscleGroupMappingDto {

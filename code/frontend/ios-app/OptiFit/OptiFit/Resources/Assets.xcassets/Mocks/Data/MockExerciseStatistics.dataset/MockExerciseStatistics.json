@@ -1,0 +1,154 @@
+{
+    "id": "428e3315-4209-4276-9c58-b9e531855c08",
+    "exerciseDto": {
+        "id": "c545d72c-a127-4a62-b8d4-712ddb7a5ef9",
+        "i18NCode": "Standing Calf Raise",
+        "description": "To do a calf raise with dumbbells, hold a dumbbell in each hand and stand with your feet about shoulder-width apart. Let your arms hang straight below your shoulders. Rise up onto your toes, then slowly return to the starting position. You'll feel tension in the muscles in the back of your lower legs.",
+        "exerciseCategory": {
+            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+            "i18NCode": "legs"
+        },
+        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+        "muscleMapping": []
+    },
+    "exerciseWorkoutsDto": [
+        {
+            "id": "75c3ac2c-e899-4e60-98be-35b89b1015f2",
+            "order": 3,
+            "workout": {
+                "id": "302d2715-f746-4d01-b503-23eb1b4cb061",
+                "description": "10 min Cadio",
+                "startAtUtc": "2025-04-02T20:58:08.597334+00:00",
+                "endAtUtc": "2025-04-02T23:26:17.597334+00:00",
+                "notes": " workout_notes",
+                "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "gym": {
+                    "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                    "name": "John Reed",
+                    "address": "Conrad-von-Hötzendorf-Straße 99a",
+                    "city": "Graz",
+                    "zipCode": 8020
+                },
+                "workoutExercises": [
+                    {
+                        "id": "75c3ac2c-e899-4e60-98be-35b89b1015f2",
+                        "order": 3,
+                        "workoutId": "302d2715-f746-4d01-b503-23eb1b4cb061",
+                        "exercise": {
+                            "id": "c545d72c-a127-4a62-b8d4-712ddb7a5ef9",
+                            "i18NCode": "Standing Calf Raise",
+                            "description": "To do a calf raise with dumbbells, hold a dumbbell in each hand and stand with your feet about shoulder-width apart. Let your arms hang straight below your shoulders. Rise up onto your toes, then slowly return to the starting position. You'll feel tension in the muscles in the back of your lower legs.",
+                            "exerciseCategory": {
+                                "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                                "i18NCode": "legs"
+                            },
+                            "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "muscleMapping": []
+                        },
+                        "workoutSets": [
+                            {
+                                "id": "21b67a02-404c-44ab-8b0e-f0762d7452ef",
+                                "order": 2,
+                                "reps": 12,
+                                "weight": 110,
+                                "workoutExerciseId": "75c3ac2c-e899-4e60-98be-35b89b1015f2"
+                            }
+                        ],
+                        "notes": " workout_exercise_notes"
+                    }
+                ],
+                "workoutSummary": {
+                    "totalTime": 148.15,
+                    "totalSets": 1,
+                    "totalReps": 12,
+                    "totalWeight": 1320,
+                    "totalExercises": 1
+                }
+            },
+            "exerciseId": "c545d72c-a127-4a62-b8d4-712ddb7a5ef9",
+            "workoutSets": [
+                {
+                    "id": "21b67a02-404c-44ab-8b0e-f0762d7452ef",
+                    "order": 2,
+                    "reps": 12,
+                    "weight": 110,
+                    "workoutExerciseId": "75c3ac2c-e899-4e60-98be-35b89b1015f2"
+                },
+                {
+                    "id": "659a89ec-e006-401a-ac31-5ab504a934f8",
+                    "order": 1,
+                    "reps": 15,
+                    "weight": 110,
+                    "workoutExerciseId": "75c3ac2c-e899-4e60-98be-35b89b1015f2"
+                },
+                {
+                    "id": "a66c6fea-6025-48d9-b992-5578bd961bd0",
+                    "order": 3,
+                    "reps": 10,
+                    "weight": 135,
+                    "workoutExerciseId": "75c3ac2c-e899-4e60-98be-35b89b1015f2"
+                }
+            ],
+            "notes": " workout_exercise_notes"
+        },
+        {
+            "id": "9dfba635-59ef-4818-90bc-7ea70c5380ec",
+            "order": 4,
+            "workout": {
+                "id": "a971a090-f35b-4520-a044-8be4ec8cd2f7",
+                "description": "10 min cardio",
+                "startAtUtc": "2025-03-23T10:58:08.597334+00:00",
+                "endAtUtc": "2025-03-23T13:30:30.597334+00:00",
+                "notes": " workout_notes",
+                "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "gym": {
+                    "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                    "name": "John Reed",
+                    "address": "Conrad-von-Hötzendorf-Straße 99a",
+                    "city": "Graz",
+                    "zipCode": 8020
+                },
+                "workoutExercises": [],
+                "workoutSummary": {
+                    "totalTime": 152.36666666666667,
+                    "totalSets": 0,
+                    "totalReps": 0,
+                    "totalWeight": 0,
+                    "totalExercises": 0
+                }
+            },
+            "exerciseId": "c545d72c-a127-4a62-b8d4-712ddb7a5ef9",
+            "workoutSets": [
+                {
+                    "id": "153f2313-a4f0-4548-852d-6a0db64fa067",
+                    "order": 2,
+                    "reps": 12,
+                    "weight": 135,
+                    "workoutExerciseId": "9dfba635-59ef-4818-90bc-7ea70c5380ec"
+                },
+                {
+                    "id": "1e5de74b-6f3b-44eb-be6a-379b6d079a77",
+                    "order": 4,
+                    "reps": 12,
+                    "weight": 135,
+                    "workoutExerciseId": "9dfba635-59ef-4818-90bc-7ea70c5380ec"
+                },
+                {
+                    "id": "80c3c35a-cbcb-4e8e-964c-ffc164ce1644",
+                    "order": 3,
+                    "reps": 12,
+                    "weight": 135,
+                    "workoutExerciseId": "9dfba635-59ef-4818-90bc-7ea70c5380ec"
+                },
+                {
+                    "id": "ceccfa5f-9c35-47d7-a340-4a8b0e99858a",
+                    "order": 1,
+                    "reps": 12,
+                    "weight": 135,
+                    "workoutExerciseId": "9dfba635-59ef-4818-90bc-7ea70c5380ec"
+                }
+            ],
+            "notes": " workout_exercise_notes"
+        }
+    ]
+}
