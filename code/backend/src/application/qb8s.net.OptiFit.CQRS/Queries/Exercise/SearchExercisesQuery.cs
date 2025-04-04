@@ -23,6 +23,10 @@ public class SearchExercisesQueryHandler(
         //@formatter:off
         var query = dbContext.Exercises
                 .Include(exercise => exercise.ExerciseCategory)
+                .Include(exercise => exercise.ExerciseMuscleMappings)
+                    .ThenInclude(mapping => mapping.Muscle)
+                        .ThenInclude(muscle=>muscle.MuscleGroupMappings)
+                            .ThenInclude(muscleGroupMapping=>muscleGroupMapping.MuscleGroup)
             .AsQueryable();
         //@formatter:on
         var predicate = PredicateBuilder.New<Core.Entities.Exercise>(true);

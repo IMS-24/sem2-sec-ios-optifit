@@ -29,14 +29,19 @@ struct ExerciseWorkoutSummaryLineCharts: View {
         return values.isEmpty ? 0 : values.reduce(0, +) / Double(values.count)
     }
     
+    // Sort workout sets by order
+    var sortedSets: [Components.Schemas.GetWorkoutSetDto] {
+        (workoutExercise.workoutSets ?? []).sorted { ($0.order ?? 0) < ($1.order ?? 0) }
+    }
+    
     var body: some View {
-        VStack(spacing: 24) {
-            // Weight Line Chart
+        TabView {
+            // Weight Chart Page
             VStack(alignment: .leading) {
                 Text("Weight")
                     .font(.headline)
                 Chart {
-                    ForEach((workoutExercise.workoutSets ?? []).sorted(by: { ($0.order ?? 0) < ($1.order ?? 0) }), id: \.self) { set in
+                    ForEach(sortedSets, id: \.self) { set in
                         LineMark(
                             x: .value("Set", set.order ?? 0),
                             y: .value("Weight", set.weight ?? 0)
@@ -59,13 +64,14 @@ struct ExerciseWorkoutSummaryLineCharts: View {
                 }
                 .frame(height: 150)
             }
+            .padding()
             
-            // Volume Line Chart (Weight x Reps)
+            // Volume Chart Page
             VStack(alignment: .leading) {
                 Text("Volume (Weight x Reps)")
                     .font(.headline)
                 Chart {
-                    ForEach((workoutExercise.workoutSets ?? []).sorted(by: { ($0.order ?? 0) < ($1.order ?? 0) }), id: \.self) { set in
+                    ForEach(sortedSets, id: \.self) { set in
                         let volume = (set.weight ?? 0) * Double(set.reps ?? 0)
                         LineMark(
                             x: .value("Set", set.order ?? 0),
@@ -89,13 +95,14 @@ struct ExerciseWorkoutSummaryLineCharts: View {
                 }
                 .frame(height: 150)
             }
+            .padding()
             
-            // Reps Line Chart
+            // Reps Chart Page
             VStack(alignment: .leading) {
                 Text("Reps")
                     .font(.headline)
                 Chart {
-                    ForEach((workoutExercise.workoutSets ?? []).sorted(by: { ($0.order ?? 0) < ($1.order ?? 0) }), id: \.self) { set in
+                    ForEach(sortedSets, id: \.self) { set in
                         LineMark(
                             x: .value("Set", set.order ?? 0),
                             y: .value("Reps", set.reps ?? 0)
@@ -118,7 +125,8 @@ struct ExerciseWorkoutSummaryLineCharts: View {
                 }
                 .frame(height: 150)
             }
+            .padding()
         }
-        .padding()
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
 }

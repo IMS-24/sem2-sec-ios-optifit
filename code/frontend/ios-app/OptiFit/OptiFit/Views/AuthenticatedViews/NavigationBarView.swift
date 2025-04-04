@@ -2,7 +2,6 @@ import SwiftUI
 
 struct NavigationBarView: View {
     //    @StateObject private var idleTimerManager = IdleTimerManager.shared
-    @EnvironmentObject var workoutViewModel: WorkoutViewModel
     var body: some View {
         TabView {
             Tab("Home", systemImage: "house.fill") {

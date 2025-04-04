@@ -1,0 +1,2040 @@
+{
+    "items": [
+        {
+            "id": "563beb06-2d91-4de4-ad40-9ef6f93d0a5e",
+            "description": "",
+            "startAtUtc": "2025-03-09T21:58:08.597334+00:00",
+            "endAtUtc": "2025-03-10T00:26:06.597334+00:00",
+            "notes": "",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "5ad422e0-a0ec-4bfd-872c-8b1ccaea47c5",
+                    "order": 1,
+                    "workoutId": "563beb06-2d91-4de4-ad40-9ef6f93d0a5e",
+                    "exercise": {
+                        "id": "c99c49dc-a5a7-41b5-9a13-68f2149b6392",
+                        "i18NCode": "Box Jump",
+                        "description": "An explosive movement that enhances power and agility.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "e27a35ed-6480-44b1-be88-4db391bd93d7",
+                            "order": 1,
+                            "reps": 15,
+                            "weight": 70,
+                            "workoutExerciseId": "5ad422e0-a0ec-4bfd-872c-8b1ccaea47c5"
+                        }
+                    ],
+                    "notes": ""
+                },
+                {
+                    "id": "d7ed7378-1649-4635-b171-f44a103f24d8",
+                    "order": 2,
+                    "workoutId": "563beb06-2d91-4de4-ad40-9ef6f93d0a5e",
+                    "exercise": {
+                        "id": "9f2da650-2043-4f4c-911b-ab0591af0e72",
+                        "i18NCode": "Calf Raise",
+                        "description": "An exercise that strengthens and tones the calf muscles.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "7486485a-e195-43b8-9155-a8c9fad4620d",
+                            "order": 1,
+                            "reps": 15,
+                            "weight": 16,
+                            "workoutExerciseId": "d7ed7378-1649-4635-b171-f44a103f24d8"
+                        },
+                        {
+                            "id": "aca32002-89be-4bf8-9b75-231efd5b0f4c",
+                            "order": 3,
+                            "reps": 12,
+                            "weight": 40.25,
+                            "workoutExerciseId": "d7ed7378-1649-4635-b171-f44a103f24d8"
+                        },
+                        {
+                            "id": "554f69f0-1286-481b-a350-68dd93561d03",
+                            "order": 2,
+                            "reps": 14,
+                            "weight": 25.5,
+                            "workoutExerciseId": "d7ed7378-1649-4635-b171-f44a103f24d8"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 147.96666666666667,
+                "totalSets": 4,
+                "totalReps": 56,
+                "totalWeight": 2130.00,
+                "totalExercises": 2
+            }
+        },
+        {
+            "id": "c11bd83b-5234-476e-b6c9-be2b229ea9ba",
+            "description": "",
+            "startAtUtc": "2025-03-10T22:58:08.597334+00:00",
+            "endAtUtc": "2025-03-11T01:15:34.597334+00:00",
+            "notes": "",
+            "gymId": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+            "gym": {
+                "id": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+                "name": "Ultimate Gym",
+                "address": "Puchstraße 17",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "eeb05ec8-c5a7-422c-8477-18b1966b357b",
+                    "order": 1,
+                    "workoutId": "c11bd83b-5234-476e-b6c9-be2b229ea9ba",
+                    "exercise": {
+                        "id": "c99c49dc-a5a7-41b5-9a13-68f2149b6392",
+                        "i18NCode": "Box Jump",
+                        "description": "An explosive movement that enhances power and agility.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "f12885c1-43b8-498d-8fed-c30f0da48a0a",
+                            "order": 1,
+                            "reps": 1,
+                            "weight": 12,
+                            "workoutExerciseId": "eeb05ec8-c5a7-422c-8477-18b1966b357b"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 137.43333333333334,
+                "totalSets": 1,
+                "totalReps": 1,
+                "totalWeight": 12,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "ceedea2f-72da-4a9d-ae22-1101d475ba9e",
+            "description": "",
+            "startAtUtc": "2025-03-11T23:58:08.597334+00:00",
+            "endAtUtc": "2025-03-12T02:23:13.597334+00:00",
+            "notes": "",
+            "gymId": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+            "gym": {
+                "id": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+                "name": "Ultimate Gym",
+                "address": "Puchstraße 17",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "3e06395f-25d4-46a2-9fda-8b932fbd9cf9",
+                    "order": 2,
+                    "workoutId": "ceedea2f-72da-4a9d-ae22-1101d475ba9e",
+                    "exercise": {
+                        "id": "9f2da650-2043-4f4c-911b-ab0591af0e72",
+                        "i18NCode": "Calf Raise",
+                        "description": "An exercise that strengthens and tones the calf muscles.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "e0383429-3022-4b37-aa71-2d0c8c71cce4",
+                            "order": 1,
+                            "reps": 0,
+                            "weight": 0,
+                            "workoutExerciseId": "3e06395f-25d4-46a2-9fda-8b932fbd9cf9"
+                        }
+                    ],
+                    "notes": "With notes"
+                },
+                {
+                    "id": "70f66e8d-0876-48ab-abb0-edc31820f385",
+                    "order": 1,
+                    "workoutId": "ceedea2f-72da-4a9d-ae22-1101d475ba9e",
+                    "exercise": {
+                        "id": "c99c49dc-a5a7-41b5-9a13-68f2149b6392",
+                        "i18NCode": "Box Jump",
+                        "description": "An explosive movement that enhances power and agility.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "d529d964-d68b-48d5-88bc-b499b7862e85",
+                            "order": 1,
+                            "reps": 0,
+                            "weight": 0,
+                            "workoutExerciseId": "70f66e8d-0876-48ab-abb0-edc31820f385"
+                        },
+                        {
+                            "id": "9f94329a-852e-4dfa-8947-318673610f2c",
+                            "order": 2,
+                            "reps": 0,
+                            "weight": 0,
+                            "workoutExerciseId": "70f66e8d-0876-48ab-abb0-edc31820f385"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 145.08333333333334,
+                "totalSets": 3,
+                "totalReps": 0,
+                "totalWeight": 0,
+                "totalExercises": 2
+            }
+        },
+        {
+            "id": "296f08fa-d8ec-4497-b9fc-e3ba6fb7da9a",
+            "description": "",
+            "startAtUtc": "2025-03-13T00:58:08.597334+00:00",
+            "endAtUtc": "2025-03-13T03:44:27.597334+00:00",
+            "notes": " workout_notes",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "0587b28f-87dc-4702-b771-6f18aa682f09",
+                    "order": 1,
+                    "workoutId": "296f08fa-d8ec-4497-b9fc-e3ba6fb7da9a",
+                    "exercise": {
+                        "id": "5ac658c0-c51a-40a8-80d6-335431775625",
+                        "i18NCode": "Seated Leg Press",
+                        "description": "Lll",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "25a44951-0468-41f2-aff2-8550e1faa3d8",
+                            "order": 1,
+                            "reps": 15,
+                            "weight": 55,
+                            "workoutExerciseId": "0587b28f-87dc-4702-b771-6f18aa682f09"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 166.31666666666666,
+                "totalSets": 1,
+                "totalReps": 15,
+                "totalWeight": 825,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "29778851-4a68-456f-94e4-5c688ae46085",
+            "description": "Some workout notes",
+            "startAtUtc": "2025-03-14T01:58:08.597334+00:00",
+            "endAtUtc": "2025-03-14T04:30:37.597334+00:00",
+            "notes": "TODO: Implement notes on UI",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "5799a590-84fa-4558-9657-4808275a5345",
+                    "order": 1,
+                    "workoutId": "29778851-4a68-456f-94e4-5c688ae46085",
+                    "exercise": {
+                        "id": "28c267c0-6aca-4e25-999a-f265299fbe12",
+                        "i18NCode": "Hanging Knee Raise",
+                        "description": "A hanging exercise that engages the core and lower abs.",
+                        "exerciseCategory": {
+                            "id": "a75ab238-fd04-4351-a412-96e495346f33",
+                            "i18NCode": "core"
+                        },
+                        "exerciseCategoryId": "a75ab238-fd04-4351-a412-96e495346f33",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "d5b64df1-52b1-4e53-bc8a-3fd7297453de",
+                            "order": 4,
+                            "reps": 10,
+                            "weight": 40,
+                            "workoutExerciseId": "5799a590-84fa-4558-9657-4808275a5345"
+                        },
+                        {
+                            "id": "e76c8ea1-bc89-4abb-9077-af2ad3d5b730",
+                            "order": 1,
+                            "reps": 15,
+                            "weight": 35,
+                            "workoutExerciseId": "5799a590-84fa-4558-9657-4808275a5345"
+                        },
+                        {
+                            "id": "f81df026-a01b-4d7d-840b-cf06ac168ce4",
+                            "order": 3,
+                            "reps": 12,
+                            "weight": 25,
+                            "workoutExerciseId": "5799a590-84fa-4558-9657-4808275a5345"
+                        },
+                        {
+                            "id": "980e56db-0f23-4509-bea6-4cedcac76441",
+                            "order": 2,
+                            "reps": 14,
+                            "weight": 55.5,
+                            "workoutExerciseId": "5799a590-84fa-4558-9657-4808275a5345"
+                        }
+                    ],
+                    "notes": ""
+                },
+                {
+                    "id": "bfe3f76d-2ea7-4acd-9047-68056cf12ae9",
+                    "order": 2,
+                    "workoutId": "29778851-4a68-456f-94e4-5c688ae46085",
+                    "exercise": {
+                        "id": "5e3dcfa2-ddb7-409d-ab6e-2555d6f988df",
+                        "i18NCode": "Cable Crunch",
+                        "description": "A weighted crunch variation that targets the abs more intensely.",
+                        "exerciseCategory": {
+                            "id": "a75ab238-fd04-4351-a412-96e495346f33",
+                            "i18NCode": "core"
+                        },
+                        "exerciseCategoryId": "a75ab238-fd04-4351-a412-96e495346f33",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "bcbd7c7a-a88a-4e5c-9a4e-a8cfcc288347",
+                            "order": 1,
+                            "reps": 15,
+                            "weight": 8,
+                            "workoutExerciseId": "bfe3f76d-2ea7-4acd-9047-68056cf12ae9"
+                        }
+                    ],
+                    "notes": "Some exercise notes"
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 152.48333333333332,
+                "totalSets": 5,
+                "totalReps": 66,
+                "totalWeight": 2122.0,
+                "totalExercises": 2
+            }
+        },
+        {
+            "id": "3ff79eae-9486-47ba-a4ae-479b8bb7015a",
+            "description": "",
+            "startAtUtc": "2025-03-15T02:58:08.597334+00:00",
+            "endAtUtc": "2025-03-15T05:13:26.597334+00:00",
+            "notes": "Asdf",
+            "gymId": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+            "gym": {
+                "id": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+                "name": "Ultimate Gym",
+                "address": "Puchstraße 17",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [],
+            "workoutSummary": {
+                "totalTime": 135.3,
+                "totalSets": 0,
+                "totalReps": 0,
+                "totalWeight": 0,
+                "totalExercises": 0
+            }
+        },
+        {
+            "id": "d4d415e8-55df-48b1-a379-098d1c1d468f",
+            "description": "",
+            "startAtUtc": "2025-03-16T03:58:08.597334+00:00",
+            "endAtUtc": "2025-03-16T06:40:01.597334+00:00",
+            "notes": "",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "0e5cc6d8-5a5a-41a4-855e-aeb14534cb4a",
+                    "order": 1,
+                    "workoutId": "d4d415e8-55df-48b1-a379-098d1c1d468f",
+                    "exercise": {
+                        "id": "846e8c2d-9d63-4c18-82fa-0d8c7512f326",
+                        "i18NCode": "Bench Press",
+                        "description": "A compound movement that works the chest, shoulders, and triceps.",
+                        "exerciseCategory": {
+                            "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                            "i18NCode": "push"
+                        },
+                        "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "22669f99-960f-4b0c-9197-e94d6a9257fb",
+                            "order": 2,
+                            "reps": 5,
+                            "weight": 10,
+                            "workoutExerciseId": "0e5cc6d8-5a5a-41a4-855e-aeb14534cb4a"
+                        },
+                        {
+                            "id": "55cbb09d-94d8-4b4a-ad31-72eba4b2c148",
+                            "order": 1,
+                            "reps": 10,
+                            "weight": 15,
+                            "workoutExerciseId": "0e5cc6d8-5a5a-41a4-855e-aeb14534cb4a"
+                        }
+                    ],
+                    "notes": ""
+                },
+                {
+                    "id": "524782a2-9a42-48c0-9618-6ab3f7d05377",
+                    "order": 2,
+                    "workoutId": "d4d415e8-55df-48b1-a379-098d1c1d468f",
+                    "exercise": {
+                        "id": "6ece25eb-bb3f-49ca-b096-26cf16ec7586",
+                        "i18NCode": "Skull Crusher",
+                        "description": "An isolation exercise that works the triceps effectively.",
+                        "exerciseCategory": {
+                            "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                            "i18NCode": "push"
+                        },
+                        "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "1096a431-00b7-4994-a946-cafd2afb903b",
+                            "order": 1,
+                            "reps": 5,
+                            "weight": 25,
+                            "workoutExerciseId": "524782a2-9a42-48c0-9618-6ab3f7d05377"
+                        },
+                        {
+                            "id": "5325b617-dec9-4974-8ea1-b566819d9277",
+                            "order": 2,
+                            "reps": 3,
+                            "weight": 25,
+                            "workoutExerciseId": "524782a2-9a42-48c0-9618-6ab3f7d05377"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 161.88333333333333,
+                "totalSets": 4,
+                "totalReps": 23,
+                "totalWeight": 400,
+                "totalExercises": 2
+            }
+        },
+        {
+            "id": "4bd39f8c-99b7-456b-ab76-151239e98c65",
+            "description": "12 min cardio",
+            "startAtUtc": "2025-03-17T04:58:08.597334+00:00",
+            "endAtUtc": "2025-03-17T05:48:28.597334+00:00",
+            "notes": " workout_notes",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "03693a83-dcc6-4e86-9b57-3695a97be031",
+                    "order": 3,
+                    "workoutId": "4bd39f8c-99b7-456b-ab76-151239e98c65",
+                    "exercise": {
+                        "id": "8fe6267c-b18a-422c-bbef-a7b9605669f9",
+                        "i18NCode": "Overhead Shoulder Press",
+                        "description": "Overhead",
+                        "exerciseCategory": {
+                            "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                            "i18NCode": "push"
+                        },
+                        "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "3f3034fa-fabe-4ac3-a1f9-734bf587163f",
+                            "order": 3,
+                            "reps": 7,
+                            "weight": 80,
+                            "workoutExerciseId": "03693a83-dcc6-4e86-9b57-3695a97be031"
+                        },
+                        {
+                            "id": "513099bf-2884-4413-afc2-e119e2b3d191",
+                            "order": 2,
+                            "reps": 7,
+                            "weight": 90,
+                            "workoutExerciseId": "03693a83-dcc6-4e86-9b57-3695a97be031"
+                        },
+                        {
+                            "id": "06618160-fb64-4186-be63-0eaccfa2edd4",
+                            "order": 1,
+                            "reps": 7,
+                            "weight": 100,
+                            "workoutExerciseId": "03693a83-dcc6-4e86-9b57-3695a97be031"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                },
+                {
+                    "id": "5890d546-836a-46ee-87c6-c9fbc70fed22",
+                    "order": 4,
+                    "workoutId": "4bd39f8c-99b7-456b-ab76-151239e98c65",
+                    "exercise": {
+                        "id": "f11d5552-e4e3-4bfc-8bce-16538c99ff0d",
+                        "i18NCode": "Butterfly",
+                        "description": "An isolation exercise that stretches and strengthens the chest muscles.",
+                        "exerciseCategory": {
+                            "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                            "i18NCode": "push"
+                        },
+                        "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "f3c81a1f-a1f2-4bed-a92a-e294826b3e6f",
+                            "order": 3,
+                            "reps": 8,
+                            "weight": 30,
+                            "workoutExerciseId": "5890d546-836a-46ee-87c6-c9fbc70fed22"
+                        },
+                        {
+                            "id": "4547f0c7-0e4d-45da-bd89-9a8705155469",
+                            "order": 2,
+                            "reps": 8,
+                            "weight": 30,
+                            "workoutExerciseId": "5890d546-836a-46ee-87c6-c9fbc70fed22"
+                        },
+                        {
+                            "id": "799ecf01-bd67-40f9-8572-c0d7fe79edaa",
+                            "order": 1,
+                            "reps": 8,
+                            "weight": 35,
+                            "workoutExerciseId": "5890d546-836a-46ee-87c6-c9fbc70fed22"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                },
+                {
+                    "id": "78006009-ddfd-49e9-827a-f06957ca6a3c",
+                    "order": 1,
+                    "workoutId": "4bd39f8c-99b7-456b-ab76-151239e98c65",
+                    "exercise": {
+                        "id": "36600b9c-d083-4f76-b54e-bbc552cbab65",
+                        "i18NCode": "Dip Machine",
+                        "description": "Dippy",
+                        "exerciseCategory": {
+                            "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                            "i18NCode": "push"
+                        },
+                        "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "588194bf-397c-469f-96e5-7a732dc8f3c7",
+                            "order": 1,
+                            "reps": 15,
+                            "weight": 45,
+                            "workoutExerciseId": "78006009-ddfd-49e9-827a-f06957ca6a3c"
+                        },
+                        {
+                            "id": "2f81d09b-aca8-4162-b037-96c5f811db73",
+                            "order": 2,
+                            "reps": 15,
+                            "weight": 55,
+                            "workoutExerciseId": "78006009-ddfd-49e9-827a-f06957ca6a3c"
+                        },
+                        {
+                            "id": "ec1c88ac-b1a6-4d63-9f9e-dd689c772086",
+                            "order": 3,
+                            "reps": 15,
+                            "weight": 60,
+                            "workoutExerciseId": "78006009-ddfd-49e9-827a-f06957ca6a3c"
+                        },
+                        {
+                            "id": "bace009b-54b0-4c99-90b9-0fd8dfad747d",
+                            "order": 4,
+                            "reps": 15,
+                            "weight": 60,
+                            "workoutExerciseId": "78006009-ddfd-49e9-827a-f06957ca6a3c"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                },
+                {
+                    "id": "b3c6104f-b942-49ea-939f-664ed625d315",
+                    "order": 2,
+                    "workoutId": "4bd39f8c-99b7-456b-ab76-151239e98c65",
+                    "exercise": {
+                        "id": "ba6262c5-e858-494b-b84a-111acf0f816f",
+                        "i18NCode": "Seated Chest Press",
+                        "description": "The chest press strengthens the muscles on the front of your chest",
+                        "exerciseCategory": {
+                            "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                            "i18NCode": "push"
+                        },
+                        "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "408b5a6d-69b7-4ddd-8f06-21e6ab64db7b",
+                            "order": 2,
+                            "reps": 9,
+                            "weight": 40,
+                            "workoutExerciseId": "b3c6104f-b942-49ea-939f-664ed625d315"
+                        },
+                        {
+                            "id": "b479ac9b-5e45-4379-95a6-60ab4e067ae9",
+                            "order": 4,
+                            "reps": 11,
+                            "weight": 35,
+                            "workoutExerciseId": "b3c6104f-b942-49ea-939f-664ed625d315"
+                        },
+                        {
+                            "id": "cfc23dde-7907-492f-9b34-f4872327cee1",
+                            "order": 1,
+                            "reps": 8,
+                            "weight": 50,
+                            "workoutExerciseId": "b3c6104f-b942-49ea-939f-664ed625d315"
+                        },
+                        {
+                            "id": "c02c7d87-4652-45c5-87de-128754418a12",
+                            "order": 3,
+                            "reps": 11,
+                            "weight": 35,
+                            "workoutExerciseId": "b3c6104f-b942-49ea-939f-664ed625d315"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 50.333333333333336,
+                "totalSets": 14,
+                "totalReps": 144,
+                "totalWeight": 7480,
+                "totalExercises": 4
+            }
+        },
+        {
+            "id": "b1162c3d-baf1-4ab4-848f-e7a0cd34979b",
+            "description": "",
+            "startAtUtc": "2025-03-18T05:58:08.597334+00:00",
+            "endAtUtc": "2025-03-18T08:31:38.597334+00:00",
+            "notes": " workout_notes",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "17626ce5-ed5e-435e-9a5e-0f69d52be791",
+                    "order": 1,
+                    "workoutId": "b1162c3d-baf1-4ab4-848f-e7a0cd34979b",
+                    "exercise": {
+                        "id": "2e1803a6-1ee0-491c-8121-2f73877dfa3b",
+                        "i18NCode": "Lying Leg Press",
+                        "description": "Engages more of the posterior chain, including glutes and hamstrings, due to the different angle of push and body position where the user lies back, pushing the platform upward. Easier on knees.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "1ad60b07-feee-40d4-8765-89093308ef44",
+                            "order": 1,
+                            "reps": 15,
+                            "weight": 20,
+                            "workoutExerciseId": "17626ce5-ed5e-435e-9a5e-0f69d52be791"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 153.5,
+                "totalSets": 1,
+                "totalReps": 15,
+                "totalWeight": 300,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "7eb06861-47fd-459d-ab01-9e780c081627",
+            "description": "",
+            "startAtUtc": "2025-03-19T06:58:08.597334+00:00",
+            "endAtUtc": "2025-03-19T08:27:58.597334+00:00",
+            "notes": "",
+            "gymId": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+            "gym": {
+                "id": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+                "name": "Ultimate Gym",
+                "address": "Puchstraße 17",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "cf44beac-0280-468a-bfe9-1077b0d305cb",
+                    "order": 1,
+                    "workoutId": "7eb06861-47fd-459d-ab01-9e780c081627",
+                    "exercise": {
+                        "id": "6468037d-a276-4a4e-bee4-e24149a75114",
+                        "i18NCode": "Face Pull",
+                        "description": "A pulling exercise that targets the rear delts and upper back.",
+                        "exerciseCategory": {
+                            "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                            "i18NCode": "push"
+                        },
+                        "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "1d712e0a-8b5d-4be1-a12a-a8eedd628701",
+                            "order": 1,
+                            "reps": 0,
+                            "weight": 0,
+                            "workoutExerciseId": "cf44beac-0280-468a-bfe9-1077b0d305cb"
+                        }
+                    ],
+                    "notes": "Face pull"
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 89.83333333333333,
+                "totalSets": 1,
+                "totalReps": 0,
+                "totalWeight": 0,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "e34734f3-2e01-4fcf-9643-2e6b6daa7406",
+            "description": "",
+            "startAtUtc": "2025-03-20T07:58:08.597334+00:00",
+            "endAtUtc": "2025-03-20T09:11:21.597334+00:00",
+            "notes": "",
+            "gymId": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+            "gym": {
+                "id": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+                "name": "Ultimate Gym",
+                "address": "Puchstraße 17",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "154d67e4-496f-416c-853a-374b04a4fcf5",
+                    "order": 1,
+                    "workoutId": "e34734f3-2e01-4fcf-9643-2e6b6daa7406",
+                    "exercise": {
+                        "id": "9f2da650-2043-4f4c-911b-ab0591af0e72",
+                        "i18NCode": "Calf Raise",
+                        "description": "An exercise that strengthens and tones the calf muscles.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "8d15f89d-271e-409f-9222-5cc33b22f46e",
+                            "order": 1,
+                            "reps": 1,
+                            "weight": 10,
+                            "workoutExerciseId": "154d67e4-496f-416c-853a-374b04a4fcf5"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 73.21666666666667,
+                "totalSets": 1,
+                "totalReps": 1,
+                "totalWeight": 10,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "f67199ac-ad50-4a1e-ac88-ebf7b64e4821",
+            "description": "",
+            "startAtUtc": "2025-03-21T08:58:08.597334+00:00",
+            "endAtUtc": "2025-03-21T10:33:14.597334+00:00",
+            "notes": "",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "3028e3ff-6935-41cc-8d45-dd90fab9c826",
+                    "order": 1,
+                    "workoutId": "f67199ac-ad50-4a1e-ac88-ebf7b64e4821",
+                    "exercise": {
+                        "id": "a5556d61-7cbc-441d-8261-1c325ee098f4",
+                        "i18NCode": "Good Morning",
+                        "description": "A posterior chain exercise that strengthens the hamstrings and lower back.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "c0c86a94-bbcf-4658-8cee-834511d15a42",
+                            "order": 1,
+                            "reps": 1,
+                            "weight": 3.33,
+                            "workoutExerciseId": "3028e3ff-6935-41cc-8d45-dd90fab9c826"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 95.1,
+                "totalSets": 1,
+                "totalReps": 1,
+                "totalWeight": 3.33,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "d6bdf104-95b1-4e5e-be3d-4824f49bc3c6",
+            "description": "",
+            "startAtUtc": "2025-03-22T09:58:08.597334+00:00",
+            "endAtUtc": "2025-03-22T12:39:09.597334+00:00",
+            "notes": " workout_notes",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "5c561ff0-2cf1-4f42-8578-85db1b7036b4",
+                    "order": 1,
+                    "workoutId": "d6bdf104-95b1-4e5e-be3d-4824f49bc3c6",
+                    "exercise": {
+                        "id": "9f2da650-2043-4f4c-911b-ab0591af0e72",
+                        "i18NCode": "Calf Raise",
+                        "description": "An exercise that strengthens and tones the calf muscles.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "55dde82e-98bb-48af-b882-32dfc570950b",
+                            "order": 1,
+                            "reps": 15,
+                            "weight": 45,
+                            "workoutExerciseId": "5c561ff0-2cf1-4f42-8578-85db1b7036b4"
+                        },
+                        {
+                            "id": "04b91157-3e07-43ca-849c-558d28ce0130",
+                            "order": 2,
+                            "reps": 14,
+                            "weight": 35.25,
+                            "workoutExerciseId": "5c561ff0-2cf1-4f42-8578-85db1b7036b4"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 161.01666666666668,
+                "totalSets": 2,
+                "totalReps": 29,
+                "totalWeight": 1168.50,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "a971a090-f35b-4520-a044-8be4ec8cd2f7",
+            "description": "10 min cardio",
+            "startAtUtc": "2025-03-23T10:58:08.597334+00:00",
+            "endAtUtc": "2025-03-23T13:30:30.597334+00:00",
+            "notes": " workout_notes",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "1fa1bda8-16c6-43d4-9b42-eb8ecd7345f0",
+                    "order": 3,
+                    "workoutId": "a971a090-f35b-4520-a044-8be4ec8cd2f7",
+                    "exercise": {
+                        "id": "5ac658c0-c51a-40a8-80d6-335431775625",
+                        "i18NCode": "Seated Leg Press",
+                        "description": "Lll",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "a43859a1-8f4a-4699-8db2-8816ae78b445",
+                            "order": 2,
+                            "reps": 12,
+                            "weight": 133,
+                            "workoutExerciseId": "1fa1bda8-16c6-43d4-9b42-eb8ecd7345f0"
+                        },
+                        {
+                            "id": "da541abe-2be7-47c4-8bbe-9a0f56fb07e4",
+                            "order": 4,
+                            "reps": 15,
+                            "weight": 141,
+                            "workoutExerciseId": "1fa1bda8-16c6-43d4-9b42-eb8ecd7345f0"
+                        },
+                        {
+                            "id": "e3a6fd95-267e-4089-840f-e836e96234a9",
+                            "order": 1,
+                            "reps": 15,
+                            "weight": 117,
+                            "workoutExerciseId": "1fa1bda8-16c6-43d4-9b42-eb8ecd7345f0"
+                        },
+                        {
+                            "id": "9a1febaa-d416-49fe-a47e-b4686d3552ce",
+                            "order": 3,
+                            "reps": 15,
+                            "weight": 133,
+                            "workoutExerciseId": "1fa1bda8-16c6-43d4-9b42-eb8ecd7345f0"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                },
+                {
+                    "id": "9dfba635-59ef-4818-90bc-7ea70c5380ec",
+                    "order": 4,
+                    "workoutId": "a971a090-f35b-4520-a044-8be4ec8cd2f7",
+                    "exercise": {
+                        "id": "c545d72c-a127-4a62-b8d4-712ddb7a5ef9",
+                        "i18NCode": "Standing Calf Raise",
+                        "description": "To do a calf raise with dumbbells, hold a dumbbell in each hand and stand with your feet about shoulder-width apart. Let your arms hang straight below your shoulders. Rise up onto your toes, then slowly return to the starting position. You'll feel tension in the muscles in the back of your lower legs.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "80c3c35a-cbcb-4e8e-964c-ffc164ce1644",
+                            "order": 3,
+                            "reps": 12,
+                            "weight": 135,
+                            "workoutExerciseId": "9dfba635-59ef-4818-90bc-7ea70c5380ec"
+                        },
+                        {
+                            "id": "153f2313-a4f0-4548-852d-6a0db64fa067",
+                            "order": 2,
+                            "reps": 12,
+                            "weight": 135,
+                            "workoutExerciseId": "9dfba635-59ef-4818-90bc-7ea70c5380ec"
+                        },
+                        {
+                            "id": "1e5de74b-6f3b-44eb-be6a-379b6d079a77",
+                            "order": 4,
+                            "reps": 12,
+                            "weight": 135,
+                            "workoutExerciseId": "9dfba635-59ef-4818-90bc-7ea70c5380ec"
+                        },
+                        {
+                            "id": "ceccfa5f-9c35-47d7-a340-4a8b0e99858a",
+                            "order": 1,
+                            "reps": 12,
+                            "weight": 135,
+                            "workoutExerciseId": "9dfba635-59ef-4818-90bc-7ea70c5380ec"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                },
+                {
+                    "id": "ce37d891-9d35-459e-8400-b1daa555f50b",
+                    "order": 1,
+                    "workoutId": "a971a090-f35b-4520-a044-8be4ec8cd2f7",
+                    "exercise": {
+                        "id": "2e1803a6-1ee0-491c-8121-2f73877dfa3b",
+                        "i18NCode": "Lying Leg Press",
+                        "description": "Engages more of the posterior chain, including glutes and hamstrings, due to the different angle of push and body position where the user lies back, pushing the platform upward. Easier on knees.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "a26d321c-8c70-44ec-b79e-a9d1811eb747",
+                            "order": 4,
+                            "reps": 12,
+                            "weight": 117,
+                            "workoutExerciseId": "ce37d891-9d35-459e-8400-b1daa555f50b"
+                        },
+                        {
+                            "id": "0e888130-2d2b-40b5-a8c8-f2ebfb4b51ef",
+                            "order": 1,
+                            "reps": 12,
+                            "weight": 117,
+                            "workoutExerciseId": "ce37d891-9d35-459e-8400-b1daa555f50b"
+                        },
+                        {
+                            "id": "72e01670-276d-4b0e-b4f6-52f1e58cc10c",
+                            "order": 2,
+                            "reps": 12,
+                            "weight": 133,
+                            "workoutExerciseId": "ce37d891-9d35-459e-8400-b1daa555f50b"
+                        },
+                        {
+                            "id": "ba1a8880-3cbf-4b96-962a-3624bcbeca62",
+                            "order": 3,
+                            "reps": 12,
+                            "weight": 133,
+                            "workoutExerciseId": "ce37d891-9d35-459e-8400-b1daa555f50b"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                },
+                {
+                    "id": "d449e105-dc75-4a08-908d-c7c7afe8af59",
+                    "order": 2,
+                    "workoutId": "a971a090-f35b-4520-a044-8be4ec8cd2f7",
+                    "exercise": {
+                        "id": "3ee301a5-f46e-4879-a605-074b1398b050",
+                        "i18NCode": "Leg Extensions",
+                        "description": "The leg extension is a resistance weight training exercise that targets the quadriceps muscle",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "b74c7064-dc5e-4121-9eef-f50778a16838",
+                            "order": 3,
+                            "reps": 8,
+                            "weight": 45,
+                            "workoutExerciseId": "d449e105-dc75-4a08-908d-c7c7afe8af59"
+                        },
+                        {
+                            "id": "72baac82-bcce-4ea5-ac88-54a98e000374",
+                            "order": 2,
+                            "reps": 6,
+                            "weight": 50,
+                            "workoutExerciseId": "d449e105-dc75-4a08-908d-c7c7afe8af59"
+                        },
+                        {
+                            "id": "3463ba0e-c6df-4eca-a291-4c5324b2fd44",
+                            "order": 1,
+                            "reps": 10,
+                            "weight": 55,
+                            "workoutExerciseId": "d449e105-dc75-4a08-908d-c7c7afe8af59"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 152.36666666666667,
+                "totalSets": 15,
+                "totalReps": 177,
+                "totalWeight": 21151,
+                "totalExercises": 4
+            }
+        },
+        {
+            "id": "91d438d4-d633-4ac2-b9ec-c43836e60f83",
+            "description": "",
+            "startAtUtc": "2025-03-24T11:58:08.597334+00:00",
+            "endAtUtc": "2025-03-24T13:56:34.597334+00:00",
+            "notes": "With notes",
+            "gymId": "07b01add-6ac8-4a3b-a796-a881e867ac96",
+            "gym": {
+                "id": "07b01add-6ac8-4a3b-a796-a881e867ac96",
+                "name": "clever fit",
+                "address": "Europaplatz 12",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "123df6d6-acfc-43ec-9642-42b1f4fe49a9",
+                    "order": 1,
+                    "workoutId": "91d438d4-d633-4ac2-b9ec-c43836e60f83",
+                    "exercise": {
+                        "id": "846e8c2d-9d63-4c18-82fa-0d8c7512f326",
+                        "i18NCode": "Bench Press",
+                        "description": "A compound movement that works the chest, shoulders, and triceps.",
+                        "exerciseCategory": {
+                            "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                            "i18NCode": "push"
+                        },
+                        "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "749874ee-7c38-4f0b-a91c-8bf86a9ef708",
+                            "order": 1,
+                            "reps": 0,
+                            "weight": 0,
+                            "workoutExerciseId": "123df6d6-acfc-43ec-9642-42b1f4fe49a9"
+                        }
+                    ],
+                    "notes": "Aaaaa 11 / 123"
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 118.43333333333334,
+                "totalSets": 1,
+                "totalReps": 0,
+                "totalWeight": 0,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "737f8267-59be-4741-83f1-6e1fe36477e9",
+            "description": "",
+            "startAtUtc": "2025-03-25T12:58:08.597334+00:00",
+            "endAtUtc": "2025-03-25T14:39:35.597334+00:00",
+            "notes": "Asdf",
+            "gymId": "7ab28913-715e-4828-867c-7e2e5463724f",
+            "gym": {
+                "id": "7ab28913-715e-4828-867c-7e2e5463724f",
+                "name": "McFit gym",
+                "address": "Europaplatz 20",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "9779f98a-87b3-44b3-8831-8dffcbe344e3",
+                    "order": 1,
+                    "workoutId": "737f8267-59be-4741-83f1-6e1fe36477e9",
+                    "exercise": {
+                        "id": "846e8c2d-9d63-4c18-82fa-0d8c7512f326",
+                        "i18NCode": "Bench Press",
+                        "description": "A compound movement that works the chest, shoulders, and triceps.",
+                        "exerciseCategory": {
+                            "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                            "i18NCode": "push"
+                        },
+                        "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "cef6eb40-3d84-45df-a6e5-6b981d7d04cd",
+                            "order": 1,
+                            "reps": 0,
+                            "weight": 0,
+                            "workoutExerciseId": "9779f98a-87b3-44b3-8831-8dffcbe344e3"
+                        }
+                    ],
+                    "notes": ""
+                },
+                {
+                    "id": "a93a31f9-ad49-46d9-bcba-8770810dc175",
+                    "order": 2,
+                    "workoutId": "737f8267-59be-4741-83f1-6e1fe36477e9",
+                    "exercise": {
+                        "id": "f11d5552-e4e3-4bfc-8bce-16538c99ff0d",
+                        "i18NCode": "Butterfly",
+                        "description": "An isolation exercise that stretches and strengthens the chest muscles.",
+                        "exerciseCategory": {
+                            "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                            "i18NCode": "push"
+                        },
+                        "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "6adcc9d5-54f0-40e5-b72e-319ebf3d5a17",
+                            "order": 1,
+                            "reps": 0,
+                            "weight": 0,
+                            "workoutExerciseId": "a93a31f9-ad49-46d9-bcba-8770810dc175"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 101.45,
+                "totalSets": 2,
+                "totalReps": 0,
+                "totalWeight": 0,
+                "totalExercises": 2
+            }
+        },
+        {
+            "id": "a0f0afbb-95c1-4bd2-a2b4-f792677452b0",
+            "description": "",
+            "startAtUtc": "2025-03-26T13:58:08.597334+00:00",
+            "endAtUtc": "2025-03-26T15:42:12.597334+00:00",
+            "notes": "",
+            "gymId": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+            "gym": {
+                "id": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+                "name": "Ultimate Gym",
+                "address": "Puchstraße 17",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "b47179af-6c63-4e71-82ae-5cfacd8b2385",
+                    "order": 1,
+                    "workoutId": "a0f0afbb-95c1-4bd2-a2b4-f792677452b0",
+                    "exercise": {
+                        "id": "c99c49dc-a5a7-41b5-9a13-68f2149b6392",
+                        "i18NCode": "Box Jump",
+                        "description": "An explosive movement that enhances power and agility.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "90ea4455-9f8c-42a0-8d6b-25eeafab34c0",
+                            "order": 1,
+                            "reps": 0,
+                            "weight": 0,
+                            "workoutExerciseId": "b47179af-6c63-4e71-82ae-5cfacd8b2385"
+                        },
+                        {
+                            "id": "36165c51-7ed5-466b-9780-3612b4890863",
+                            "order": 2,
+                            "reps": 0,
+                            "weight": 0,
+                            "workoutExerciseId": "b47179af-6c63-4e71-82ae-5cfacd8b2385"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 104.06666666666666,
+                "totalSets": 2,
+                "totalReps": 0,
+                "totalWeight": 0,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "f55e6faa-bb99-411c-a609-d59f4dfb2bb8",
+            "description": "",
+            "startAtUtc": "2025-03-27T14:58:08.597334+00:00",
+            "endAtUtc": "2025-03-27T16:07:02.597334+00:00",
+            "notes": "Asdf",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "d9597afc-1ae0-4a9c-8ee1-043dc8fe798d",
+                    "order": 1,
+                    "workoutId": "f55e6faa-bb99-411c-a609-d59f4dfb2bb8",
+                    "exercise": {
+                        "id": "c99c49dc-a5a7-41b5-9a13-68f2149b6392",
+                        "i18NCode": "Box Jump",
+                        "description": "An explosive movement that enhances power and agility.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "ad056efc-6d19-44ee-ae71-5b2c938cdab9",
+                            "order": 1,
+                            "reps": 1,
+                            "weight": 2.22,
+                            "workoutExerciseId": "d9597afc-1ae0-4a9c-8ee1-043dc8fe798d"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 68.9,
+                "totalSets": 1,
+                "totalReps": 1,
+                "totalWeight": 2.22,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "8f6de09f-ce76-4eaf-9bee-a297c84c63a7",
+            "description": "",
+            "startAtUtc": "2025-03-28T15:58:08.597334+00:00",
+            "endAtUtc": "2025-03-28T18:37:47.597334+00:00",
+            "notes": "With notes",
+            "gymId": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+            "gym": {
+                "id": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+                "name": "Ultimate Gym",
+                "address": "Puchstraße 17",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "5e1385a5-7ea2-4f70-8069-6cf6cd8aec74",
+                    "order": 1,
+                    "workoutId": "8f6de09f-ce76-4eaf-9bee-a297c84c63a7",
+                    "exercise": {
+                        "id": "a94a7606-e5d9-4c71-92fd-7c1997d4d213",
+                        "i18NCode": "Hanging Leg Raise",
+                        "description": "A challenging core exercise that targets the lower abs.",
+                        "exerciseCategory": {
+                            "id": "a75ab238-fd04-4351-a412-96e495346f33",
+                            "i18NCode": "core"
+                        },
+                        "exerciseCategoryId": "a75ab238-fd04-4351-a412-96e495346f33",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "a2130b63-df26-4eda-8bf0-8116b1f5bf3c",
+                            "order": 1,
+                            "reps": 0,
+                            "weight": 0,
+                            "workoutExerciseId": "5e1385a5-7ea2-4f70-8069-6cf6cd8aec74"
+                        }
+                    ],
+                    "notes": "Aaaa"
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 159.65,
+                "totalSets": 1,
+                "totalReps": 0,
+                "totalWeight": 0,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "0a707e4f-218e-4b5a-9931-e83ae0662559",
+            "description": "",
+            "startAtUtc": "2025-03-29T16:58:08.597334+00:00",
+            "endAtUtc": "2025-03-29T18:38:33.597334+00:00",
+            "notes": "",
+            "gymId": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+            "gym": {
+                "id": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+                "name": "Ultimate Gym",
+                "address": "Puchstraße 17",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "2834771f-3844-4d68-9f1e-5ff76f1f1552",
+                    "order": 1,
+                    "workoutId": "0a707e4f-218e-4b5a-9931-e83ae0662559",
+                    "exercise": {
+                        "id": "28c267c0-6aca-4e25-999a-f265299fbe12",
+                        "i18NCode": "Hanging Knee Raise",
+                        "description": "A hanging exercise that engages the core and lower abs.",
+                        "exerciseCategory": {
+                            "id": "a75ab238-fd04-4351-a412-96e495346f33",
+                            "i18NCode": "core"
+                        },
+                        "exerciseCategoryId": "a75ab238-fd04-4351-a412-96e495346f33",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "6f88cd3a-9bb9-4442-8026-06f68e7d04fb",
+                            "order": 1,
+                            "reps": 15,
+                            "weight": 200,
+                            "workoutExerciseId": "2834771f-3844-4d68-9f1e-5ff76f1f1552"
+                        },
+                        {
+                            "id": "98c2e098-6698-4145-b121-f760c7907824",
+                            "order": 2,
+                            "reps": 10,
+                            "weight": 150,
+                            "workoutExerciseId": "2834771f-3844-4d68-9f1e-5ff76f1f1552"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 100.41666666666667,
+                "totalSets": 2,
+                "totalReps": 25,
+                "totalWeight": 4500,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "a00cb505-2b86-4fbd-9822-60570220d6b0",
+            "description": "",
+            "startAtUtc": "2025-03-30T17:58:08.597334+00:00",
+            "endAtUtc": "2025-03-30T19:05:58.597334+00:00",
+            "notes": "",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "8447e9a5-af5e-4a49-a89a-439ce9386ae1",
+                    "order": 2,
+                    "workoutId": "a00cb505-2b86-4fbd-9822-60570220d6b0",
+                    "exercise": {
+                        "id": "4036e7d8-7e01-49fb-a669-4a0835624952",
+                        "i18NCode": "Lat Pulldown",
+                        "description": "A machine exercise that mimics the pull-up, targeting the lats.",
+                        "exerciseCategory": {
+                            "id": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+                            "i18NCode": "pull"
+                        },
+                        "exerciseCategoryId": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "a4310eb5-eef7-4bb5-a1a0-d3abb0653e65",
+                            "order": 1,
+                            "reps": 3,
+                            "weight": 33,
+                            "workoutExerciseId": "8447e9a5-af5e-4a49-a89a-439ce9386ae1"
+                        },
+                        {
+                            "id": "c12dcf0f-f0a6-44e0-8e37-7605808a234b",
+                            "order": 2,
+                            "reps": 4,
+                            "weight": 44,
+                            "workoutExerciseId": "8447e9a5-af5e-4a49-a89a-439ce9386ae1"
+                        }
+                    ],
+                    "notes": ""
+                },
+                {
+                    "id": "c0c06d8d-8cdc-4ea2-ad47-700a7fd15a55",
+                    "order": 1,
+                    "workoutId": "a00cb505-2b86-4fbd-9822-60570220d6b0",
+                    "exercise": {
+                        "id": "d3d536fe-8d14-4eb3-af07-05281bc3b92e",
+                        "i18NCode": "Bent-Over Row",
+                        "description": "A pulling movement that targets the upper and middle back.",
+                        "exerciseCategory": {
+                            "id": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+                            "i18NCode": "pull"
+                        },
+                        "exerciseCategoryId": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "c8c756f6-5419-4bf1-96d5-193197669902",
+                            "order": 1,
+                            "reps": 1,
+                            "weight": 11,
+                            "workoutExerciseId": "c0c06d8d-8cdc-4ea2-ad47-700a7fd15a55"
+                        },
+                        {
+                            "id": "837c07e2-b5ee-4fe5-9d30-2839f43a1174",
+                            "order": 2,
+                            "reps": 20,
+                            "weight": 22,
+                            "workoutExerciseId": "c0c06d8d-8cdc-4ea2-ad47-700a7fd15a55"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 67.83333333333333,
+                "totalSets": 4,
+                "totalReps": 28,
+                "totalWeight": 726,
+                "totalExercises": 2
+            }
+        },
+        {
+            "id": "32feb092-e50c-4614-8aa8-1c0be0a19dc6",
+            "description": "",
+            "startAtUtc": "2025-03-31T18:58:08.597334+00:00",
+            "endAtUtc": "2025-03-31T20:31:33.597334+00:00",
+            "notes": "Test",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "d0499f4b-ea84-47cd-b9c0-a15d8bf85eb1",
+                    "order": 1,
+                    "workoutId": "32feb092-e50c-4614-8aa8-1c0be0a19dc6",
+                    "exercise": {
+                        "id": "c99c49dc-a5a7-41b5-9a13-68f2149b6392",
+                        "i18NCode": "Box Jump",
+                        "description": "An explosive movement that enhances power and agility.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "599a305f-7b7f-4cf7-864a-0b8e8a92dd4b",
+                            "order": 1,
+                            "reps": 1,
+                            "weight": 111.11,
+                            "workoutExerciseId": "d0499f4b-ea84-47cd-b9c0-a15d8bf85eb1"
+                        },
+                        {
+                            "id": "1e5e2177-efb8-42b3-a54a-a65c857e9fdc",
+                            "order": 2,
+                            "reps": 2,
+                            "weight": 222.22,
+                            "workoutExerciseId": "d0499f4b-ea84-47cd-b9c0-a15d8bf85eb1"
+                        },
+                        {
+                            "id": "51d3ebc0-8859-4fbc-8c4a-e47b6b536b52",
+                            "order": 3,
+                            "reps": 3,
+                            "weight": 333.25,
+                            "workoutExerciseId": "d0499f4b-ea84-47cd-b9c0-a15d8bf85eb1"
+                        }
+                    ],
+                    "notes": "Test"
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 93.41666666666667,
+                "totalSets": 3,
+                "totalReps": 6,
+                "totalWeight": 1555.30,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "82f2342a-e138-4fca-9cae-8f70c759cf1f",
+            "description": "Testi Mc Test",
+            "startAtUtc": "2025-04-01T19:58:08.597334+00:00",
+            "endAtUtc": "2025-04-01T21:54:11.597334+00:00",
+            "notes": " workout_notes",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "9efb3995-c7ed-40ae-83ea-b2185e68e9e0",
+                    "order": 1,
+                    "workoutId": "82f2342a-e138-4fca-9cae-8f70c759cf1f",
+                    "exercise": {
+                        "id": "c99c49dc-a5a7-41b5-9a13-68f2149b6392",
+                        "i18NCode": "Box Jump",
+                        "description": "An explosive movement that enhances power and agility.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "9487136c-8398-452e-be6e-3907fc7365cb",
+                            "order": 1,
+                            "reps": 15,
+                            "weight": 10,
+                            "workoutExerciseId": "9efb3995-c7ed-40ae-83ea-b2185e68e9e0"
+                        },
+                        {
+                            "id": "f33650fb-10b3-4c6e-bd4f-d76af0c19b3b",
+                            "order": 2,
+                            "reps": 14,
+                            "weight": 54.5,
+                            "workoutExerciseId": "9efb3995-c7ed-40ae-83ea-b2185e68e9e0"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 116.05,
+                "totalSets": 2,
+                "totalReps": 29,
+                "totalWeight": 913.0,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "302d2715-f746-4d01-b503-23eb1b4cb061",
+            "description": "10 min Cadio",
+            "startAtUtc": "2025-04-02T20:58:08.597334+00:00",
+            "endAtUtc": "2025-04-02T23:26:17.597334+00:00",
+            "notes": " workout_notes",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "75c3ac2c-e899-4e60-98be-35b89b1015f2",
+                    "order": 3,
+                    "workoutId": "302d2715-f746-4d01-b503-23eb1b4cb061",
+                    "exercise": {
+                        "id": "c545d72c-a127-4a62-b8d4-712ddb7a5ef9",
+                        "i18NCode": "Standing Calf Raise",
+                        "description": "To do a calf raise with dumbbells, hold a dumbbell in each hand and stand with your feet about shoulder-width apart. Let your arms hang straight below your shoulders. Rise up onto your toes, then slowly return to the starting position. You'll feel tension in the muscles in the back of your lower legs.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "659a89ec-e006-401a-ac31-5ab504a934f8",
+                            "order": 1,
+                            "reps": 15,
+                            "weight": 110,
+                            "workoutExerciseId": "75c3ac2c-e899-4e60-98be-35b89b1015f2"
+                        },
+                        {
+                            "id": "a66c6fea-6025-48d9-b992-5578bd961bd0",
+                            "order": 3,
+                            "reps": 10,
+                            "weight": 135,
+                            "workoutExerciseId": "75c3ac2c-e899-4e60-98be-35b89b1015f2"
+                        },
+                        {
+                            "id": "21b67a02-404c-44ab-8b0e-f0762d7452ef",
+                            "order": 2,
+                            "reps": 12,
+                            "weight": 110,
+                            "workoutExerciseId": "75c3ac2c-e899-4e60-98be-35b89b1015f2"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                },
+                {
+                    "id": "82e0e048-e22e-480b-9534-c4163bb43199",
+                    "order": 1,
+                    "workoutId": "302d2715-f746-4d01-b503-23eb1b4cb061",
+                    "exercise": {
+                        "id": "3ee301a5-f46e-4879-a605-074b1398b050",
+                        "i18NCode": "Leg Extensions",
+                        "description": "The leg extension is a resistance weight training exercise that targets the quadriceps muscle",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "0769f527-1b9d-4729-9fae-1e60a297925f",
+                            "order": 2,
+                            "reps": 7,
+                            "weight": 50,
+                            "workoutExerciseId": "82e0e048-e22e-480b-9534-c4163bb43199"
+                        },
+                        {
+                            "id": "5ebf12a4-3c5c-4737-8e9a-e54882478ad8",
+                            "order": 1,
+                            "reps": 10,
+                            "weight": 45,
+                            "workoutExerciseId": "82e0e048-e22e-480b-9534-c4163bb43199"
+                        },
+                        {
+                            "id": "cbb1d5bb-9b7e-4f9b-9881-3d95772a1bb7",
+                            "order": 3,
+                            "reps": 10,
+                            "weight": 45,
+                            "workoutExerciseId": "82e0e048-e22e-480b-9534-c4163bb43199"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                },
+                {
+                    "id": "8af4a8c4-8003-4a44-85f1-3e4d101b6fcf",
+                    "order": 2,
+                    "workoutId": "302d2715-f746-4d01-b503-23eb1b4cb061",
+                    "exercise": {
+                        "id": "2e1803a6-1ee0-491c-8121-2f73877dfa3b",
+                        "i18NCode": "Lying Leg Press",
+                        "description": "Engages more of the posterior chain, including glutes and hamstrings, due to the different angle of push and body position where the user lies back, pushing the platform upward. Easier on knees.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "92083715-1bfa-43a0-a05a-be1d3a937210",
+                            "order": 1,
+                            "reps": 12,
+                            "weight": 133,
+                            "workoutExerciseId": "8af4a8c4-8003-4a44-85f1-3e4d101b6fcf"
+                        },
+                        {
+                            "id": "08c6f62a-5302-46e7-b862-c6b7b2da0c2b",
+                            "order": 3,
+                            "reps": 12,
+                            "weight": 133,
+                            "workoutExerciseId": "8af4a8c4-8003-4a44-85f1-3e4d101b6fcf"
+                        },
+                        {
+                            "id": "0ff7b658-5663-4d9e-8b10-bc9897132be4",
+                            "order": 2,
+                            "reps": 12,
+                            "weight": 133,
+                            "workoutExerciseId": "8af4a8c4-8003-4a44-85f1-3e4d101b6fcf"
+                        }
+                    ],
+                    "notes": " workout_exercise_notes"
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 148.15,
+                "totalSets": 9,
+                "totalReps": 100,
+                "totalWeight": 10358,
+                "totalExercises": 3
+            }
+        },
+        {
+            "id": "d3bb28e1-43be-4e84-9003-08701f9c3aa3",
+            "description": "",
+            "startAtUtc": "2025-04-03T21:58:08.597334+00:00",
+            "endAtUtc": "2025-04-04T00:16:01.597334+00:00",
+            "notes": "Leggy",
+            "gymId": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+            "gym": {
+                "id": "2663c207-d8b6-4bae-b776-d68b0fd1bdda",
+                "name": "John Reed",
+                "address": "Conrad-von-Hötzendorf-Straße 99a",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "9c7c3077-8037-4a78-8c29-f8fda6d3a0a8",
+                    "order": 1,
+                    "workoutId": "d3bb28e1-43be-4e84-9003-08701f9c3aa3",
+                    "exercise": {
+                        "id": "c99c49dc-a5a7-41b5-9a13-68f2149b6392",
+                        "i18NCode": "Box Jump",
+                        "description": "An explosive movement that enhances power and agility.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "090f0399-f2ab-4263-8b38-2022728f00a6",
+                            "order": 1,
+                            "reps": 1,
+                            "weight": 11.1,
+                            "workoutExerciseId": "9c7c3077-8037-4a78-8c29-f8fda6d3a0a8"
+                        },
+                        {
+                            "id": "6fc43d5e-d3a4-43fb-85fe-f66b63f82dd4",
+                            "order": 3,
+                            "reps": 3,
+                            "weight": 3.33,
+                            "workoutExerciseId": "9c7c3077-8037-4a78-8c29-f8fda6d3a0a8"
+                        },
+                        {
+                            "id": "38398984-16f4-449d-aea0-db40fd3b978c",
+                            "order": 2,
+                            "reps": 2,
+                            "weight": 22,
+                            "workoutExerciseId": "9c7c3077-8037-4a78-8c29-f8fda6d3a0a8"
+                        }
+                    ],
+                    "notes": "Testi Mc Test 1,2,3"
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 137.88333333333333,
+                "totalSets": 3,
+                "totalReps": 6,
+                "totalWeight": 65.09,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "3a85fbe1-1be0-49f4-b945-e250b7cb8e35",
+            "description": "Just Some Test Description",
+            "startAtUtc": "2025-04-03T22:03:45.076+00:00",
+            "endAtUtc": "2025-04-03T22:04:20.041+00:00",
+            "notes": "Workout Notes",
+            "gymId": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+            "gym": {
+                "id": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+                "name": "Ultimate Gym",
+                "address": "Puchstraße 17",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "d08fef34-b37d-458a-9293-1d3facb52ffc",
+                    "order": 1,
+                    "workoutId": "3a85fbe1-1be0-49f4-b945-e250b7cb8e35",
+                    "exercise": {
+                        "id": "33558c2a-0b5c-4add-bea1-cf8bcb626a78",
+                        "i18NCode": "Step-Up",
+                        "description": "A unilateral lower-body exercise that improves balance and strength.",
+                        "exerciseCategory": {
+                            "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                            "i18NCode": "legs"
+                        },
+                        "exerciseCategoryId": "353cc6f0-c36d-493b-950c-0166f6159d25",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "79161aca-0103-4b3c-9532-f74cbfaff607",
+                            "order": 3,
+                            "reps": 3,
+                            "weight": 35,
+                            "workoutExerciseId": "d08fef34-b37d-458a-9293-1d3facb52ffc"
+                        },
+                        {
+                            "id": "1c561fd5-8169-4cd4-a0d7-dca9fbcb3986",
+                            "order": 1,
+                            "reps": 1,
+                            "weight": 15,
+                            "workoutExerciseId": "d08fef34-b37d-458a-9293-1d3facb52ffc"
+                        },
+                        {
+                            "id": "a44217e8-5dbe-481d-b82f-da6c4a1edfab",
+                            "order": 2,
+                            "reps": 2,
+                            "weight": 16,
+                            "workoutExerciseId": "d08fef34-b37d-458a-9293-1d3facb52ffc"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 0.58275,
+                "totalSets": 3,
+                "totalReps": 6,
+                "totalWeight": 152,
+                "totalExercises": 1
+            }
+        },
+        {
+            "id": "e9574fdb-4d85-4a9f-855e-2df3a397167d",
+            "description": "",
+            "startAtUtc": "2025-04-03T22:09:19.762+00:00",
+            "endAtUtc": "2025-04-03T22:09:59.082+00:00",
+            "notes": "Asdf",
+            "gymId": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+            "gym": {
+                "id": "e0ba50e3-2aff-4ecf-93d9-92685e252642",
+                "name": "Ultimate Gym",
+                "address": "Puchstraße 17",
+                "city": "Graz",
+                "zipCode": 8020
+            },
+            "workoutExercises": [
+                {
+                    "id": "e10ec382-9ae3-4f1d-852a-9e2493c705c3",
+                    "order": 1,
+                    "workoutId": "e9574fdb-4d85-4a9f-855e-2df3a397167d",
+                    "exercise": {
+                        "id": "846e8c2d-9d63-4c18-82fa-0d8c7512f326",
+                        "i18NCode": "Bench Press",
+                        "description": "A compound movement that works the chest, shoulders, and triceps.",
+                        "exerciseCategory": {
+                            "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                            "i18NCode": "push"
+                        },
+                        "exerciseCategoryId": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+                        "muscleMapping": []
+                    },
+                    "workoutSets": [
+                        {
+                            "id": "14c04573-d338-41c0-bfcb-ab183612bb39",
+                            "order": 2,
+                            "reps": 20,
+                            "weight": 75,
+                            "workoutExerciseId": "e10ec382-9ae3-4f1d-852a-9e2493c705c3"
+                        },
+                        {
+                            "id": "a739fe0f-7e5e-4185-85e6-ff2d1e8facf2",
+                            "order": 3,
+                            "reps": 15,
+                            "weight": 120,
+                            "workoutExerciseId": "e10ec382-9ae3-4f1d-852a-9e2493c705c3"
+                        },
+                        {
+                            "id": "db606485-73a1-4c05-b45b-9fc732fcf65f",
+                            "order": 1,
+                            "reps": 15,
+                            "weight": 100,
+                            "workoutExerciseId": "e10ec382-9ae3-4f1d-852a-9e2493c705c3"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "workoutSummary": {
+                "totalTime": 0.6553333333333333,
+                "totalSets": 3,
+                "totalReps": 50,
+                "totalWeight": 4800,
+                "totalExercises": 1
+            }
+        }
+    ],
+    "pageIndex": 0,
+    "pageSize": 100,
+    "totalCount": 27,
+    "totalPages": 1,
+    "hasPreviousPage": false,
+    "hasNextPage": false
+}

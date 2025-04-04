@@ -13,19 +13,35 @@ class WorkoutViewModel: ObservableObject {
     private var totalPages: Int = 1
     @Published var isLoading: Bool = false
     @Published var isLoadingMore: Bool = false
-    private let workoutService = WorkoutService()
+    private let workoutService: WorkoutServiceProtocol
+
+    // Dependency injection via initializer.
+    init(workoutService: WorkoutServiceProtocol = WorkoutService()) {
+        self.workoutService = workoutService
+    }
 
     func searchWorkouts() async {
         isLoading = true
         errorMessage = nil
         do {
-            currentPage = 0
-            searchModel.pageIndex = Int32(currentPage)
-            searchModel.pageSize = Int32(100)
-            let result = try await workoutService.searchWorkouts(searchModel: searchModel)
+            // Capture the service in a local constant to avoid sending self.workoutService across actors
+            let service = self.workoutService
+            let result = try await service.searchWorkouts(searchModel: searchModel)
             workouts = result.items ?? []
-            totalPages = (Int)(result.totalPages!)
+            totalPages = Int(result.totalPages ?? 1)
+        } catch {
+            self.errorMessage = ErrorMessage(message: error.localizedDescription)
+        }
+        isLoading = false
+    }
 
+
+    func saveWorkout(_ workout: Components.Schemas.CreateWorkoutDto) async {
+        isLoading = true
+        errorMessage = nil
+        do {
+            let created = try await workoutService.postWorkout(workout)
+            workouts.append(created)
         } catch {
             self.errorMessage = ErrorMessage(message: error.localizedDescription)
         }
@@ -49,19 +65,6 @@ class WorkoutViewModel: ObservableObject {
 
         }
         isLoadingMore = false
-    }
-
-    func saveWorkout(_ workout: Components.Schemas.CreateWorkoutDto) async {
-        isLoading = true
-        errorMessage = nil
-        do {
-            let created = try await workoutService.postWorkout(workout)
-            workouts.append(created)
-
-        } catch {
-            self.errorMessage = ErrorMessage(message: error.localizedDescription)
-        }
-        isLoading = false
     }
 
     func appendWorkout(_ workout: Components.Schemas.GetWorkoutDto) {

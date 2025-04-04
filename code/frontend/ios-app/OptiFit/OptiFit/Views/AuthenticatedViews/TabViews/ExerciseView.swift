@@ -3,9 +3,6 @@ import SwiftUI
 struct ExerciseView: View {
     @EnvironmentObject private var exerciseViewModel: ExerciseViewModel
     @State private var navigateToAddExercise = false
-    // Holds the exercise selected for editing via swipe action.
-    @State private var selectedExerciseForEdit: Components.Schemas.GetExerciseDto? = nil
-
     // Group exercises by category
     private var groupedExercises: [String: [Components.Schemas.GetExerciseDto]] {
 
@@ -43,11 +40,6 @@ struct ExerciseView: View {
             // Navigation to the AddExerciseView.
             .navigationDestination(isPresented: $navigateToAddExercise) {
                 AddExerciseView()
-                    .environmentObject(exerciseViewModel)
-            }
-            // Navigation destination for editing an existing exercise.
-            .navigationDestination(item: $selectedExerciseForEdit) { exercise in
-                ExerciseDetailView(exercise: exercise, startEditing: true)
             }
             .onAppear {
                 Task {

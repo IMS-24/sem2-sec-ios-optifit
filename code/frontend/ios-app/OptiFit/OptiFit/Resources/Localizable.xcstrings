@@ -135,6 +135,9 @@
     "Average" : {
 
     },
+    "Back" : {
+
+    },
     "Bad request. Please check your input and try again." : {
 
     },
@@ -333,6 +336,9 @@
         }
       }
     },
+    "Exercise Category" : {
+
+    },
     "Exercise Name" : {
       "localizations" : {
         "de" : {
@@ -344,6 +350,7 @@
       }
     },
     "Exercise Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -367,6 +374,9 @@
 
     },
     "First Name" : {
+
+    },
+    "Front" : {
 
     },
     "General Workout" : {
@@ -516,6 +526,15 @@
     "More Info" : {
 
     },
+    "Muscle Code: %@" : {
+
+    },
+    "Muscle Details" : {
+
+    },
+    "Muscle Groups Overview" : {
+
+    },
     "Muscles" : {
       "localizations" : {
         "de" : {
@@ -530,6 +549,9 @@
 
     },
     "No exercises available." : {
+
+    },
+    "No muscle data available" : {
 
     },
     "No sets added yet." : {
@@ -655,6 +677,9 @@
         }
       }
     },
+    "Select Category" : {
+
+    },
     "Select Exercise" : {
       "localizations" : {
         "de" : {
@@ -679,6 +704,7 @@
       }
     },
     "Select Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

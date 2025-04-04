@@ -4,18 +4,18 @@ import SwiftUI
 struct AddExerciseView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var exerciseViewModel: ExerciseViewModel
-    
+
     @State private var name: String = ""
-    @State private var selectedExerciseCategory: UUID?
+    @State private var selectedExerciseCategory: Components.Schemas.GetExerciseCategoryDto?
     @State private var selectedMuscles: Set<Components.Schemas.GetMuscleDto> = []
     @State private var description: String = ""
-    
+
     // Image selection state (currently not used)
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImage: UIImage? = nil
-    @StateObject private var muscleViewModel = MuscleViewModel()
-    @StateObject private var exerciseCategoryViewModel = ExerciseCategoryViewModel()
-    
+    @EnvironmentObject private var muscleViewModel: MuscleViewModel
+    @EnvironmentObject private var exerciseCategoryViewModel: ExerciseCategoryViewModel
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -23,18 +23,14 @@ struct AddExerciseView: View {
                     .ignoresSafeArea()
                 Form {
                     ExerciseNameSection(name: $name)
-                    ExerciseTypeSection(selectedExerciseCategory: $selectedExerciseCategory,
-                                        exerciseViewModel: exerciseViewModel,
-                                        exerciseCategoryViewModel: exerciseCategoryViewModel)
-                    MusclesSection(selectedMuscles: $selectedMuscles,
-                                   muscleViewModel: muscleViewModel)
+                    ExerciseCategorySection(selectedExerciseCategory: $selectedExerciseCategory)
+                    MusclesSection(selectedMuscles: $selectedMuscles)
                     DescriptionSection(description: $description)
                     SaveButtonSection(action: saveExercise)
                 }
                 .scrollContentBackground(.hidden)
             }
             .navigationTitle("Add Exercise")
-            .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 Task {
                     await muscleViewModel.searchMuscles()
@@ -51,16 +47,16 @@ struct AddExerciseView: View {
             }
         }
     }
-    
+
     private func saveExercise() {
         guard let selectedExerciseCategory = selectedExerciseCategory else {
             return
         }
         // Convert the image (if any) to JPEG data.
         let imageData = selectedImage?.jpegData(compressionQuality: 0.8)
-        
+
         // Convert the selected muscles into an array of UUIDs, or nil if none selected.
-        let muscleIds: [UUID]? = selectedMuscles.isEmpty ? nil : selectedMuscles.map { $0.id } as! [UUID]
+//        let muscleIds: [UUID]? = selectedMuscles.isEmpty ? nil : selectedMuscles.map { $0.id } as! [UUID]
         /*
          public struct CreateExerciseDto: Codable, Hashable, Sendable {
          /// - Remark: Generated from `#/components/schemas/CreateExerciseDto/i18NCode`.
@@ -73,14 +69,16 @@ struct AddExerciseView: View {
          public var createExerciseMuscleMappingDtos: [Components.Schemas.CreateExerciseMuscleMappingDto]?
          /// Creates a new `CreateExerciseDto`.
          */
+        let muscleMappings = selectedMuscles.map { muscle in
+            return Components.Schemas.CreateExerciseMuscleMappingDto(muscleId: muscle.id)
+        }
         let exercise = Components.Schemas.CreateExerciseDto(
             i18NCode: name,
             description: description,
-//            muscleIds: muscleIds,
-            exerciseCategoryId: selectedExerciseCategory.uuidString
-//            imageData: imageData
+            exerciseCategoryId: selectedExerciseCategory.id, createExerciseMuscleMappingDtos: muscleMappings
+                //            imageData: imageData
         )
-        
+
         Task {
             let _ = await exerciseViewModel.saveExercise(exerciseDto: exercise)
             dismiss()
@@ -92,7 +90,7 @@ struct AddExerciseView: View {
 
 struct ExerciseNameSection: View {
     @Binding var name: String
-    
+
     var body: some View {
         Section(header: Text("Exercise Name").font(.headline)) {
             TextField("Exercise Name", text: $name)
@@ -101,67 +99,9 @@ struct ExerciseNameSection: View {
     }
 }
 
-struct ExerciseTypeSection: View {
-    @Binding var selectedExerciseCategory: UUID?
-    var exerciseViewModel: ExerciseViewModel
-    var exerciseCategoryViewModel: ExerciseCategoryViewModel
-    
-    var body: some View {
-        Section(header: Text("Exercise Type").font(.headline)) {
-            if exerciseViewModel.isLoading {
-                ProgressView("Loading …")
-            } else if let error = exerciseViewModel.errorMessage {
-                Text(error.message)
-                    .foregroundColor(.red)
-            } else {
-                Picker(selection: $selectedExerciseCategory, label: Text("Select Type")) {
-                    ForEach(exerciseCategoryViewModel.exerciseCategories, id: \.id) { category in
-                        Text(category.i18NCode!)
-                            .tag(category.id)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-            }
-        }
-    }
-}
-
-struct MusclesSection: View {
-    @Binding var selectedMuscles: Set<Components.Schemas.GetMuscleDto>
-    var muscleViewModel: MuscleViewModel
-    
-    var body: some View {
-        Section(header: Text("Muscles").font(.headline)) {
-            if muscleViewModel.isLoading {
-                ProgressView("Loading …")
-            } else if let error = muscleViewModel.errorMessage {
-                Text(error.message)
-                    .foregroundColor(.red)
-            } else {
-                ForEach(muscleViewModel.muscles, id: \.id) { muscle in
-                    Toggle(
-                        isOn: Binding(
-                            get: { selectedMuscles.contains(muscle) },
-                            set: { isSelected in
-                                if isSelected {
-                                    selectedMuscles.insert(muscle)
-                                } else {
-                                    selectedMuscles.remove(muscle)
-                                }
-                            }
-                        )
-                    ) {
-                        Text(muscle.i18NCode!)
-                    }
-                }
-            }
-        }
-    }
-}
-
 struct DescriptionSection: View {
     @Binding var description: String
-    
+
     var body: some View {
         Section(header: Text("Description").font(.headline)) {
             TextEditor(text: $description)
@@ -177,7 +117,7 @@ struct DescriptionSection: View {
 
 struct SaveButtonSection: View {
     var action: () -> Void
-    
+
     var body: some View {
         Section {
             Button(action: action) {

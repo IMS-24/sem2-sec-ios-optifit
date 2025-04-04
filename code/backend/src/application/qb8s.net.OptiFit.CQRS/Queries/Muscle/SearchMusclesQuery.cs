@@ -38,8 +38,8 @@ public class SearchMusclesQueryHandler(
         if (request.Search.I18NCode != null)
             predicate = predicate.And(x => x.I18NCode.Contains(request.Search.I18NCode));
         query = query.Where(predicate);
-        query = query.OrderBy(x => x.I18NCode);
-        logger.LogInformation("Search Muscle Query : {@Query}", query);
+        query = query
+            .OrderBy(x => x.I18NCode);
         return Task.FromResult(new PaginatedResult<GetMuscleDto>(request.Search.PageSize,
             request.Search.PageIndex,
             query.AsEnumerable().Select(mapper.Map<GetMuscleDto>)));

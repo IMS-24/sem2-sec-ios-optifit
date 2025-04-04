@@ -20,6 +20,7 @@ class MuscleViewModel: ObservableObject {
         errorMessage = nil
         do {
             currentPage = 0
+            searchModel.pageSize = 100
             let result = try await muscleService.searchMuscles(searchModel: searchModel)
             muscles = result.items ?? []
             totalPages = (Int)(result.totalPages!)
