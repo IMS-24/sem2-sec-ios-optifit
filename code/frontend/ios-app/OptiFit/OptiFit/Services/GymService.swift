@@ -3,13 +3,14 @@ import OpenAPIRuntime
 import OpenAPIURLSession
 import SwiftUI
 
+extension GymService: GymServiceProtocol {}
 
 @MainActor
 class GymService: ObservableObject {
     var baseUrl = AppConfiguration.apiBaseURL
     let configuration = Configuration()
     let client: Client
-    
+
     init() {
         client = Client(
             serverURL: baseUrl,

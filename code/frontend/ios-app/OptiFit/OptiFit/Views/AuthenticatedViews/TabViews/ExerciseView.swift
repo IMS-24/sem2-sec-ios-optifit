@@ -56,7 +56,21 @@ struct ExerciseView: View {
     }
 
 }
-//
-//#Preview {
-//    ExerciseView()
-//}
+
+
+
+struct ExerciseViewWrapper: View {
+    
+    let viewModel = ExerciseViewModel(exerciseService: MockExerciseService())
+    
+    var body: some View {
+        ExerciseView()
+            .environmentObject(viewModel)
+    }
+}
+struct ExerciseView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExerciseViewWrapper()
+    }
+}
+

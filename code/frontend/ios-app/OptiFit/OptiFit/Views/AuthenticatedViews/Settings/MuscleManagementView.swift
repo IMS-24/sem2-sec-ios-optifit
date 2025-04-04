@@ -12,7 +12,7 @@ extension Components.Schemas.GetMuscleDto {
     }
 }
 struct MuscleManagementView: View {
-    @StateObject private var muscleViewModel = MuscleViewModel()
+    @EnvironmentObject var muscleViewModel: MuscleViewModel
 
     private var groupedMuscles: [String: [Components.Schemas.GetMuscleDto]] {
         let muscles = muscleViewModel.muscles
@@ -24,7 +24,6 @@ struct MuscleManagementView: View {
         }
         return groups
     }
-
 
     var body: some View {
         NavigationView {
@@ -45,6 +44,17 @@ struct MuscleManagementView: View {
 
 }
 
-#Preview {
-    MuscleManagementView()
+struct MuscleManagementViewWrapper: View {
+
+    let viewModel = MuscleViewModel(muscleService: MockMuscleService())
+
+    var body: some View {
+        MuscleManagementView()
+            .environmentObject(viewModel)
+    }
+}
+struct MuscleManagementView_Previews: PreviewProvider {
+    static var previews: some View {
+        MuscleManagementViewWrapper()
+    }
 }

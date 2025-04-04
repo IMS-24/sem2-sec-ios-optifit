@@ -18,3 +18,26 @@ struct GroupedExerciseView: View {
         }
     }
 }
+
+struct GroupedExerciseViewWrapper: View {
+
+    let viewModel = ExerciseViewModel(exerciseService: MockExerciseService())
+    private var groupedExercises: [String: [Components.Schemas.GetExerciseDto]] {
+
+        Dictionary(grouping: viewModel.exercises, by: { $0.exerciseCategory?.i18NCode! ?? "" })
+    }
+    var body: some View {
+        GroupedExerciseView(
+            groupedExercises: groupedExercises,
+            group: "legs",
+            onLoadMore: { print("[DEBUG] Load more") }
+        )
+    }
+}
+
+struct GroupedExerciseView_Previews: PreviewProvider {
+    static var previews: some View {
+        GroupedExerciseViewWrapper()
+
+    }
+}

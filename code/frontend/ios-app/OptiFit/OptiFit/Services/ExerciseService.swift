@@ -3,6 +3,7 @@ import OpenAPIRuntime
 import OpenAPIURLSession
 import SwiftUI
 
+extension ExerciseService: ExerciseServiceProtocol{}
 @MainActor
 class ExerciseService: ObservableObject {
     var baseUrl = AppConfiguration.apiBaseURL

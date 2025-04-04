@@ -7,13 +7,16 @@ class GymViewModel: ObservableObject {
     @Published var errorMessage: ErrorMessage?
 
     private var searchModel: Components.Schemas.SearchGymsDto = Components.Schemas.SearchGymsDto()
-    private let gymService = GymService()
+    private let gymService: GymServiceProtocol
 
     private var currentPage: Int = 0
     private var totalPages: Int = 1
     @Published var isLoading: Bool = false
     @Published var isLoadingMore: Bool = false
 
+    init(gymService: GymServiceProtocol = GymService()) {
+        self.gymService = gymService
+    }
     func searchGyms() async {
         isLoading = true
         errorMessage = nil

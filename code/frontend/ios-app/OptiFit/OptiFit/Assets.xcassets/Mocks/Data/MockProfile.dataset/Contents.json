@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "MockProfile.json",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -26,10 +26,18 @@ struct HeaderView: View {
         .padding(.top, 10)
     }
 }
-
-struct HeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        HeaderView()
-            .environmentObject(AuthViewModel())
-    }
-}
+//
+//struct HeaderViewWrapper: View {
+//
+//    let viewModel = AuthViewModel(authService: MockAuthService())
+//
+//    var body: some View {
+//        HeaderView()
+//            .environmentObject(viewModel)
+//    }
+//}
+//struct HeaderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HeaderViewWrapper()
+//    }
+//}

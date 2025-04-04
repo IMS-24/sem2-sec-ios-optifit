@@ -7,21 +7,24 @@ class MuscleViewModel: ObservableObject {
     @Published var errorMessage: ErrorMessage?
 
     private var searchModel: Components.Schemas.SearchMuscleDto = Components.Schemas.SearchMuscleDto()
-    private let muscleService = MuscleService()
-    
-    
+    private let muscleService: MuscleServiceProtocol
+
     private var currentPage: Int = 0
     private var totalPages: Int = 1
     @Published var isLoading: Bool = false
     @Published var isLoadingMore: Bool = false
 
+    init(muscleService: MuscleServiceProtocol = MuscleService()) {
+        self.muscleService = muscleService
+    }
     func searchMuscles() async {
         isLoading = true
         errorMessage = nil
         do {
             currentPage = 0
             searchModel.pageSize = 100
-            let result = try await muscleService.searchMuscles(searchModel: searchModel)
+            let service = muscleService
+            let result = try await service.searchMuscles(searchModel: searchModel)
             muscles = result.items ?? []
             totalPages = (Int)(result.totalPages!)
         } catch {

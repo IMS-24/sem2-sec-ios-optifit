@@ -1,6 +1,6 @@
 import SwiftUI
 struct GymManagementView: View {
-    @StateObject private var gymViewModel = GymViewModel()
+    @EnvironmentObject var gymViewModel: GymViewModel
     
     var body: some View {
         NavigationView {
@@ -47,6 +47,17 @@ struct GymManagementView: View {
 
 
 
-#Preview {
-    GymManagementView()
+struct GymManagementViewWrapper: View {
+    
+    let viewModel = GymViewModel(gymService: MockGymService())
+    
+    var body: some View {
+        GymManagementView()
+            .environmentObject(viewModel)
+    }
+}
+struct GymManagementView_Previews: PreviewProvider {
+    static var previews: some View {
+        GymManagementViewWrapper()
+    }
 }

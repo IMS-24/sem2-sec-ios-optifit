@@ -26,3 +26,30 @@ struct GroupedListView<Item, Content: View>: View {
         }
     }
 }
+
+struct GroupedListViewWrapper: View {
+    let viewModel = ExerciseViewModel(exerciseService: MockExerciseService())
+    private var groupedExercises: [String: [Components.Schemas.GetExerciseDto]] {
+
+        Dictionary(grouping: viewModel.exercises, by: { $0.exerciseCategory?.i18NCode! ?? "" })
+    }
+    var body: some View {
+        GroupedListView(
+            groupedItems: groupedExercises,
+            onLoadMore: {
+                print("[Not implemented]")
+            },
+            content: { group, exercises, loadMore in
+                GroupedExerciseView(
+                    groupedExercises: groupedExercises,
+                    group: group,
+                    onLoadMore: loadMore
+                )
+            })
+    }
+}
+struct GroupedListView_Previews: PreviewProvider {
+    static var previews: some View {
+        GroupedListViewWrapper()
+    }
+}

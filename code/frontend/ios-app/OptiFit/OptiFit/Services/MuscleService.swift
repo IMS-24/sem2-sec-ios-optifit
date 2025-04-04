@@ -3,6 +3,7 @@ import OpenAPIRuntime
 import OpenAPIURLSession
 import SwiftUI
 
+extension MuscleService: MuscleServiceProtocol {}
 @MainActor
 class MuscleService: ObservableObject {
     var baseUrl = AppConfiguration.apiBaseURL

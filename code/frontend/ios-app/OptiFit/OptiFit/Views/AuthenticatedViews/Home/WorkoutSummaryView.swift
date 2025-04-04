@@ -201,15 +201,24 @@ struct DailySummaryCard: View {
     }
 }
 
+struct WorkoutSummaryViewWrapper: View {
+
+    let viewModel = ExerciseViewModel(exerciseService: MockExerciseService())
+
+    // Dummy data for previewing the summary view.
+    let dummyData: [String: Components.Schemas.WorkoutSummary] = [
+        "2025-03-09": Components.Schemas.WorkoutSummary(totalTime: 90, totalSets: 10, totalReps: 120, totalWeight: 500, totalExercises: 5),
+        "2025-03-10": Components.Schemas.WorkoutSummary(totalTime: 75, totalSets: 8, totalReps: 100, totalWeight: 400, totalExercises: 4),
+        "2025-03-11": Components.Schemas.WorkoutSummary(totalTime: 60, totalSets: 6, totalReps: 80, totalWeight: 300, totalExercises: 3),
+    ]
+
+    var body: some View {
+        WorkoutSummaryView(data: dummyData, currentMonday: Date())
+    }
+}
+
 struct WorkoutSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        // Dummy data for previewing the summary view.
-        let dummyData: [String: Components.Schemas.WorkoutSummary] = [
-            "2025-03-09": Components.Schemas.WorkoutSummary(totalTime: 90, totalSets: 10, totalReps: 120, totalWeight: 500, totalExercises: 5),
-            "2025-03-10": Components.Schemas.WorkoutSummary(totalTime: 75, totalSets: 8, totalReps: 100, totalWeight: 400, totalExercises: 4),
-            "2025-03-11": Components.Schemas.WorkoutSummary(totalTime: 60, totalSets: 6, totalReps: 80, totalWeight: 300, totalExercises: 3),
-        ]
-        // For preview, pass a fixed date for currentMonday.
-        WorkoutSummaryView(data: dummyData, currentMonday: Date())
+        WorkoutSummaryViewWrapper()
     }
 }

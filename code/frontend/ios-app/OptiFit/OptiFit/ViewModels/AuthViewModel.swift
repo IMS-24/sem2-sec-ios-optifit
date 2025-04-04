@@ -13,11 +13,12 @@ final class AuthViewModel: ObservableObject {
     @Published var currentAccount: MSALAccount? = nil
     @Published var initUserProfile: Components.Schemas.InitializeUserProfileDto? = nil
 
-    private let authService = AuthService()
+    private let authService: AuthService = AuthService()
 
     func authorize() async {
         do {
-            let result = try await authService.authorize()
+            let service = authService
+            let result = try await service.authorize()
             accessToken = result.accessToken
             currentAccount = result.account
             updateLoggingText("Access token is \(accessToken ?? "Empty")")
@@ -54,19 +55,19 @@ final class AuthViewModel: ObservableObject {
         }
     }
 
-    func callApi() async {
-        guard let token = accessToken else {
-            updateLoggingText("Operation failed because no access token was found!")
-            return
-        }
-        updateLoggingText("Calling the API...")
-        do {
-            let response = try await authService.callApi(withToken: token)
-            updateLoggingText("API response: \(response)")
-        } catch {
-            updateLoggingText("Could not call API: \(error)")
-        }
-    }
+    //    func callApi() async {
+    //        guard let token = accessToken else {
+    //            updateLoggingText("Operation failed because no access token was found!")
+    //            return
+    //        }
+    //        updateLoggingText("Calling the API...")
+    //        do {
+    //            let response = try await authService.callApi(withToken: token)
+    //            updateLoggingText("API response: \(response)")
+    //        } catch {
+    //            updateLoggingText("Could not call API: \(error)")
+    //        }
+    //    }
 
     func signOut() {
         currentAccount = nil

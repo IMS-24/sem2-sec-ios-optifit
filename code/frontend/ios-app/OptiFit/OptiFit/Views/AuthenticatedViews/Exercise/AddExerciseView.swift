@@ -132,6 +132,23 @@ struct SaveButtonSection: View {
     }
 }
 
-#Preview {
-    AddExerciseView()
+
+
+struct AddExerciseViewWrapper: View {
+    
+    let viewModel = ExerciseViewModel(exerciseService: MockExerciseService())
+    let muscleViewModel: MuscleViewModel = .init(muscleService: MockMuscleService())
+    let exerciseCategoryViewModel: ExerciseCategoryViewModel = .init(exerciseService: MockExerciseService())
+    var body: some View {
+        AddExerciseView()
+            .environmentObject(viewModel)
+            .environmentObject(muscleViewModel)
+            .environmentObject(exerciseCategoryViewModel)
+    }
 }
+struct AddExerciseView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddExerciseViewWrapper()
+    }
+}
+

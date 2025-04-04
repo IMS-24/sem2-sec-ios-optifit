@@ -8,6 +8,7 @@ struct AuthContentView: View {
     @StateObject var exerciseCategoryViewModel: ExerciseCategoryViewModel = ExerciseCategoryViewModel()
     @StateObject var muscleViewModel: MuscleViewModel = MuscleViewModel()
     @StateObject var currentWorkoutViewModel: CurrentWorkoutViewModel = CurrentWorkoutViewModel()
+    @StateObject var gymViewModel: GymViewModel = GymViewModel()
 
     @State private var showOnboarding = false
 
@@ -24,6 +25,7 @@ struct AuthContentView: View {
             .environmentObject(currentWorkoutViewModel)
             .environmentObject(exerciseCategoryViewModel)
             .environmentObject(muscleViewModel)
+            .environmentObject(gymViewModel)
         //                .fullScreenCover(isPresented: $showOnboarding) {
         //                    OnboardingWizardView()
         //                }

@@ -7,8 +7,11 @@ class ExerciseCategoryViewModel: ObservableObject {
     @Published var errorMessage: ErrorMessage?
     @Published var isLoading: Bool = false
 
-    private let exerciseService = ExerciseService()
-
+    private let exerciseService: ExerciseServiceProtocol
+    init(exerciseService: ExerciseServiceProtocol = ExerciseService()) {
+        self.exerciseService = exerciseService
+    }
+    
     func fetchCategories() async {
         isLoading = true
         errorMessage = nil

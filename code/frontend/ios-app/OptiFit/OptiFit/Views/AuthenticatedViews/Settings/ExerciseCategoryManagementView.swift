@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ExerciseCategoryManagementView: View {
-    @StateObject private var exerciseCategoriesViewModel = ExerciseCategoryViewModel()
+    @EnvironmentObject var exerciseCategoriesViewModel: ExerciseCategoryViewModel
     var body: some View {
         NavigationView {
             List {
@@ -23,6 +23,18 @@ struct ExerciseCategoryManagementView: View {
 
 }
 
-#Preview {
-    ExerciseCategoryManagementView()
+
+struct ExerciseCategoryManagementViewWrapper: View {
+    
+    let viewModel = ExerciseCategoryViewModel(exerciseService: MockExerciseService())
+    
+    var body: some View {
+        ExerciseCategoryManagementView()
+            .environmentObject(viewModel)
+    }
+}
+struct ExerciseCategoryManagementView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExerciseCategoryManagementViewWrapper()
+    }
 }

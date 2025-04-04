@@ -11,7 +11,11 @@ class UserProfileViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var oId: UUID?
 
-    private let profileService = ProfileService()
+    private let profileService: ProfileServiceProtocol
+    
+    init(profileService: ProfileServiceProtocol = ProfileService()) {
+        self.profileService = profileService
+    }
 
     func loadStats() async {
         isLoading = true

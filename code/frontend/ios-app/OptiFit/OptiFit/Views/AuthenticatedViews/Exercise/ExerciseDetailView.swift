@@ -8,7 +8,7 @@ extension Components.Schemas.GetExerciseDto {
 
 struct ExerciseDetailView: View {
     let exercise: Components.Schemas.GetExerciseDto
-    @StateObject private var exerciseViewModel = ExerciseViewModel()
+    @EnvironmentObject private var exerciseViewModel: ExerciseViewModel
     @Environment(\.dismiss) private var dismiss
 
     @State private var getExerciseStatisticsDto: Components.Schemas.GetExerciseStatisticsDto?
@@ -117,5 +117,45 @@ struct ExerciseDetailView: View {
         //                }
         //            }
         //        }
+    }
+}
+
+struct ExerciseDetailViewWrapper: View {
+
+    let viewModel = ExerciseViewModel(exerciseService: MockExerciseService())
+    private var groupedExercises: [String: [Components.Schemas.GetExerciseDto]] {
+
+        Dictionary(grouping: viewModel.exercises, by: { $0.exerciseCategory?.i18NCode! ?? "" })
+    }
+    private var getFirstExercise: Components.Schemas.GetExerciseDto {
+        viewModel.exercises.first
+            ?? Components.Schemas.GetExerciseDto(
+                id: UUID().uuidString,
+                i18NCode: "Leg Extensions",
+                description: "Some description of leg extension",
+                exerciseCategory: Components.Schemas.GetExerciseCategoryDto(
+                    id: UUID().uuidString,
+                    i18NCode: "Chest"
+                ),
+                exerciseCategoryId: UUID().uuidString,
+                muscleMapping: [
+                    Components.Schemas.GetExerciseMuscleMappingDto(
+                        id: UUID().uuidString,
+                        exerciseId: UUID().uuidString,
+                        muscleId: UUID().uuidString,
+                        muscleDto: .init(),
+                        intensity: 15)
+                ]
+            )
+    }
+    var body: some View {
+        ExerciseDetailView(exercise: getFirstExercise)
+            .environmentObject(viewModel)
+    }
+}
+
+struct ExerciseDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExerciseDetailViewWrapper()
     }
 }

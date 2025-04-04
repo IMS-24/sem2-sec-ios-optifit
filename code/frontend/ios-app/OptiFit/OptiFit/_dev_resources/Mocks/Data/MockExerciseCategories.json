@@ -1,0 +1,18 @@
+[
+    {
+        "id": "353cc6f0-c36d-493b-950c-0166f6159d25",
+        "i18NCode": "legs"
+    },
+    {
+        "id": "92d3c7a3-bab6-4d49-afce-70ed62b7814e",
+        "i18NCode": "push"
+    },
+    {
+        "id": "b4508634-2e74-49b1-88bd-01041aed3e2b",
+        "i18NCode": "pull"
+    },
+    {
+        "id": "a75ab238-fd04-4351-a412-96e495346f33",
+        "i18NCode": "core"
+    }
+]

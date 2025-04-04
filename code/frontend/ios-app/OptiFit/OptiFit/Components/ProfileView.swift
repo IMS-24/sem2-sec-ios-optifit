@@ -41,15 +41,19 @@ struct ProfileView: View {
         }
     }
 }
-struct ProfileView_Previews: PreviewProvider {
-    static var userProfileViewModel: UserProfileViewModel {
-        let x = UserProfileViewModel()
-        x.profile = .init(email: "dutchmen@gmail.com", firstName: "Johnny", lastName: "Chimpo", initialSetupDone: true)
-        return x
-    }
-    static var previews: some View {
+
+struct ProfileViewWrapper: View {
+
+    let viewModel = UserProfileViewModel(profileService: MockProfileService())
+
+    var body: some View {
         ProfileView()
-            .environmentObject(AuthViewModel())
-            .environmentObject(userProfileViewModel)
+            .environmentObject(viewModel)
+
+    }
+}
+struct ProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileViewWrapper()
     }
 }

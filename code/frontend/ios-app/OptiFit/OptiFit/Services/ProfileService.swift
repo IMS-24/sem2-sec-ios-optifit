@@ -3,6 +3,7 @@ import OpenAPIRuntime
 import OpenAPIURLSession
 import SwiftUI
 
+extension ProfileService: ProfileServiceProtocol {}
 @MainActor
 class ProfileService: ObservableObject {
     var baseUrl = AppConfiguration.apiBaseURL

@@ -1,9 +1,3 @@
-//
-//  WorkoutServiceProtocol.swift
-//  OptiFit
-//
-//  Created by Markus Stoegerer on 04.04.25.
-//
 
 protocol WorkoutServiceProtocol: Sendable {
     func searchWorkouts(searchModel: Components.Schemas.SearchWorkoutDto) async throws -> Components.Schemas.PaginatedResultOfGetWorkoutDto
