@@ -24,6 +24,10 @@ struct ExerciseView: View {
                 }
             }
             .refreshable {
+                var sm = exerciseViewModel.searchModel
+                sm.pageIndex = 0
+                sm.pageSize = 100
+                exerciseViewModel.updateSearchModel(sm)
                 await exerciseViewModel.searchExercises()
             }
             .listStyle(InsetGroupedListStyle())
@@ -43,6 +47,10 @@ struct ExerciseView: View {
             }
             .onAppear {
                 Task {
+                    var sm = exerciseViewModel.searchModel
+                    sm.pageIndex = 0
+                    sm.pageSize = 100
+                    exerciseViewModel.updateSearchModel(sm)
                     await exerciseViewModel.searchExercises()
                 }
             }
@@ -57,12 +65,10 @@ struct ExerciseView: View {
 
 }
 
-
-
 struct ExerciseViewWrapper: View {
-    
+
     let viewModel = ExerciseViewModel(exerciseService: MockExerciseService())
-    
+
     var body: some View {
         ExerciseView()
             .environmentObject(viewModel)
@@ -73,4 +79,3 @@ struct ExerciseView_Previews: PreviewProvider {
         ExerciseViewWrapper()
     }
 }
-

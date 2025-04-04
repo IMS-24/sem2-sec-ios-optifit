@@ -39,10 +39,10 @@
 		28CA59452D9C9A0C00549917 /* Exceptions for "OptiFit" folder in "OptiFit" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				PLIST/Development.plist,
-				PLIST/Production.plist,
-				PLIST/Staging.plist,
-				PLIST/Testing.plist,
+				Sources/App/Config/PLIST/Development.plist,
+				Sources/App/Config/PLIST/Production.plist,
+				Sources/App/Config/PLIST/Staging.plist,
+				Sources/App/Config/PLIST/Testing.plist,
 			);
 			target = 288C8F1D2D609205002B0719 /* OptiFit */;
 		};

@@ -26,10 +26,10 @@ fi
 
 # List of target configuration files.
 TARGET_FILES=(
-  "configs/Development.xcconfig"
-  "configs/Production.xcconfig"
-  "configs/Staging.xcconfig"
-  "configs/Testing.xcconfig"
+  "../../../configs/Development.xcconfig"
+  "../../../configs/Production.xcconfig"
+  "../../../configs/Staging.xcconfig"
+  "../../../configs/Testing.xcconfig"
 )
 
 # Loop through each file and update the versioning information.

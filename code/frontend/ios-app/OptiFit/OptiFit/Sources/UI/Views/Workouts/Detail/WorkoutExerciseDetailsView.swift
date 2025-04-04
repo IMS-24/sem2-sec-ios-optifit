@@ -5,7 +5,7 @@ struct WorkoutExerciseDetailsView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 8) {
                 WorkoutExerciseSetDetailView(workoutSets: workoutExercise.workoutSets)
                 Spacer()
             }

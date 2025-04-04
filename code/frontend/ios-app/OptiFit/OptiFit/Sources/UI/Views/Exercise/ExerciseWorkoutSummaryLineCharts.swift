@@ -47,6 +47,7 @@ struct ExerciseWorkoutSummaryLineCharts: View {
                             y: .value("Weight", set.weight ?? 0)
                         )
                         .foregroundStyle(.red)
+                        .lineStyle(StrokeStyle(lineWidth: 1, dash: [1]))
                         
                         PointMark(
                             x: .value("Set", set.order ?? 0),
@@ -78,7 +79,7 @@ struct ExerciseWorkoutSummaryLineCharts: View {
                             y: .value("Volume", volume)
                         )
                         .foregroundStyle(.yellow)
-                        
+                        .lineStyle(StrokeStyle(lineWidth: 1, dash: [1]))
                         PointMark(
                             x: .value("Set", set.order ?? 0),
                             y: .value("Volume", volume)
@@ -108,6 +109,7 @@ struct ExerciseWorkoutSummaryLineCharts: View {
                             y: .value("Reps", set.reps ?? 0)
                         )
                         .foregroundStyle(.green)
+                        .lineStyle(StrokeStyle(lineWidth: 1, dash: [2]))
                         
                         PointMark(
                             x: .value("Set", set.order ?? 0),

@@ -27,6 +27,10 @@ struct WorkoutView: View {
                 GroupedWorkoutListView(groupedWorkouts: groupedWorkouts)
             }
             .refreshable {
+                var sm = workoutViewModel.searchModel
+                sm.pageIndex = 0
+                sm.pageSize = 100
+                workoutViewModel.updateSearchModel(sm)
                 await workoutViewModel.searchWorkouts()
             }
             .listStyle(InsetGroupedListStyle())
@@ -46,6 +50,10 @@ struct WorkoutView: View {
             }
             .onAppear {
                 Task {
+                    var sm = workoutViewModel.searchModel
+                    sm.pageIndex = 0
+                    sm.pageSize = 100
+                    workoutViewModel.updateSearchModel(sm)
                     await workoutViewModel.searchWorkouts()
                 }
             }

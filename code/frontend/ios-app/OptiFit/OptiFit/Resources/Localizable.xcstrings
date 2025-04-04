@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%.1f" : {
-
-    },
     "%.1f kg" : {
 
     },
@@ -729,6 +726,9 @@
       }
     },
     "Set" : {
+
+    },
+    "Set %d" : {
 
     },
     "Set %lld" : {
